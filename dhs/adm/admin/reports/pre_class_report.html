@@ -1,0 +1,234 @@
+<html>
+<head>
+
+<title>Dhola High School</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<Script src="https://code.jquery.com/jquery-3.3.1.js" type="text/javascript"></Script>  
+   <script src="js/tableToExcel.js"></script>
+<style>
+tab_report {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 3px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #acc2e5;
+}
+</style>
+<style type="text/css">
+input[type=button]{
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+<div id="divmnu">
+  <center><h2>Dhola High School : Online Admission Report</h2>
+  <p id="clsdtls">Details of Students applied for Class : </center>
+</div>
+<table id="tab_report">
+
+  <tr>
+  	<th colspan="1" scope="colgroup">Unique ID</th>
+    <th colspan="12" scope="colgroup">Basic Information</th>
+    <th colspan="24" scope="colgroup">Educational Information</th>
+    <th colspan="10" scope="colgroup">Contact Information</th>
+    <th colspan="6" scope="colgroup">Guardian's Details</th>
+    <th colspan="10" scope="colgroup">Guardian's Contact Information</th>
+    <th colspan="4" scope="colgroup">Other Information</th>
+    <th colspan="4" scope="colgroup">Bank Details</th>
+  </tr>
+  
+     <tr>
+<th>	Application ID	</th>
+<th>	Name	</th>
+<th>	Date of Birth	</th>
+<th>	DOB Registration No.	</th>
+<th>	Gender	</th>
+<th>	Category	</th>
+<th>	Religion	</th>
+<th>	Mother Tongue	</th>
+<th>	Nationality	</th>
+<th>	Aadhaar	</th>
+<th>	Blood Group	</th>
+<th>	Health ID	</th>
+<th>	Identification Mark	</th>
+<th>	Academic Year	</th>
+<th>	Admission No.	</th>
+<th>	Admission Date	</th>
+<th>	Present Class	</th>
+<th>	Present Section	</th>
+<th>	Present Roll	</th>
+<th>	Present Stream	</th>
+<th>	Present Compulsory Subject 1	</th>
+<th>	Present Compulsory Subject 2	</th>
+<th>	Present Subject 1	</th>
+<th>	Present Subject 2	</th>
+<th>	Present Subject 3	</th>
+<th>	Present Subject 4	</th>
+<th>	Previous Class	</th>
+<th>	Previous Section	</th>
+<th>	Previous Roll	</th>
+<th>	Previous Stream	</th>
+<th>	Previous Compulsory Subject 1	</th>
+<th>	Previous Compulsory Subject 2	</th>
+<th>	Previous Subject 1	</th>
+<th>	Previous Subject 2	</th>
+<th>	Previous Subject 3	</th>
+<th>	Previous Subject 4	</th>
+<th>	Medium	</th>
+<th>	Address / Village	</th>
+<th>	Habitation or Locality	</th>
+<th>	District	</th>
+<th>	Block	</th>
+<th>	Panchayat	</th>
+<th>	Post Office	</th>
+<th>	Police Station	</th>
+<th>	PIN Code	</th>
+<th>	Phone / Contact No.	</th>
+<th>	Emai ID	</th>
+<th>	Father's Name	</th>
+<th>	Mother's Name	</th>
+<th>	Guardian's name	</th>
+<th>	Relationship (with Guardian)	</th>
+<th>	Annual Family Income	</th>
+<th>	Guardian's Qualification	</th>
+<th>	Address / Village	</th>
+<th>	Habitation or Locality	</th>
+<th>	District	</th>
+<th>	Block	</th>
+<th>	Panchayat	</th>
+<th>	Post Office	</th>
+<th>	Police Station	</th>
+<th>	PIN Code	</th>
+<th>	Phone / Contact No.	</th>
+<th>	Emai ID	</th>
+<th>	BPL Status	</th>
+<th>	BPL No.	</th>
+<th>	Children with Special Need	</th>
+<th>	Type of Disability	</th>
+<th>	Bank Name	</th>
+<th>	Branch Code	</th>
+<th>	IFSC	</th>
+<th>	Account Number	</th>
+
+      
+    </tr>
+   
+   <tbody id="table_body">
+	
+   </tbody>
+   
+     <tr>
+      <th>	Application ID	</th>
+<th>	Name	</th>
+<th>	Date of Birth	</th>
+<th>	DOB Registration No.	</th>
+<th>	Gender	</th>
+<th>	Category	</th>
+<th>	Religion	</th>
+<th>	Mother Tongue	</th>
+<th>	Nationality	</th>
+<th>	Aadhaar	</th>
+<th>	Blood Group	</th>
+<th>	Health ID	</th>
+<th>	Identification Mark	</th>
+<th>	Academic Year	</th>
+<th>	Admission No.	</th>
+<th>	Admission Date	</th>
+<th>	Present Class	</th>
+<th>	Present Section	</th>
+<th>	Present Roll	</th>
+<th>	Present Stream	</th>
+<th>	Present Compulsory Subject 1	</th>
+<th>	Present Compulsory Subject 2	</th>
+<th>	Present Subject 1	</th>
+<th>	Present Subject 2	</th>
+<th>	Present Subject 3	</th>
+<th>	Present Subject 4	</th>
+<th>	Previous Class	</th>
+<th>	Previous Section	</th>
+<th>	Previous Roll	</th>
+<th>	Previous Stream	</th>
+<th>	Previous Compulsory Subject 1	</th>
+<th>	Previous Compulsory Subject 2	</th>
+<th>	Previous Subject 1	</th>
+<th>	Previous Subject 2	</th>
+<th>	Previous Subject 3	</th>
+<th>	Previous Subject 4	</th>
+<th>	Medium	</th>
+<th>	Address / Village	</th>
+<th>	Habitation or Locality	</th>
+<th>	District	</th>
+<th>	Block	</th>
+<th>	Panchayat	</th>
+<th>	Post Office	</th>
+<th>	Police Station	</th>
+<th>	PIN Code	</th>
+<th>	Phone / Contact No.	</th>
+<th>	Emai ID	</th>
+<th>	Father's Name	</th>
+<th>	Mother's Name	</th>
+<th>	Guardian's name	</th>
+<th>	Relationship (with Guardian)	</th>
+<th>	Annual Family Income	</th>
+<th>	Guardian's Qualification	</th>
+<th>	Address / Village	</th>
+<th>	Habitation or Locality	</th>
+<th>	District	</th>
+<th>	Block	</th>
+<th>	Panchayat	</th>
+<th>	Post Office	</th>
+<th>	Police Station	</th>
+<th>	PIN Code	</th>
+<th>	Phone / Contact No.	</th>
+<th>	Emai ID	</th>
+<th>	BPL Status	</th>
+<th>	BPL No.	</th>
+<th>	Children with Special Need	</th>
+<th>	Type of Disability	</th>
+<th>	Bank Name	</th>
+<th>	Branch Code	</th>
+<th>	IFSC	</th>
+<th>	Account Number	</th>
+
+    </tr>
+    <tr>
+    
+    <th colspan="1" scope="colgroup">Unique ID</th>
+    <th colspan="12" scope="colgroup">Basic Information</th>
+    <th colspan="24" scope="colgroup">Educational Information</th>
+    <th colspan="10" scope="colgroup">Contact Information</th>
+    <th colspan="6" scope="colgroup">Guardian's Details</th>
+    <th colspan="10" scope="colgroup">Guardian's Contact Information</th>
+    <th colspan="4" scope="colgroup">Other Information</th>
+    <th colspan="4" scope="colgroup">Bank Details</th>
+  	</tr>
+   
+</table>
+
+<input type="button" onclick="myFunction()" value="Get Student Count">
+
+<div id="rowscnt"></div><br><br>
+
+<input type="button" onclick="tableToExcel('tab_report', 'Data Table')" value="Generate Report and Export to Excel">
+
+<script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+
+<script src="js/pre_class_report.js"></script>
+</body>
+</html>

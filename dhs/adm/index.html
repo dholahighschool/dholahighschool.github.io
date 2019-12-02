@@ -1,0 +1,209 @@
+<html>
+<head>
+	<title>
+		Dhola High School
+	</title>
+<link rel="icon" href="ss/login/images/logo.png" sizes="32x32" />
+	<link rel="icon" href="ss/login/images/logo.png" sizes="192x192" />
+<style type="text/css">
+.list-type1{
+width:400px;
+margin:0 auto;
+}
+
+.list-type1 ol{
+counter-reset: li;
+list-style: none;
+*list-style: decimal;
+font-size: 15px;
+font-family: 'Raleway', sans-serif;
+padding: 0;
+margin-bottom: 4em;
+}
+.list-type1 ol ol{
+margin: 0 0 0 2em;
+}
+
+.list-type1 a{
+position: relative;
+display: block;
+padding: .4em .4em .4em 2em;
+*padding: .4em;
+margin: .5em 0;
+background: #93C775;
+color: #000;
+text-decoration: none;
+-moz-border-radius: .3em;
+-webkit-border-radius: .3em;
+border-radius: 10em;
+transition: all .2s ease-in-out;
+}
+
+.list-type1 a:hover{
+background: #d6d4d4;
+text-decoration:none;
+transform: scale(1.1);
+}
+
+.list-type1 a:before{
+content: counter(li);
+counter-increment: li;
+position: absolute;
+left: -1.3em;
+top: 50%;
+margin-top: -1.3em;
+background:#93C775;
+height: 2em;
+width: 2em;
+line-height: 2em;
+border: .3em solid #fff;
+text-align: center;
+font-weight: bold;
+-moz-border-radius: 2em;
+-webkit-border-radius: 2em;
+border-radius: 2em;
+color:#FFF;
+}
+</style>
+<style type="text/css">
+	/* Hover */
+
+.hover-button{
+position: relative;
+top: 0;
+border-radius: 4px;
+font-size: 18px;
+padding: 8px 28px;
+text-decoration: none;
+border: 0px solid;
+cursor: pointer;
+border-bottom-width: 10px;
+outline: none;
+-webkit-transition: 0.3s background;
+-moz-transition: 0.3s background;
+transition: 0.3s background;
+}
+
+.hover-button.teal{
+color: #fff;
+border-color: #237E7C;
+background-color: #08BBB7;
+}
+
+.hover-button.teal:hover{
+background: #237E7C;
+}
+/* Active */
+
+.active-button{
+position: relative;
+top: 0;
+border-radius: 4px;
+font-size: 18px;
+padding: 8px 28px;
+text-decoration: none;
+border: 0px solid;
+cursor: pointer;
+border-bottom-width: 10px;
+outline: none;
+-webkit-transition: 0.3s background;
+-moz-transition: 0.3s background;
+transition: 0.3s background;
+}
+
+.active-button:active{
+top: 3px;
+}
+
+.active-button.teal{
+color: #fff;
+border-color: #237E7C;
+background-color: #08BBB7;
+}
+
+.active-button.teal:hover{
+background: #0ACFCB;
+}
+.active-button.teal:active{
+background: #5A5A5A;
+border-bottom-width: 3px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+	<center>
+
+	<h1>Please read the Important Dates below</h1>
+	</center>
+
+	<div class="list-type1">
+		<center><h2>For Classes VI - VIII</h2></center>
+<ol>
+<li><a>Form Fillup Start: 10th December, 2019</a></li>
+<li><a>Form Fillup End: 27th December, 2019</a></li>
+<li><a>Meeting with Students and Guardian : 2nd January, 2020</a></li>
+<li><a>Publication of list of selected Candidates : 06th January, 2020</a></li>
+<li><a>Date of Admission: 09th January, 2020</a></li>
+</ol>
+	<center>
+	<h2>Class IX</h2>
+	</center>
+<ol>
+<li><a>Form Fillup Start: 10th December, 2019</a></li>
+<li><a>Form Fillup End: 27th December, 2019</a></li>
+<li><a><b>Admission test: 28th December, 2019</b></a></li>
+<li><a>Publication of result of Admission Test: 04th January, 2020</a></li>
+<li><a>Date of Admission: 07th January, 2020</a></li>
+</ol>
+
+</div>
+
+<div class="box">
+<div class="active">
+	<center>
+	<a class="active-button teal" onclick="dtchk()">Apply as new Student</a><br><br><br>
+	<a class="active-button teal" onclick="dtlg()">Log IN</a>
+	</center>
+</div>
+</div>
+<script type="text/javascript">
+function dtchk() {
+var d = new Date();
+  var y = d.getFullYear();
+  var m = d.getMonth();
+  m=m+1;
+   var t = d.getDate();
+  var c= y + '-' + m + '-' + t;
+  var x = new Date(c);
+var y = new Date('2019-12-09');
+var z = new Date('2019-12-27');
+if(+x <= +y || +x >= +z){alert("Admission Portal will be available from 10th December, 2019 to 27th December, 2019");}
+else{
+window.open("student/index.html");
+}
+}
+</script>
+<script type="text/javascript">
+function dtlg() {
+var d = new Date();
+  var y = d.getFullYear();
+  var m = d.getMonth();
+  m=m+1;
+   var t = d.getDate();
+  var c= y + '-' + m + '-' + t;
+  var x = new Date(c);
+var y = new Date('2019-12-09');
+var z = new Date('2019-12-28');
+if(+x <= +y || +x >= +z){alert("Admission Portal will be available from 10th December, 2019 to 27th December, 2019");}
+else{
+window.open("student/login/index.html");
+}
+}
+</script>
+</body>
+
+</html>

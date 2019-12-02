@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<body onload="adminpass()">
+<center><img src="images/lock.jpg" alt="Admin Access Key"></center>
+
+
+<script type="text/javascript">
+  function adminpass() {
+  var spd = prompt("Please enter Admin Access Password");
+  if (spd != null) {
+    if (spd == window.atob("ZGhzYWRtaW4yMDA3")){
+      window.open("index.html");
+  }
+  else{
+  alert("You are not authorized!");
+  window.open("../../404/index.html");
+  }
+  }
+  
+}
+</script>
+
+</body>
+</html>

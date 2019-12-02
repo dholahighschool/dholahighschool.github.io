@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dhola High School Admin Panel</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="admin panel, reports, export, excel"/>
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+
+<style type="text/css">
+	/** Custom Select **/
+.custom-select-wrapper {
+  position: relative;
+  display: inline-block;
+  user-select: none;
+}
+  .custom-select-wrapper select {
+    display: none;
+  }
+  .custom-select {
+    position: relative;
+    display: inline-block;
+  }
+    .custom-select-trigger {
+      position: relative;
+      display: block;
+      width: 130px;
+      padding: 0 84px 0 22px;
+      font-size: 22px;
+      font-weight: 300;
+      color: #fff;
+      line-height: 60px;
+      background: #5c9cd8;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+      .custom-select-trigger:after {
+        position: absolute;
+        display: block;
+        content: '';
+        width: 10px; height: 10px;
+        top: 50%; right: 25px;
+        margin-top: -3px;
+        border-bottom: 1px solid #fff;
+        border-right: 1px solid #fff;
+        transform: rotate(45deg) translateY(-50%);
+        transition: all .4s ease-in-out;
+        transform-origin: 50% 0;
+      }
+      .custom-select.opened .custom-select-trigger:after {
+        margin-top: 3px;
+        transform: rotate(-135deg) translateY(-50%);
+      }
+  .custom-options {
+    position: absolute;
+    display: block;
+    top: 100%; left: 0; right: 0;
+    min-width: 100%;
+    margin: 15px 0;
+    border: 1px solid #b5b5b5;
+    border-radius: 4px;
+    box-sizing: border-box;
+    box-shadow: 0 2px 1px rgba(0,0,0,.07);
+    background: #fff;
+    transition: all .4s ease-in-out;
+    
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-15px);
+  }
+  .custom-select.opened .custom-options {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+    transform: translateY(0);
+  }
+    .custom-options:before {
+      position: absolute;
+      display: block;
+      content: '';
+      bottom: 100%; right: 25px;
+      width: 7px; height: 7px;
+      margin-bottom: -4px;
+      border-top: 1px solid #b5b5b5;
+      border-left: 1px solid #b5b5b5;
+      background: #fff;
+      transform: rotate(45deg);
+      transition: all .4s ease-in-out;
+    }
+    .option-hover:before {
+      background: #f9f9f9;
+    }
+    .custom-option {
+      position: relative;
+      display: block;
+      padding: 0 22px;
+      border-bottom: 1px solid #b5b5b5;
+      font-size: 18px;
+      font-weight: 600;
+      color: #b5b5b5;
+      line-height: 47px;
+      cursor: pointer;
+      transition: all .4s ease-in-out;
+    }
+    .custom-option:first-of-type {
+      border-radius: 4px 4px 0 0;
+    }
+    .custom-option:last-of-type {
+      border-bottom: 0;
+      border-radius: 0 0 4px 4px;
+    }
+    .custom-option:hover,
+    .custom-option.selection {
+      background: #f9f9f9;
+    }
+</style>
+<style type="text/css">
+input[type=submit]{
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+</style>
+<style type="text/css">
+  /* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+</style>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+</head>
+
+<body>
+	<div class="main">
+		<h1>Dhola High School : Online Admission</h1>
+		<div class="content">
+			<div class="sap_tabs">
+			<div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
+					<script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
+						<script type="text/javascript">
+							$(document).ready(function () {
+								$('#horizontalTab').easyResponsiveTabs({
+									type: 'default', //Types: default, vertical, accordion           
+									width: 'auto', //auto or any width like 600px
+									fit: true,   // 100% fit in a container
+									closed: 'accordion', // Start closed if in accordion view
+									activate: function(event) { // Callback function if tab is switched
+										var $tab = $(this);
+										var $info = $('#tabInfo');
+										var $name = $('span', $info);
+										$name.text($tab.text());
+										$info.show();
+									}
+								});
+
+								$('#verticalTab').easyResponsiveTabs({
+									type: 'vertical',
+									width: 'auto',
+									fit: true
+								});
+							});
+						</script>
+						<div >
+							<div class="port-left">
+								<ul class="resp-tabs-list">
+									  <img src="images/logo.jpg" alt="" />
+									  <li class="resp-tab-item" aria-controls="tab_item-0" role="tab">
+									  	<span>Pre - Admission Classwise Report</span>
+									  </li>
+									  <li class="resp-tab-item" aria-controls="tab_item-1" role="tab">
+									  	<span>Post - Admision Classwise Report</span>
+									  </li>
+									  <li class="resp-tab-item" aria-controls="tab_item-2" role="tab">
+									  	<span>Overall Reports</span>
+									  </li>
+									  <li class="resp-tab-item" aria-controls="tab_item-3" role="tab">
+									  	<span>Settings & More</span>
+									  </li>
+								</ul>		
+							</div>
+							
+							<div class="port-right">
+								
+									<div class="resp-tabs-container">
+									
+		<!-- Tab 0 -->					<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
+											<div class="profile-content">
+												<h3>Pre - Admission Report </h3>
+																							
+												<br>
+												<div style="height:50px; width:100%"></div>
+												<div class="center">
+													<form method="get" action="reports/pre_class_report.html">
+  												<select name="pclass" id="sources" class="custom-select sources" placeholder="Choose Class">
+    											<option value="V">CLASS V</option>
+    											<option value="VI">CLASS VI</option>
+    											<option value="VII">CLASS VII</option>
+    											<option value="VIII">CLASS VIII</option>
+    											<option value="IX">CLASS IX</option>
+    											<option value="X">CLASS X</option>
+    											<option value="XI">CLASS XI</option>
+    											<option value="XII">CLASS XII</option>
+  												</select>
+												</div>
+												<br><br>
+												<input type="submit" value="Submit">
+													</form>
+												<br>
+
+											</div>
+												<div class="clear"></div>
+										</div>
+										
+										
+	<!-- Tab 1 -->						<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-1">
+											<div class="profile-content">
+												<h3>Post - Admission Report </h3>
+																							
+												<br>
+
+												<div style="height:50px; width:100%"></div>
+
+
+                        <div class="tab">
+                        <button class="tablinks" onclick="opentab(event, 'admitted')">Admitted Student Report</button>
+                        <button class="tablinks" onclick="opentab(event, 'rejected')">Rejected Student Report</button>
+                        </div>
+
+                        <div id="admitted" class="tabcontent">
+
+                          <div class="center">
+                          <form method="get" action="reports/post_class_report-acc.html">
+                          <select name="pclass" id="sources" class="custom-select sources" placeholder="Choose Class">
+                          <option value="V">CLASS V</option>
+                          <option value="VI">CLASS VI</option>
+                          <option value="VII">CLASS VII</option>
+                          <option value="VIII">CLASS VIII</option>
+                          <option value="IX">CLASS IX</option>
+                          <option value="X">CLASS X</option>
+                          <option value="XI">CLASS XI</option>
+                          <option value="XII">CLASS XII</option>
+                          </select>
+                        </div>
+                        <br><br>
+                        <input type="submit" value="Submit">
+                          </form>
+
+                        </div>
+
+
+                        <div id="rejected" class="tabcontent">
+                          
+                          <div class="center">
+                          <form method="get" action="reports/post_class_report-rej.html">
+                          <select name="pclass" id="sources" class="custom-select sources" placeholder="Choose Class">
+                          <option value="V">CLASS V</option>
+                          <option value="VI">CLASS VI</option>
+                          <option value="VII">CLASS VII</option>
+                          <option value="VIII">CLASS VIII</option>
+                          <option value="IX">CLASS IX</option>
+                          <option value="X">CLASS X</option>
+                          <option value="XI">CLASS XI</option>
+                          <option value="XII">CLASS XII</option>
+                          </select>
+                        </div>
+                        <br><br>
+                        <input type="submit" value="Submit">
+                          </form>
+
+                        </div>
+
+                        </div>
+                        <div class="clear"></div>
+                        </div>
+
+        <!-- Tab 2 -->
+
+										<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
+											<div class="profile-content">
+												<h3>Overall Report </h3>
+																							
+												<br>
+												<div style="height:100px; width:100%"></div>
+													<form action="reports/all_report.html">
+    													<input type="submit" value="All Applied Student Report" style="background-color: #ff5685" />
+													</form>
+												<br>
+												<form action="reports/admitted_report.html">
+    													<input type="submit" value="Admitted Student Report" style="background-color: #ff5685" />
+													</form>
+												<br>
+												<form action="reports/rejected_report.html">
+    													<input type="submit" value="Rejected Student Report" style="background-color: #ff5685" />
+													</form>
+												<br>
+
+											</div>
+												<div class="clear"></div>
+										</div>
+										
+		<!-- Tab 3 -->					
+                    <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-2">
+											<div class="hobby">
+												<h3>Settings & More</h3>
+												<div style="height:100px; width:100%"></div>
+												<div class="hobby-info">
+													<h5>Settings</h5>
+													<p>	Admin Password facility will be available soon.
+													</p>
+													<h5>More</h5>
+													<p>	More other features will be available soon.
+													</p>																		
+												</div>
+											</div>
+										</div>
+									</div>	
+							</div>	
+							<div class="clear"></div>
+						</div>
+			</div>
+		</div>
+
+		</div>
+		<p class="footer">All Rights Reserved ©Dhola High School. | Design by <a href="http://quantumwebgarden.in/" target="_blank">Quantum Webgarden</a></p>
+		</div>
+
+<script type="text/javascript">
+	$(".custom-select").each(function() {
+  var classes = $(this).attr("class"),
+      id      = $(this).attr("id"),
+      name    = $(this).attr("name");
+  var template =  '<div class="' + classes + '">';
+      template += '<span class="custom-select-trigger">' + $(this).attr("placeholder") + '</span>';
+      template += '<div class="custom-options">';
+      $(this).find("option").each(function() {
+        template += '<span class="custom-option ' + $(this).attr("class") + '" data-value="' + $(this).attr("value") + '">' + $(this).html() + '</span>';
+      });
+  template += '</div></div>';
+  
+  $(this).wrap('<div class="custom-select-wrapper"></div>');
+  $(this).hide();
+  $(this).after(template);
+});
+$(".custom-option:first-of-type").hover(function() {
+  $(this).parents(".custom-options").addClass("option-hover");
+}, function() {
+  $(this).parents(".custom-options").removeClass("option-hover");
+});
+$(".custom-select-trigger").on("click", function() {
+  $('html').one('click',function() {
+    $(".custom-select").removeClass("opened");
+  });
+  $(this).parents(".custom-select").toggleClass("opened");
+  event.stopPropagation();
+});
+$(".custom-option").on("click", function() {
+  $(this).parents(".custom-select-wrapper").find("select").val($(this).data("value"));
+  $(this).parents(".custom-options").find(".custom-option").removeClass("selection");
+  $(this).addClass("selection");
+  $(this).parents(".custom-select").removeClass("opened");
+  $(this).parents(".custom-select").find(".custom-select-trigger").text($(this).text());
+});
+</script>
+<script>
+function opentab(evt, tabName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(tabName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+</script>
+</body>
+</html>
