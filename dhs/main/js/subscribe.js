@@ -22,10 +22,11 @@ function submitForm(e){
 var	name = getInputVal('subsname');
 var	phone = getInputVal('subsphone');
 var	email = getInputVal('subsemail');
+var msg = getInputVal('subsmsg');
 var subs = "YES";
 
  // Save message
-  saveMessage(name,phone,email,subs);
+  saveMessage(name,phone,email,subs,msg);
 
 
   document.getElementById("subscribe").style.display = 'none';
@@ -39,7 +40,7 @@ function getInputVal(id){
 }
 
 // Save message to firebase   
-function saveMessage(name,phone,email,subs){
+function saveMessage(name,phone,email,subs,msg){
   /*
   var newMessageRef = messagesRef.push();
   MessageRef.set({
@@ -49,6 +50,7 @@ function saveMessage(name,phone,email,subs){
 name:name,
 phone:phone,
 email:email,
-subs:subs
+subs:subs,
+msg:msg
   });
 }
