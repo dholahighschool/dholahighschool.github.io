@@ -82,9 +82,160 @@
   cursor: pointer;
 }
 </style>
+<style type="text/css">
+
+
+@import url(https://fonts.googleapis.com/css?family=Montserrat:500);
+
+:root {
+	/* Base font size */
+	font-size: 10px;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+.conte {
+	width: 100%;
+	margin: 0 auto;
+	padding: 0 2rem 2rem;
+	background-image: linear-gradient(to bottom, rgba(106, 217, 132,0.3), rgba(87, 103, 122,0.6));
+}
+
+.contr {
+	max-width: 100rem;
+	margin: 0 auto;
+	padding: 0 2rem 2rem;
+}
+
+.heading {
+	font-family: "Montserrat", Arial, sans-serif;
+	font-size: 4rem;
+	font-weight: bold;
+	line-height: 1.5;
+	text-align: center;
+	padding: 3.5rem 0;
+	color: #1a1a1a;
+	background-image: linear-gradient(to right, rgb(42, 70, 209), rgb(116, 45, 117));
+  /*color: red;*/
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
+.heading span {
+	display: block;
+}
+
+.gallery {
+	display: flex;
+	flex-wrap: wrap;
+	/* Compensate for excess margin on outer gallery flex items */
+	margin: -1rem -1rem;
+}
+
+.gallery-item {
+	/* Minimum width of 24rem and grow to fit available space */
+	flex: 1 0 24rem;
+	/* Margin value should be half of grid-gap value as margins on flex items don't collapse */
+	margin: 1rem;
+	box-shadow: 0.3rem 0.4rem 0.4rem rgba(0, 0, 0, 0.4);
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+.gallery-image {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 400ms ease-out;
+}
+
+.gallery-image:hover {
+	transform: scale(1.15);
+}
+
+
+@supports (display: grid) {
+	.gallery {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
+		grid-gap: 2rem;
+	}
+
+	.gallery,
+	.gallery-item {
+		margin: 0;
+	}
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 10; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(209, 190, 197); /* Fallback color */
+  background-color: rgba(209, 190, 197,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
+
+/* Caption of Modal Image */
+#caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
+}
+
+/* Add Animation */
+.modal-content, #caption {  
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+  from {-webkit-transform:scale(0)} 
+  to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+  from {transform:scale(0)} 
+  to {transform:scale(1)}
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+  .modal-content {
+    width: 100%;
+  }
+}
+
+</style>
 </head>
 
 <body class="et_fullwidth_nav et_fixed_nav et_show_nav et_cover_background et_pb_gutter windows et_pb_gutters3 et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_pb_footer_columns4 et_header_style_left et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db et_minified_js et_minified_css">
+	<section id="home"></section>
 <div id="page-container">
 <header id="main-header" data-height-onload="66">
 <div class="container clearfix et_menu_container">
@@ -98,12 +249,12 @@ Dhola High School </a>
 <div id="et-top-navigation" data-height="66" data-fixed-height="40">
 <nav id="top-menu-nav">
 <ul id="top-menu" class="nav">
-	<li id="menu-item-213206" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-213205 current_page_item menu-item-213206"><a href="index.html" aria-current="page">Home</a></li>
-	<li id="menu-item-213204" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-213204"><a href="../404/index.html" target="_blank">About</a></li>
-	<li id="menu-item-213212" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-213212"><a href="../404/index.html" target="_blank">News</a></li>
-	<li id="menu-item-213200" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-213200"><a href="../404/index.html" target="_blank">Programs</a></li>
+	<li id="menu-item-213206" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-213205 current_page_item menu-item-213206"><a href="#home" aria-current="page">Home</a></li>
+	<li id="menu-item-213204" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-213204"><a href="#about">About</a></li>
+	<li id="menu-item-213212" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-213212"><a href="noticesmain.html" target="_blank">Notice</a></li>
+	<li id="menu-item-213200" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-213200"><a href="#gallery">Gallery</a></li>
 	<li id="menu-item-213202" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-213202"><a href="../404/index.html" target="_blank">Staff</a></li>
-	<li id="menu-item-213210" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-213210"><a href="../404/index.html" target="_blank">Contact</a></li>
+	<li id="menu-item-213210" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-213210"><a href="#contact">Contact</a></li>
 	
 </ul> 
 </nav>
@@ -135,16 +286,15 @@ Dhola High School </a>
 
 
 </div>
-<div class="et_pb_button_wrapper"><a class="et_pb_button et_pb_more_button" href="../adm/index.html" target="_blank">Admission Portal</a></div>
+<div class="et_pb_button_wrapper"><a class="et_pb_button et_pb_more_button" href="http://admission.dholahighschool.in/" target="_blank">Admission Portal</a></div>
 <div class="et_pb_button_wrapper"><a class="et_pb_button et_pb_more_button" href="noticesmain.html" target="_blank">Notices & Announcements</a></div>
 </div>
 </div>
 <div class="et_pb_fullwidth_header_overlay"></div>
 <div class="et_pb_fullwidth_header_scroll"></div>
-</section>
-
 </div> 
-
+<section id="about">
+</section>
 <div class="et_pb_section et_pb_section_1 et_section_specialty">
 <div class="et_pb_row">
 <div class="et_pb_column et_pb_column_1_4 et_pb_column_0    et_pb_css_mix_blend_mode_passthrough">
@@ -231,8 +381,8 @@ Dhola High School </a>
 <div class="et_pb_slide_description">
 <h2 class="et_pb_slide_title">Best of Luck to all HS and Madhyamaik Students! </h2><div class="et_pb_slide_content">Exam Schedule links are given.</div>
 <div class="et_pb_button_wrapper">
-	<a class="et_pb_button et_pb_more_button" href="http://wbbse.org/Files/mpse_2020.pdf" target="_blank">HS Exam Schedule</a>
-	<a class="et_pb_button et_pb_more_button" href="https://wbchse.nic.in/pdfs/Annual_Programme_HS_New_2020.pdf" target="_blank">MP Exam Schedule</a>
+	<a class="et_pb_button et_pb_more_button" href="https://wbchse.nic.in/pdfs/Annual_Programme_HS_New_2020.pdf" target="_blank">HS Exam Schedule</a>
+	<a class="et_pb_button et_pb_more_button" href="http://wbbse.org/Files/mpse_2020.pdf" target="_blank">MP Exam Schedule</a>
 </div>
 </div> 
  </div>
@@ -245,7 +395,7 @@ Dhola High School </a>
 <div class="et_pb_slider_container_inner">
 <div class="et_pb_slide_description">
 <h2 class="et_pb_slide_title">Online Form Fillup for Admission to</h2><div class="et_pb_slide_content">Classes VI - IX</div>
-<div class="et_pb_button_wrapper"><a class="et_pb_button et_pb_more_button" href="../adm/index.html" target="_blank">Admission Portal</a></div>
+<div class="et_pb_button_wrapper"><a class="et_pb_button et_pb_more_button" href="http://admission.dholahighschool.in/" target="_blank">Admission Portal</a></div>
 </div> 
 </div>
 </div> 
@@ -415,7 +565,66 @@ Sunday: Closed</div>
 </div>
 </div> 
 </div> 
-</div> <div class="et_pb_section et_pb_section_2 et_pb_section_parallax et_pb_with_background et_section_regular">
+</div> 
+
+
+
+<section id="gallery"></section>
+<div class="conte">
+
+<div class="contr">
+
+	<h1 class="heading">Our Gallery</h1>
+
+	<div class="gallery">
+
+		<div class="gallery-item">
+			<img class="gallery-image" src="images/g1.jpg" alt="Welcome" onclick="changeIt(this)">
+		</div>
+
+		<div class="gallery-item">
+			<img class="gallery-image" src="images/g2.jpeg" alt="Road March" onclick="changeIt(this)">
+		</div>
+
+		<div class="gallery-item">
+			<img class="gallery-image" src="images/g3.jpeg" alt="Road March" onclick="changeIt(this)">
+		</div>
+
+		<div class="gallery-item">
+			<img class="gallery-image" src="images/g4.jpeg" alt="" onclick="changeIt(this)">
+		</div>
+
+		<div class="gallery-item">
+			<img class="gallery-image" src="images/g5.jpeg" alt="" onclick="changeIt(this)">
+		</div>
+
+		<div class="gallery-item">
+			<img class="gallery-image" src="images/g6.jpeg" alt="" onclick="changeIt(this)">
+		</div>
+
+		<div class="gallery-item">
+			<img class="gallery-image" src="images/g7.jpeg" alt="Classroom" onclick="changeIt(this)">
+		</div>
+
+		<div class="gallery-item">
+			<img class="gallery-image" src="images/g8.jpeg" alt="Cycle Distribution" onclick="changeIt(this)">
+		</div>
+
+	</div>
+	
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <img id="modalimg" src="#">
+    <center><p style="margin: 10px 0; font-weight: bold; background-image: linear-gradient(to right, rgba(87, 103, 122,0.8) , rgba(106, 217, 132,0.7)); padding: 5px; border: 1px solid #999; color:rgb(0, 0, 0);" id="modalcap">Some Caption</p></center>
+  </div>
+</div>
+</div>
+<br><br>
+</div>
+
+
+
+<div class="et_pb_section et_pb_section_2 et_pb_section_parallax et_pb_with_background et_section_regular">
 <div class="et_parallax_bg_wrap"><div class="et_parallax_bg" style="background-image: url(../../wp-content/uploads/2018/06/shapes-bg-1.png);"></div></div>
 <div class="et_pb_row et_pb_row_0">
 <div class="et_pb_column et_pb_column_4_4 et_pb_column_3  et_pb_css_mix_blend_mode_passthrough et-last-child">
@@ -465,11 +674,13 @@ Sunday: Closed</div>
 </div> 
 </div> 
 </div> 
-</div> <div class="et_pb_row et_pb_row_2">
+</div> 
+<section id="contact"></section>
+<div class="et_pb_row et_pb_row_2">
 <div class="et_pb_column et_pb_column_4_4 et_pb_column_7  et_pb_css_mix_blend_mode_passthrough et-last-child">
 <div class="et_pb_with_border et_pb_module et_pb_signup_0 et_animated et_hover_enabled et_pb_newsletter_layout_left_right et_pb_newsletter et_pb_subscribe clearfix et_pb_bg_layout_light  et_pb_text_align_left">
 <div class="et_pb_newsletter_description">
-<h2 class="et_pb_module_header">Get School News &amp; Updates</h2>
+<h2 class="et_pb_module_header">Contact Us with your Query</h2>
 </div>
 <div class="et_pb_newsletter_form">
 <form id="subscribe">
@@ -489,6 +700,10 @@ Sunday: Closed</div>
 <p class="et_pb_newsletter_field et_pb_contact_field_last et_pb_contact_field_last_tablet et_pb_contact_field_last_phone">
 <label class="et_pb_contact_form_label" style="display: none;">Email</label>
 <input id="subsemail" class="input" required="true" type="text" placeholder="Enter your Email ID" name="subsemail">
+</p>
+<p class="et_pb_newsletter_field et_pb_contact_field_last et_pb_contact_field_last_tablet et_pb_contact_field_last_phone">
+<label class="et_pb_contact_form_label" style="display: none;">Message</label>
+<textarea id="subsmsg" class="input" required="true" type="text" placeholder="Enter your Message" name="subsmsg"></textarea>
 </p>
 
 <button type="submit" class="bttn" id="subscribebtn">Subscribe</button>
@@ -514,7 +729,7 @@ Sunday: Closed</div>
 <h3 class="title">Programs & Evnets</h3>
 </div>
 </div> <div class="et_pb_column et_pb_column_1_4 et_pb_column_9  et_pb_css_mix_blend_mode_passthrough">
-<div class="et_pb_module et_pb_number_counter et_pb_number_counter_2 et_pb_bg_layout_dark  et_pb_text_align_left et_pb_with_title" data-number-value="27" data-number-separator="">
+<div class="et_pb_module et_pb_number_counter et_pb_number_counter_2 et_pb_bg_layout_dark  et_pb_text_align_left et_pb_with_title" data-number-value="41" data-number-separator="">
 <div class="percent"><p><span class="percent-value"></span><span class="percent-sign"></span></p></div>
 <h3 class="title">Faculty</h3>
 </div><div class="et_pb_module et_pb_number_counter et_pb_number_counter_3 et_pb_bg_layout_dark  et_pb_text_align_left et_pb_with_title" data-number-value="87" data-number-separator="">
@@ -566,11 +781,6 @@ Sunday: Closed</div>
 <span>Google</span>
 </a>
 </li>
-<li class="et-social-icon et-social-rss">
-<a href="https://www.elegantthemes.com/layouts/feed" class="icon">
-<span>RSS</span>
-</a>
-</li>
 </ul><p id="footer-info">Designed by <a href="http://www.quantumwebgarden.in/" title="Quantum Webgarden">Quantum Webgarden</a> | All rights reserved &#169; <a href="http://www.dholahighschool.in/">Dhola High School</a></p> </div> 
 </div>
 </footer> 
@@ -598,7 +808,41 @@ var et_pb_custom = {"ajaxurl":"https:\/\/www.elegantthemes.com\/layouts\/wp-admi
 var et_pb_box_shadow_elements = [];
 /* ]]> */
 </script>
+<script type="text/javascript">
+var modal = document.getElementById("myModal");
+function changeIt(img)
+{
+	
+    var name = img.src;
+    var capt = img.alt;
+	modal.style.display = "block";
+	document.getElementById("modalimg").src = name;
+	if (capt==="")
+	{
+		document.getElementById("modalcap").style.display = "none";
+	}
+	else
+	{
+		document.getElementById("modalcap").style.display = "block";
+	}
+	document.getElementById("modalcap").innerHTML = capt;
 
+	document.documentElement.style.getPropertyValue('--scroll-y');
+  	const body = document.body;
+  	body.style.height = '100vh';
+  	body.style.overflowY = 'hidden';
+	
+}
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+    document.documentElement.style.getPropertyValue('--scroll-y');
+  const body = document.body;
+  body.style.height = '100%';
+  body.style.overflowY = 'scroll';
+  }
+}
+</script>
 
 <script type='text/javascript' src='../../wp-content/themes/Divi/js/custom.min18e6.js?ver=3.29.3'></script>
 <script type='text/javascript' src='../../wp-content/themes/Divi/core/admin/js/common18e6.js?ver=3.29.3'></script>
