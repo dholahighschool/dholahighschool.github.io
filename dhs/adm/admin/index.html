@@ -129,6 +129,18 @@ input[type=submit]{
 
 </style>
 <style type="text/css">
+input[type=button]{
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+</style>
+<style type="text/css">
   /* Style the tab */
 .tab {
   overflow: hidden;
@@ -167,10 +179,141 @@ input[type=submit]{
 }
 </style>
 
+<style type="text/css">
+
+</style>
+
+
+<style type="text/css">
+.form-style-1 {
+  margin:10px auto;
+  max-width: 400px;
+  padding: 20px 12px 10px 20px;
+  font: 13px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+.form-style-1 li {
+  padding: 0;
+  display: block;
+  list-style: none;
+  margin: 10px 0 0 0;
+}
+.form-style-1 label{
+  margin:0 0 3px 0;
+  padding:0px;
+  display:block;
+  font-weight: bold;
+}
+.form-style-1 input[type=text], 
+.form-style-1 input[type=date],
+.form-style-1 input[type=datetime],
+.form-style-1 input[type=number],
+.form-style-1 input[type=search],
+.form-style-1 input[type=time],
+.form-style-1 input[type=url],
+.form-style-1 input[type=email],
+textarea, 
+select{
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  border:1px solid #BEBEBE;
+  padding: 7px;
+  margin:0px;
+  -webkit-transition: all 0.30s ease-in-out;
+  -moz-transition: all 0.30s ease-in-out;
+  -ms-transition: all 0.30s ease-in-out;
+  -o-transition: all 0.30s ease-in-out;
+  outline: none;  
+}
+.form-style-1 input[type=text]:focus, 
+.form-style-1 input[type=date]:focus,
+.form-style-1 input[type=datetime]:focus,
+.form-style-1 input[type=number]:focus,
+.form-style-1 input[type=search]:focus,
+.form-style-1 input[type=time]:focus,
+.form-style-1 input[type=url]:focus,
+.form-style-1 input[type=email]:focus,
+.form-style-1 textarea:focus, 
+.form-style-1 select:focus{
+  -moz-box-shadow: 0 0 8px #88D5E9;
+  -webkit-box-shadow: 0 0 8px #88D5E9;
+  box-shadow: 0 0 8px #88D5E9;
+  border: 1px solid #88D5E9;
+}
+.form-style-1 .field-divided{
+  width: 49%;
+}
+
+.form-style-1 .field-long{
+  width: 100%;
+}
+.form-style-1 .field-select{
+  width: 100%;
+}
+.form-style-1 .field-textarea{
+  height: 100px;
+}
+.form-style-1 input[type=submit], .form-style-1 input[type=button]{
+  background: #4B99AD;
+  padding: 8px 15px 8px 15px;
+  border: none;
+  color: #fff;
+}
+.form-style-1 input[type=submit]:hover, .form-style-1 input[type=button]:hover{
+  background: #4691A4;
+  box-shadow:none;
+  -moz-box-shadow:none;
+  -webkit-box-shadow:none;
+}
+.form-style-1 .required{
+  color:red;
+}
+</style>
+
 <script type="text/javascript" src="js/jquery.min.js"></script>
+<Script src="https://code.jquery.com/jquery-3.3.1.js" type="text/javascript"></Script>  
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript">
+$(function () {
+    $("#btnAdd").bind("click", function () {
+        var div = $("<div />");
+        div.html(GetDynamicTextBox(""));
+        $("#TextBoxContainer").append(div);
+
+
+        var svalues = "";
+        $("input[name=DynamicTextBox]").each(function () {
+            svalues += $(this).val() + "\n";
+        });
+        $('#sfdtls').val(svalues);
+
+    });
+
+    $("#btnGet").bind("click", function () {
+        var values = "";
+        var svalues = "";
+        $("input[name=DynamicTextBox]").each(function () {
+            values += $(this).val() + "<br>";
+            svalues += $(this).val() + "\n";
+        });
+        $('#fdtls').val(values);
+        $('#sfdtls').val(svalues);
+        $("#submitmain").css("display","block");
+        $("#btnGet").css("display","none");
+
+    });
+    $("body").on("click", ".remove", function () {
+        $(this).closest("div").remove();
+    });
+});
+function GetDynamicTextBox(value) {
+    return '<input name = "DynamicTextBox" type="text" value = "' + value + '" />&nbsp;' +
+            '<input type="button" value="Remove" class="remove" />'
+}
+</script>
 </head>
 
-<body>
+<body onload="appidset()">
 	<div class="main">
 		<h1>Dhola High School : Online Admission</h1>
 		<div class="content">
@@ -213,9 +356,13 @@ input[type=submit]{
 									  <li class="resp-tab-item" aria-controls="tab_item-2" role="tab">
 									  	<span>Overall Reports</span>
 									  </li>
-									  <li class="resp-tab-item" aria-controls="tab_item-3" role="tab">
-									  	<span>Settings & More</span>
+                    <li class="resp-tab-item" aria-controls="tab_item-3" role="tab">
+                      <span>Notice update</span>
+                    </li>
+									  <li class="resp-tab-item" aria-controls="tab_item-4" role="tab">
+									  	<span>Settings & Others</span>
 									  </li>
+
 								</ul>		
 							</div>
 							
@@ -315,7 +462,7 @@ input[type=submit]{
 
         <!-- Tab 2 -->
 
-										<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
+										<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-2">
 											<div class="profile-content">
 												<h3>Overall Report </h3>
 																							
@@ -338,18 +485,67 @@ input[type=submit]{
 												<div class="clear"></div>
 										</div>
 										
-		<!-- Tab 3 -->					
-                    <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-2">
+    <!-- Tab 3 -->
+
+                    <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-3">
+                      <div class="profile-content">
+                        <h3>Notice Update Portal</h3>
+                                              
+                        <div>
+
+  <form id="noticeAdd">
+<ul class="form-style-1">
+    <li><label>Notice Details <span class="required">*</span></label>
+      <input type="text" name="topics" id="topics" required="true" class="field-divided" placeholder="Subject / Topics" /> 
+      <input type="text" name="sdtls" id="sdtls" required="true" class="field-divided" placeholder="Short Details"/></li>
+    <li>
+        <label>Date <span class="required">*</span></label>
+        <input type="date" required="true" id="ndate" name="ndate" class="field-long" placeholder="Notice Date" />
+    </li>
+    <li>
+        <label>Full Deatils</label>
+
+        <input id="btnAdd" type="button" value="Add New Line" />
+        <br />
+        <br />
+        <div id="TextBoxContainer">
+    <!--Textboxes will be added here -->
+        </div>
+        <br />
+        
+
+
+
+        <textarea style="display: none;" name="fdtls" id="fdtls" class="field-long field-textarea"></textarea>
+        <textarea name="sfdtls" id="sfdtls" class="field-long field-textarea"></textarea>
+    </li>
+    <li>
+        <input id="btnGet" type="button" value="Finalize All Details" /></li><li>
+        <input style="display: none;" id="submitmain" type="submit" value="Submit Notice"/>
+    </li>
+</ul>
+</form> 
+
+<div class="button" id="thankyou" style="display:none;font-size:25px">
+      <center><br>,<br>
+    <p><strong>Your Notice have successfully updated.</strong></p><br>
+      <a href="../../main/noticesmain.html" target="_blank"><input type="button" value="View updated Notice Portal"></a><br>
+      <a href="index.html"><input type="button" value="Add more Notice"></a><br>
+    </center>
+</div>      
+</div>  
+
+                      </div>
+                        <div class="clear"></div>
+                    </div>
+
+		<!-- Tab 4 -->					
+                    <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-4">
 											<div class="hobby">
 												<h3>Settings & More</h3>
 												<div style="height:100px; width:100%"></div>
 												<div class="hobby-info">
-													<h5>Settings</h5>
-													<p>	Admin Password facility will be available soon.
-													</p>
-													<h5>More</h5>
-													<p>	More other features will be available soon.
-													</p>																		
+                          <p>More Settings are comming soon.</p>
 												</div>
 											</div>
 										</div>
@@ -361,60 +557,13 @@ input[type=submit]{
 		</div>
 
 		</div>
-		<p class="footer">All Rights Reserved ©Dhola High School. | Design by <a href="http://quantumwebgarden.in/" target="_blank">Quantum Webgarden</a></p>
+		<p class="footer">All Rights Reserved © Dhola High School. | Powered by <a href="http://quantumwebgarden.in/" target="_blank">Quantum Webgarden</a></p>
 		</div>
 
-<script type="text/javascript">
-	$(".custom-select").each(function() {
-  var classes = $(this).attr("class"),
-      id      = $(this).attr("id"),
-      name    = $(this).attr("name");
-  var template =  '<div class="' + classes + '">';
-      template += '<span class="custom-select-trigger">' + $(this).attr("placeholder") + '</span>';
-      template += '<div class="custom-options">';
-      $(this).find("option").each(function() {
-        template += '<span class="custom-option ' + $(this).attr("class") + '" data-value="' + $(this).attr("value") + '">' + $(this).html() + '</span>';
-      });
-  template += '</div></div>';
-  
-  $(this).wrap('<div class="custom-select-wrapper"></div>');
-  $(this).hide();
-  $(this).after(template);
-});
-$(".custom-option:first-of-type").hover(function() {
-  $(this).parents(".custom-options").addClass("option-hover");
-}, function() {
-  $(this).parents(".custom-options").removeClass("option-hover");
-});
-$(".custom-select-trigger").on("click", function() {
-  $('html').one('click',function() {
-    $(".custom-select").removeClass("opened");
-  });
-  $(this).parents(".custom-select").toggleClass("opened");
-  event.stopPropagation();
-});
-$(".custom-option").on("click", function() {
-  $(this).parents(".custom-select-wrapper").find("select").val($(this).data("value"));
-  $(this).parents(".custom-options").find(".custom-option").removeClass("selection");
-  $(this).addClass("selection");
-  $(this).parents(".custom-select").removeClass("opened");
-  $(this).parents(".custom-select").find(".custom-select-trigger").text($(this).text());
-});
-</script>
-<script>
-function opentab(evt, tabName) {
-  var i, tabcontent, tablinks;
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-  document.getElementById(tabName).style.display = "block";
-  evt.currentTarget.className += " active";
-}
-</script>
+
+<script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+<script src="js/admin.js"></script>
+<script src="js/adminmain.js"></script>
+
 </body>
 </html>
