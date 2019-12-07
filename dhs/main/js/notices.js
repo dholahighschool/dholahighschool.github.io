@@ -17,11 +17,11 @@ var rootRef = firebase.database().ref('notices');
 
 rootRef.on("child_added", snap => {
 
-var subject = snap.child("Subject").val();
-var date = snap.child("Date").val();
-var details = snap.child("Details").val();
+var topics = snap.child("topics").val();
+var ndate = snap.child("ndate").val();
+var sdtls = snap.child("sdtls").val();
 
-$("#table_body").append("<tr><td>" + subject + "</td><td>" + date + "</td><td>" + details + "</td></tr>");
+$("#table_body").append("<tr><td>" + topics + "</td><td>" + ndate + "</td><td>" + sdtls + "</td></tr>");
 
 });
 
