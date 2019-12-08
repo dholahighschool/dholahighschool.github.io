@@ -324,11 +324,11 @@ Admission Form
 <ol>
 <li><a>Fillup the admission form carefully. Mandatory Fields are marked with a 
   <img src="img/asterisk.png" alt="mandatory" height="15" width="15">.</a></li>
+<li><a>Photo and Signature size should not exceed <b>20KB</b> and Other Document size should not exceed <b>250KB</b>.<br>Photo and Date of Birth Proof  / Birth Certificate is Mandatory for all.</a></li>
 <li><a>Once Submitted, no more Editing options are there, so check all fields before submit.</a></li>
 <li><a>After successful Submission, Write down the Application ID for further LogIn to your own Application.</a></li>
-<li><a>On the next Page, click on "Download or Print the Application Form" and keep a hard copy of the application form to be submitted at
-the time of admission. </a></li>
-<li><a><b>Students applying for Class IX, are requested to Download their Admit cards from the Login Portal.</b></a></li>
+<li><a>On the next Page, click on "LogIN" and enter <b>Application ID as logIn ID </b>and <b>Date of Birth as Password</b>.</a></li>
+<li><a><b>Students applying for Class IX should submit their signature, otherwise Admit Card without signature will not be accepted at admission test.</b></a></li>
 </ol>
 </div>
   <br>
@@ -479,21 +479,22 @@ the time of admission. </a></li>
         <label>
         <select name="prclass" id="prclass" required="true" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;" onchange="if (this.value=='IX' || this.value=='X'){this.form['praddl'].style.display='block';this.form['prstream'].style.display='none';this.form['prsubs'].style.display='none';this.form['acyear'].value = '2020';}else if (this.value=='XI' || this.value=='XII'){this.form['prstream'].style.display='block'; this.form['praddl'].style.display='none'; this.form['prstream'].value = '';this.form['acyear'].value = '2020-21'; this.form['prsubs'].style.display='block';}else {this.form['prstream'].style.display='none';this.form['praddl'].style.display='none';this.form['prstream'].value = 'NA'; this.form['prsubs'].style.display='none'; this.form['acyear'].value = '2020';};">
     <option value="NA" disabled="disabled" selected>-- Select any One --</option>
-    <option value="V">CLASS V</option>
+    <option value="V" style="display: none;">CLASS V</option>
     <option value="VI">CLASS VI</option>
     <option value="VII">CLASS VII</option>
     <option value="VIII">CLASS VIII</option>
     <option value="IX">CLASS IX</option>
-    <option value="X">CLASS X</option>
-    <option value="XI">CLASS XI</option>
-    <option value="XII">CLASS XII</option>
+    <option value="X" style="display: none;">CLASS X</option>
+    <option value="XI" style="display: none;">CLASS XI</option>
+    <option value="XII" style="display: none;">CLASS XII</option>
       	</select>
       	<br>
       	
       	<select name="praddl" id="praddl" style="display:none; padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;">
     <option value="NA" disabled="disabled" selected>-- Select any One --</option>
-    <option value="ADDL1">Additional Subject 1</option>
-    <option value="ADDL2">Additional Subject 2</option>
+    <option value="APPEAREL">Appearel <b>(NSQF)</b></option>
+    <option value="POWER">Power <b>(NSQF)</b></option>
+    <option value="Computerapplication">Computer Application</option>
     <option value="NA">Not Applicable</option>
       	</select>
       	
@@ -694,9 +695,9 @@ the time of admission. </a></li>
     <option value="VII">CLASS VII</option>
     <option value="VIII">CLASS VIII</option>
     <option value="IX">CLASS IX</option>
-    <option value="X">CLASS X</option>
-    <option value="XI">CLASS XI</option>
-    <option value="XII">CLASS XII</option>
+    <option value="X" style="display: none;">CLASS X</option>
+    <option value="XI" style="display: none;">CLASS XI</option>
+    <option value="XII" style="display: none;">CLASS XII</option>
       	</select>
       	<br>
       	
@@ -1121,7 +1122,7 @@ the time of admission. </a></li>
 		<input type="text" name="updphoto" id="updphoto" required="true" value="" style="display:none">
 		</div>
 		
-        <div class="section"><span>2</span>Signature</div>
+        <div class="section"><span>2</span>Signature*</div>
         <div class="inner-wrap">
         <img id="signature" src="img/Signature.png" style="height:80px;width:300px" alt="Choose your signature" /> <br>
         <progress value="0" max="100" id="uploader2">0%</progress>
@@ -1188,14 +1189,14 @@ the time of admission. </a></li>
       <br>Now you can Log In with your Application ID as Login Id and Date Of Birth as Password.</p>
 		<p id="idset">Your Application ID is here.</p> 
     </center>
-    <input type="button" name="printbtn" value="Download or Print Application Form" onclick="previewall()">
+    <input type="button" name="printbtn" value="LogIn" onclick="previewall()">
 </div>
     
 </div>
 
 </div>
 
-  <center><p class="foooter">All Rights Reserved ©Dhola High School. | Design by <a href="http://quantumwebgarden.in/" target="_blank">Quantum Webgarden</a></p></center>
+  <center><p class="foooter">All Rights Reserved ©Dhola High School. | Powered by <a href="http://quantumwebgarden.in/" target="_blank">Quantum Webgarden</a></p></center>
 
 
 <link class="jsbin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
