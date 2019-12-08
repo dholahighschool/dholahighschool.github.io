@@ -142,11 +142,11 @@ $('#nidmark').html("Identification Mark: " + idmark);
 else
 $('#nidmark').css('display','none');
 $('#nacyear').html("Academic Year: <b>" + acyear + "</b>");
-$('#nadmno').html("Admission No. :_______________");
-$('#nadmdate').html("Admission Date:____/____/______ ");
+$('#nadmno').html("Admission No. :____________");
+$('#nadmdate').html("Admission Date:___/___/____ ");
 $('#nprclass').html("Applied for Class : <b>" + prclass + "</b>");
-$('#nprsec').html("Alloted Section:________");
-$('#nprroll').html("Alloted Roll No.:________");
+$('#nprsec').html("Alloted Section:______");
+$('#nprroll').html("Alloted Roll No.:______");
 if(praddl!="NA")
 $('#npraddl').html("Additional Subject: <b>" + praddl + "</b>");
 else

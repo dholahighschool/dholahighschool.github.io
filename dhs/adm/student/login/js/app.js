@@ -72,8 +72,7 @@ function chkn() {
 		if (window.sessionStorage) 
 				{
 					sessionStorage.setItem("username", userID);
-					sessionStorage.setItem("password", psd);
-					window.open("report.html");
+					window.open("vitoviii.html");
 					window.close();
 				}
 	}
@@ -83,7 +82,7 @@ function chkn() {
 		if (window.sessionStorage) 
 				{
 					sessionStorage.setItem("username", userID);
-					window.open("choose.html");
+					window.open("ixonly.html");
 					window.close();
 				}
 	}
