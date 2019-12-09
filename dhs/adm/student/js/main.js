@@ -210,7 +210,16 @@ updcaste:updcaste
 
 			console.log('file upload event', e1);
 
-			var file1 = e1.target.files[0];
+			var FileSize = e1.target.files[0].size / 1024 / 1024; // in MB
+        	if (FileSize > 0.0195) 
+        	{
+            	alert('File size exceeds 20 KB \n Please Choose a new Photo.');
+            	document.getElementById('fileButton1').value = "";
+        	} 
+        	else 
+        	{
+        		var file1 = e1.target.files[0];
+        	}
 	
 			var storageRef1 = firebase.storage().ref(`${fbBucketName1}/${appid}/photo`);
 
@@ -260,8 +269,17 @@ var fbBucketName2 = 'images';
 
 			console.log('file upload event', e2);
 
-			var file2 = e2.target.files[0];
-	
+			var FileSize = e2.target.files[0].size / 1024 / 1024; // in MB
+        	if (FileSize > 0.0195) 
+        	{
+            	alert('File size exceeds 20 KB \n Please Choose a new Signature.');
+            	document.getElementById('fileButton2').value = "";
+        	} 
+        	else 
+        	{
+        		var file2 = e2.target.files[0];
+        	}
+
 			var storageRef2 = firebase.storage().ref(`${fbBucketName2}/${appid}/sign`);
 
 			var uploadTask2 = storageRef2.put(file2);
@@ -310,7 +328,16 @@ var fbBucketName3 = 'images';
 
 			console.log('file upload event', e3);
 
-			var file3 = e3.target.files[0];
+			var FileSize = e3.target.files[0].size / 1024 / 1024; // in MB
+        	if (FileSize > 0.244) 
+        	{
+            	alert('File size exceeds 250 KB \n Please Choose a new Picture.');
+            	document.getElementById('fileButton3').value = "";
+        	} 
+        	else 
+        	{
+        		var file3 = e3.target.files[0];
+        	}
 	
 			var storageRef3 = firebase.storage().ref(`${fbBucketName3}/${appid}/bproof`);
 
@@ -360,7 +387,16 @@ var fbBucketName4 = 'images';
 
 			console.log('file upload event', e4);
 
-			var file4 = e4.target.files[0];
+			var FileSize = e4.target.files[0].size / 1024 / 1024; // in MB
+        	if (FileSize > 0.244) 
+        	{
+            	alert('File size exceeds 250 KB \n Please Choose a new Picture.');
+            	document.getElementById('fileButton4').value = "";
+        	} 
+        	else 
+        	{
+        		var file4 = e4.target.files[0];
+        	}
 	
 			var storageRef4 = firebase.storage().ref(`${fbBucketName4}/${appid}/slc`);
 
@@ -409,7 +445,16 @@ var fbBucketName5 = 'images';
 
 			console.log('file upload event', e5);
 
-			var file5 = e5.target.files[0];
+			var FileSize = e5.target.files[0].size / 1024 / 1024; // in MB
+        	if (FileSize > 0.244) 
+        	{
+            	alert('File size exceeds 250 KB \n Please Choose a new Picture.');
+            	document.getElementById('fileButton5').value = "";
+        	} 
+        	else 
+        	{
+        		var file5 = e5.target.files[0];
+        	}
 	
 			var storageRef5 = firebase.storage().ref(`${fbBucketName5}/${appid}/aadhaarpic`);
 
@@ -459,7 +504,16 @@ var fbBucketName6 = 'images';
 
 			console.log('file upload event', e6);
 
-			var file6 = e6.target.files[0];
+			var FileSize = e6.target.files[0].size / 1024 / 1024; // in MB
+        	if (FileSize > 0.244) 
+        	{
+            	alert('File size exceeds 250 KB \n Please Choose a new Picture.');
+            	document.getElementById('fileButton6').value = "";
+        	} 
+        	else 
+        	{
+        		var file6 = e6.target.files[0];
+        	}
 	
 			var storageRef6 = firebase.storage().ref(`${fbBucketName6}/${appid}/bpass`);
 
@@ -508,7 +562,16 @@ var fbBucketName7 = 'images';
 
 			console.log('file upload event', e7);
 
-			var file7 = e7.target.files[0];
+			var FileSize = e7.target.files[0].size / 1024 / 1024; // in MB
+        	if (FileSize > 0.244) 
+        	{
+            	alert('File size exceeds 250 KB \n Please Choose a new Picture.');
+            	document.getElementById('fileButton7').value = "";
+        	} 
+        	else 
+        	{
+        		var file7 = e7.target.files[0];
+        	}
 	
 			var storageRef7 = firebase.storage().ref(`${fbBucketName7}/${appid}/caste`);
 
@@ -553,7 +616,195 @@ function chkn() {
 		if (window.sessionStorage) 
 				{
 					sessionStorage.setItem("username", appid);
-					window.open("login/preview.html");
+					window.open("login/index.html");
 					window.close();
 				}
 }
+function pinlength(){
+ 		var plngt=document.getElementById("pin").value.length;
+ 		if(plngt!=6)
+ 		{
+ 			alert("PIN Code must be 6 digits. Please re-type.");
+ 			document.getElementById("pin").value ="";
+ 			document.getElementById("pin").focus();
+ 		}
+ 		
+ 	}
+ 	function gpinlength(){
+ 		var gplngt=document.getElementById("gpin").value.length;
+ 		if(gplngt!=6)
+ 		{
+ 			alert("PIN Code must be 6 digits. Please re-type.");
+ 			document.getElementById("gpin").value ="";
+ 			document.getElementById("gpin").focus();
+ 		}
+ 		
+ 	}
+ 	function aadhaarlength(){
+ 		var alngt=document.getElementById("aadhaar").value.length;
+ 		if(alngt!=12)
+ 		{
+ 			alert("Aadhaar no. must be 12 digits. Please re-type.");
+ 			document.getElementById("aadhaar").value ="";
+ 			document.getElementById("aadhaar").focus();
+ 		}
+ 		
+ 	}
+ 	function contactlength(){
+ 		var clngt=document.getElementById("phone").value.length;
+ 		if(clngt!=10)
+ 		{
+ 			alert("Contact no. must be 10 digits. Please re-type.");
+ 			document.getElementById("phone").value ="";
+ 			document.getElementById("phone").focus();
+ 		}
+ 		
+ 	}
+ 	function gcontactlength(){
+ 		var gclngt=document.getElementById("gphone").value.length;
+ 		if(gclngt!=10)
+ 		{
+ 			alert("Contact no. must be 10 digits. Please re-type.");
+ 			document.getElementById("gphone").value ="";
+ 			document.getElementById("gphone").focus();
+ 		}
+ 		
+ 	}
+
+
+ 	function toggleCheckbox(element)
+ {	
+ if(document.getElementById("name").value==="" || document.getElementById("name").value==="NA"){
+   element.checked = !element.checked;
+   alert("Enter your Full Name");
+   document.getElementById("name").focus();}
+ 	else if(document.getElementById("dob").value==="" || document.getElementById("dob").value==="NA"){
+   element.checked = !element.checked;
+   alert("Enter your Date of Birth");
+   document.getElementById("dob").focus();}
+   	else if(document.getElementById("gender").value==="" || document.getElementById("gender").value==="NA"){
+   element.checked = !element.checked;
+   alert("Choose your Gender");
+   document.getElementById("gender").focus();}
+   	else if(document.getElementById("category").value==="" || document.getElementById("category").value==="NA"){
+   element.checked = !element.checked;
+   alert("Choose your Social Category");
+   document.getElementById("category").focus();}
+	else if(document.getElementById("mothertongue").value==="" || document.getElementById("mothertongue").value==="NA"){
+   element.checked = !element.checked;
+   alert("Choose your Mother Tongue");
+   document.getElementById("mothertongue").focus();}
+	else if(document.getElementById("nationality").value==="" || document.getElementById("nationality").value==="NA"){
+   element.checked = !element.checked;
+   alert("Choose your Nationality");
+   document.getElementById("nationality").focus();}
+   
+   
+	else if(document.getElementById("prclass").value==="" || document.getElementById("prclass").value==="NA"){
+   element.checked = !element.checked;
+   alert("Choose your Class to Apply for");
+   document.getElementById("prclass").focus();}
+   /*
+   	else if(document.getElementById("prclass").value==="XI" || document.getElementById("prclass").value==="XII"){
+	if(document.getElementById("prstream").value==="" || document.getElementById("prstream").value==="NA"){
+   element.checked = !element.checked;
+   alert("Choose your Stream to Apply for");}
+   	else if(document.getElementById("prfcomp1").value==="" || document.getElementById("prfcomp1").value==="NA"){
+   element.checked = !element.checked;
+   alert("Choose your Compulsory Subjects");}
+   	else if(document.getElementById("prfcomp2").value==="" || document.getElementById("prfcomp2").value==="NA"){
+   element.checked = !element.checked;
+   alert("Choose your Compulsory Subjects");}
+   	else if(document.getElementById("prfsub1").value==="" || document.getElementById("prfsub1").value==="NA"){
+   element.checked = !element.checked;
+   alert("Choose your Subjects");}
+   	else if(document.getElementById("prfsub2").value==="" || document.getElementById("prfsub2").value==="NA"){
+   element.checked = !element.checked;
+   alert("Choose your Subjects");}
+   	else if(document.getElementById("prfsub3").value==="" || document.getElementById("prfsub3").value==="NA"){
+   element.checked = !element.checked;
+   alert("Choose your Subjects");}
+   	else if(document.getElementById("prfsub4").value==="" || document.getElementById("prfsub4").value==="NA"){
+   element.checked = !element.checked;
+   alert("Choose your Subjects");}
+	}   */
+	else if(document.getElementById("pvclass").value==="" || document.getElementById("pvclass").value==="NA"){
+   element.checked = !element.checked;
+   alert("Choose your Previous Class attended");
+   document.getElementById("pvclass").focus();}
+	else if(document.getElementById("pvsec").value===""){
+   element.checked = !element.checked;
+   alert("Choose your Section of previous class attended");
+   document.getElementById("pvsec").focus();}
+	else if(document.getElementById("medium").value==="" || document.getElementById("medium").value==="NA"){
+   element.checked = !element.checked;
+   alert("Choose your Medium of Study");
+   document.getElementById("medium").focus();}
+   	else if(document.getElementById("habitation").value==="" || document.getElementById("habitation").value==="NA"){
+   element.checked = !element.checked;
+   alert("Enter your Habitation or Locality");
+   document.getElementById("habitation").focus();}
+   	else if(document.getElementById("district").value==="" || document.getElementById("district").value==="NA"){
+   element.checked = !element.checked;
+   alert("Choose your District");
+   document.getElementById("district").focus();}
+   	else if(document.getElementById("block").value==="" || document.getElementById("block").value==="NA"){
+   element.checked = !element.checked;
+   alert("Enter your Block or Municipality name");
+   document.getElementById("municipality").focus();}
+   	else if(document.getElementById("po").value==="" || document.getElementById("po").value==="NA"){
+   element.checked = !element.checked;
+   alert("Enter your Post Office");
+   document.getElementById("po").focus();}
+   	else if(document.getElementById("ps").value==="" || document.getElementById("ps").value==="NA"){
+   element.checked = !element.checked;
+   alert("Enter your Police Station");
+   document.getElementById("ps").focus();}
+   	else if(document.getElementById("pin").value==="" || document.getElementById("pin").value==="NA"){
+   element.checked = !element.checked;
+   alert("Enter your Area PIN Code");
+   document.getElementById("pin").focus();}
+   	else if(document.getElementById("gname").value==="" || document.getElementById("gname").value==="NA"){
+   element.checked = !element.checked;
+   alert("Enter your Guardian's Name");
+   document.getElementById("gname").focus();}
+   	else if(document.getElementById("relationship").value==="" || document.getElementById("relationship").value==="NA"){
+   element.checked = !element.checked;
+   alert("Choose your Relationship with your Guardian");
+   document.getElementById("relationship").focus();}
+   	else if(document.getElementById("ghabitation").value==="" || document.getElementById("ghabitation").value==="NA"){
+   element.checked = !element.checked;
+   alert("Enter your Guardian's Habitation or Locality");
+   document.getElementById("ghabitation").focus();}
+   	else if(document.getElementById("gdistrict").value==="" || document.getElementById("gdistrict").value==="NA"){
+   element.checked = !element.checked;
+   alert("Choose your Guardian's District");
+   document.getElementById("gdistrict").focus();}
+   	else if(document.getElementById("gblock").value==="" || document.getElementById("gblock").value==="NA"){
+   element.checked = !element.checked;
+   alert("Enter your Guardian's Block or Municipality name");
+   document.getElementById("gblock").focus();}
+   	else if(document.getElementById("gpo").value==="" || document.getElementById("gpo").value==="NA"){
+   element.checked = !element.checked;
+   alert("Enter your Guardian's Post Office");
+   document.getElementById("gpo").focus();}
+   	else if(document.getElementById("gps").value==="" || document.getElementById("gps").value==="NA"){
+   element.checked = !element.checked;
+   alert("Enter your Guardian's Police Station");
+   document.getElementById("gps").focus();}
+   	else if(document.getElementById("gpin").value==="" || document.getElementById("gpin").value==="NA"){
+   element.checked = !element.checked;
+   alert("Enter your Guardian's Area PIN Code");
+   document.getElementById("gpin").focus();}
+   	   	
+   	else{
+   element.checked = element.checked;
+   document.getElementById("submitbtn").disabled = !element.checked;
+   alert("Check all details carefully, before Submit.");
+   }
+ }
+
+ function previewall(){
+ alert("Your Submission is successful. Please Note down the Application ID for Further use");
+ chkn();
+ }

@@ -327,7 +327,7 @@ Admission Form
 <li><a>Photo and Signature size should not exceed <b>20KB</b> and Other Document size should not exceed <b>250KB</b>.<br>Photo and Date of Birth Proof  / Birth Certificate is Mandatory for all.</a></li>
 <li><a>Once Submitted, no more Editing options are there, so check all fields before submit.</a></li>
 <li><a>After successful Submission, Write down the Application ID for further LogIn to your own Application.</a></li>
-<li><a>On the next Page, click on "LogIN" and enter <b>Application ID as logIn ID </b>and <b>Date of Birth as Password</b>.</a></li>
+<li><a>On the next Page, click on "Login" and enter <b>Application ID as login ID </b>and <b>Date of Birth as Password</b>.</a></li>
 <li><a><b>Students applying for Class IX should submit their signature, otherwise Admit Card without signature will not be accepted at admission test.</b></a></li>
 </ol>
 </div>
@@ -424,7 +424,7 @@ Admission Form
         </div>
 <div class="section"><span>9</span>Aadhaar No.</div>
         <div class="inner-wrap">
-        <input type="number" name="aadhaar" id="aadhaar" value="" placeholder="Enter 12 digit Aadhaar No." maxlength="12">
+        <input type="number" name="aadhaar" id="aadhaar" value="" placeholder="Enter 12 digit Aadhaar No." maxlength="12" onchange="aadhaarlength()">
         </div>
 <div class="section"><span>10</span>Blood Group</div>
         <div class="inner-wrap">
@@ -830,11 +830,11 @@ Admission Form
     </div>
 <div class="section"><span>8</span>PIN Code*</div>
     <div class="inner-wrap">
-    <input type="number" name="pin" id="pin" required="true" maxlength="6" placeholder="Enter PIN Code" >
+    <input type="number" name="pin" id="pin" required="true" maxlength="6" placeholder="Enter PIN Code" onchange="pinlength()" >
     </div>
 <div class="section"><span>9</span>Contact No. / Phone No.</div>
     <div class="inner-wrap">
-    <input type="number" name="phone" id="phone" value="" maxlength="10" placeholder="Enter Contact No. / Phone No." >
+    <input type="number" name="phone" id="phone" value="" maxlength="10" placeholder="Enter Contact No. / Phone No." onchange="contactlength()" >
     </div>
 <div class="section"><span>10</span>Email</div>
     <div class="inner-wrap">
@@ -958,11 +958,11 @@ Admission Form
     </div>
 <div class="section"><span>8</span>PIN Code*</div>
     <div class="inner-wrap">
-    <input type="number" name="gpin" id="gpin" required="true" maxlength="6" placeholder="Enter PIN Code" >
+    <input type="number" name="gpin" id="gpin" required="true" maxlength="6" placeholder="Enter PIN Code" onchange="gpinlength()" >
     </div>
 <div class="section"><span>9</span>Contact No. / Phone No.*</div>
     <div class="inner-wrap">
-    <input type="number" name="gphone" id="gphone" required="true" maxlength="10" placeholder="Enter Contact No. / Phone No." >
+    <input type="number" name="gphone" id="gphone" required="true" maxlength="10" placeholder="Enter Contact No. / Phone No." onchange="gcontactlength()" >
     </div>
 <div class="section"><span>10</span>Email</div>
     <div class="inner-wrap">
@@ -1231,145 +1231,5 @@ $(document).ready(function (){
 });
 
 </script>
-
-<script>
-
-function toggleCheckbox(element)
- {	
- if(document.getElementById("name").value==="" || document.getElementById("name").value==="NA"){
-   element.checked = !element.checked;
-   alert("Enter your Full Name");
-   document.getElementById("name").focus();}
- 	else if(document.getElementById("dob").value==="" || document.getElementById("dob").value==="NA"){
-   element.checked = !element.checked;
-   alert("Enter your Date of Birth");
-   document.getElementById("dob").focus();}
-   	else if(document.getElementById("gender").value==="" || document.getElementById("gender").value==="NA"){
-   element.checked = !element.checked;
-   alert("Choose your Gender");
-   document.getElementById("gender").focus();}
-   	else if(document.getElementById("category").value==="" || document.getElementById("category").value==="NA"){
-   element.checked = !element.checked;
-   alert("Choose your Social Category");
-   document.getElementById("category").focus();}
-	else if(document.getElementById("mothertongue").value==="" || document.getElementById("mothertongue").value==="NA"){
-   element.checked = !element.checked;
-   alert("Choose your Mother Tongue");
-   document.getElementById("mothertongue").focus();}
-	else if(document.getElementById("nationality").value==="" || document.getElementById("nationality").value==="NA"){
-   element.checked = !element.checked;
-   alert("Choose your Nationality");
-   document.getElementById("nationality").focus();}
-   
-   
-	else if(document.getElementById("prclass").value==="" || document.getElementById("prclass").value==="NA"){
-   element.checked = !element.checked;
-   alert("Choose your Class to Apply for");
-   document.getElementById("prclass").focus();}
-   /*
-   	else if(document.getElementById("prclass").value==="XI" || document.getElementById("prclass").value==="XII"){
-	if(document.getElementById("prstream").value==="" || document.getElementById("prstream").value==="NA"){
-   element.checked = !element.checked;
-   alert("Choose your Stream to Apply for");}
-   	else if(document.getElementById("prfcomp1").value==="" || document.getElementById("prfcomp1").value==="NA"){
-   element.checked = !element.checked;
-   alert("Choose your Compulsory Subjects");}
-   	else if(document.getElementById("prfcomp2").value==="" || document.getElementById("prfcomp2").value==="NA"){
-   element.checked = !element.checked;
-   alert("Choose your Compulsory Subjects");}
-   	else if(document.getElementById("prfsub1").value==="" || document.getElementById("prfsub1").value==="NA"){
-   element.checked = !element.checked;
-   alert("Choose your Subjects");}
-   	else if(document.getElementById("prfsub2").value==="" || document.getElementById("prfsub2").value==="NA"){
-   element.checked = !element.checked;
-   alert("Choose your Subjects");}
-   	else if(document.getElementById("prfsub3").value==="" || document.getElementById("prfsub3").value==="NA"){
-   element.checked = !element.checked;
-   alert("Choose your Subjects");}
-   	else if(document.getElementById("prfsub4").value==="" || document.getElementById("prfsub4").value==="NA"){
-   element.checked = !element.checked;
-   alert("Choose your Subjects");}
-	}   */
-	else if(document.getElementById("pvclass").value==="" || document.getElementById("pvclass").value==="NA"){
-   element.checked = !element.checked;
-   alert("Choose your Previous Class attended");
-   document.getElementById("pvclass").focus();}
-	else if(document.getElementById("pvsec").value===""){
-   element.checked = !element.checked;
-   alert("Choose your Section of previous class attended");
-   document.getElementById("pvsec").focus();}
-	else if(document.getElementById("medium").value==="" || document.getElementById("medium").value==="NA"){
-   element.checked = !element.checked;
-   alert("Choose your Medium of Study");
-   document.getElementById("medium").focus();}
-   	else if(document.getElementById("habitation").value==="" || document.getElementById("habitation").value==="NA"){
-   element.checked = !element.checked;
-   alert("Enter your Habitation or Locality");
-   document.getElementById("habitation").focus();}
-   	else if(document.getElementById("district").value==="" || document.getElementById("district").value==="NA"){
-   element.checked = !element.checked;
-   alert("Choose your District");
-   document.getElementById("district").focus();}
-   	else if(document.getElementById("block").value==="" || document.getElementById("block").value==="NA"){
-   element.checked = !element.checked;
-   alert("Enter your Block or Municipality name");
-   document.getElementById("municipality").focus();}
-   	else if(document.getElementById("po").value==="" || document.getElementById("po").value==="NA"){
-   element.checked = !element.checked;
-   alert("Enter your Post Office");
-   document.getElementById("po").focus();}
-   	else if(document.getElementById("ps").value==="" || document.getElementById("ps").value==="NA"){
-   element.checked = !element.checked;
-   alert("Enter your Police Station");
-   document.getElementById("ps").focus();}
-   	else if(document.getElementById("pin").value==="" || document.getElementById("pin").value==="NA"){
-   element.checked = !element.checked;
-   alert("Enter your Area PIN Code");
-   document.getElementById("pin").focus();}
-   	else if(document.getElementById("gname").value==="" || document.getElementById("gname").value==="NA"){
-   element.checked = !element.checked;
-   alert("Enter your Guardian's Name");
-   document.getElementById("gname").focus();}
-   	else if(document.getElementById("relationship").value==="" || document.getElementById("relationship").value==="NA"){
-   element.checked = !element.checked;
-   alert("Choose your Relationship with your Guardian");
-   document.getElementById("relationship").focus();}
-   	else if(document.getElementById("ghabitation").value==="" || document.getElementById("ghabitation").value==="NA"){
-   element.checked = !element.checked;
-   alert("Enter your Guardian's Habitation or Locality");
-   document.getElementById("ghabitation").focus();}
-   	else if(document.getElementById("gdistrict").value==="" || document.getElementById("gdistrict").value==="NA"){
-   element.checked = !element.checked;
-   alert("Choose your Guardian's District");
-   document.getElementById("gdistrict").focus();}
-   	else if(document.getElementById("gblock").value==="" || document.getElementById("gblock").value==="NA"){
-   element.checked = !element.checked;
-   alert("Enter your Guardian's Block or Municipality name");
-   document.getElementById("gblock").focus();}
-   	else if(document.getElementById("gpo").value==="" || document.getElementById("gpo").value==="NA"){
-   element.checked = !element.checked;
-   alert("Enter your Guardian's Post Office");
-   document.getElementById("gpo").focus();}
-   	else if(document.getElementById("gps").value==="" || document.getElementById("gps").value==="NA"){
-   element.checked = !element.checked;
-   alert("Enter your Guardian's Police Station");
-   document.getElementById("gps").focus();}
-   	else if(document.getElementById("gpin").value==="" || document.getElementById("gpin").value==="NA"){
-   element.checked = !element.checked;
-   alert("Enter your Guardian's Area PIN Code");
-   document.getElementById("gpin").focus();}
-   	   	
-   	else{
-   element.checked = element.checked;
-   document.getElementById("submitbtn").disabled = !element.checked;
-   alert("Check all details carefully, before Submit.");
-   }
- }
- function previewall(){
- alert("Your Submission is successful. Please Note down the Application ID for Further use");
- chkn();
- }
- </script>
-
 </body>
 </html>
