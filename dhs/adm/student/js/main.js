@@ -803,8 +803,3 @@ function pinlength(){
    alert("Check all details carefully, before Submit.");
    }
  }
-
- function previewall(){
- alert("Your Submission is successful. Please Note down the Application ID for Further use");
- chkn();
- }
