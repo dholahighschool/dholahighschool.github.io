@@ -63,6 +63,7 @@ var prfsub2 = snap.child("prfsub2").val();
 var prfsub3 = snap.child("prfsub3").val();
 var prfsub4 = snap.child("prfsub4").val();
 var pvclass = snap.child("pvclass").val();
+var pvschool = snap.child("pvschool").val();
 var pvsec = snap.child("pvsec").val();
 var pvroll = snap.child("pvroll").val();
 var pvstream = snap.child("pvstream").val();
@@ -185,6 +186,7 @@ $('#nprfsub4').html("Choosen Subject 4: <b>" + prfsub4 + "</b>");
 else
 $('#nprfsub4').css('display','none');
 $('#npvclass').html("Previously Attended in Class : <b>" + pvclass + "</b>");
+$('#npvschool').html("Previously Attended School : <b>" + pvschool + "</b>");
 $('#npvsec').html("Section of Previous Class attended: <b>" + pvsec + "</b>");
 if(pvroll!="")
 $('#npvroll').html("Roll No. of Previous Class attended: <b>" + pvroll + "</b>");
