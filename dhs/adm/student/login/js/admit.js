@@ -42,6 +42,7 @@ var acyear = snap.child("acyear").val();
 var prclass = snap.child("prclass").val();
 var praddl = snap.child("praddl").val();
 var pvclass = snap.child("pvclass").val();
+var pvschool = snap.child("pvschool").val();
 var pvsec = snap.child("pvsec").val();
 var pvroll = snap.child("pvroll").val();
 var medium = snap.child("medium").val();
@@ -107,6 +108,7 @@ $('#nidmark').css('display','none');
 $('#nacyear').html("Academic Year: <b>" + acyear + "</b>");
 $('#nprclass').html("Applied for Class : <b>" + prclass + "</b>");
 $('#npvclass').html("Previously Attended in Class : <b>" + pvclass + "</b>");
+$('#npvschool').html("Previously Attended School : <b>" + pvschool + "</b>");
 $('#npvsec').html("Section of Previous Class attended: <b>" + pvsec + "</b>");
 if(pvroll!="")
 $('#npvroll').html("Roll No. of Previous Class attended: <b>" + pvroll + "</b>");
