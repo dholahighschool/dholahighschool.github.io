@@ -691,8 +691,12 @@ Admission Form
     	<input type="number" name="prroll" id="prroll" value="" maxlength="3" placeholder="Enter Present Roll No." >
     	</div>
     	
+	<div class="section"><span>3</span>Previous School Name*</div>
+    	<div class="inner-wrap">
+    	<input type="text" name="pvschool" required="true" id="pvschool" placeholder="Enter Previous School Name" >
+    	</div>
     	        
-        <div class="section"><span>3</span>Previous Class*</div>
+        <div class="section"><span>4</span>Previous Class*</div>
         <div class="inner-wrap" id="checkboxgr1v">
         <label>
         <select name="pvclass" id="pvclass" required="true" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;" onchange="if (this.value=='IX' || this.value=='X'){this.form['pvaddl'].style.display='block';}else if (this.value=='XI' || this.value=='XII'){this.form['pvstream'].style.display='block'; this.form['pvstream'].value = '';this.form['pvaddl'].style.display='none';}else {this.form['pvstream'].style.display='none';this.form['pvstream'].value = 'NA';this.form['pvaddl'].style.display='none';};">
@@ -731,7 +735,7 @@ Admission Form
         </div>
 
         
-        <div class="section"><span>4</span>Previous Section*</div>
+        <div class="section"><span>5</span>Previous Section*</div>
         <div class="inner-wrap">
         <label>
         <select name="pvsec" id="pvsec" required="true" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;">
@@ -751,12 +755,12 @@ Admission Form
 		</label>
         </div>
         
-        <div class="section"><span>5</span>Previous Roll No.</div>
+        <div class="section"><span>6</span>Previous Roll No.</div>
     	<div class="inner-wrap">
     	<input type="number" name="pvroll" id="pvroll" maxlength="3" placeholder="Enter Previous Roll No." >
     	</div>
     	        
-        <div class="section"><span>6</span>Medium*</div>
+        <div class="section"><span>7</span>Medium*</div>
         <div class="inner-wrap">
         <label>
         <select name="medium" id="medium" required="true" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;">
