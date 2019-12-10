@@ -1041,7 +1041,7 @@ Admission Form
     
 <div class="section"><span>1</span>Bank Name</div>
     	<div class="inner-wrap">
-    	<select name="bname" id="bname" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;">
+    	<select name="bname" id="bname" required="true" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;">
 <option value="NA" disabled="disabled" selected>-- Select any One --</option>
 <option value="ALLAHABAD BANK">	ALLAHABAD BANK	</option>
 <option value="ANDHRA BANK">	ANDHRA BANK	</option>
@@ -1105,15 +1105,15 @@ Admission Form
         </div>
 <div class="section"><span>2</span>Branch Code</div>
         <div class="inner-wrap">
-        <input type="number" name="bcode" id="bcode" value="" placeholder="Enter Branch Code" maxlength="13">
+        <input type="number" name="bcode" id="bcode" required="true" value="" placeholder="Enter Branch Code" maxlength="13">
         </div>
 <div class="section"><span>3</span>IFSC Code</div>
         <div class="inner-wrap">
-        <input type="text" name="bifsc" id="bifsc" value="" placeholder="Enter IFSC Code">
+        <input type="text" name="bifsc" id="bifsc" required="true" value="" placeholder="Enter IFSC Code">
         </div>
 <div class="section"><span>4</span>Account No.</div>
         <div class="inner-wrap">
-        <input type="number" name="acno" id="acno" value="" placeholder="Enter Account No.">
+        <input type="number" name="acno" id="acno" required="true" value="" placeholder="Enter Account No.">
         </div>
     
 
@@ -1166,7 +1166,7 @@ Admission Form
         <img id="bpass" src="img/doc.png" style="height:250px;width:250px" alt="Browse for Bank Pass Book" /> <br>
         <progress value="0" max="100" id="uploader6">0%</progress>
         <input type="file" value="upload6" accept="image/png, image/jpeg" id="fileButton6">
-        <input type="text" name="updbpass" id="updbpass" value="" style="display:none">
+        <input type="text" name="updbpass" id="updbpass" required="true" value="" style="display:none">
 		</div>
 		
 		<div class="section"><span>7</span>Caste Certificate(If applicable)</div>
