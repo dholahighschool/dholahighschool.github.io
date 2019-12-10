@@ -255,7 +255,7 @@ updcaste:updcaste
 					console.log('downloadURL1', downloadURL1);
 					var link1 = document.getElementById("photo");
 					link1.setAttribute("src", downloadURL1);
-					document.getElementById("updphoto").value = downloadURL1;
+					document.getElementById('updphoto').value = downloadURL1;
 				});
 
 		});
