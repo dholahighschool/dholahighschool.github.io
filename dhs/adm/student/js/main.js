@@ -492,7 +492,7 @@ var fbBucketName5 = 'images';
 					console.log('downloadURL5', downloadURL5);
 					var link5 = document.getElementById("aadhaarpic");
 					link5.setAttribute("src", downloadURL5);
-					document.getElementById('aadhaarpic').value = downloadURL5;
+					document.getElementById('updaadhaarpic').value = downloadURL5;
 				});
 
 		});
@@ -551,7 +551,7 @@ var fbBucketName6 = 'images';
 					console.log('downloadURL6', downloadURL6);
 					var link6 = document.getElementById("bpass");
 					link6.setAttribute("src", downloadURL6);
-					document.getElementById('bpass').value = downloadURL6;
+					document.getElementById('updbpass').value = downloadURL6;
 				});
 
 		});
@@ -609,7 +609,7 @@ var fbBucketName7 = 'images';
 					console.log('downloadURL7', downloadURL7);
 					var link7 = document.getElementById("caste");
 					link7.setAttribute("src", downloadURL7);
-					document.getElementById('caste').value = downloadURL7;
+					document.getElementById('updcaste').value = downloadURL7;
 				});
 
 		});
@@ -708,7 +708,7 @@ function pinlength(){
    document.getElementById("prclass").focus();}
 	 else if(document.getElementById("pvschool").value==="" || document.getElementById("pvschool").value==="NA"){
    element.checked = !element.checked;
-   alert("Enter your Previous school attended.");
+   alert("Enter name of your Previous school attended.");
    document.getElementById("pvschool").focus();}
    /*
    	else if(document.getElementById("prclass").value==="XI" || document.getElementById("prclass").value==="XII"){
