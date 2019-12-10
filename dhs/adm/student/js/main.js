@@ -314,7 +314,7 @@ var fbBucketName2 = 'images';
 					console.log('downloadURL2', downloadURL2);
 					var link2 = document.getElementById("signature");
 					link2.setAttribute("src", downloadURL2);
-					$("#updsign").val(downloadURL2);
+					document.getElementById('updsign').value = downloadURL2;
 				});
 
 		});
@@ -373,7 +373,7 @@ var fbBucketName3 = 'images';
 					console.log('downloadURL3', downloadURL3);
 					var link3 = document.getElementById("bproof");
 					link3.setAttribute("src", downloadURL3);
-					$("#updbproof").val(downloadURL3);
+					document.getElementById('updbproof').value = downloadURL3;
 				});
 
 		});
@@ -432,7 +432,7 @@ var fbBucketName4 = 'images';
 					console.log('downloadURL4', downloadURL4);
 					var link4 = document.getElementById("slc");
 					link4.setAttribute("src", downloadURL4);
-					$("#updslc").val(downloadURL4);
+					document.getElementById('updslc').value = downloadURL4;
 				});
 
 		});
@@ -490,7 +490,7 @@ var fbBucketName5 = 'images';
 					console.log('downloadURL5', downloadURL5);
 					var link5 = document.getElementById("aadhaarpic");
 					link5.setAttribute("src", downloadURL5);
-					$("#updaadhaarpic").val(downloadURL5);
+					document.getElementById('aadhaarpic').value = downloadURL5;
 				});
 
 		});
@@ -549,7 +549,7 @@ var fbBucketName6 = 'images';
 					console.log('downloadURL6', downloadURL6);
 					var link6 = document.getElementById("bpass");
 					link6.setAttribute("src", downloadURL6);
-					$("#updbpass").val(downloadURL6);
+					document.getElementById('bpass').value = downloadURL6;
 				});
 
 		});
@@ -607,7 +607,7 @@ var fbBucketName7 = 'images';
 					console.log('downloadURL7', downloadURL7);
 					var link7 = document.getElementById("caste");
 					link7.setAttribute("src", downloadURL7);
-					$("#updcaste").val(downloadURL7);
+					document.getElementById('caste').value = downloadURL7;
 				});
 
 		});
