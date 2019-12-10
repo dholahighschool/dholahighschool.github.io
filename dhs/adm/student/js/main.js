@@ -44,6 +44,7 @@ var	acyear = getInputVal('acyear');
 var	admno = getInputVal('admno');
 var admstatus = getInputVal('admstatus');
 var	prclass = getInputVal('prclass');
+var pvschool = getInputVal('pvschool');
 var	prsec = getInputVal('prsec');
 var	prroll = getInputVal('prroll');
 var praddl = getInputVal('praddl');
@@ -104,7 +105,7 @@ var updbpass = getInputVal('updbpass');
 var updcaste = getInputVal('updcaste');
 
  // Save message
-  saveMessage(name,dob,dobreg,gender,category,religion,mothertongue,nationality,aadhaar,bloodgroup,healthid,idmark,acyear,admno,admstatus,prclass,prsec,prroll,praddl,prstream,prfcomp1,prfcomp2,prfsub1,prfsub2,prfsub3,prfsub4,pvclass,pvsec,pvroll,pvstream,pvaddl,medium,vill,habitation,district,block,panchayat,po,ps,pin,phone,email,fname,mname,gname,relationship,aincome,gqualification,gvill,ghabitation,gdistrict,gblock,gpanchayat,gpo,gps,gpin,gphone,gemail,bplstatus,bplno,cwsn,cwsntyp,bname,bcode,bifsc,acno,appid,updphoto,updsign,updbproof,updslc,updaadhaarpic,updbpass,updcaste);
+  saveMessage(name,dob,dobreg,gender,category,religion,mothertongue,nationality,aadhaar,bloodgroup,healthid,idmark,acyear,admno,admstatus,prclass,pvschool,prsec,prroll,praddl,prstream,prfcomp1,prfcomp2,prfsub1,prfsub2,prfsub3,prfsub4,pvclass,pvsec,pvroll,pvstream,pvaddl,medium,vill,habitation,district,block,panchayat,po,ps,pin,phone,email,fname,mname,gname,relationship,aincome,gqualification,gvill,ghabitation,gdistrict,gblock,gpanchayat,gpo,gps,gpin,gphone,gemail,bplstatus,bplno,cwsn,cwsntyp,bname,bcode,bifsc,acno,appid,updphoto,updsign,updbproof,updslc,updaadhaarpic,updbpass,updcaste);
 
 
   document.getElementById("contactForm").style.display = 'none';
@@ -119,7 +120,7 @@ function getInputVal(id){
 }
 
 // Save message to firebase   
-function saveMessage(name,dob,dobreg,gender,category,religion,mothertongue,nationality,aadhaar,bloodgroup,healthid,idmark,acyear,admno,admstatus,prclass,prsec,prroll,praddl,prstream,prfcomp1,prfcomp2,prfsub1,prfsub2,prfsub3,prfsub4,pvclass,pvsec,pvroll,pvstream,pvaddl,medium,vill,habitation,district,block,panchayat,po,ps,pin,phone,email,fname,mname,gname,relationship,aincome,gqualification,gvill,ghabitation,gdistrict,gblock,gpanchayat,gpo,gps,gpin,gphone,gemail,bplstatus,bplno,cwsn,cwsntyp,bname,bcode,bifsc,acno,appid,updphoto,updsign,updbproof,updslc,updaadhaarpic,updbpass,updcaste){
+function saveMessage(name,dob,dobreg,gender,category,religion,mothertongue,nationality,aadhaar,bloodgroup,healthid,idmark,acyear,admno,admstatus,prclass,pvschool,prsec,prroll,praddl,prstream,prfcomp1,prfcomp2,prfsub1,prfsub2,prfsub3,prfsub4,pvclass,pvsec,pvroll,pvstream,pvaddl,medium,vill,habitation,district,block,panchayat,po,ps,pin,phone,email,fname,mname,gname,relationship,aincome,gqualification,gvill,ghabitation,gdistrict,gblock,gpanchayat,gpo,gps,gpin,gphone,gemail,bplstatus,bplno,cwsn,cwsntyp,bname,bcode,bifsc,acno,appid,updphoto,updsign,updbproof,updslc,updaadhaarpic,updbpass,updcaste){
   /*
   var newMessageRef = messagesRef.push();
   MessageRef.set({
@@ -142,6 +143,7 @@ acyear:acyear,
 admno:admno,
 admstatus:admstatus,
 prclass:prclass,
+pvschool:pvschool,
 prsec:prsec,
 prroll:prroll,
 praddl:praddl,
@@ -704,6 +706,10 @@ function pinlength(){
    element.checked = !element.checked;
    alert("Choose your Class to Apply for");
    document.getElementById("prclass").focus();}
+	 else if(document.getElementById("pvschool").value==="" || document.getElementById("pvschool").value==="NA"){
+   element.checked = !element.checked;
+   alert("Enter your Previous school attended.");
+   document.getElementById("pvschool").focus();}
    /*
    	else if(document.getElementById("prclass").value==="XI" || document.getElementById("prclass").value==="XII"){
 	if(document.getElementById("prstream").value==="" || document.getElementById("prstream").value==="NA"){
@@ -800,6 +806,6 @@ function pinlength(){
    	else{
    element.checked = element.checked;
    document.getElementById("submitbtn").disabled = !element.checked;
-   alert("Check all details carefully, before Submit.");
+   alert("Check all details carefully and be sure that you have uploaded your Photo, Date of Birth proof and Bank Pass Book before Submit.");
    }
  }
