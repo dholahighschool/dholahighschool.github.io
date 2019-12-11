@@ -145,7 +145,7 @@ input[type=button]{
 .tab {
   overflow: hidden;
   border: 1px solid #ccc;
-  background-color: #f1f1f1;
+  background-color: #6871c4;
 }
 
 /* Style the buttons inside the tab */
@@ -174,7 +174,7 @@ input[type=button]{
 .tabcontent {
   display: none;
   padding: 6px 12px;
-  border: 1px solid #ccc;
+  border: 1px solid #4c12a3;
   border-top: none;
 }
 </style>
@@ -411,6 +411,7 @@ function GetDynamicTextBox(value) {
                         <div class="tab">
                         <button class="tablinks" onclick="opentab(event, 'admitted')">Admitted Student Report</button>
                         <button class="tablinks" onclick="opentab(event, 'rejected')">Rejected Student Report</button>
+                        <button class="tablinks" onclick="opentab(event, 'uploaded')">Uploaded File Report</button>
                         </div>
 
                         <div id="admitted" class="tabcontent">
@@ -456,6 +457,26 @@ function GetDynamicTextBox(value) {
 
                         </div>
 
+                        <div id="uploaded" class="tabcontent">
+
+                          <div class="center">
+                          <form method="get" action="reports/post_class_acc_pics.html">
+                          <select name="pclass" id="sources" class="custom-select sources" placeholder="Choose Class">
+                          <option value="V">CLASS V</option>
+                          <option value="VI">CLASS VI</option>
+                          <option value="VII">CLASS VII</option>
+                          <option value="VIII">CLASS VIII</option>
+                          <option value="IX">CLASS IX</option>
+                          <option value="X">CLASS X</option>
+                          <option value="XI">CLASS XI</option>
+                          <option value="XII">CLASS XII</option>
+                          </select>
+                        </div>
+                        <br><br>
+                        <input type="submit" value="Submit">
+                          </form>
+                        </div>
+                      </div>
                         </div>
                         <div class="clear"></div>
                         </div>
