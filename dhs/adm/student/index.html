@@ -485,7 +485,7 @@ Admission Form
         <div class="inner-wrap" id="checkboxgr1">
         <label>
         <select name="prclass" id="prclass" required="true" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;" onchange="if (this.value=='IX' || this.value=='X'){this.form['praddl'].style.display='block';this.form['prstream'].style.display='none';this.form['prsubs'].style.display='none';this.form['acyear'].value = '2020';}else if (this.value=='XI' || this.value=='XII'){this.form['prstream'].style.display='block'; this.form['praddl'].style.display='none'; this.form['prstream'].value = '';this.form['acyear'].value = '2020-21'; this.form['prsubs'].style.display='block';}else {this.form['prstream'].style.display='none';this.form['praddl'].style.display='none';this.form['prstream'].value = 'NA'; this.form['prsubs'].style.display='none'; this.form['acyear'].value = '2020';};">
-    <option value="NA" disabled="disabled" selected>-- Select any One --</option>
+    <option value="NA" disabled="disabled" selected>-- Select Class --</option>
     <option value="V" style="display: none;">CLASS V</option>
     <option value="VI">CLASS VI</option>
     <option value="VII">CLASS VII</option>
@@ -498,7 +498,7 @@ Admission Form
       	<br>
       	
       	<select name="praddl" id="praddl" style="display:none; padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;">
-    <option value="NA" disabled="disabled" selected>-- Select any One --</option>
+    <option value="NA" disabled="disabled" selected>-- Select Addl. Subject --</option>
     <option value="APPAREL">Apparel <b>(NSQF)</b></option>
     <option value="POWER">Power <b>(NSQF)</b></option>
     <option value="Computerapplication">Computer Application</option>
@@ -508,7 +508,7 @@ Admission Form
       	<br>
       	      	
       	<select name="prstream" id="prstream" style="display:none; padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;" onchange="if (this.value=='ARTS'){ var divsToHide = document.getElementsByClassName('sc');for(var i = 0; i < divsToHide.length; i++){divsToHide[i].style.display = 'none';} var divsToHide = document.getElementsByClassName('cm');for(var i = 0; i < divsToHide.length; i++){divsToHide[i].style.display = 'none';} var divsToHide = document.getElementsByClassName('ar');for(var i = 0; i < divsToHide.length; i++){divsToHide[i].style.display = 'block';} } else if (this.value=='SCIENCE'){ var divsToHide = document.getElementsByClassName('ar');for(var i = 0; i < divsToHide.length; i++){divsToHide[i].style.display = 'none';} var divsToHide = document.getElementsByClassName('cm');for(var i = 0; i < divsToHide.length; i++){divsToHide[i].style.display = 'none';} var divsToHide = document.getElementsByClassName('sc');for(var i = 0; i < divsToHide.length; i++){divsToHide[i].style.display = 'block';} }else if (this.value=='COMMERCE'){ var divsToHide = document.getElementsByClassName('ar');for(var i = 0; i < divsToHide.length; i++){divsToHide[i].style.display = 'none';} var divsToHide = document.getElementsByClassName('sc');for(var i = 0; i < divsToHide.length; i++){divsToHide[i].style.display = 'none';} var divsToHide = document.getElementsByClassName('cm');for(var i = 0; i < divsToHide.length; i++){divsToHide[i].style.display = 'block';} };">
-    <option value="NA" disabled="disabled" selected>-- Select any One --</option>
+    <option value="NA" disabled="disabled" selected>-- Select Stream --</option>
     <option value="ARTS">ARTS</option>
     <option value="SCIENCE">SCIENCE</option>
     <option value="COMMERCE">COMMERCE</option>
@@ -700,7 +700,7 @@ Admission Form
         <div class="inner-wrap" id="checkboxgr1v">
         <label>
         <select name="pvclass" id="pvclass" required="true" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;" onchange="if (this.value=='IX' || this.value=='X'){this.form['pvaddl'].style.display='block';}else if (this.value=='XI' || this.value=='XII'){this.form['pvstream'].style.display='block'; this.form['pvstream'].value = '';this.form['pvaddl'].style.display='none';}else {this.form['pvstream'].style.display='none';this.form['pvstream'].value = 'NA';this.form['pvaddl'].style.display='none';};">
-    <option value="NA" disabled="disabled" selected>-- Select any One --</option>
+    <option value="NA" disabled="disabled" selected>-- Select Class --</option>
     <option value="V">CLASS V</option>
     <option value="VI">CLASS VI</option>
     <option value="VII">CLASS VII</option>
@@ -713,7 +713,7 @@ Admission Form
       	<br>
       	
       	<select name="pvaddl" id="pvaddl" style="display:none; padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;">
-    <option value="NA" disabled="disabled" selected>-- Select any One --</option>
+    <option value="NA" disabled="disabled" selected>-- Select Addl. Subject --</option>
     <option value="APPAREL">Apparel</option>
     <option value="POWER">Power</option>
     <option value="NA">Not Applicable</option>
@@ -723,7 +723,7 @@ Admission Form
       	<br>
       	      	
       	<select name="pvstream" id="pvstream" style="display:none; padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;" >
-    <option value="NA" disabled="disabled" selected>-- Select any One --</option>
+    <option value="NA" disabled="disabled" selected>-- Select Stream --</option>
     <option value="ARTS">ARTS</option>
     <option value="SCIENCE">SCIENCE</option>
     <option value="COMMERCE">COMMERCE</option>
