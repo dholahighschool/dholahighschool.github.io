@@ -1,8 +1,11 @@
 var noticeid = "";
 function appidset(){
-	var date = new Date();
-	var timestamp = date.getTime();
-	noticeid = timestamp;
+	var jst = new Date();
+  var jstn = jst.valueOf();
+  var lst = new Date("12/31/2050");
+  var lstn = lst.valueOf();
+  var diff = lstn - jstn;
+	noticeid = diff;
 }
 
 var config = {
