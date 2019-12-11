@@ -802,6 +802,22 @@ function pinlength(){
    element.checked = !element.checked;
    alert("Enter your Guardian's Area PIN Code");
    document.getElementById("gpin").focus();}
+	 else if(document.getElementById("bname").value==="" || document.getElementById("bname").value==="NA"){
+   element.checked = !element.checked;
+   alert("Choose Bank Name");
+   document.getElementById("bname").focus();}
+	 else if(document.getElementById("bcode").value==="" || document.getElementById("bcode").value==="NA"){
+   element.checked = !element.checked;
+   alert("Enter Bank Branch Code");
+   document.getElementById("bcode").focus();}
+	 else if(document.getElementById("bifsc").value==="" || document.getElementById("bifsc").value==="NA"){
+   element.checked = !element.checked;
+   alert("Enter Bank Branch IFSC Code");
+   document.getElementById("bifsc").focus();}
+	 else if(document.getElementById("acno").value==="" || document.getElementById("acno").value==="NA"){
+   element.checked = !element.checked;
+   alert("Enter your Bank Account No.");
+   document.getElementById("acno").focus();}
    	   	
    	else{
    element.checked = element.checked;
