@@ -215,7 +215,7 @@ updcaste:updcaste
 			var FileSize = e1.target.files[0].size / 1024 / 1024; // in MB
         	if (FileSize > 0.0195) 
         	{
-            	alert('File size exceeds 20 KB \n Please Choose a new Photo.');
+            	swal('Oops..','File size exceeds 20 KB \n Please Choose a new Photo.','error');
             	document.getElementById('fileButton1').value = "";
         	} 
         	else 
@@ -274,7 +274,7 @@ var fbBucketName2 = 'images';
 			var FileSize = e2.target.files[0].size / 1024 / 1024; // in MB
         	if (FileSize > 0.0195) 
         	{
-            	alert('File size exceeds 20 KB \n Please Choose a new Signature.');
+            	swal('Oops..','File size exceeds 20 KB \n Please Choose a new Signature.','error');
             	document.getElementById('fileButton2').value = "";
         	} 
         	else 
@@ -333,7 +333,7 @@ var fbBucketName3 = 'images';
 			var FileSize = e3.target.files[0].size / 1024 / 1024; // in MB
         	if (FileSize > 0.244) 
         	{
-            	alert('File size exceeds 250 KB \n Please Choose a new Picture.');
+            	swal('Oops..','File size exceeds 250 KB \n Please Choose a new Picture.','error');
             	document.getElementById('fileButton3').value = "";
         	} 
         	else 
@@ -392,7 +392,7 @@ var fbBucketName4 = 'images';
 			var FileSize = e4.target.files[0].size / 1024 / 1024; // in MB
         	if (FileSize > 0.244) 
         	{
-            	alert('File size exceeds 250 KB \n Please Choose a new Picture.');
+            	swal('Oops..','File size exceeds 250 KB \n Please Choose a new Picture.','error');
             	document.getElementById('fileButton4').value = "";
         	} 
         	else 
@@ -450,7 +450,7 @@ var fbBucketName5 = 'images';
 			var FileSize = e5.target.files[0].size / 1024 / 1024; // in MB
         	if (FileSize > 0.244) 
         	{
-            	alert('File size exceeds 250 KB \n Please Choose a new Picture.');
+            	swal('Oops..','File size exceeds 250 KB \n Please Choose a new Picture.','error');
             	document.getElementById('fileButton5').value = "";
         	} 
         	else 
@@ -509,7 +509,7 @@ var fbBucketName6 = 'images';
 			var FileSize = e6.target.files[0].size / 1024 / 1024; // in MB
         	if (FileSize > 0.244) 
         	{
-            	alert('File size exceeds 250 KB \n Please Choose a new Picture.');
+            	swal('Oops..','File size exceeds 250 KB \n Please Choose a new Picture.','error');
             	document.getElementById('fileButton6').value = "";
         	} 
         	else 
@@ -567,7 +567,7 @@ var fbBucketName7 = 'images';
 			var FileSize = e7.target.files[0].size / 1024 / 1024; // in MB
         	if (FileSize > 0.244) 
         	{
-            	alert('File size exceeds 250 KB \n Please Choose a new Picture.');
+            	swal('Oops..','File size exceeds 250 KB \n Please Choose a new Picture.','error');
             	document.getElementById('fileButton7').value = "";
         	} 
         	else 
@@ -626,7 +626,7 @@ function pinlength(){
  		var plngt=document.getElementById("pin").value.length;
  		if(plngt!=6)
  		{
- 			alert("PIN Code must be 6 digits. Please re-type.");
+ 			swal("Oops..","PIN Code must contain 6 digits. Please re-type.","error");
  			document.getElementById("pin").value ="";
  			document.getElementById("pin").focus();
  		}
@@ -636,7 +636,7 @@ function pinlength(){
  		var gplngt=document.getElementById("gpin").value.length;
  		if(gplngt!=6)
  		{
- 			alert("PIN Code must be 6 digits. Please re-type.");
+ 			swal("Oops..","PIN Code must contain 6 digits. Please re-type.","error");
  			document.getElementById("gpin").value ="";
  			document.getElementById("gpin").focus();
  		}
@@ -646,7 +646,7 @@ function pinlength(){
  		var alngt=document.getElementById("aadhaar").value.length;
  		if(alngt!=12)
  		{
- 			alert("Aadhaar no. must be 12 digits. Please re-type.");
+ 			swal("Oops..","Aadhaar no. must contain 12 digits. Please re-type.","error");
  			document.getElementById("aadhaar").value ="";
  			document.getElementById("aadhaar").focus();
  		}
@@ -656,7 +656,7 @@ function pinlength(){
  		var clngt=document.getElementById("phone").value.length;
  		if(clngt!=10)
  		{
- 			alert("Contact no. must be 10 digits. Please re-type.");
+ 			swal("Oops..","Contact no. must contain 10 digits. Please re-type.","error");
  			document.getElementById("phone").value ="";
  			document.getElementById("phone").focus();
  		}
@@ -666,7 +666,7 @@ function pinlength(){
  		var gclngt=document.getElementById("gphone").value.length;
  		if(gclngt!=10)
  		{
- 			alert("Contact no. must be 10 digits. Please re-type.");
+ 			swal("Oops..","Contact no. must be 10 digits. Please re-type.","error");
  			document.getElementById("gphone").value ="";
  			document.getElementById("gphone").focus();
  		}
@@ -678,37 +678,37 @@ function pinlength(){
  {	
  if(document.getElementById("name").value==="" || document.getElementById("name").value==="NA"){
    element.checked = !element.checked;
-   alert("Enter your Full Name");
+   swal("Oops..","Enter your Full Name","error");
    document.getElementById("name").focus();}
  	else if(document.getElementById("dob").value==="" || document.getElementById("dob").value==="NA"){
    element.checked = !element.checked;
-   alert("Enter your Date of Birth");
+   swal("Oops..","Enter your Date of Birth","error");
    document.getElementById("dob").focus();}
    	else if(document.getElementById("gender").value==="" || document.getElementById("gender").value==="NA"){
    element.checked = !element.checked;
-   alert("Choose your Gender");
+   swal("Oops..","Choose your Gender","error");
    document.getElementById("gender").focus();}
    	else if(document.getElementById("category").value==="" || document.getElementById("category").value==="NA"){
    element.checked = !element.checked;
-   alert("Choose your Social Category");
+   swal("Oops..","Choose your Social Category","error");
    document.getElementById("category").focus();}
 	else if(document.getElementById("mothertongue").value==="" || document.getElementById("mothertongue").value==="NA"){
    element.checked = !element.checked;
-   alert("Choose your Mother Tongue");
+   swal("Oops..","Choose your Mother Tongue","error");
    document.getElementById("mothertongue").focus();}
 	else if(document.getElementById("nationality").value==="" || document.getElementById("nationality").value==="NA"){
    element.checked = !element.checked;
-   alert("Choose your Nationality");
+   swal("Oops..","Choose your Nationality","error");
    document.getElementById("nationality").focus();}
    
    
 	else if(document.getElementById("prclass").value==="" || document.getElementById("prclass").value==="NA"){
    element.checked = !element.checked;
-   alert("Choose your Class to Apply for");
+   swal("Oops..","Choose your Class to Apply for","error");
    document.getElementById("prclass").focus();}
 	 else if(document.getElementById("pvschool").value==="" || document.getElementById("pvschool").value==="NA"){
    element.checked = !element.checked;
-   alert("Enter name of your Previous school attended.");
+   swal("Oops..","Enter name of your Previous school attended.","error");
    document.getElementById("pvschool").focus();}
    /*
    	else if(document.getElementById("prclass").value==="XI" || document.getElementById("prclass").value==="XII"){
@@ -736,92 +736,92 @@ function pinlength(){
 	}   */
 	else if(document.getElementById("pvclass").value==="" || document.getElementById("pvclass").value==="NA"){
    element.checked = !element.checked;
-   alert("Choose your Previous Class attended");
+   swal("Oops..","Choose your Previous Class attended","error");
    document.getElementById("pvclass").focus();}
 	else if(document.getElementById("pvsec").value===""){
    element.checked = !element.checked;
-   alert("Choose your Section of previous class attended");
+   swal("Oops..","Choose your Section of previous class attended","error");
    document.getElementById("pvsec").focus();}
 	else if(document.getElementById("medium").value==="" || document.getElementById("medium").value==="NA"){
    element.checked = !element.checked;
-   alert("Choose your Medium of Study");
+   swal("Oops..","Choose your Medium of Study","error");
    document.getElementById("medium").focus();}
    	else if(document.getElementById("habitation").value==="" || document.getElementById("habitation").value==="NA"){
    element.checked = !element.checked;
-   alert("Enter your Habitation or Locality");
+   swal("Oops..","Enter your Habitation or Locality","error");
    document.getElementById("habitation").focus();}
    	else if(document.getElementById("district").value==="" || document.getElementById("district").value==="NA"){
    element.checked = !element.checked;
-   alert("Choose your District");
+   swal("Oops..","Choose your District","error");
    document.getElementById("district").focus();}
    	else if(document.getElementById("block").value==="" || document.getElementById("block").value==="NA"){
    element.checked = !element.checked;
-   alert("Enter your Block or Municipality name");
+   swal("Oops..","Enter your Block or Municipality name","error");
    document.getElementById("municipality").focus();}
    	else if(document.getElementById("po").value==="" || document.getElementById("po").value==="NA"){
    element.checked = !element.checked;
-   alert("Enter your Post Office");
+   swal("Oops..","Enter your Post Office","error");
    document.getElementById("po").focus();}
    	else if(document.getElementById("ps").value==="" || document.getElementById("ps").value==="NA"){
    element.checked = !element.checked;
-   alert("Enter your Police Station");
+   swal("Oops..","Enter your Police Station","error");
    document.getElementById("ps").focus();}
    	else if(document.getElementById("pin").value==="" || document.getElementById("pin").value==="NA"){
    element.checked = !element.checked;
-   alert("Enter your Area PIN Code");
+   swal("Oops..","Enter your Area PIN Code","error");
    document.getElementById("pin").focus();}
    	else if(document.getElementById("gname").value==="" || document.getElementById("gname").value==="NA"){
    element.checked = !element.checked;
-   alert("Enter your Guardian's Name");
+   swal("Oops..","Enter your Guardian's Name","error");
    document.getElementById("gname").focus();}
    	else if(document.getElementById("relationship").value==="" || document.getElementById("relationship").value==="NA"){
    element.checked = !element.checked;
-   alert("Choose your Relationship with your Guardian");
+   swal("Oops..","Choose your Relationship with your Guardian","error");
    document.getElementById("relationship").focus();}
    	else if(document.getElementById("ghabitation").value==="" || document.getElementById("ghabitation").value==="NA"){
    element.checked = !element.checked;
-   alert("Enter your Guardian's Habitation or Locality");
+   swal("Oops..","Enter your Guardian's Habitation or Locality","error");
    document.getElementById("ghabitation").focus();}
    	else if(document.getElementById("gdistrict").value==="" || document.getElementById("gdistrict").value==="NA"){
    element.checked = !element.checked;
-   alert("Choose your Guardian's District");
+   swal("Oops..","Choose your Guardian's District","error");
    document.getElementById("gdistrict").focus();}
    	else if(document.getElementById("gblock").value==="" || document.getElementById("gblock").value==="NA"){
    element.checked = !element.checked;
-   alert("Enter your Guardian's Block or Municipality name");
+   swal("Oops..","Enter your Guardian's Block or Municipality name","error");
    document.getElementById("gblock").focus();}
    	else if(document.getElementById("gpo").value==="" || document.getElementById("gpo").value==="NA"){
    element.checked = !element.checked;
-   alert("Enter your Guardian's Post Office");
+   swal("Oops..","Enter your Guardian's Post Office","error");
    document.getElementById("gpo").focus();}
    	else if(document.getElementById("gps").value==="" || document.getElementById("gps").value==="NA"){
    element.checked = !element.checked;
-   alert("Enter your Guardian's Police Station");
+   swal("Oops..","Enter your Guardian's Police Station","error");
    document.getElementById("gps").focus();}
    	else if(document.getElementById("gpin").value==="" || document.getElementById("gpin").value==="NA"){
    element.checked = !element.checked;
-   alert("Enter your Guardian's Area PIN Code");
+   swal("Oops..","Enter your Guardian's Area PIN Code","error");
    document.getElementById("gpin").focus();}
 	 else if(document.getElementById("bname").value==="" || document.getElementById("bname").value==="NA"){
    element.checked = !element.checked;
-   alert("Choose Bank Name");
+   swal("Oops..","Choose Bank Name","error");
    document.getElementById("bname").focus();}
 	 else if(document.getElementById("bcode").value==="" || document.getElementById("bcode").value==="NA"){
    element.checked = !element.checked;
-   alert("Enter Bank Branch Code");
+   swal("Oops..","Enter Bank Branch Code","error");
    document.getElementById("bcode").focus();}
 	 else if(document.getElementById("bifsc").value==="" || document.getElementById("bifsc").value==="NA"){
    element.checked = !element.checked;
-   alert("Enter Bank Branch IFSC Code");
+   swal("Oops..","Enter Bank Branch IFSC Code","error");
    document.getElementById("bifsc").focus();}
 	 else if(document.getElementById("acno").value==="" || document.getElementById("acno").value==="NA"){
    element.checked = !element.checked;
-   alert("Enter your Bank Account No.");
+   swal("Oops..","Enter your Bank Account No.","error");
    document.getElementById("acno").focus();}
    	   	
    	else{
    element.checked = element.checked;
    document.getElementById("submitbtn").disabled = !element.checked;
-   alert("Check all details carefully and be sure that you have uploaded your Photo, Date of Birth proof and Bank Pass Book before Submit.");
+   swal("Dhola High School","Check all details carefully and be sure that you have uploaded your Photo, Date of Birth proof and Bank Pass Book before Submit.","info");
    }
  }
