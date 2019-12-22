@@ -10,6 +10,7 @@
             uid = getusername();
             document.getElementById("chid").value=uid;
 </script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <style>
 .button {
   background-color: #4CAF50; /* Green */
@@ -122,6 +123,13 @@ h2 {
   <button class="button button2" onclick="appdls();">Application Form Download (School Copy)</button>
 <p style="padding: 10px 20px;">
   </p>
+  <p style="font-size: 20px; padding: 40px 20px;"><b>Edit</b>
+  </p>
+  <button class="button button2" onclick="appdedt();">Edit Application Form</button>
+<p style="padding: 10px 20px;">
+  </p>
+
+
 </center>
 
 <script type="text/javascript">
@@ -140,6 +148,25 @@ h2 {
           sessionStorage.setItem("username", uid);
           window.open("schoolcopy.html");
         }
+    }
+    function appdedt(){
+      var d = new Date();
+  var y = d.getFullYear();
+  var m = d.getMonth();
+  m=m+1;
+   var t = d.getDate();
+  var c= y + '-' + m + '-' + t;
+  var x = new Date(c);
+var y = new Date('2019-12-24');
+var z = new Date('2019-12-28');
+if(+x <= +y || +x >= +z){swal("Dhola High School","Application Edit Portal will be available from 25th December, 2019 to 27th December, 2019","info");}
+else{
+    if (window.sessionStorage) 
+        {
+          sessionStorage.setItem("username", uid);
+          window.open("../edit.html");
+        }
+      }
     }
 </script>
 
