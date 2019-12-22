@@ -1,0 +1,1252 @@
+﻿<!DOCTYPE HTML>
+<html>
+<title>Dhola High School :: Online Admission Portal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href='http://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>
+<link rel="icon" type="image/jpg" href="img/favicon.jpg">
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Libre+Baskerville&display=swap" rel="stylesheet">
+<link href='css/font.css' rel='stylesheet' type='text/css'>
+
+<script src="https://www.gstatic.com/firebasejs/7.5.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.5.2/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>	
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	
+<style type="text/css">
+	
+body{
+	width:100%;	
+	margin: auto;
+	background-image: url("img/kids1.jpg") ;
+    background-repeat: no-repeat;
+    background-attachment:fixed;
+    background-position: center;
+    background-size: cover;
+}
+.form-style-10{
+	max-width:900px;
+	padding:30px;
+	margin:40px auto;
+	background:rgba(32, 147, 249, 0.5);
+	border-radius: 10px;
+	-webkit-border-radius:10px;
+	-moz-border-radius: 10px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
+	-moz-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
+	-webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
+}
+.form-style-10 .inner-wrap{
+	padding: 30px;
+	background: rgba(32, 194, 249, 0.4);
+	border-radius: 6px;
+	margin-bottom: 15px;
+}
+.form-style-10 h1{
+	background: #8e9176;
+	padding: 20px 30px 15px 30px;
+	margin: -30px -30px 30px -30px;
+	border-radius: 10px 10px 0 0;
+	-webkit-border-radius: 10px 10px 0 0;
+	-moz-border-radius: 10px 10px 0 0;
+	color: #fff;
+	text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.12);
+	font: normal 35px 'Bitter', serif;
+	-moz-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
+	-webkit-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
+	box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
+	border: 1px solid #257C9E;
+}
+.form-style-10 h1 > span{
+	display: block;
+	margin-top: 2px;
+	font: 13px Arial, Helvetica, sans-serif;
+}
+.form-style-10 label{
+	display: block;
+	font: 13px Arial, Helvetica, sans-serif;
+	color:#FFFFFF;
+	margin-bottom: 15px;
+}
+.form-style-10 input[type=text], .form-style-10 input[type=date], .form-style-10 input[type=datetime], .form-style-10 input[type=email], .form-style-10 input[type=number], .form-style-10 input[type=search], .form-style-10 input[type=time], .form-style-10 input[type=url], .form-style-10 input[type=password], .form-style-10 textarea, .form-style-10 select {
+	display: block;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	width: 100%;
+	padding: 8px;
+	border-radius: 6px;
+	-webkit-border-radius:6px;
+	-moz-border-radius:6px;
+	border: 2px solid #fff;
+	box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.33);
+	-moz-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.33);
+	-webkit-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.33);
+}
+
+.form-style-10 .section{
+	font: normal 20px 'Bitter', serif;
+	color:#FFFFFF;
+	margin-bottom: 5px;
+}
+.form-style-10 .section span {
+	background: #2A88AD;
+	padding: 5px 10px 5px 10px;
+	position: absolute;
+	border-radius: 50%;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border: 4px solid #fff;
+	font-size: 14px;
+	margin-left: -45px;
+	color: #fff;
+	margin-top: -3px;
+}
+.form-style-10 input[type=button], .form-style-10 input[type=submit]{
+	background: #2A88AD;
+	padding: 8px 20px 8px 20px;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	color: #fff;
+	text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.12);
+	font: normal 30px 'Bitter', serif;
+	-moz-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
+	-webkit-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
+	box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
+	border: 1px solid #257C9E;
+	font-size: 15px;
+}
+.form-style-10 input[type=button]:hover, .form-style-10 input[type=submit]:hover{
+	background: #2A6881;
+	-moz-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.28);
+	-webkit-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.28);
+	box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.28);
+}
+.form-style-10 .privacy-policy{
+	float: right;
+	width: 250px;
+	font: 12px Arial, Helvetica, sans-serif;
+	color: #4D4D4D;
+	margin-top: 10px;
+	text-align: right;
+}
+/*-----------------------------------*/
+.list-type5{
+width:410px;
+margin:0 auto;
+}
+.list-type5 ol {
+list-style-type: none;
+list-style-type: decimal !ie; /*IE 7- hack*/
+margin: 0;
+margin-left: 1em;
+padding: 0;
+counter-reset: li-counter;
+}
+.list-type5 ol li{
+position: relative;
+margin-bottom: 1.5em;
+padding: 0.5em;
+background-color: #F0D756;
+padding-left: 58px;
+}
+
+.list-type5 a{
+text-decoration:none;
+color:black;
+font-size:15px;
+font-family: 'Raleway', sans-serif;
+}
+
+.list-type5 li:hover{
+box-shadow:inset -1em 0 #6CD6CC;
+-webkit-transition: box-shadow 0.5s; /* For Safari 3.1 to 6.0 */
+transition: box-shadow 0.5s;
+}
+
+.list-type5 ol li:before {
+position: absolute;
+top: -0.3em;
+left: -0.5em;
+width: 1.8em;
+height: 1.2em;
+font-size: 2em;
+line-height: 1.2;
+font-weight: bold;
+text-align: center;
+color: white;
+background-color: #6CD6CC;
+transform: rotate(-20deg);
+-ms-transform: rotate(-20deg);
+-webkit-transform: rotate(-20deg);
+z-index: 99;
+overflow: hidden;
+content: counter(li-counter);
+counter-increment: li-counter;
+}
+
+h2 {
+	margin: 1em 0 0.5em 0;
+	font-weight: normal;
+	position: relative;
+	text-shadow: 0 -1px rgba(0,0,0,0.6);
+	font-size: 28px;
+	line-height: 40px;
+	background: #355681;
+	background: rgba(53,86,129, 0.8);
+	border: 1px solid #fff;
+	padding: 5px 15px;
+	color: white;
+	border-radius: 0 10px 0 10px;
+	box-shadow: inset 0 0 5px rgba(53,86,129, 0.5);
+	font-family: 'Muli', sans-serif;
+	}
+</style>
+<style>
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+</style>
+<style>
+.button {
+    background-color:#6699FF; /* Green */
+    border: none;
+    font-family:"Times New Roman", Times, serif;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 26px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 20px;
+    }
+.button:hover {background-color:#3333CC;}
+
+.button:active {
+  background-color:#333399;
+  box-shadow: 0 3px #666;
+  transform: translateY(4px);
+}
+</style>
+<style type="text/css">
+  .foooter {
+    background-image: linear-gradient(to right, rgba(245, 211, 59, 0.6), rgba(146, 201, 224, 0.6));
+  border: 2px solid #467813;
+  border-radius: 5px;
+  color: #703bf5;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  padding: 15px 20px 15px 50px;
+}
+</style>
+<body onload="appidset()">
+<center><h1 style="border-radius: 20px; width:95%; font-family: 'Libre Baskerville', serif; color:#FFFFFF; font-size:35px; background-color: rgba(102, 153, 255, 0.5); background-image: linear-gradient(to right, rgba(128,128,128,0.5), rgba(102,153,255,0.5));">Dhola High School : : Online Admission Portal</h1></center>
+<div>
+<div style="display:block" class="form-style-10">
+
+
+<h1>
+<center>
+<!--
+<img src="img/dhola.jpg" height="60px" width="60px" />
+-->
+Admission Form
+<!--
+<img src="img/dhola.jpg" height="60px" width="60px" />
+-->
+<br>
+</center>
+</h1>
+<div id="instructions">
+<fieldset style="background-color:rgba(120, 117, 130,0.8); border: rgba(25,58,224,0.8) 3px solid;">
+  <legend align="center"><font size="5px"><b>Before Proceed Please Read these instructions carefully</b></font></legend>
+  <br>
+
+<div class="list-type5">
+<ol>
+<li><a>Fillup the admission form carefully. Mandatory Fields are marked with a 
+  <img src="img/asterisk.png" alt="mandatory" height="15" width="15">.</a></li>
+<li><a>Photo and Signature size should not exceed <b>20KB</b> and Other Document size should not exceed <b>250KB</b>.<br>Photo and Date of Birth Proof  / Birth Certificate is Mandatory for all.</a></li>
+<li><a>Once Submitted, no more Editing options are there, so check all fields before submit.</a></li>
+<li><a>After successful Submission, Write down the Application ID for further LogIn to your own Application.</a></li>
+<li><a>On the next Page, click on "Login" and enter <b>Application ID as login ID </b>and <b>Date of Birth as Password</b>.</a></li>
+<li><a><b>Students applying for Class IX should submit their signature, otherwise Admit Card without signature will not be accepted at admission test.</b></a></li>
+</ol>
+</div>
+  <br>
+ </fieldset>
+<br>
+<h2><center>Enter Student Details as requested</center></h2>
+</div>
+<form class="pure-form pure-form-stacked" id="contactForm">  
+ 	<br>
+    <center><b style="color:black;font-family:'Times New Roman';font-size:35px">Basic Information</b></center>
+    <br>
+    
+<div class="section"><span>1</span>Student Name*</div>
+    <div class="inner-wrap">
+	<input type="text" name="name" id="name" required="true" placeholder="Enter Student's Full Name">
+    </div>
+<div class="section"><span>2</span>Date Of Birth*</div>
+    <div class="inner-wrap">
+        <input type="date" name="dob" id="dob" required="true" placeholder="Enter Date of Birth">
+        </div>
+<div class="section"><span>3</span>Birth Registration No.</div>
+    <div class="inner-wrap">
+	<input type="text" name="dobreg" id="dobreg" value="" placeholder="Enter Birth Registration No.">
+    </div>
+<div class="section"><span>4</span>Gender*</div>
+    <div class="inner-wrap">
+    <label><select name="gender" id="gender" required="true" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;">
+    <option value="NA" disabled="disabled" selected>-- Select any One --</option>
+    <option value="MALE">MALE</option>
+    <option value="FEMALE">FEMALE</option>
+    <option value="TRANSGENDER">TRANSGENDER</option>
+    </select>
+	</label>
+    </div>
+<div class="section"><span>5</span>Social Category*</div>
+        <div class="inner-wrap">
+        <label>
+        <select name="category" id="category" required="true" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;">
+    <option value="NA" disabled="disabled" selected>-- Select any One --</option>
+    <option value="GENERAL">GENERAL</option>
+    <option value="SC">SC</option>
+    <option value="ST">ST</option>
+    <option value="OBC">OBC</option>
+    <option value="ORC">ORC</option>
+    <option value="OTHERS">OTHERS</option>
+    <option value="OBC-A">OBC-A</option>
+    <option value="OBC-B">OBC-B</option>
+      	</select>
+		</label>
+        </div>
+<div class="section"><span>6</span>Religion</div>
+        <div class="inner-wrap">
+        <label>
+        <select name="religion" id="religion" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;">
+    <option value="NA" disabled="disabled" selected>-- Select any One --</option>
+    <option value="HINDU">HINDU</option>
+    <option value="MUSLIM">ISLAM</option>
+    <option value="CHRISTIAN">CHRISTIAN</option>
+    <option value="SIKH">SIKH</option>
+    <option value="BUDDHIST">BUDDHIST</option>
+    <option value="PARSI">PARSI</option>
+    <option value="JAIN">JAIN</option>
+    <option value="OTHERS">OTHERS</option>
+      	</select>
+		</label>
+        </div>
+<div class="section"><span>7</span>Mother Tongue*</div>
+        <div class="inner-wrap">
+        <label>
+        <select name="mothertongue" id="mothertongue" required="true" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;">
+    <option value="NA" disabled="disabled" selected>-- Select any One --</option>
+    <option value="BENGALI">BENGALI</option>
+    <option value="HINDI">HINDI</option>
+    <option value="NEPALI">NEPALI</option>
+    <option value="ORIYA">ORIYA</option>
+    <option value="TELEGU">TELEGU</option>
+    <option value="URDU">URDU</option>
+    <option value="ENGLISH">ENGLISH</option>
+    <option value="SANTHALI">SANTHALI</option>
+    <option value="OTHER LANGUAGES">OTHER LANGUAGES</option>
+      	</select>
+		</label>
+        </div>
+<div class="section"><span>8</span>NATIONALITY*</div>
+        <div class="inner-wrap">
+        <label>
+        <select name="nationality" id="nationality" required="true" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;">
+    <option value="NA" disabled="disabled" selected>-- Select any One --</option>
+    <option value="INDIAN">INDIAN</option>
+    <option value="OTHERS">OTHERS</option>
+      	</select>
+		</label>
+        </div>
+<div class="section"><span>9</span>Aadhaar No.</div>
+        <div class="inner-wrap">
+        <input type="number" name="aadhaar" id="aadhaar" value="" placeholder="Enter 12 digit Aadhaar No." maxlength="12" onchange="aadhaarlength()">
+        </div>
+<div class="section"><span>10</span>Blood Group</div>
+        <div class="inner-wrap">
+        <label>
+        <select name="bloodgroup" id="bloodgroup" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;">
+    <option value="NA" disabled="disabled" selected>-- Select any One --</option>
+    <option value="A+">A+</option>
+    <option value="A-">A-</option>
+    <option value="B+">B+</option>
+    <option value="B-">B-</option>
+    <option value="AB+">AB+</option>
+    <option value="AB-">AB-</option>
+    <option value="O+">O+</option>
+    <option value="O-">O-</option>
+      	</select>
+		</label>
+        </div>
+<div class="section"><span>11</span>HEALTH Id</div>
+    <div class="inner-wrap">
+	<input type="text" name="healthid" id="healthid" value="" placeholder="Enter Health ID">
+    </div>
+<div class="section"><span>12</span>Identification Mark</div>
+    <div class="inner-wrap">
+	<input type="text" name="idmark" id="idmark" value="" placeholder="Enter Identification Mark(if any)">
+    </div>
+
+
+	<br>
+    <center><b style="color:black;font-family:'Times New Roman';font-size:35px">Educational Information</b></center>
+    <br>
+
+<div class="section"><span>1</span>Academic year</div>
+    <div class="inner-wrap">
+	<input type="text" name="acyear" id="acyear" disabled="disabled" required="true" value="2020">
+    </div>
+    
+<div class="section" style="display:none"><span>2</span>Admission No.</div>
+    <div class="inner-wrap" style="display:none">
+	<input type="text" name="admno" id="admno" value="" placeholder="Enter Admission No.">
+    </div>
+<div class="section" style="display:none"><span>3</span>Admission Date</div>
+    <div class="inner-wrap" style="display:none">
+    <input type="date" name="admdate" id="admdate" value="" placeholder="Enter Date of Birth">
+    </div>
+<div class="section" style="display:none"><span>2</span>Admission Status</div>
+    <div class="inner-wrap" style="display:none">
+  <input type="text" name="admstatus" id="admstatus" value="NO">
+    </div>
+    
+<div class="section"><span>2</span>Apply for which Class*</div>
+        <div class="inner-wrap" id="checkboxgr1">
+        <label>
+        <select name="prclass" id="prclass" required="true" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;" onchange="if (this.value=='IX' || this.value=='X'){this.form['praddl'].style.display='block';this.form['prstream'].style.display='none';this.form['prsubs'].style.display='none';this.form['acyear'].value = '2020';}else if (this.value=='XI' || this.value=='XII'){this.form['prstream'].style.display='block'; this.form['praddl'].style.display='none'; this.form['prstream'].value = '';this.form['acyear'].value = '2020-21'; this.form['prsubs'].style.display='block';}else {this.form['prstream'].style.display='none';this.form['praddl'].style.display='none';this.form['prstream'].value = 'NA'; this.form['prsubs'].style.display='none'; this.form['acyear'].value = '2020';};">
+    <option value="NA" disabled="disabled" selected>-- Select Class --</option>
+    <option value="V" style="display: none;">CLASS V</option>
+    <option value="VI">CLASS VI</option>
+    <option value="VII">CLASS VII</option>
+    <option value="VIII">CLASS VIII</option>
+    <option value="IX">CLASS IX</option>
+    <option value="X" style="display: none;">CLASS X</option>
+    <option value="XI" style="display: none;">CLASS XI</option>
+    <option value="XII" style="display: none;">CLASS XII</option>
+      	</select>
+      	<br>
+      	
+      	<select name="praddl" id="praddl" style="display:none; padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;">
+    <option value="NA" disabled="disabled" selected>-- Select Addl. Subject --</option>
+    <option value="APPAREL">Apparel <b>(NSQF)</b></option>
+    <option value="POWER">Power <b>(NSQF)</b></option>
+    <option value="Computerapplication">Computer Application</option>
+    <option value="NA">Not Applicable</option>
+      	</select>
+      	
+      	<br>
+      	      	
+      	<select name="prstream" id="prstream" style="display:none; padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;" onchange="if (this.value=='ARTS'){ var divsToHide = document.getElementsByClassName('sc');for(var i = 0; i < divsToHide.length; i++){divsToHide[i].style.display = 'none';} var divsToHide = document.getElementsByClassName('cm');for(var i = 0; i < divsToHide.length; i++){divsToHide[i].style.display = 'none';} var divsToHide = document.getElementsByClassName('ar');for(var i = 0; i < divsToHide.length; i++){divsToHide[i].style.display = 'block';} } else if (this.value=='SCIENCE'){ var divsToHide = document.getElementsByClassName('ar');for(var i = 0; i < divsToHide.length; i++){divsToHide[i].style.display = 'none';} var divsToHide = document.getElementsByClassName('cm');for(var i = 0; i < divsToHide.length; i++){divsToHide[i].style.display = 'none';} var divsToHide = document.getElementsByClassName('sc');for(var i = 0; i < divsToHide.length; i++){divsToHide[i].style.display = 'block';} }else if (this.value=='COMMERCE'){ var divsToHide = document.getElementsByClassName('ar');for(var i = 0; i < divsToHide.length; i++){divsToHide[i].style.display = 'none';} var divsToHide = document.getElementsByClassName('sc');for(var i = 0; i < divsToHide.length; i++){divsToHide[i].style.display = 'none';} var divsToHide = document.getElementsByClassName('cm');for(var i = 0; i < divsToHide.length; i++){divsToHide[i].style.display = 'block';} };">
+    <option value="NA" disabled="disabled" selected>-- Select Stream --</option>
+    <option value="ARTS">ARTS</option>
+    <option value="SCIENCE">SCIENCE</option>
+    <option value="COMMERCE">COMMERCE</option>
+    <option value="VOCATIONAL" disabled="disabled">VOCATIONAL</option>
+      	</select>
+      	<br>
+      	<fieldset id="prsubs" style="display:none; background-color:rgba(120, 117, 130,0.8); border: rgba(25,58,224,0.8) 3px solid;">
+  		<legend align="center"><font size="5px"><b>Subject Selection</b></font></legend>
+  		<br>
+  		
+		
+  		
+  <label class="container">Compulsory 1
+  <input type="checkbox" id="prcompulsory1" disabled="disabled" checked="checked" name="check" value="CheckBox 1">
+  <span class="checkmark"></span>
+  <select name="prcomp1" id="prcomp1" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;" onchange="this.form['prcompulsory1'].value = this.form['prcomp1'].value;">
+    <option value="NA" disabled="disabled" selected>-- Select any One --</option>
+    <option value="BENGALI(A)">BENGALI(A)</option>
+    <option value="ENGLISH(A)">ENGLISH(A)</option>
+    <option value="HINDI(A)">HINDI(A)</option>
+    <option value="NEPALI(A)">NEPALI(A)</option>
+    <option value="URDU">SANTHALI</option>
+    <option value="ODIA">ODIA</option>
+    <option value="TELEGU">TELEGU</option>
+    <option value="GUJRATI">GUJRATI</option>
+    <option value="PUNJABI">PUNJABI</option>
+    </select>
+  </label>
+  <label class="container">Compulsory 2
+  <input type="checkbox" id="prcompulsory2" disabled="disabled" checked="checked" name="check" value="CheckBox 2">
+  <span class="checkmark"></span>
+  <select name="prcomp2" id="prcomp2" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;" onchange="this.form['prcompulsory2'].value = this.form['prcomp2'].value;">
+    <option value="NA" disabled="disabled" selected>-- Select any One --</option>
+    <option value="ENGLISH(B)">ENGLISH(B)</option>
+    <option value="BENGALI(B)">BENGALI(B)</option>
+    <option value="HINDI(B)">HINDI(B)</option>
+    <option value="NEPALI(B)">NEPALI(B)</option>
+    <option value="ALTERNATIVE ENGLISH">ALTERNATIVE ENGLISH</option>
+  </select>
+  </label>
+  
+  
+  <label class="container">Choice 1
+  <input type="checkbox" id="prch1" name="check" value="CheckBox 3" class="prch">
+  <span class="checkmark"></span>
+  <select name="prchc1" id="prchc1" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;" onchange="this.form['prch1'].value = this.form['prchc1'].value;">
+    <option value="NA" disabled="disabled" selected>-- Select any One --</option>
+    <option value="BIOLOGICAL SCIENCE" class="sc">BIOLOGICAL SCIENCE</option>
+    <option value="BUSINESS STUDIES" class="cm">BUSINESS STUDIES</option>
+    <option value="POLITICAL SCIENCE" class="ar">POLITICAL SCIENCE</option>
+  </select>
+  </label>
+  <label class="container">Choice 2
+  <input type="checkbox" id="prch2" name="check" value="CheckBox 4" class="prch">
+  <span class="checkmark"></span>
+  <select name="prchc2" id="prchc2" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;" onchange="this.form['prch2'].value = this.form['prchc2'].value;">
+    <option value="NA" disabled="disabled" selected>-- Select any One --</option>
+    <option value="HEALTH CARE">HEALTH CARE</option>
+    <option value="AUTOMOBILE">AUTOMOBILE</option>
+    <option value="ORGANISED RETAILING">ORGANISED RETAILING</option>
+    <option value="SECURITY">SECURITY</option>
+    <option value="IT AND ITES-VOCATIONAL SUBJECTS">IT AND ITES-VOCATIONAL SUBJECTS</option>
+    </select>
+  </label>
+  <label class="container">Choice 3
+  <input type="checkbox" id="prch3" name="check" value="CheckBox 5" class="prch">
+  <span class="checkmark"></span>
+  <select name="prchc3" id="prchc3" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;" onchange="this.form['prch3'].value = this.form['prchc3'].value;">
+    <option value="NA" disabled="disabled" selected>-- Select any One --</option>
+    <option value="MATHEMATICS" class="sc cm ar">MATHEMATICS</option>
+    <option value="PSYCHOLOGY" class="sc ar">PSYCHOLOGY</option>
+    <option value="ANTHROPOLOGY" class="sc ar">ANTHROPOLOGY</option>
+    <option value="ARGONOMY" class="sc ar">AGRONOMY</option>
+    <option value="HISTORY" class="ar">HISTORY</option>
+    </select>
+  </label>
+  <label class="container">Choice 4
+  <input type="checkbox" id="prch4" name="check" value="CheckBox 6" class="prch">
+  <span class="checkmark"></span>
+  <select name="prchc4" id="prchc4" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;" onchange="this.form['prch4'].value = this.form['prchc4'].value;">
+    <option value="NA" disabled="disabled" selected>-- Select any One --</option>
+    <option value="COMPUTER SCIENCE" class="sc">COMPUTER SCIENCE</option>
+    <option value="MODERN COMPUTER APPLICATION" class="sc cm ar">MODERN COMPUTER APPLICATION</option>
+    <option value="ENVIRONMENTAL STUDIES" class="sc cm ar">ENVIRONMENTAL STUDIES</option>
+    <option value="HELATH AND PHYSICAL EDUCATION" class="cm ar">HELATH AND PHYSICAL EDUCATION</option>
+    <option value="MUSIC" class="ar">MUSIC</option>
+    <option value="VISUAL ARTS" class="ar">VISUAL ARTS</option>
+  </select>
+  </label>
+  <label class="container">Choice 5
+  <input type="checkbox" id="prch5" name="check" value="CheckBox 7" class="prch">
+  <span class="checkmark"></span>
+  <select name="prchc5" id="prchc5" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;" onchange="this.form['prch5'].value = this.form['prchc5'].value;">
+    <option value="" disabled="disabled" selected>-- Select any One --</option>
+    <option value="COMMERCIAL LAWS AND PERLIMINAIES OF AUDITING" class="cm">COMMERCIAL LAWS AND PERLIMINAIES OF AUDITING</option>
+    <option value="PHILOSOPHY" class="ar">PHILOSOPHY</option>
+    <option value="SOCIOLOGY" class="ar">SOCIOLOGY</option>
+  </select>
+  </label>
+  <label class="container">Choice 6
+  <input type="checkbox" id="prch6" name="check" value="CheckBox 8" class="prch">
+  <span class="checkmark"></span>
+  <select name="prchc6" id="prchc6" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;" onchange="this.form['prch6'].value = this.form['prchc6'].value;">
+    <option value="NA" disabled="disabled" selected>-- Select any One --</option>
+    <option value="PHYSICS" class="sc">PHYSICS</option>
+    <option value="NUTRITION" class="sc ar">NUTRITION</option>
+    <option value="EDUCATION" class="ar">EDUCATION</option>
+    <option value="ACCOUNTANCY" class="cm">ACCOUNTANCY</option>
+    </select>
+  </label>
+  <label class="container">Choice 7
+  <input type="checkbox" id="prch7" name="check" value="CheckBox 9" class="prch">
+  <span class="checkmark"></span>
+  <select name="prchc7" id="prchc7" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;" onchange="this.form['prch7'].value = this.form['prchc7'].value;">
+    <option value="NA" disabled="disabled" selected>-- Select any One --</option>
+    <option value="CHEMISTRY" class="sc">CHEMISTRY</option>
+    <option value="ECONOMICS" class="sc ar cm">ECONOMICS</option>
+    <option value="JOURNALISM AND MASS COMMUNICATION" class="ar">JOURNALISM AND MASS COMMUNICATION</option>
+    <option value="SANSKRIT" class="ar">SANSKRIT</option>
+    <option value="PERSIAN" class="ar">PERSIAN</option>
+    <option value="ARABIC" class="ar">ARABIC</option>
+    <option value="FRENCH" class="ar">FRENCH</option>
+  </select>
+  </label>
+  <label class="container">Choice 8
+  <input type="checkbox" id="prch8" name="check" value="CheckBox 10" class="prch">
+  <span class="checkmark"></span>
+  <select name="prchc8" id="prchc8" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;" onchange="this.form['prch8'].value = this.form['prchc8'].value;">
+    <option value="NA" disabled="disabled" selected>-- Select any One --</option>
+    <option value="STATISTICS" class="sc">STATISTICS</option>
+    <option value="GEOGRAPHY" class="sc ar">GEOGRAPHY</option>
+    <option value="COSTING AND TAXATION" class="cm">COSTING AND TAXATION</option>
+    <option value="HOME MANAGEMENT AND FAMILY RESOURCE MANAGEMENT" class="ar">HOME MANAGEMENT AND FAMILY RESOURCE MANAGEMENT</option>
+  </select>
+  </label>
+  <div id="prfsubs">
+  Selected Subjects are as Follows :
+  	<input type="text" name="prfcomp1" id="prfcomp1" disabled="disabled" value="">
+	<br>
+	<input type="text" name="prfcomp2" id="prfcomp2" disabled="disabled" value="">
+	<br>
+	<input type="text" name="prfsub1" id="prfsub1" disabled="disabled" value="">
+	<br>
+	<input type="text" name="prfsub2" id="prfsub2" disabled="disabled" value="">
+	<br>
+	<input type="text" name="prfsub3" id="prfsub3" disabled="disabled" value="">
+	<br>
+	<input type="text" name="prfsub4" id="prfsub4" disabled="disabled" value="">
+	<br>
+
+  </div>
+
+  		</fieldset>
+		</label>
+        </div>
+                
+        
+        <div class="section" style="display:none"><span>5</span>Present Section</div>
+        <div class="inner-wrap" style="display:none">
+        <label>
+        <select name="prsec" id="prsec" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;">
+    <option value="NA" disabled="disabled" selected>-- Select any One --</option>
+    <option value="A">A</option>
+    <option value="B">B</option>
+    <option value="C">C</option>
+    <option value="D">D</option>
+    <option value="E">E</option>
+    <option value="F">F</option>
+    <option value="G">G</option>
+    <option value="H">H</option>
+    <option value="I">I</option>
+    <option value="J">J</option>
+    <option value="NA">Not Applicable</option>
+      	</select>
+		</label>
+        </div>
+        
+        <div class="section" style="display:none"><span>6</span>Present Roll No.</div>
+    	<div class="inner-wrap" style="display:none">
+    	<input type="number" name="prroll" id="prroll" value="" maxlength="3" placeholder="Enter Present Roll No." >
+    	</div>
+    	
+	<div class="section"><span>3</span>Previous School Name*</div>
+    	<div class="inner-wrap">
+    	<input type="text" name="pvschool" required="true" id="pvschool" placeholder="Enter Previous School Name" >
+    	</div>
+    	        
+        <div class="section"><span>4</span>Previous Class*</div>
+        <div class="inner-wrap" id="checkboxgr1v">
+        <label>
+        <select name="pvclass" id="pvclass" required="true" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;" onchange="if (this.value=='IX' || this.value=='X'){this.form['pvaddl'].style.display='block';}else if (this.value=='XI' || this.value=='XII'){this.form['pvstream'].style.display='block'; this.form['pvstream'].value = '';this.form['pvaddl'].style.display='none';}else {this.form['pvstream'].style.display='none';this.form['pvstream'].value = 'NA';this.form['pvaddl'].style.display='none';};">
+    <option value="NA" disabled="disabled" selected>-- Select Class --</option>
+    <option value="V">CLASS V</option>
+    <option value="VI">CLASS VI</option>
+    <option value="VII">CLASS VII</option>
+    <option value="VIII">CLASS VIII</option>
+    <option value="IX">CLASS IX</option>
+    <option value="X" style="display: none;">CLASS X</option>
+    <option value="XI" style="display: none;">CLASS XI</option>
+    <option value="XII" style="display: none;">CLASS XII</option>
+      	</select>
+      	<br>
+      	
+      	<select name="pvaddl" id="pvaddl" style="display:none; padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;">
+    <option value="NA" disabled="disabled" selected>-- Select Addl. Subject --</option>
+    <option value="APPAREL">Apparel</option>
+    <option value="POWER">Power</option>
+    <option value="NA">Not Applicable</option>
+      	</select>
+      	
+      	
+      	<br>
+      	      	
+      	<select name="pvstream" id="pvstream" style="display:none; padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;" >
+    <option value="NA" disabled="disabled" selected>-- Select Stream --</option>
+    <option value="ARTS">ARTS</option>
+    <option value="SCIENCE">SCIENCE</option>
+    <option value="COMMERCE">COMMERCE</option>
+    <option value="VOCATIONAL" disabled="disabled">VOCATIONAL</option>
+      	</select>
+      	<br>  		
+  		
+		</label>
+        </div>
+
+        
+        <div class="section"><span>5</span>Previous Section*</div>
+        <div class="inner-wrap">
+        <label>
+        <select name="pvsec" id="pvsec" required="true" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;">
+    <option value="NA" disabled="disabled" selected>-- Select any One --</option>
+    <option value="A">A</option>
+    <option value="B">B</option>
+    <option value="C">C</option>
+    <option value="D">D</option>
+    <option value="E">E</option>
+    <option value="F">F</option>
+    <option value="G">G</option>
+    <option value="H">H</option>
+    <option value="I">I</option>
+    <option value="J">J</option>
+    <option value="NA">Not Applicable</option>
+      	</select>
+		</label>
+        </div>
+        
+        <div class="section"><span>6</span>Previous Roll No.</div>
+    	<div class="inner-wrap">
+    	<input type="number" name="pvroll" id="pvroll" maxlength="3" placeholder="Enter Previous Roll No." >
+    	</div>
+    	        
+        <div class="section"><span>7</span>Medium*</div>
+        <div class="inner-wrap">
+        <label>
+        <select name="medium" id="medium" required="true" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;">
+    <option value="NA" disabled="disabled" selected>-- Select any One --</option>
+    <option value="BENGALI">BENGALI</option>
+    <option value="HINDI">HINDI</option>
+    <option value="NEPALI">NEPALI</option>
+    <option value="ORIYA">ORIYA</option>
+    <option value="TELEGU">TELEGU</option>
+    <option value="URDU">URDU</option>
+    <option value="ENGLISH">ENGLISH</option>
+    <option value="SANTHALI">SANTHALI</option>
+    <option value="OTHER LANGUAGES">OTHER LANGUAGES</option>
+      	</select>
+		</label>
+        </div>
+
+	<br>
+    <center><b style="color:black;font-family:'Times New Roman';font-size:35px">Contact Information</b></center>
+    <br>
+
+
+
+<div class="section"><span>1</span>Village</div>
+    <div class="inner-wrap">
+	<input type="text" name="vill" id="vill" value="" placeholder="Enter your Village">
+    </div>
+<div class="section"><span>2</span>Habitation or Locality*</div>
+    <div class="inner-wrap">
+	<input type="text" name="habitation" id="habitation" required="true" placeholder="Enter Habitation or Locality">
+    </div>
+<div class="section"><span>3</span>District*</div>
+        <div class="inner-wrap">
+        <label>
+        <select name="district" id="district" required="true" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;">
+    <option value="NA" disabled="disabled" selected>-- Select any One --</option>
+    <option value="ALIPURDUAR">ALIPURDUAR</option>
+    <option value="BANKURA">BANKURA</option>
+    <option value="PASCHIM BARDHAMAN">PASCHIM BARDHAMAN</option>
+    <option value="PURBA BARDHAMAN">PURBA BARDHAMAN</option>
+    <option value="BIRBHUM">BIRBHUM</option>
+    <option value="COOCH BEHAR">COOCH BEHAR</option>
+    <option value="DARJEELING">DARJEELING</option>
+    <option value="UTTAR DINAJPUR">UTTAR DINAJPUR</option>
+    <option value="DAKSHIN DINAJPUR">DAKSHIN DINAJPUR</option>
+    <option value="HOOGLY">HOOGLY</option>
+    <option value="HOWRAH">HOWRAH</option>
+    <option value="JALPAIGURI">JALPAIGURI</option>
+    <option value="JHARGRAM">JHARGRAM</option>
+    <option value="KOLKATA">KOLKATA</option>
+    <option value="KALIMPONG">KALIMPONG</option>
+    <option value="MALDA">MALDA</option>
+    <option value="PASCHIM MEDINIPUR">PASCHIM MEDINIPUR</option>
+    <option value="PURBA MEDINIPUR">PURBA MEDINIPUR</option>
+    <option value="MURSHIDABAD">MURSHIDABAD</option>
+    <option value="NADIA">NADIA</option>
+    <option value="NORTH 24 PARGANAS">NORTH 24 PARGANAS</option>
+    <option value="SOUTH 24 PARGANAS">SOUTH 24 PARGANAS</option>
+    <option value="PURULIA">PURULIA</option>
+		</select>
+		</label>
+        </div>
+<div class="section"><span>4</span>Block / Municipality*</div>
+    <div class="inner-wrap">
+	<input type="text" name="block" id="block" required="true" placeholder="Enter your Block / Municipality">
+    </div>
+<div class="section"><span>5</span>Panchayat</div>
+    <div class="inner-wrap">
+	<input type="text" name="panchayat" id="panchayat" value="" placeholder="Enter your Panchayat">
+    </div>
+<div class="section"><span>6</span>Post Office*</div>
+    <div class="inner-wrap">
+	<input type="text" name="po" id="po" required="true" placeholder="Enter your Post Office">
+    </div>
+<div class="section"><span>7</span>Police Station*</div>
+    <div class="inner-wrap">
+	<input type="text" name="ps" id="ps" required="true" placeholder="Enter your Police Station">
+    </div>
+<div class="section"><span>8</span>PIN Code*</div>
+    <div class="inner-wrap">
+    <input type="number" name="pin" id="pin" required="true" maxlength="6" placeholder="Enter PIN Code" onchange="pinlength()" >
+    </div>
+<div class="section"><span>9</span>Contact No. / Phone No.</div>
+    <div class="inner-wrap">
+    <input type="number" name="phone" id="phone" value="" maxlength="10" placeholder="Enter Contact No. / Phone No." onchange="contactlength()" >
+    </div>
+<div class="section"><span>10</span>Email</div>
+    <div class="inner-wrap">
+	<input type="email" name="email" id="email" value="" placeholder="Enter your Email ID">
+    </div>
+
+
+	<br>
+    <center><b style="color:black;font-family:'Times New Roman';font-size:35px">Guardian's Details</b></center>
+    <br>
+
+
+<div class="section"><span>1</span>Father's Name</div>
+    <div class="inner-wrap">
+	<input type="text" name="fname" id="fname" value="" placeholder="Enter your Father's Name">
+    </div>
+<div class="section"><span>2</span>Mother's Name</div>
+    <div class="inner-wrap">
+	<input type="text" name="mname" id="mname" value="" placeholder="Enter your Mather's Name">
+    </div>
+<div class="section"><span>3</span>Guardian's Name*</div>
+    <div class="inner-wrap">
+	<input type="text" name="gname" id="gname" required="true" placeholder="Enter your Guardian's Name">
+    </div>
+<div class="section"><span>4</span>Relationship (with Guardian)*</div>
+        <div class="inner-wrap">
+        <label>
+        <select name="relationship" id="relationship" required="true" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;">
+    <option value="NA" disabled="disabled" selected>-- Select any One --</option>
+    <option value="FATHER">FATHER</option>
+    <option value="MOTHER">MOTHER</option>
+    <option value="OTHER">OTHER</option>
+      	</select>
+		</label>
+        </div>
+<div class="section"><span>5</span>Annual Family Income</div>
+        <div class="inner-wrap">
+        <label>
+        <select name="aincome" id="aincome" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;">
+    <option value="NA" disabled="disabled" selected>-- Select any One --</option>
+    <option value="0-50,000">0-50,000</option>
+    <option value="50,001-1,20,000">50,001-1,20,000</option>
+    <option value="1,20,001-2,50,000">1,20,001-2,50,000</option>
+    <option value="2,50,001-5,00,000">2,50,001-5,00,000</option>
+    <option value="Above 5,00,000">Above 5,00,000</option>
+      	</select>
+		</label>
+        </div>
+<div class="section"><span>6</span>Guardian's Qualification</div>
+        <div class="inner-wrap">
+        <label>
+        <select name="gqualification" id="gqualification" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;">
+    <option value="NA" disabled="disabled" selected>-- Select any One --</option>
+    <option value="GRADUATE">GRADUATE</option>
+    <option value="BELOW-GRADUATE">BELOW-GRADUATE</option>
+      	</select>
+		</label>
+        </div>
+
+
+	<br>
+    <center><b style="color:black;font-family:'Times New Roman';font-size:35px">Guardian's Contact Information</b></center>
+    <br>
+
+
+
+<div class="section"><span>1</span>Village</div>
+    <div class="inner-wrap">
+	<input type="text" name="gvill" id="gvill" value="" placeholder="Enter Village name">
+    </div>
+<div class="section"><span>2</span>Habitation or Locality*</div>
+    <div class="inner-wrap">
+	<input type="text" name="ghabitation" id="ghabitation" required="true" placeholder="Enter Habitation or Locality">
+    </div>
+<div class="section"><span>3</span>District*</div>
+        <div class="inner-wrap">
+        <label>
+        <select name="gdistrict" id="gdistrict" required="true" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;">
+    <option value="NA" disabled="disabled" selected>-- Select any One --</option>
+    <option value="ALIPURDUAR">ALIPURDUAR</option>
+    <option value="BANKURA">BANKURA</option>
+    <option value="PASCHIM BARDHAMAN">PASCHIM BARDHAMAN</option>
+    <option value="PURBA BARDHAMAN">PURBA BARDHAMAN</option>
+    <option value="BIRBHUM">BIRBHUM</option>
+    <option value="COOCH BEHAR">COOCH BEHAR</option>
+    <option value="DARJEELING">DARJEELING</option>
+    <option value="UTTAR DINAJPUR">UTTAR DINAJPUR</option>
+    <option value="DAKSHIN DINAJPUR">DAKSHIN DINAJPUR</option>
+    <option value="HOOGLY">HOOGLY</option>
+    <option value="HOWRAH">HOWRAH</option>
+    <option value="JALPAIGURI">JALPAIGURI</option>
+    <option value="JHARGRAM">JHARGRAM</option>
+    <option value="KOLKATA">KOLKATA</option>
+    <option value="KALIMPONG">KALIMPONG</option>
+    <option value="MALDA">MALDA</option>
+    <option value="PASCHIM MEDINIPUR">PASCHIM MEDINIPUR</option>
+    <option value="PURBA MEDINIPUR">PURBA MEDINIPUR</option>
+    <option value="MURSHIDABAD">MURSHIDABAD</option>
+    <option value="NADIA">NADIA</option>
+    <option value="NORTH 24 PARGANAS">NORTH 24 PARGANAS</option>
+    <option value="SOUTH 24 PARGANAS">SOUTH 24 PARGANAS</option>
+    <option value="PURULIA">PURULIA</option>
+		</select>
+		</label>
+        </div>
+<div class="section"><span>4</span>Block / Municipality*</div>
+    <div class="inner-wrap">
+	<input type="text" name="gblock" id="gblock" required="true" placeholder="Enter your Block / Municipality">
+    </div>
+<div class="section"><span>5</span>Panchayat</div>
+    <div class="inner-wrap">
+	<input type="text" name="gpanchayat" id="gpanchayat" value="" placeholder="Enter your Panchayat">
+    </div>
+<div class="section"><span>6</span>Post Office*</div>
+    <div class="inner-wrap">
+	<input type="text" name="gpo" id="gpo" required="true" placeholder="Enter your Post Office">
+    </div>
+<div class="section"><span>7</span>Police Station*</div>
+    <div class="inner-wrap">
+	<input type="text" name="gps" id="gps" required="true" placeholder="Enter your Police Station">
+    </div>
+<div class="section"><span>8</span>PIN Code*</div>
+    <div class="inner-wrap">
+    <input type="number" name="gpin" id="gpin" required="true" maxlength="6" placeholder="Enter PIN Code" onchange="gpinlength()" >
+    </div>
+<div class="section"><span>9</span>Contact No. / Phone No.*</div>
+    <div class="inner-wrap">
+    <input type="number" name="gphone" id="gphone" required="true" maxlength="10" placeholder="Enter Contact No. / Phone No." onchange="gcontactlength()" >
+    </div>
+<div class="section"><span>10</span>Email</div>
+    <div class="inner-wrap">
+	<input type="email" name="gemail" id="gemail" value="" placeholder="Enter your Email ID">
+    </div>
+    
+
+    
+    <br>
+    <center><b style="color:black;font-family:'Times New Roman';font-size:35px">Other Information</b></center>
+    <br>
+
+
+
+
+<div class="section"><span>1</span>BPL Status</div>
+    <div class="inner-wrap">
+    <select name="bplstatus" id="bplstatus" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;" onchange="if (this.value=='YES'){this.form['bplno'].style.visibility='visible'; this.form['bplno'].value = ''; document.getElementById('bplno').required = true;}else {this.form['bplno'].style.visibility='hidden'; this.form['bplno'].value = '';document.getElementById('bplno').required = false;};">
+    <option value="NO" disabled="disabled" selected>-- Select any One --</option>
+    <option value="YES">YES</option>
+    <option value="NO">NO</option>
+    </select>
+    <br>
+    <input type="text" name="bplno" id="bplno" placeholder="Enter BPL No." style="visibility:hidden">
+    </div>
+
+<div class="section"><span>2</span>Children with Special Need</div>
+    <div class="inner-wrap">
+    <select name="cwsn" id="cwsn" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;" onchange="if (this.value=='YES'){this.form['cwsntyp'].style.visibility='visible'; this.form['cwsntyp'].value = '';document.getElementById('cwsntyp').required = true;}else {this.form['cwsntyp'].style.visibility='hidden';this.form['cwsntyp'].value = '';document.getElementById('cwsntyp').required = false;};">
+    <option value="NO" disabled="disabled" selected>-- Select any One --</option>
+    <option value="YES">YES</option>
+    <option value="NO">NO</option>
+    </select>
+    <br>
+    <select name="cwsntyp" id="cwsntyp" style="visibility:collapse; padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;">
+    <option value="NA" disabled="disabled" selected>-- Select any One --</option>
+    <option value="NOT APPLICABLE">NOT APPLICABLE</option>
+    <option value="BLINDNESS">BLINDNESS</option>
+    <option value="LOW-VISION">LOW-VISION</option>
+    <option value="HEARING IMPAIRMENT (DEAF AND HARD OF HEARING)">HEARING IMPAIRMENT (DEAF AND HARD OF HEARING)</option>
+    <option value="SPEECH NAD LANGUAGE DISABILITY">SPEECH NAD LANGUAGE DISABILITY</option>
+    <option value="LOCOMOTOR DISABILITY">LOCOMOTOR DISABILITY</option>
+    <option value="MENTAL ILLNESS">MENTAL ILLNESS</option>
+    <option value="SPECIFIC LEARNING DISABILITIES">SPECIFIC LEARNING DISABILITIES</option>
+    <option value="CEREBRAL PALSY">CEREBRAL PALSY</option>
+    <option value="AUTISM SPECTRUM DISORDER">AUTISM SPECTRUM DISORDER</option>
+    <option value="MULTIPLE DISABILITIES INCLUDING DEAF BLINDNESS">MULTIPLE DISABILITIES INCLUDING DEAF BLINDNESS</option>
+    <option value="LEPROSY CURED PERSONS">LEPROSY CURED PERSONS</option>
+    <option value="DWARFISM">DWARFISM</option>
+    <option value="INTELLECTUAL DISABILITY">INTELLECTUAL DISABILITY</option>
+    <option value="MUSCULAR DYSTROPHY">MUSCULAR DYSTROPHY</option>
+    <option value="CHRONIC NEUROLOGICAL CONDITIONS">CHRONIC NEUROLOGICAL CONDITIONS</option>
+    <option value="MULTIPLE SCLEROSIS">MULTIPLE SCLEROSIS</option>
+    <option value="THALASSEMIA">THALASSEMIA</option>
+    <option value="HEMOPHILIA">HEMOPHILIA</option>
+    <option value="SICKLE CELL DISEASE">SICKLE CELL DISEASE</option>
+    <option value="PARKINSONS DISEASE">PARKINSONS DISEASE</option>
+    <option value="ACID ATTACK VICTIM">ACID ATTACK VICTIM</option>
+    </select>
+    </div>
+    
+    
+    
+    
+    <br>
+    <center><b style="color:black;font-family:'Times New Roman';font-size:35px">Bank Details</b></center>
+    <br>
+    
+    
+<div class="section"><span>1</span>Bank Name*</div>
+    	<div class="inner-wrap">
+    	<select name="bname" id="bname" required="true" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;">
+<option value="NA" disabled="disabled" selected>-- Select any One --</option>
+<option value="ALLAHABAD BANK">	ALLAHABAD BANK	</option>
+<option value="ANDHRA BANK">	ANDHRA BANK	</option>
+<option value="AXIS BANK">	AXIS BANK	</option>
+<option value="B N P PARIBAS">	B N P PARIBAS	</option>
+<option value="BANDHAN BANK LIMITED">	BANDHAN BANK LIMITED	</option>
+<option value="BANK OF AMERICA">	BANK OF AMERICA	</option>
+<option value="BANK OF BARODA">	BANK OF BARODA	</option>
+<option value="BANK OF INDIA">	BANK OF INDIA	</option>
+<option value="BANK OF MAHARASHTRA">	BANK OF MAHARASHTRA	</option>
+<option value="BHARATIYA MAHILA BANK LIMITED">	BHARATIYA MAHILA BANK LIMITED	</option>
+<option value="CANARA BANK">	CANARA BANK	</option>
+<option value="CATHOLIC SYRIAN BANK LIMITED">	CATHOLIC SYRIAN BANK LIMITED	</option>
+<option value="CENTRAL BANK OF INDIA">	CENTRAL BANK OF INDIA	</option>
+<option value="CITI BANK">	CITI BANK	</option>
+<option value="CITY UNION BANK LIMITED">	CITY UNION BANK LIMITED	</option>
+<option value="CORPORATION BANK">	CORPORATION BANK	</option>
+<option value="DCB BANK LIMITED">	DCB BANK LIMITED	</option>
+<option value="DENA BANK">	DENA BANK	</option>
+<option value="DEUSTCHE BANK">	DEUSTCHE BANK	</option>
+<option value="DEVELOPMENT BANK OF SINGAPORE">	DEVELOPMENT BANK OF SINGAPORE	</option>
+<option value="DHANALAKSHMI BANK">	DHANALAKSHMI BANK	</option>
+<option value="FEDERAL BANK">	FEDERAL BANK	</option>
+<option value="HDFC BANK">	HDFC BANK	</option>
+<option value="HSBC BANK">	HSBC BANK	</option>
+<option value="ICICI BANK LIMITED">	ICICI BANK LIMITED	</option>
+<option value="IDBI BANK">	IDBI BANK	</option>
+<option value="INDIAN BANK">	INDIAN BANK	</option>
+<option value="INDIAN OVERSEAS BANK">	INDIAN OVERSEAS BANK	</option>
+<option value="INDUSIND BANK">	INDUSIND BANK	</option>
+<option value="ING VYSYA BANK">	ING VYSYA BANK	</option>
+<option value="JAMMU AND KASHMIR BANK LIMITED">	JAMMU AND KASHMIR BANK LIMITED	</option>
+<option value="KARNATAKA BANK LIMITED">	KARNATAKA BANK LIMITED	</option>
+<option value="KARUR VYSYA BANK">	KARUR VYSYA BANK	</option>
+<option value="KOTAK MAHINDRA BANK LIMITED">	KOTAK MAHINDRA BANK LIMITED	</option>
+<option value="LAXMI VILAS BANK">	LAXMI VILAS BANK	</option>
+<option value="ORIENTAL BANK OF COMMERCE">	ORIENTAL BANK OF COMMERCE	</option>
+<option value="PUNJAB AND SIND BANK">	PUNJAB AND SIND BANK	</option>
+<option value="PUNJAB NATIONAL BANK">	PUNJAB NATIONAL BANK	</option>
+<option value="RATNAKAR BANK LIMITED">	RATNAKAR BANK LIMITED	</option>
+<option value="RESERVE BANK OF INDIA">	RESERVE BANK OF INDIA	</option>
+<option value="SOUTH INDIAN BANK">	SOUTH INDIAN BANK	</option>
+<option value="STANDARD CHARTERED BANK">	STANDARD CHARTERED BANK	</option>
+<option value="STATE BANK OF BIKANER AND JAIPUR">	STATE BANK OF BIKANER AND JAIPUR	</option>
+<option value="STATE BANK OF HYDERABAD">	STATE BANK OF HYDERABAD	</option>
+<option value="STATE BANK OF INDIA">	STATE BANK OF INDIA	</option>
+<option value="STATE BANK OF MYSORE">	STATE BANK OF MYSORE	</option>
+<option value="STATE BANK OF PATIALA">	STATE BANK OF PATIALA	</option>
+<option value="STATE BANK OF TRAVANCORE">	STATE BANK OF TRAVANCORE	</option>
+<option value="SYNDICATE BANK">	SYNDICATE BANK	</option>
+<option value="TAMILNAD MERCANTILE BANK LIMITED">	TAMILNAD MERCANTILE BANK LIMITED	</option>
+<option value="THE ROYAL BANK OF SCOTLAND N V">	THE ROYAL BANK OF SCOTLAND N V	</option>
+<option value="THE WEST BENGAL STATE COOPERATIVE BANK">	THE WEST BENGAL STATE COOPERATIVE BANK	</option>
+<option value="UCO BANK">	UCO BANK	</option>
+<option value="UNION BANK OF INDIA">	UNION BANK OF INDIA	</option>
+<option value="UNITED BANK OF INDIA">	UNITED BANK OF INDIA	</option>
+<option value="VIJAYA BANK">	VIJAYA BANK	</option>
+<option value="YES BANK">	YES BANK	</option>
+
+    	</select>
+        </div>
+<div class="section"><span>2</span>Branch Code*</div>
+        <div class="inner-wrap">
+        <input type="number" name="bcode" id="bcode" required="true" value="" placeholder="Enter Branch Code" maxlength="13">
+        </div>
+<div class="section"><span>3</span>IFSC Code*</div>
+        <div class="inner-wrap">
+        <input type="text" name="bifsc" id="bifsc" required="true" value="" placeholder="Enter IFSC Code">
+        </div>
+<div class="section"><span>4</span>Account No.*</div>
+        <div class="inner-wrap">
+        <input type="number" name="acno" id="acno" required="true" value="" placeholder="Enter Account No.">
+        </div>
+    
+
+
+       <br>
+    <center><b style="color:black;font-family:'Times New Roman';font-size:35px">Your Uploads</b></center>
+    <br>
+    	<div class="section"><span>1</span>Photo*</div>
+        <div class="inner-wrap">
+        <img id="photo" src="img/photo.png" style="height:250px;width:250px;" alt="Choose your photo" /> <br>
+		<progress value="0" max="100" id="uploader1">0%</progress>
+		<input type="file" value="upload1" accept="image/png, image/jpeg" id="fileButton1">
+		<input type="text" name="updphoto" id="updphoto" required="true" value="" style="display:none">
+		</div>
+		
+        <div class="section"><span>2</span>Signature*</div>
+        <div class="inner-wrap">
+        <img id="signature" src="img/Signature.png" style="height:80px;width:300px" alt="Choose your signature" /> <br>
+        <progress value="0" max="100" id="uploader2">0%</progress>
+        <input type="file" value="upload2" accept="image/png, image/jpeg" id="fileButton2">
+        <input type="text" name="updsign" id="updsign" value="" style="display:none">
+		</div>
+
+		<div class="section"><span>3</span>Birth Certificate or MP Admit Card*</div>
+        <div class="inner-wrap">
+        <img id="bproof" src="img/doc.png" style="height:250px;width:250px" alt="Browse for Birth Certificate or MP Admit Card" /> <br>
+        <progress value="0" max="100" id="uploader3">0%</progress>
+        <input type="file" value="upload3" accept="image/png, image/jpeg" id="fileButton3">
+        <input type="text" name="updbproof" id="updbproof" required="true" value="" style="display:none">
+		</div>
+
+		<div class="section"><span>4</span>Transfer Certificate / School Leaving Certificate</div>
+        <div class="inner-wrap">
+        <img id="slc" src="img/doc.png" style="height:250px;width:250px" alt="Browse for Transfer Certificate or School Leaving Certificate" /> <br>
+        <progress value="0" max="100" id="uploader4">0%</progress>
+        <input type="file" value="upload4" accept="image/png, image/jpeg" id="fileButton4">
+        <input type="text" name="updslc" id="updslc" value="" style="display:none">
+		</div>
+
+		<div class="section"><span>5</span>Aadhaar Card</div>
+        <div class="inner-wrap">
+        <img id="aadhaarpic" src="img/doc.png" style="height:250px;width:250px" alt="Browse for Aadhaar Card" /> <br>
+        <progress value="0" max="100" id="uploader5">0%</progress>
+        <input type="file" value="upload5" accept="image/png, image/jpeg" id="fileButton5">
+        <input type="text" name="updaadhaarpic" id="updaadhaarpic" value="" style="display:none">
+		</div>
+
+		<div class="section"><span>6</span>Bank Pass Book*</div>
+        <div class="inner-wrap">
+        <img id="bpass" src="img/doc.png" style="height:250px;width:250px" alt="Browse for Bank Pass Book" /> <br>
+        <progress value="0" max="100" id="uploader6">0%</progress>
+        <input type="file" value="upload6" accept="image/png, image/jpeg" id="fileButton6">
+        <input type="text" name="updbpass" id="updbpass" required="true" value="" style="display:none">
+		</div>
+		
+		<div class="section"><span>7</span>Caste Certificate(If applicable)</div>
+        <div class="inner-wrap">
+        <img id="caste" src="img/doc.png" style="height:250px;width:250px" alt="Browse for Cast Certificate" /> <br>
+        <progress value="0" max="100" id="uploader7">0%</progress>
+        <input type="file" value="upload7" accept="image/png, image/jpeg" id="fileButton7">
+        <input type="text" name="updcaste" id="updcaste" value="" style="display:none">
+		</div>
+
+
+	
+	<label class="container" style="font-family:'Times New Roman', Times, serif; font-size:large; font-style:oblique; color:black">
+    <b>I have read and checked all details provided here and from my best knowing all is true.</b>
+  <input type="checkbox" id="submitcheck" name="submitcheck" value="NA" onchange="toggleCheckbox(this)">
+  <span class="checkmark"></span>
+	</label>
+
+    <center><div class="button-section">
+     <button type="submit" class="button" id="submitbtn" disabled="disabled">Submit</button>
+         </div></center>
+</form>
+<div class="button" id="thankyou" style="display:none;font-size:25px">
+		<p type="text" name="appidsetval" id="appidsetval" value="" placeholder="Your Application ID" style="display:none">
+      <center>
+		<p><strong>Your Modified application form is submitted successfully.</strong>
+      <br>Now you can Log In with your Application ID as Login Id and Date Of Birth as Password.</p>
+    </center>
+    <input type="button" name="printbtn" value="LogIn" onclick="previewall()">
+</div>
+    
+</div>
+
+</div>
+
+  <center><p class="foooter">All Rights Reserved ©Dhola High School. | Powered by <a href="http://quantumwebgarden.in/" target="_blank">Quantum Webgarden</a></p></center>
+
+
+<link class="jsbin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+<script src="js/edit.js"></script>
+
+
+<script>
+ var max_limit = 4; // Max Limit
+$(document).ready(function (){
+    $(".prch:input:checkbox").each(function (index){
+        this.checked = (".prch:input:checkbox" < max_limit);
+    }).change(function (){
+        if ($(".prch:input:checkbox:checked").length > max_limit){
+            this.checked = false;
+        }
+        
+        var favorite = [];
+            $.each($("input[name='check']:checked"), function(){            
+                favorite.push($(this).val());
+                //$("#prfsubs").text("Your selected subjects are: " + favorite.join(", "));
+                $("#prfcomp1").val(favorite[0]);
+                $("#prfcomp2").val(favorite[1]);
+                $("#prfsub1").val(favorite[2]);
+                $("#prfsub2").val(favorite[3]);
+                $("#prfsub3").val(favorite[4]);
+                $("#prfsub4").val(favorite[5]);
+                });        
+    });
+});
+
+</script>
+<script type="text/javascript">
+  
+ function previewall(){
+ alert("Your Modification is successful. Get your Modified Application Form after successful Login.");
+ chkn();
+ }
+</script>
+</body>
+</html>
