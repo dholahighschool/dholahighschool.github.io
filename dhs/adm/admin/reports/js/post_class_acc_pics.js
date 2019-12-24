@@ -15,6 +15,7 @@ function getParams(){
             //ccode = unescape(params["ccode"]);
             
 	    cnt = 0;
+	    var extn = ".jpg";
             $("#clsdtls").html("Details of Students Applied & Admitted in Class : <b>" + strm + "</b><br>");
 
 var config = {
@@ -53,7 +54,7 @@ var appid = snap.child("appid").val();
 
 if(prclass==strm)
 {
-$("#table_body").append("<tr><td>" + appid + "</td><td>CLASS " + prclass + "</td><td>" + prsec + "</td><td>" + prroll + "</td><td><img src=\"" + updphoto + "\" download=\"" + appid + ".jpg\" height=100 width=100></img></td><td><img src=\"" + updsign + "\"  height=100 width=100></img></td><td><img src=\"" + updbproof + "\"  height=100 width=100></img></td><td><img src=\"" + updslc + "\"  height=100 width=100></img></td><td><img src=\"" + updaadhaarpic + "\"  height=100 width=100></img></td><td><img src=\"" + updbpass + "\"  height=100 width=100></img></td><td><img src=\"" + updcaste + "\"  height=100 width=100></img></td></tr>");
+$("#table_body").append("<tr><td>" + appid + "</td><td>CLASS " + prclass + "</td><td>" + prsec + "</td><td>" + prroll + "</td><td><img src=\"" + updphoto + "\" height=100 width=100></img><br><a href=\"" + updphoto + "\">Download</a></td><td><img src=\"" + updsign + "\"  height=100 width=100></img></td><td><img src=\"" + updbproof + "\"  height=100 width=100></img></td><td><img src=\"" + updslc + "\"  height=100 width=100></img></td><td><img src=\"" + updaadhaarpic + "\"  height=100 width=100></img></td><td><img src=\"" + updbpass + "\"  height=100 width=100></img></td><td><img src=\"" + updcaste + "\"  height=100 width=100></img></td></tr>");
 }
 
 });
