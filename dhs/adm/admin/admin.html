@@ -129,6 +129,15 @@ input[type=submit]{
 
 </style>
 <style type="text/css">
+	input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 3px solid #929cde;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
 input[type=button]{
   background-color: #4CAF50;
   border: none;
@@ -356,11 +365,11 @@ function GetDynamicTextBox(value) {
 									  <li class="resp-tab-item" aria-controls="tab_item-2" role="tab">
 									  	<span>Overall Reports</span>
 									  </li>
-                    <li class="resp-tab-item" aria-controls="tab_item-3" role="tab">
-                      <span>Notice update</span>
-                    </li>
+                    					<li class="resp-tab-item" aria-controls="tab_item-3" role="tab">
+                      						<span>Notice Management</span>
+                    					</li>
 									  <li class="resp-tab-item" aria-controls="tab_item-4" role="tab">
-									  	<span>Settings & Others</span>
+									  	<span>Admission Management</span>
 									  </li>
 
 								</ul>		
@@ -510,7 +519,7 @@ function GetDynamicTextBox(value) {
 
                     <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-3">
                       <div class="profile-content">
-                        <h3>Notice Update Portal</h3>
+                        <h3>Notice Management Portal</h3>
                                               
                         <div>
 
@@ -563,10 +572,18 @@ function GetDynamicTextBox(value) {
 		<!-- Tab 4 -->					
                     <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-4">
 											<div class="hobby">
-												<h3>Settings & More</h3>
+												<h3>Admission Management</h3>
 												<div style="height:100px; width:100%"></div>
 												<div class="hobby-info">
-                          <p>More Settings are comming soon.</p>
+													
+														<label style="color: white; padding: 8px; font-family: Arial; background-color: #2196F3;">Student Admission Management</label><br><br>
+													<input type="text" name="appid" id="appid" style="width: 250px" placeholder="Enter Application ID here"> <br><br>
+													<input type="submit" value="Edit the Application Form" name="edit" onclick="toEdit()"> &nbsp;
+													<input type="submit" value="Class IX Login" name="ixlogin" onclick="toixLogin()"> &nbsp;
+													<input type="submit" value="VI - VIII Login" name="vilogin" onclick="toviLogin()"> &nbsp;
+													<input type="submit" value="Admission Status Update" name="admstupd" onclick="admstupd()"> &nbsp; <br><br>
+
+												
 												</div>
 											</div>
 										</div>
@@ -585,6 +602,6 @@ function GetDynamicTextBox(value) {
 <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
 <script src="js/admin.js"></script>
 <script src="js/adminmain.js"></script>
-
+<script src="js/adm.js"></script>
 </body>
 </html>
