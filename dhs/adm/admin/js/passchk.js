@@ -1,6 +1,12 @@
 function adminpass() {
   swal("Dhola High School","Enter Admin Password Here:", {
-  content: "input",
+    content: {
+    element: "input",
+    attributes: {
+      placeholder: "Type your password",
+      type: "password",
+    },
+  },
 })
   .then((value) => {
 
