@@ -1,0 +1,68 @@
+<html>
+<head>
+
+<title>Dhola High School</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<Script src="https://code.jquery.com/jquery-3.3.1.js" type="text/javascript"></Script>  
+<style>
+tab_report {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 3px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #acc2e5;
+}
+</style>
+<style type="text/css">
+input[type=button]{
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+<div id="divmnu">
+  <center><h2>Dhola High School : Online Admission</h2>
+  <p>Merit List for the Class : <b>VIII</b></center>
+</div>
+<center>
+<table id="tab_report">
+  
+<tr>
+<th>	Application ID	</th>
+<th>	Name	</th>
+<th>	Class	</th>
+<th>	Guardian's name	</th>
+</tr>
+   
+   <tbody id="table_body">
+	
+   </tbody>
+   
+<tr>
+<th>  Application ID  </th>
+<th>  Name  </th>
+<th>  Class </th>
+<th>  Guardian's name </th>
+</tr>
+   
+</table>
+</center>
+<script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+<script src="js/meritVIII.js"></script>
+</body>
+</html>
