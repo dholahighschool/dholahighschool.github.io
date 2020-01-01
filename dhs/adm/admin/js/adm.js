@@ -30,3 +30,11 @@ var uid = document.getElementById("appid").value;
           window.open("../student/admission.html");
         }
     }
+    function slstupd(){
+var uid = document.getElementById("appid").value;
+    if (window.sessionStorage) 
+        {
+          sessionStorage.setItem("username", uid);
+          window.open("../student/selection.html");
+        }
+    }
