@@ -29,7 +29,7 @@ body{
 	max-width:900px;
 	padding:30px;
 	margin:40px auto;
-	background:rgba(245, 245, 93, 0.5);
+	background:rgba(59, 237, 86, 0.5);
 	border-radius: 10px;
 	-webkit-border-radius:10px;
 	-moz-border-radius: 10px;
@@ -316,7 +316,7 @@ h2 {
 <!--
 <img src="img/dhola.jpg" height="60px" width="60px" />
 -->
-Admission Form
+Selection Form
 <!--
 <img src="img/dhola.jpg" height="60px" width="60px" />
 -->
@@ -330,24 +330,52 @@ Admission Form
 
 <div class="list-type5">
 <ol>
-<li><a>Fillup admission details carefully.</a></li>
+<li><a>Fillup selection details carefully. All fields are mandatory.</a></li>
 <li><a>Pre-filled details are shown as filled up by the students.</a></li>
 </ol>
 </div>
   <br>
  </fieldset>
 <br>
-<h2><center>Pre-filled Student Details and Admission Status Update Portal</center></h2>
+<h2><center>Pre-filled Student Details and Selection Status Update Portal</center></h2>
 </div>
 <form class="pure-form pure-form-stacked" id="contactForm">  
  	<br>
-    <center><b style="color:black;font-family:'Times New Roman';font-size:35px">Basic Information</b></center>
+    <center><b style="color:black;font-family:'Times New Roman';font-size:35px">Selection to Merit List</b></center>
     <br>
     
-<div class="section"><span>1</span>Student Name*</div>
+<div class="section"><span>1</span>Student Name</div>
     <div class="inner-wrap">
-	<input type="text" name="name" id="name" required="true" placeholder="Enter Student's Full Name">
+	<input type="text" name="name" disabled="true" id="name" required="true" placeholder="Enter Student's Full Name">
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+<div style="display:none">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="section"><span>2</span>Date Of Birth*</div>
     <div class="inner-wrap">
         <input type="date" name="dob" id="dob" required="true" placeholder="Enter Date of Birth">
@@ -464,6 +492,18 @@ Admission Form
 	<input type="text" name="acyear" id="acyear" disabled="disabled" required="true" value="2020">
     </div>
     
+<div class="section" style="display:none"><span>2</span>Admission No.</div>
+    <div class="inner-wrap" style="display:none">
+	<input type="text" name="admno" id="admno" value="" placeholder="Enter Admission No.">
+    </div>
+<div class="section" style="display:none"><span>3</span>Admission Date</div>
+    <div class="inner-wrap" style="display:none">
+    <input type="date" name="admdate" id="admdate" value="" placeholder="Enter Date of Birth">
+    </div>
+<div class="section" style="display:none"><span>2</span>Admission Status</div>
+    <div class="inner-wrap" style="display:none">
+  <input type="text" name="admstatus" id="admstatus" value="NO">
+    </div>
     
 <div class="section"><span>2</span>Apply for which Class*</div>
         <div class="inner-wrap" id="checkboxgr1">
@@ -649,6 +689,31 @@ Admission Form
 		</label>
         </div>
                 
+        
+        <div class="section" style="display:none"><span>5</span>Present Section</div>
+        <div class="inner-wrap" style="display:none">
+        <label>
+        <select name="prsec" id="prsec" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;">
+    <option value="NA" disabled="disabled" selected>-- Select any One --</option>
+    <option value="A">A</option>
+    <option value="B">B</option>
+    <option value="C">C</option>
+    <option value="D">D</option>
+    <option value="E">E</option>
+    <option value="F">F</option>
+    <option value="G">G</option>
+    <option value="H">H</option>
+    <option value="I">I</option>
+    <option value="J">J</option>
+    <option value="NA">Not Applicable</option>
+      	</select>
+		</label>
+        </div>
+        
+        <div class="section" style="display:none"><span>6</span>Present Roll No.</div>
+    	<div class="inner-wrap" style="display:none">
+    	<input type="number" name="prroll" id="prroll" value="" maxlength="3" placeholder="Enter Present Roll No." >
+    	</div>
     	
 	<div class="section"><span>3</span>Previous School Name*</div>
     	<div class="inner-wrap">
@@ -825,10 +890,41 @@ Admission Form
     <div class="inner-wrap">
 	<input type="text" name="mname" id="mname" value="" placeholder="Enter your Mather's Name">
     </div>
-<div class="section"><span>3</span>Guardian's Name*</div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="section"><span>2</span>Guardian's Name</div>
     <div class="inner-wrap">
-	<input type="text" name="gname" id="gname" required="true" placeholder="Enter your Guardian's Name">
+	<input type="text" name="gname" id="gname" disabled="true" required="true" placeholder="Enter your Guardian's Name">
     </div>
+
+
+
+
+
+
+<div style="display:none">
+
+
+
+
+
+
+
+
+
 <div class="section"><span>4</span>Relationship (with Guardian)*</div>
         <div class="inner-wrap">
         <label>
@@ -1142,61 +1238,35 @@ Admission Form
 
 
 
-<br>
-    <center><b style="color:black;font-family:'Times New Roman';font-size:35px">Set Admission Details (Admin Only)*</b>
-    	<p><b>All Fields are Mandatory</b></p></center>
-    <br>
 
-<div class="section"><span>1</span>Alloted Section*</div>
-        <div class="inner-wrap">
-        <label>
-        <select name="prsec" id="prsec" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;">
-    <option value="NA" disabled="disabled" selected>-- Select any One --</option>
-    <option value="A">A</option>
-    <option value="B">B</option>
-    <option value="C">C</option>
-    <option value="D">D</option>
-    <option value="E">E</option>
-    <option value="F">F</option>
-    <option value="G">G</option>
-    <option value="H">H</option>
-    <option value="I">I</option>
-    <option value="J">J</option>
-    <option value="NA">Not Applicable</option>
-      	</select>
-		</label>
-        </div>
-        
-        <div class="section"><span>2</span>Alloted Roll No.*</div>
-    	<div class="inner-wrap">
-    	<input type="number" name="prroll" id="prroll" value="" maxlength="3" placeholder="Enter Alloted Roll No." >
-    	</div>
 
-<div class="section"><span>3</span>Admission No.*</div>
-    <div class="inner-wrap">
-	<input type="text" name="admno" id="admno" value="" placeholder="Enter Admission No.">
-    </div>
-<div class="section"><span>4</span>Admission Date*</div>
-    <div class="inner-wrap">
-    <input type="date" name="admdate" id="admdate" value="" placeholder="Enter Date of Birth">
-    </div>
 
-<div class="section"><span>5</span>Admission Status*</div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="section"><span>3</span>Selection Status</div>
     <div class="inner-wrap">
-    <label><select name="admstatus" id="admstatus" required="true" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;">
+    <label><select name="slstatus" id="slstatus" required="true" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;">
     <option value="NA" disabled="disabled" selected>-- Select any One --</option>
     <option value="YES">YES</option>
     <option value="NO">NO</option>
     </select>
-	</label>
+  </label>
     </div>
 
 
+	
 	<label class="container" style="font-family:'Times New Roman', Times, serif; font-size:large; font-style:oblique; color:black">
     <b>Re-check all details and click it before Proceed to submit.</b>
   <input type="checkbox" id="submitcheck" name="submitcheck" value="NA" onchange="toggleCheckbox(this)">
   <span class="checkmark"></span>
-	</label>
+  </label>
 
     <center><div class="button-section">
      <button type="submit" class="button" id="submitbtn" disabled="disabled">Submit</button> &nbsp; &nbsp; 
@@ -1204,25 +1274,25 @@ Admission Form
          </div></center>
 </form>
 <div class="button" id="thankyou" style="display:none;font-size:25px">
-		<p type="text" name="appidsetval" id="appidsetval" value="" placeholder="Your Application ID" style="display:none">
+    <p type="text" name="appidsetval" id="appidsetval" value="" placeholder="Your Application ID" style="display:none">
       <center>
-		<p><strong>Admission Status</strong></p><br>
-      <p id="idset">Admission is not Sucessful</p><br>
+    <p><strong>Selection Status</strong></p><br>
+      <p id="idset">Selection is not Sucessful</p><br>
     </center>
-    <input type="button" name="printbtn" value="LogIn" onclick="previewall()">
+    <input type="button" name="printbtn" value="Done" onclick="previewall()">
 </div>
     
 </div>
 
 </div>
 
-  <center><p class="foooter">All Rights Reserved © Dhola High School. | Powered by <a href="http://quantumwebgarden.in/" target="_blank">Quantum Webgarden</a></p></center>
+  <center><p class="foooter">All Rights Reserved ©Dhola High School. | Powered by <a href="http://quantumwebgarden.in/" target="_blank">Quantum Webgarden</a></p></center>
 
 
 <link class="jsbin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
 <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
-<script src="js/admission.js"></script>
+<script src="js/selection.js"></script>
 
 
 <script>
@@ -1251,21 +1321,22 @@ $(document).ready(function (){
 
 </script>
 <script type="text/javascript">
+  
  function previewall(){
- swal("Admission Successful!", "Click Ok to admit another student.", "success")
+ swal("Selection for Merit list is Successful!", "Click Ok to select another student.", "success")
 .then((value) => {
   window.open("../admin/admin.html");
  window.close();
 });
  }
  function cncl(){
- 	swal("Admission Rejected!", "Click Ok to cancel this admission or to admit another student.", "error")
+  swal("Selection Rejected!", "Click Ok to cancel this selection or to select another student.", "error")
 .then((value) => {
-	if (value) {
+  if (value) {
     window.open("../admin/admin.html");
- 	window.close();
+  window.close();
   } else {
-    swal("You have not cancelled the admission. \nPlease enter admision details as required.");
+    swal("You have not cancelled the selection. \nPlease enter selection details as required.");
   }
 /*
   window.open("admin/adm/index.html");

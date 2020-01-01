@@ -5,9 +5,6 @@ function getusername(){
             }
             uid = getusername();
             flag=0;
-
-
-
 var appid = uid;
 document.getElementById("idset").innerHTML = "Admision for the Application ID: <b>" + appid + "</b> is successful.";
 /*
@@ -1058,6 +1055,6 @@ function pinlength(){
    	else{
    element.checked = element.checked;
    document.getElementById("submitbtn").disabled = !element.checked;
-   swal("Dhola High School","Check all details carefully and be sure that you have uploaded your Photo, Date of Birth proof and Bank Pass Book before Submit.","info");
+   swal("Dhola High School","Check all details carefully before Submit.","info");
    }
  }

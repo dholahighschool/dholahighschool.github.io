@@ -3,19 +3,10 @@ function getusername(){
                 var username= parseInt(sessionStorage.getItem("username"));
                 return username;
             }
-function getpassword(){
-                var password= parseInt(sessionStorage.getItem("password"));
-                // = str.substring(0, 4) + "-" + str.substring(4, 6) + "-" + str.substring(6, 8);
-                return password;
-            }
             uid = getusername();
-            pswd = getpassword();
             flag=0;
-
-
 var appid = uid;
-document.getElementById("idset").innerHTML = "Application form of Application ID: <b>" + appid + "</b> is modified and updated.";
-
+document.getElementById("idset").innerHTML = "Selection for the Application ID: <b>" + appid + "</b> is successful.";
 /*
 function appidset(){
 	var date = new Date();
@@ -322,9 +313,10 @@ var updslc = getInputVal('updslc');
 var updaadhaarpic = getInputVal('updaadhaarpic');
 var updbpass = getInputVal('updbpass');
 var updcaste = getInputVal('updcaste');
+var slstatus = getInputVal('slstatus');
 
  // Save message
-  saveMessage(name,dob,dobreg,gender,category,religion,mothertongue,nationality,aadhaar,bloodgroup,healthid,idmark,acyear,admno,admstatus,prclass,pvschool,prsec,prroll,praddl,prstream,prfcomp1,prfcomp2,prfsub1,prfsub2,prfsub3,prfsub4,pvclass,pvsec,pvroll,pvstream,pvaddl,medium,vill,habitation,district,block,panchayat,po,ps,pin,phone,email,fname,mname,gname,relationship,aincome,gqualification,gvill,ghabitation,gdistrict,gblock,gpanchayat,gpo,gps,gpin,gphone,gemail,bplstatus,bplno,cwsn,cwsntyp,bname,bcode,bifsc,acno,appid,updphoto,updsign,updbproof,updslc,updaadhaarpic,updbpass,updcaste);
+  saveMessage(name,dob,dobreg,gender,category,religion,mothertongue,nationality,aadhaar,bloodgroup,healthid,idmark,acyear,admno,admstatus,prclass,pvschool,prsec,prroll,praddl,prstream,prfcomp1,prfcomp2,prfsub1,prfsub2,prfsub3,prfsub4,pvclass,pvsec,pvroll,pvstream,pvaddl,medium,vill,habitation,district,block,panchayat,po,ps,pin,phone,email,fname,mname,gname,relationship,aincome,gqualification,gvill,ghabitation,gdistrict,gblock,gpanchayat,gpo,gps,gpin,gphone,gemail,bplstatus,bplno,cwsn,cwsntyp,bname,bcode,bifsc,acno,appid,updphoto,updsign,updbproof,updslc,updaadhaarpic,updbpass,updcaste,slstatus);
 
 
   document.getElementById("contactForm").style.display = 'none';
@@ -339,7 +331,7 @@ function getInputVal(id){
 }
 
 // Save message to firebase   
-function saveMessage(name,dob,dobreg,gender,category,religion,mothertongue,nationality,aadhaar,bloodgroup,healthid,idmark,acyear,admno,admstatus,prclass,pvschool,prsec,prroll,praddl,prstream,prfcomp1,prfcomp2,prfsub1,prfsub2,prfsub3,prfsub4,pvclass,pvsec,pvroll,pvstream,pvaddl,medium,vill,habitation,district,block,panchayat,po,ps,pin,phone,email,fname,mname,gname,relationship,aincome,gqualification,gvill,ghabitation,gdistrict,gblock,gpanchayat,gpo,gps,gpin,gphone,gemail,bplstatus,bplno,cwsn,cwsntyp,bname,bcode,bifsc,acno,appid,updphoto,updsign,updbproof,updslc,updaadhaarpic,updbpass,updcaste){
+function saveMessage(name,dob,dobreg,gender,category,religion,mothertongue,nationality,aadhaar,bloodgroup,healthid,idmark,acyear,admno,admstatus,prclass,pvschool,prsec,prroll,praddl,prstream,prfcomp1,prfcomp2,prfsub1,prfsub2,prfsub3,prfsub4,pvclass,pvsec,pvroll,pvstream,pvaddl,medium,vill,habitation,district,block,panchayat,po,ps,pin,phone,email,fname,mname,gname,relationship,aincome,gqualification,gvill,ghabitation,gdistrict,gblock,gpanchayat,gpo,gps,gpin,gphone,gemail,bplstatus,bplno,cwsn,cwsntyp,bname,bcode,bifsc,acno,appid,updphoto,updsign,updbproof,updslc,updaadhaarpic,updbpass,updcaste,slstatus){
   /*
   var newMessageRef = messagesRef.push();
   MessageRef.set({
@@ -419,7 +411,8 @@ updbproof:updbproof,
 updslc:updslc,
 updaadhaarpic:updaadhaarpic,
 updbpass:updbpass,
-updcaste:updcaste
+updcaste:updcaste,
+slstatus:slstatus
   });
 }
 
@@ -895,152 +888,15 @@ function pinlength(){
 
  	function toggleCheckbox(element)
  {	
- if(document.getElementById("name").value==="" || document.getElementById("name").value==="NA"){
+ if(document.getElementById("slstatus").value==="" || document.getElementById("slstatus").value==="NA"){
    element.checked = !element.checked;
-   swal("Oops..","Enter your Full Name","error");
-   document.getElementById("name").focus();}
- 	else if(document.getElementById("dob").value==="" || document.getElementById("dob").value==="NA"){
-   element.checked = !element.checked;
-   swal("Oops..","Enter your Date of Birth","error");
-   document.getElementById("dob").focus();}
-   	else if(document.getElementById("gender").value==="" || document.getElementById("gender").value==="NA"){
-   element.checked = !element.checked;
-   swal("Oops..","Choose your Gender","error");
-   document.getElementById("gender").focus();}
-   	else if(document.getElementById("category").value==="" || document.getElementById("category").value==="NA"){
-   element.checked = !element.checked;
-   swal("Oops..","Choose your Social Category","error");
-   document.getElementById("category").focus();}
-	else if(document.getElementById("mothertongue").value==="" || document.getElementById("mothertongue").value==="NA"){
-   element.checked = !element.checked;
-   swal("Oops..","Choose your Mother Tongue","error");
-   document.getElementById("mothertongue").focus();}
-	else if(document.getElementById("nationality").value==="" || document.getElementById("nationality").value==="NA"){
-   element.checked = !element.checked;
-   swal("Oops..","Choose your Nationality","error");
-   document.getElementById("nationality").focus();}
-   
-   
-	else if(document.getElementById("prclass").value==="" || document.getElementById("prclass").value==="NA"){
-   element.checked = !element.checked;
-   swal("Oops..","Choose your Class to Apply for","error");
-   document.getElementById("prclass").focus();}
-	 else if(document.getElementById("pvschool").value==="" || document.getElementById("pvschool").value==="NA"){
-   element.checked = !element.checked;
-   swal("Oops..","Enter name of your Previous school attended.","error");
-   document.getElementById("pvschool").focus();}
-   /*
-   	else if(document.getElementById("prclass").value==="XI" || document.getElementById("prclass").value==="XII"){
-	if(document.getElementById("prstream").value==="" || document.getElementById("prstream").value==="NA"){
-   element.checked = !element.checked;
-   alert("Choose your Stream to Apply for");}
-   	else if(document.getElementById("prfcomp1").value==="" || document.getElementById("prfcomp1").value==="NA"){
-   element.checked = !element.checked;
-   alert("Choose your Compulsory Subjects");}
-   	else if(document.getElementById("prfcomp2").value==="" || document.getElementById("prfcomp2").value==="NA"){
-   element.checked = !element.checked;
-   alert("Choose your Compulsory Subjects");}
-   	else if(document.getElementById("prfsub1").value==="" || document.getElementById("prfsub1").value==="NA"){
-   element.checked = !element.checked;
-   alert("Choose your Subjects");}
-   	else if(document.getElementById("prfsub2").value==="" || document.getElementById("prfsub2").value==="NA"){
-   element.checked = !element.checked;
-   alert("Choose your Subjects");}
-   	else if(document.getElementById("prfsub3").value==="" || document.getElementById("prfsub3").value==="NA"){
-   element.checked = !element.checked;
-   alert("Choose your Subjects");}
-   	else if(document.getElementById("prfsub4").value==="" || document.getElementById("prfsub4").value==="NA"){
-   element.checked = !element.checked;
-   alert("Choose your Subjects");}
-	}   */
-	else if(document.getElementById("pvclass").value==="" || document.getElementById("pvclass").value==="NA"){
-   element.checked = !element.checked;
-   swal("Oops..","Choose your Previous Class attended","error");
-   document.getElementById("pvclass").focus();}
-	else if(document.getElementById("pvsec").value===""){
-   element.checked = !element.checked;
-   swal("Oops..","Choose your Section of previous class attended","error");
-   document.getElementById("pvsec").focus();}
-	else if(document.getElementById("medium").value==="" || document.getElementById("medium").value==="NA"){
-   element.checked = !element.checked;
-   swal("Oops..","Choose your Medium of Study","error");
-   document.getElementById("medium").focus();}
-   	else if(document.getElementById("habitation").value==="" || document.getElementById("habitation").value==="NA"){
-   element.checked = !element.checked;
-   swal("Oops..","Enter your Habitation or Locality","error");
-   document.getElementById("habitation").focus();}
-   	else if(document.getElementById("district").value==="" || document.getElementById("district").value==="NA"){
-   element.checked = !element.checked;
-   swal("Oops..","Choose your District","error");
-   document.getElementById("district").focus();}
-   	else if(document.getElementById("block").value==="" || document.getElementById("block").value==="NA"){
-   element.checked = !element.checked;
-   swal("Oops..","Enter your Block or Municipality name","error");
-   document.getElementById("municipality").focus();}
-   	else if(document.getElementById("po").value==="" || document.getElementById("po").value==="NA"){
-   element.checked = !element.checked;
-   swal("Oops..","Enter your Post Office","error");
-   document.getElementById("po").focus();}
-   	else if(document.getElementById("ps").value==="" || document.getElementById("ps").value==="NA"){
-   element.checked = !element.checked;
-   swal("Oops..","Enter your Police Station","error");
-   document.getElementById("ps").focus();}
-   	else if(document.getElementById("pin").value==="" || document.getElementById("pin").value==="NA"){
-   element.checked = !element.checked;
-   swal("Oops..","Enter your Area PIN Code","error");
-   document.getElementById("pin").focus();}
-   	else if(document.getElementById("gname").value==="" || document.getElementById("gname").value==="NA"){
-   element.checked = !element.checked;
-   swal("Oops..","Enter your Guardian's Name","error");
-   document.getElementById("gname").focus();}
-   	else if(document.getElementById("relationship").value==="" || document.getElementById("relationship").value==="NA"){
-   element.checked = !element.checked;
-   swal("Oops..","Choose your Relationship with your Guardian","error");
-   document.getElementById("relationship").focus();}
-   	else if(document.getElementById("ghabitation").value==="" || document.getElementById("ghabitation").value==="NA"){
-   element.checked = !element.checked;
-   swal("Oops..","Enter your Guardian's Habitation or Locality","error");
-   document.getElementById("ghabitation").focus();}
-   	else if(document.getElementById("gdistrict").value==="" || document.getElementById("gdistrict").value==="NA"){
-   element.checked = !element.checked;
-   swal("Oops..","Choose your Guardian's District","error");
-   document.getElementById("gdistrict").focus();}
-   	else if(document.getElementById("gblock").value==="" || document.getElementById("gblock").value==="NA"){
-   element.checked = !element.checked;
-   swal("Oops..","Enter your Guardian's Block or Municipality name","error");
-   document.getElementById("gblock").focus();}
-   	else if(document.getElementById("gpo").value==="" || document.getElementById("gpo").value==="NA"){
-   element.checked = !element.checked;
-   swal("Oops..","Enter your Guardian's Post Office","error");
-   document.getElementById("gpo").focus();}
-   	else if(document.getElementById("gps").value==="" || document.getElementById("gps").value==="NA"){
-   element.checked = !element.checked;
-   swal("Oops..","Enter your Guardian's Police Station","error");
-   document.getElementById("gps").focus();}
-   	else if(document.getElementById("gpin").value==="" || document.getElementById("gpin").value==="NA"){
-   element.checked = !element.checked;
-   swal("Oops..","Enter your Guardian's Area PIN Code","error");
-   document.getElementById("gpin").focus();}
-	 else if(document.getElementById("bname").value==="" || document.getElementById("bname").value==="NA"){
-   element.checked = !element.checked;
-   swal("Oops..","Choose Bank Name","error");
-   document.getElementById("bname").focus();}
-	 else if(document.getElementById("bcode").value==="" || document.getElementById("bcode").value==="NA"){
-   element.checked = !element.checked;
-   swal("Oops..","Enter Bank Branch Code","error");
-   document.getElementById("bcode").focus();}
-	 else if(document.getElementById("bifsc").value==="" || document.getElementById("bifsc").value==="NA"){
-   element.checked = !element.checked;
-   swal("Oops..","Enter Bank Branch IFSC Code","error");
-   document.getElementById("bifsc").focus();}
-	 else if(document.getElementById("acno").value==="" || document.getElementById("acno").value==="NA"){
-   element.checked = !element.checked;
-   swal("Oops..","Enter your Bank Account No.","error");
-   document.getElementById("acno").focus();}
+   swal("Oops..","Choose Selection Status","error");
+   document.getElementById("slstatus").focus();}
+ 	
    	   	
    	else{
    element.checked = element.checked;
    document.getElementById("submitbtn").disabled = !element.checked;
-   swal("Dhola High School","Check all details carefully and be sure that you have uploaded your Photo, Date of Birth proof and Bank Pass Book before Submit.","info");
+   swal("Dhola High School","Check all details carefully before Submit.","info");
    }
  }
