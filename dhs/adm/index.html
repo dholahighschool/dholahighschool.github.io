@@ -166,8 +166,18 @@ border-bottom-width: 3px;
 <div class="box">
 <div class="active">
 	<center>
-	<a class="active-button teal" onclick="dtchk()">Apply as new Student</a><br><br><br>
-	<a class="active-button teal" onclick="dtlg()">Log IN</a>
+	<a class="active-button teal" onclick="dtchk()" style="display: none;">Apply as new Student</a>
+	<a class="active-button teal" onclick="dtlg()">Log IN</a><br><br>
+  <section id="meritlist"></section>
+	<h2>Merit List</h2><br>
+	<a class="active-button teal" onclick="dtVI()">Class VI</a>
+	<a class="active-button teal" onclick="dtVII()">Class VII</a>
+	<br><br><br>
+	<a class="active-button teal" onclick="dtVII()">Class VIII</a>
+	<a class="active-button teal" onclick="dtIX()">Class IX</a>
+	<br><br><br>
+	
+	<br><br><br>
 	</center>
 </div>
 </div>
@@ -189,6 +199,70 @@ window.open("student/index.html");
 }
 </script>
 <script type="text/javascript">
+function dtVI() {
+var d = new Date();
+  var y = d.getFullYear();
+  var m = d.getMonth();
+  m=m+1;
+   var t = d.getDate();
+  var c= y + '-' + m + '-' + t;
+  var x = new Date(c);
+var y = new Date('2020-01-06 10:00:00 AM');
+if(+x <= +y){swal("Dhola High School","Merit List will be available from 06th January, 2020 at 10:00 AM","info");}
+else{
+window.open("student/login/meritVI.html");
+}
+}
+</script>
+<script type="text/javascript">
+function dtVII() {
+var d = new Date();
+  var y = d.getFullYear();
+  var m = d.getMonth();
+  m=m+1;
+   var t = d.getDate();
+  var c= y + '-' + m + '-' + t;
+  var x = new Date(c);
+var y = new Date('2020-01-06 10:00:00 AM');
+if(+x <= +y){swal("Dhola High School","Merit List will be available from 06th January, 2020 at 10:00 AM","info");}
+else{
+window.open("student/login/meritVII.html");
+}
+}
+</script>
+<script type="text/javascript">
+function dtVIII() {
+var d = new Date();
+  var y = d.getFullYear();
+  var m = d.getMonth();
+  m=m+1;
+   var t = d.getDate();
+  var c= y + '-' + m + '-' + t;
+  var x = new Date(c);
+var y = new Date('2020-01-06 10:00:00 AM');
+if(+x <= +y){swal("Dhola High School","Merit List will be available from 06th January, 2020 at 10:00 AM","info");}
+else{
+window.open("student/login/meritVIII.html");
+}
+}
+</script>
+<script type="text/javascript">
+function dtIX() {
+var d = new Date();
+  var y = d.getFullYear();
+  var m = d.getMonth();
+  m=m+1;
+   var t = d.getDate();
+  var c= y + '-' + m + '-' + t;
+  var x = new Date(c);
+var y = new Date('2020-01-04 10:00:00 AM');
+if(+x <= +y){swal("Dhola High School","Merit List will be available from 04th January, at 2020 10:00 AM","info");}
+else{
+window.open("student/login/meritIX.html");
+}
+}
+</script>
+<script type="text/javascript">
 function dtlg() {
 var d = new Date();
   var y = d.getFullYear();
@@ -198,8 +272,7 @@ var d = new Date();
   var c= y + '-' + m + '-' + t;
   var x = new Date(c);
 var y = new Date('2019-12-11');
-var z = new Date('2019-12-28');
-if(+x <= +y){swal("Dhola High School","Application Login Portal will be available from 12th December, 2019","info");}
+if(+x <= +y){swal("Dhola High School","Admission Portal will be available from 12th December, 2019.","info");}
 else{
 window.open("student/login/index.html");
 }
