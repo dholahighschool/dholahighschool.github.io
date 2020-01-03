@@ -21,8 +21,9 @@ var topics = snap.child("topics").val();
 var sdtls = snap.child("sdtls").val();
 var ndate = snap.child("ndate").val();
 var fdtls = snap.child("fdtls").val();
-
-$("#table_body").append("<tr><td>" + topics + "</td><td>" + ndate + "</td><td>" + sdtls + "</td><td>" + fdtls + "</td></tr>");
+var noticeupd = snap.child("noticeupd").val();
+var ntcupd = "chkdn('" + noticeupd + "')";
+  $("#table_body").append("<tr><td><h3>" + topics + "</h3></td><td>" + ndate + "</td><td><b>" + sdtls + "</b></td><td>" + fdtls + "<br><button class=\"button\" onclick=" + ntcupd + "> More Detials if any</button></h5></td></tr>");
 
 });
 setTimeout(function(){
@@ -36,3 +37,14 @@ $(window).on("load resize ", function() {
   var scrollWidth = $('.tbl-content').width() - $('.tbl-content table').width();
   $('.tbl-header').css({'padding-right':scrollWidth});
 }).resize();
+
+
+        function chkdn(parameter) { 
+           if(parameter=="#" || parameter=="#"){
+            swal("Dhola High School","No more Detials Available","info");
+           }
+           else{
+            window.open(parameter,'_blank');
+           }
+        } 
+
