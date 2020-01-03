@@ -31,10 +31,11 @@ function submitForm(e){
 var	topics = getInputVal('topics');
 var	sdtls = getInputVal('sdtls');
 var	ndate = getInputVal('ndate');
-var fdtls = getInputVal('fdtls')
+var fdtls = getInputVal('fdtls');
+var noticeupd = getInputVal('updphoto')
 
  // Save message
-  saveMessage(topics,sdtls,ndate,fdtls);
+  saveMessage(topics,sdtls,ndate,fdtls,noticeupd);
 
 
   document.getElementById("noticeAdd").style.display = 'none';
@@ -48,7 +49,7 @@ function getInputVal(id){
 }
 
 // Save message to firebase   
-function saveMessage(topics,sdtls,ndate,fdtls){
+function saveMessage(topics,sdtls,ndate,fdtls,noticeupd){
   /*
   var newMessageRef = messagesRef.push();
   MessageRef.set({
@@ -57,9 +58,79 @@ function saveMessage(topics,sdtls,ndate,fdtls){
 topics:topics,
 sdtls:sdtls,
 ndate:ndate,
-fdtls:fdtls
+fdtls:fdtls,
+noticeupd:noticeupd
   });
 }
+
+
+var fbBucketName1 = 'notices';
+
+    var uploader1 = document.getElementById('uploader1');
+    var fileButton1 = document.getElementById('fileButton1');
+    fileButton1.addEventListener('change', function (e1) {
+
+      console.log('file upload event', e1);
+      /*
+      var FileSize = e1.target.files[0].size / 1024 / 1024; // in MB
+          if (FileSize > 0.0195) 
+          {
+              swal('Oops..','File size exceeds 20 KB \n Please Choose a new Photo.','error');
+              document.getElementById('fileButton1').value = "";
+          } 
+          else 
+          {
+            var file1 = e1.target.files[0];
+          }
+          */
+      var file1 = e1.target.files[0];
+
+      var str = e1.target.files[0].type;
+      
+      var n = str.length - str.lastIndexOf("/") -1;
+      
+      var strt = str.substr(str.length - n);
+
+      var storageRef1 = firebase.storage().ref(`${fbBucketName1}/notice${noticeid}.${strt}`);
+
+      var uploadTask1 = storageRef1.put(file1);
+
+      uploadTask1.on(firebase.storage.TaskEvent.STATE_CHANGED, 
+        function (snapshot) {
+          var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          uploader1.value = progress;
+          console.log('Upload is ' + progress + '% done');
+          switch (snapshot.state) {
+            case firebase.storage.TaskState.PAUSED: 
+              console.log('Upload is paused');
+              break;
+            case firebase.storage.TaskState.RUNNING: 
+              console.log('Upload is running');
+              break;
+          }
+        }, function (error) {
+
+            switch (error.code) {
+            case 'storage/unauthorized':
+              break;
+
+            case 'storage/canceled':
+              break;
+
+            case 'storage/unknown':
+              break;
+          }
+        }, function () {
+          var downloadURL1 = uploadTask1.snapshot.downloadURL;
+          console.log('downloadURL1', downloadURL1);
+          var link1 = document.getElementById("photo");
+          link1.setAttribute("src", downloadURL1);
+          document.getElementById('updphoto').value = downloadURL1;
+        });
+
+    });
+
+
 
 function opentab(evt, tabName) {
   var i, tabcontent, tablinks;
