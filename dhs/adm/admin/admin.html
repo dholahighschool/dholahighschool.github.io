@@ -279,6 +279,106 @@ select{
 }
 </style>
 
+<style>
+/* The container */
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 18px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container .checkmark:after {
+  top: 9px;
+  left: 9px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+}
+</style>
+
+<style>
+.tabl {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+.tabl button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+.tabl button:hover {
+  background-color: #ddd;
+}
+.tabl button.active {
+  background-color: #ccc;
+}
+.tablcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+</style>
+
+<style type="text/css">
+  .w3-container,.w3-panel{padding:0.01em 16px}.w3-panel{margin-top:16px;margin-bottom:16px}
+  .w3-teal,.w3-hover-teal:hover{color:#fff!important;background-color:#009688!important}
+</style>
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <Script src="https://code.jquery.com/jquery-3.3.1.js" type="text/javascript"></Script>  
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
@@ -320,6 +420,9 @@ function GetDynamicTextBox(value) {
             '<input type="button" value="Remove" class="remove" />'
 }
 </script>
+<script src="https://www.gstatic.com/firebasejs/7.5.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.5.2/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>  
 </head>
 
 <body onload="appidset()">
@@ -386,7 +489,7 @@ function GetDynamicTextBox(value) {
 												<br>
 												<div style="height:50px; width:100%"></div>
 												<div class="center">
-													<form method="get" action="reports/pre_class_report.html">
+													<form method="get" action="reports/pre_class_report.html" target="_blank">
   												<select name="pclass" id="sources" class="custom-select sources" placeholder="Choose Class">
     											<option value="V">CLASS V</option>
     											<option value="VI">CLASS VI</option>
@@ -426,7 +529,7 @@ function GetDynamicTextBox(value) {
                         <div id="admitted" class="tabcontent">
 
                           <div class="center">
-                          <form method="get" action="reports/post_class_report-acc.html">
+                          <form method="get" action="reports/post_class_report-acc.html" target="_blank">
                           <select name="pclass" id="sources" class="custom-select sources" placeholder="Choose Class">
                           <option value="V">CLASS V</option>
                           <option value="VI">CLASS VI</option>
@@ -448,7 +551,7 @@ function GetDynamicTextBox(value) {
                         <div id="rejected" class="tabcontent">
                           
                           <div class="center">
-                          <form method="get" action="reports/post_class_report-rej.html">
+                          <form method="get" action="reports/post_class_report-rej.html" target="_blank">
                           <select name="pclass" id="sources" class="custom-select sources" placeholder="Choose Class">
                           <option value="V">CLASS V</option>
                           <option value="VI">CLASS VI</option>
@@ -469,7 +572,7 @@ function GetDynamicTextBox(value) {
                         <div id="uploaded" class="tabcontent">
 
                           <div class="center">
-                          <form method="get" action="reports/post_class_acc_pics.html">
+                          <form method="get" action="reports/post_class_acc_pics.html" target="_blank">
                           <select name="pclass" id="sources" class="custom-select sources" placeholder="Choose Class">
                           <option value="V">CLASS V</option>
                           <option value="VI">CLASS VI</option>
@@ -498,15 +601,15 @@ function GetDynamicTextBox(value) {
 																							
 												<br>
 												<div style="height:100px; width:100%"></div>
-													<form action="reports/all_report.html">
+													<form action="reports/all_report.html" target="_blank">
     													<input type="submit" value="All Applied Student Report" style="background-color: #ff5685" />
 													</form>
 												<br>
-												<form action="reports/admitted_report.html">
+												<form action="reports/admitted_report.html" target="_blank">
     													<input type="submit" value="Admitted Student Report" style="background-color: #ff5685" />
 													</form>
 												<br>
-												<form action="reports/rejected_report.html">
+												<form action="reports/rejected_report.html" target="_blank">
     													<input type="submit" value="Rejected Student Report" style="background-color: #ff5685" />
 													</form>
 												<br>
@@ -520,10 +623,17 @@ function GetDynamicTextBox(value) {
                     <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-3">
                       <div class="profile-content">
                         <h3>Notice Management Portal</h3>
-                                              
-                        <div>
+                               
 
-  <form id="noticeAdd">
+<div class="tabl">
+  <button class="tabllinks" onclick="opentl(event, 'addnotice')">Add New Notice</button>
+  <button class="tabllinks" onclick="opentl(event, 'editnotice')">Edit Notice</button>
+  <button class="tabllinks" onclick="opentl(event, 'removenotice')">Remove Notice</button>
+</div>
+
+<div id="addnotice" class="tablcontent">
+  <h3>Add New Notice</h3>
+<form id="noticeAdd">
 <ul class="form-style-1">
     <li><label>Notice Details <span class="required">*</span></label>
       <input type="text" name="topics" id="topics" required="true" class="field-divided" placeholder="Subject / Topics" /> 
@@ -533,9 +643,36 @@ function GetDynamicTextBox(value) {
         <input type="date" required="true" id="ndate" name="ndate" class="field-long" placeholder="Notice Date" />
     </li>
     <li>
-        <label>Full Deatils</label>
+        
 
-        <input id="btnAdd" type="button" value="Add New Line" />
+        <div class="w3-container w3-teal">
+
+        <p>Notice Type</p>
+        <label class="container">Multi Paragrapgh
+          <input type="radio" name="radio" onclick="document.getElementById('btnAdd').style.display = 'block'; document.getElementById('sfdtls').style.display = 'block'; document.getElementById('btnGet').style.display = 'block'; document.getElementById('fdtls').style.display = 'none'; document.getElementById('submitmain').style.display = 'none'; document.getElementById('picupd').style.display = 'none';">
+          <span class="checkmark"></span>
+        </label>
+
+        <label class="container">Single Paragraph
+          <input type="radio" checked="checked" name="radio" onclick="document.getElementById('btnAdd').style.display = 'none'; document.getElementById('sfdtls').style.display = 'none'; document.getElementById('btnGet').style.display = 'none'; document.getElementById('fdtls').style.display = 'block'; document.getElementById('submitmain').style.display = 'block'; document.getElementById('picupd').style.display = 'none';">
+          <span class="checkmark"></span>
+        </label>
+
+        <label class="container">File Upload
+          <input type="radio" name="radio" onclick="document.getElementById('btnAdd').style.display = 'none'; document.getElementById('sfdtls').style.display = 'none'; document.getElementById('btnGet').style.display = 'none'; document.getElementById('fdtls').style.display = 'none'; document.getElementById('submitmain').style.display = 'block'; document.getElementById('picupd').style.display = 'block';">
+          <span class="checkmark"></span>
+        </label>
+
+        <label class="container">Both (File & Details)
+          <input type="radio" name="radio" onclick="document.getElementById('btnAdd').style.display = 'none'; document.getElementById('sfdtls').style.display = 'none'; document.getElementById('btnGet').style.display = 'none'; document.getElementById('fdtls').style.display = 'block'; document.getElementById('submitmain').style.display = 'block'; document.getElementById('picupd').style.display = 'block';">
+          <span class="checkmark"></span>
+        </label>
+
+      </div>
+        <center>
+          <br>
+        <input id="btnAdd" type="button" style="display: none;" value="Add New Line" />
+        </center>
         <br />
         <br />
         <div id="TextBoxContainer">
@@ -543,15 +680,34 @@ function GetDynamicTextBox(value) {
         </div>
         <br />
         
-
-
-
-        <textarea style="display: none;" name="fdtls" id="fdtls" class="field-long field-textarea"></textarea>
-        <textarea name="sfdtls" id="sfdtls" class="field-long field-textarea"></textarea>
+        <textarea name="fdtls" id="fdtls" class="field-long field-textarea"></textarea>
+        <textarea name="sfdtls" style="display: none;" disabled="true" id="sfdtls" class="field-long field-textarea"></textarea>
     </li>
     <li>
-        <input id="btnGet" type="button" value="Finalize All Details" /></li><li>
-        <input style="display: none;" id="submitmain" type="submit" value="Submit Notice"/>
+        <center>
+        <input id="btnGet" type="button" style="display: none;" value="Finalize All Details" onclick="chkrmv()" />
+        </center>
+        </li><li>
+          <script type="text/javascript">
+            function chkrmv(){
+              var elems = document.getElementsByClassName("remove");
+              for(var i = 0; i < elems.length; i++) 
+              {
+                  elems[i].disabled = true;
+              }
+            }
+          </script>
+          
+        <div id="picupd" class="inner-wrap" style="display: none;">
+        <img id="photo" src="images/upload.png" style="height:250px;width:250px;" alt="Choose your photo" /> <br>
+    <progress value="0" max="100" id="uploader1">0%</progress>
+    <input type="file" value="upload1" accept="image/jpeg,image/gif,image/png,application/pdf,image/x-eps" id="fileButton1">
+    <input type="text" name="updphoto" id="updphoto" value="" style="display: none;">
+    </div>
+        <center>
+        <input id="submitmain" type="submit" value="Submit Notice"/>
+        <a href="admin.html"><input type="button" value="Cancel"></a>
+        </center>
     </li>
 </ul>
 </form> 
@@ -560,10 +716,55 @@ function GetDynamicTextBox(value) {
       <center><br><br>
     <p><strong>Your Notice have successfully updated.</strong></p><br>
       <a href="../../main/noticesmain.html" target="_blank"><input type="button" value="View updated Notice Portal"></a><br>
-      <a href="index.html"><input type="button" value="Add more Notice"></a><br>
+      <a href="admin.html"><input type="button" value="Add more Notice"></a><br>
     </center>
-</div>      
 </div>  
+
+
+</div>
+
+<div id="editnotice" class="tablcontent">
+  <h3>Edit Notice</h3>
+  <p>Edit Portal will be available soon.</p>
+
+
+<!--
+  <table>
+    <tr>
+      <th>Subject</th>
+      <th>Date</th>
+      <th>Details</th>
+      <th>More</th>
+    </tr>
+    <tbody id="tbl_body">
+  
+    </tbody>
+    <tr>
+      <th>Subject</th>
+      <th>Date</th>
+      <th>Details</th>
+      <th>More</th>
+    </tr>
+  </table>
+<ul style="display:none;" id="userList"></ul>
+    <div style="display:none;" id="userDetail"></div>
+
+
+-->
+
+
+  <div class="button" id="thankyou" style="display:none;font-size:25px">
+      <center><br><br>
+    <p><strong>Your Notice have successfully updated.</strong></p><br>
+      <a href="../../main/noticesmain.html" target="_blank"><input type="button" value="View updated Notice Portal"></a><br>
+      <a href="admin.html"><input type="button" value="Add more Notice"></a><br>
+    </center>
+</div>
+</div>
+<div id="removenotice" class="tablcontent">
+  <h3>Remove Notice</h3>
+  <p>Remove Portal will be available soon</p>
+</div>
 
                       </div>
                         <div class="clear"></div>
@@ -599,10 +800,25 @@ function GetDynamicTextBox(value) {
 		<p class="footer">All Rights Reserved © Dhola High School. | Powered by <a href="http://quantumwebgarden.in/" target="_blank">Quantum Webgarden</a></p>
 		</div>
 
-
-<script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
 <script src="js/admin.js"></script>
 <script src="js/adminmain.js"></script>
 <script src="js/adm.js"></script>
+<script src="js/ntc.js"></script>
+<script>
+function opentl(evt, tlnm) {
+  var i, tablcontent, tabllinks;
+  tablcontent = document.getElementsByClassName("tablcontent");
+  for (i = 0; i < tablcontent.length; i++) {
+    tablcontent[i].style.display = "none";
+  }
+  tabllinks = document.getElementsByClassName("tabllinks");
+  for (i = 0; i < tabllinks.length; i++) {
+    tabllinks[i].className = tabllinks[i].className.replace(" active", "");
+  }
+  document.getElementById(tlnm).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+</script>
+
 </body>
 </html>
