@@ -782,8 +782,14 @@ function GetDynamicTextBox(value) {
 													<input type="submit" value="Edit the Application Form" name="edit" onclick="toEdit()"> &nbsp;
 													<input type="submit" value="Class IX Login" name="ixlogin" onclick="toixLogin()"> &nbsp;
 													<input type="submit" value="VI - VIII Login" name="vilogin" onclick="toviLogin()"> &nbsp;
-                          <input type="submit" value="Selection Status Update" name="slstupd" onclick="slstupd()"> &nbsp;
+                          										<input type="submit" value="Selection Status Update" name="slstupd" onclick="slstupd()"> &nbsp;
 													<input type="submit" value="Admission Status Update" name="admstupd" onclick="admstupd()"> &nbsp; <br><br>
+													<label style="color: white; padding: 8px; font-family: Arial; background-color: #2196F3;">Merit Lists</label><br><br>
+                          										<input type="submit" value="Class VI" name="VImerit" onclick="dtVI()"> &nbsp;
+                          										<input type="submit" value="Class VII" name="VIImerit" onclick="dtVII()"> &nbsp;
+                          										<input type="submit" value="Class VIII" name="VIImerit" onclick="dtVIII()"> &nbsp;
+                          										<input type="submit" value="Class IX" name="IXmerit" onclick="dtIX()"> &nbsp;
+                          										<br><br>
 
 												
 												</div>
@@ -816,6 +822,27 @@ function opentl(evt, tlnm) {
   }
   document.getElementById(tlnm).style.display = "block";
   evt.currentTarget.className += " active";
+}
+</script>
+	
+<script type="text/javascript">
+function dtVI() {
+window.open("../student/login/meritVI.html");
+}
+</script>
+<script type="text/javascript">
+function dtVII() {
+window.open("../student/login/meritVII.html");
+}
+</script>
+<script type="text/javascript">
+function dtVIII() {
+window.open("../student/login/meritVIII.html");
+}
+</script>
+<script type="text/javascript">
+function dtIX() {
+window.open("../student/login/meritIX.html");
 }
 </script>
 
