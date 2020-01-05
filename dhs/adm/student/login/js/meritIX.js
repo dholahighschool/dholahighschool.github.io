@@ -30,8 +30,8 @@ var slstatus = snap.child("slstatus").val();
 if(slstatus=="YES" && prclass =="IX")
 {
 $("#table_body").append("<tr><td>" + appid + "</td><td>" + name + "</td><td>" + prclass + "</td><td>" + gname + "</td></tr>");
+$("#loadinglay").css("display","none");
 }
 
 });
-
 });
