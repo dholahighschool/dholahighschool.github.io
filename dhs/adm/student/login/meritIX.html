@@ -35,7 +35,7 @@ input[type=button]{
 </style>
 
 </head>
-<body>
+<body onload="loadtime()">
 <div id="divmnu">
   <center><h2>Dhola High School : Online Admission</h2>
   <p>Merit List for the Class : <b>IX</b></center>
@@ -65,5 +65,13 @@ input[type=button]{
 </center>
 <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
 <script src="js/meritIX.js"></script>
+<script type="text/javascript">
+  function loadtime(){
+    swal("Please Wait, It is loading...", {
+  buttons: false,
+  timer: 2000,
+});
+  }
+</script>
 </body>
 </html>
