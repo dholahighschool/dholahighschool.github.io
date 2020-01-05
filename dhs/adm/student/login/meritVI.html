@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <Script src="https://code.jquery.com/jquery-3.3.1.js" type="text/javascript"></Script>  
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <style>
 tab_report {
   font-family: arial, sans-serif;
@@ -35,8 +36,7 @@ input[type=button]{
 </style>
 
 </head>
-<body>
-  
+<body onload="loadtime()">
 <div id="divmnu">
   <center><h2>Dhola High School : Online Admission</h2>
   <p>Merit List for the Class : <b>VI</b></center>
@@ -66,5 +66,15 @@ input[type=button]{
 </center>
 <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
 <script src="js/meritVI.js"></script>
+<script type="text/javascript">
+  function loadtime(){
+    swal("Please Wait, It is loading...", {
+  buttons: false,
+  timer: 2200,
+  closeOnClickOutside: false,
+  closeOnEsc: false,
+});
+  }
+</script>
 </body>
 </html>
