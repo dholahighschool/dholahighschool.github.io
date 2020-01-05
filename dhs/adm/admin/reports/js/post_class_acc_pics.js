@@ -62,9 +62,18 @@ var bps = updbpass.substring(n + 6, updbpass.length);
 var n = updbproof.indexOf("token=");
 var bpr = updbproof.substring(n + 6, updbproof.length);
 
+var n = updslc.indexOf("token=");
+var slc = updslc.substring(n + 6, updslc.length);
+
+var n = updaadhaarpic.indexOf("token=");
+var adr = updaadhaarpic.substring(n + 6, updaadhaarpic.length);
+
+var n = updcaste.indexOf("token=");
+var cst = updcaste.substring(n + 6, updcaste.length);
+
 if(prclass==strm)
 {
-$("#table_body").append("<tr><td>" + appid + "</td><td>CLASS " + prclass + "</td><td>" + prsec + "</td><td>" + prroll + "</td><td><img src=\"" + updphoto + "\" height=100 width=100></img><br><a href=\"" + updphoto + "\">Download</a></td><td><img src=\"" + updsign + "\"  height=100 width=100></img></td><td><img src=\"" + updbproof + "\"  height=100 width=100></img></td><td><img src=\"" + updslc + "\"  height=100 width=100></img></td><td><img src=\"" + updaadhaarpic + "\"  height=100 width=100></img></td><td><img src=\"" + updbpass + "\"  height=100 width=100></img></td><td><img src=\"" + updcaste + "\"  height=100 width=100></img></td><td><input type='submit' id='last' class='button' value='Download' name='line' onclick=\"addField(\'" + appid +"\',\'" + pht +"\',\'" + sgn +"\',\'" + bps +"\',\'" + bpr +"\');\"></td></tr>");
+$("#table_body").append("<tr><td>" + appid + "</td><td>CLASS " + prclass + "</td><td>" + prsec + "</td><td>" + prroll + "</td><td><img src=\"" + updphoto + "\" height=100 width=100></img><br><a href=\"" + updphoto + "\">Download</a></td><td><img src=\"" + updsign + "\"  height=100 width=100></img></td><td><img src=\"" + updbproof + "\"  height=100 width=100></img></td><td><img src=\"" + updslc + "\"  height=100 width=100></img></td><td><img src=\"" + updaadhaarpic + "\"  height=100 width=100></img></td><td><img src=\"" + updbpass + "\"  height=100 width=100></img></td><td><img src=\"" + updcaste + "\"  height=100 width=100></img></td><td><input type='submit' id='last' class='button' value='Download' name='line' onclick=\"addField(\'" + appid +"\',\'" + pht +"\',\'" + sgn +"\',\'" + bps +"\',\'" + bpr +"\',\'" + cst +"\',\'" + slc +"\',\'" + adr +"\');\"></td></tr>");
 }
 
 });
@@ -76,7 +85,7 @@ function myFunction() {
   var rowCount = $('#table_body tr').length;
 $("#rowscnt").text("Total No. of Students = " + rowCount +"");
 }
-function addField(appid,updphoto,updsign,updbpass,updbproof){
+function addField(appid,updphoto,updsign,updbpass,updbproof,updcaste,updslc,updaadhaarpic){
   
   
   var files = [];
@@ -84,6 +93,18 @@ function addField(appid,updphoto,updsign,updbpass,updbproof){
   files.push("https://firebasestorage.googleapis.com/v0/b/admission-2020.appspot.com/o/images%2F" + appid + "%2Fsign?alt=media&token=" + updsign);
   files.push("https://firebasestorage.googleapis.com/v0/b/admission-2020.appspot.com/o/images%2F" + appid + "%2Fbpass?alt=media&token=" + updbpass);
   files.push("https://firebasestorage.googleapis.com/v0/b/admission-2020.appspot.com/o/images%2F" + appid + "%2Fbproof?alt=media&token=" + updbproof);
+  if(updcaste==""){}
+    else{
+        files.push("https://firebasestorage.googleapis.com/v0/b/admission-2020.appspot.com/o/images%2F" + appid + "%2Fcaste?alt=media&token=" + updcaste);
+    }
+    if(updslc==""){}
+    else{
+        files.push("https://firebasestorage.googleapis.com/v0/b/admission-2020.appspot.com/o/images%2F" + appid + "%2Fslc?alt=media&token=" + updslc);
+    }
+    if(updaadhaarpic==""){}
+    else{
+        files.push("https://firebasestorage.googleapis.com/v0/b/admission-2020.appspot.com/o/images%2F" + appid + "%2Faadhaarpic?alt=media&token=" + updaadhaarpic);
+    }
   for(var ii=0; ii<files.length; ii++){
     window.open(files[ii],'_blank');
   }
