@@ -174,14 +174,38 @@ function dtchk() {
 var d = new Date();
   var x = d.getTime();
   
-  var n = new Date("2020-01-07 10:00:00");
+  var n = new Date("2020-01-20 10:00:00");
   var y = n.getTime();
   
-  var m = new Date("2020-01-08 23:59:00");
+  var m = new Date("2020-01-22 23:59:00");
   var z = m.getTime();
   
-if(+x >= +y && +x <= +z){window.open("student/index.html");}
-else{swal("Dhola High School","Admission Portal will be available from 7th January, 2020 at 10:00 AM till 8th January, 2020","info");
+if(+x >= +y && +x <= +z)
+	{
+	swal("Dhola High School","Enter Access Key Here:", {
+    content: {
+    element: "input",
+    attributes: {
+     placeholder: "Type access key",
+     type: "password",
+    },
+  },
+})
+  .then((value) => {
+
+  if (value != null) {
+    if (value == window.atob("YWRtczIwMjBAZGhz")){
+      window.open("student/index.html");
+  }
+  else{
+  swal("Dhola High School","You are not authorized!","error");
+  window.open("../404/index.html");
+  }
+  }
+});
+	//window.open("student/index.html");
+	}
+else{swal("Dhola High School","Admission Portal will be available from 20th January, 2020 at 10:00 AM till 22nd January, 2020 only for permitted candidates.","info");
 }
 }
 </script>
