@@ -784,6 +784,14 @@ function GetDynamicTextBox(value) {
 													<input type="submit" value="VI - VIII Login" name="vilogin" onclick="toviLogin()"> &nbsp;
                           										<input type="submit" value="Selection Status Update" name="slstupd" onclick="slstupd()"> &nbsp;
 													<input type="submit" value="Admission Status Update" name="admstupd" onclick="admstupd()"> &nbsp; <br><br>
+
+                          <label style="color: white; padding: 8px; font-family: Arial; background-color: #2196F3;">Update Admission Status</label><br><br>
+                                              <input type="submit" value="Class VI" name="VIadm" onclick="admVI()"> &nbsp;
+                                              <input type="submit" value="Class VII" name="VIIadm" onclick="admVII()"> &nbsp;
+                                              <input type="submit" value="Class VIII" name="VIIadm" onclick="admVIII()"> &nbsp;
+                                              <input type="submit" value="Class IX" name="IXadm" onclick="admIX()"> &nbsp;
+                                              <br><br>
+
 													<label style="color: white; padding: 8px; font-family: Arial; background-color: #2196F3;">Merit Lists</label><br><br>
                           										<input type="submit" value="Class VI" name="VImerit" onclick="dtVI()"> &nbsp;
                           										<input type="submit" value="Class VII" name="VIImerit" onclick="dtVII()"> &nbsp;
@@ -846,5 +854,25 @@ window.open("../student/login/meritIX.html");
 }
 </script>
 
+<script type="text/javascript">
+function admVI() {
+window.open("../student/login/VIadm.html");
+}
+</script>
+<script type="text/javascript">
+function admVII() {
+window.open("../student/login/VIIadm.html");
+}
+</script>
+<script type="text/javascript">
+function admVIII() {
+window.open("../student/login/VIIIadm.html");
+}
+</script>
+<script type="text/javascript">
+function admIX() {
+window.open("../student/login/IXadm.html");
+}
+</script>
 </body>
 </html>
