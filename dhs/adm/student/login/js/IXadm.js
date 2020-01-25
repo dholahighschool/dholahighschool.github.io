@@ -30,7 +30,7 @@ var admstatus = snap.child("admstatus").val();
 
 if(slstatus=="YES" && prclass=="IX")
 {
-$("#table_body").append("<tr><td>" + appid + "</td><td>" + name + "</td><td>" + prclass + "</td><td>" + gname + "</td><td><input type='submit' id='last' class='button' value='Accept' name='line' onclick=\"admitted(\'" + appid +"\',\'" + name +"\');\"> &nbsp;<input type='submit' id='last' class='button' value='Reject' name='line' onclick=\"rejected(\'" + appid +"\',\'" + name +"\');\"></td></tr>");
+$("#table_body").append("<tr><td>" + appid + "</td><td>" + name + "</td><td>" + prclass + "</td><td>" + gname + "</td><td><input style=\"width:70px;\"type=\"number\" id=\"" + appid + "rl\"></td><td><select id=\"" + appid + "sc\"><option value=\"A\">A</option><option value=\"B\">B</option><option value=\"C\">C</option><option value=\"D\">D</option></select></td><td><input type='submit' id='last' class='button' value='Accept' name='line' onclick=\"admitted(\'" + appid +"\',\'" + name +"\');\"> &nbsp;<input type='submit' id='last' class='button' value='Reject' name='line' onclick=\"rejected(\'" + appid +"\',\'" + name +"\');\"></td></tr>");
 }
 
 });
@@ -39,14 +39,19 @@ $("#table_body").append("<tr><td>" + appid + "</td><td>" + name + "</td><td>" + 
 
 function admitted(appid,name)
 {
-  
-
-  firebase.database().ref("users/" + appid).update({ admstatus: "YES" });
+  var rl = $("#"+appid+"rl").val();
+  var sc = $("#"+appid+"sc").val();
+  firebase.database().ref("users/" + appid).update({ admstatus: "YES",prroll:rl,prsec:sc});
+  $("#"+appid+"rl").prop("disabled", true);
+  $("#"+appid+"sc").prop("disabled", true);
   swal("Dhola High School","Admission for Application ID : " + appid + " & Name: " + name + " is successful.","success");
+  
 }
 function rejected(appid,name)
 {
 
-  firebase.database().ref("users/" + appid).update({ admstatus: "NO" });
+  firebase.database().ref("users/" + appid).update({ admstatus: "NO",prroll:"",prsec:"NA"});
+  $("#"+appid+"rl").prop("disabled", false);
+  $("#"+appid+"sc").prop("disabled", false);
   swal("Dhola High School","Admission for Application ID : " + appid + " & Name: " + name + " is rejected.","error");
 }
