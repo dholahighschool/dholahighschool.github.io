@@ -1,0 +1,129 @@
+/*
+var galleryid = "";
+function galidset(){
+	var jst = new Date();
+  var jstn = jst.valueOf();
+  var lst = new Date("12/31/2050");
+  var lstn = lst.valueOf();
+  var diff = lstn - jstn;
+	galleryid = diff;
+  //document.getElementById("caption") = galleryid;
+}
+
+var config = {
+  apiKey: "AIzaSyC5hD8l1JE0G97zlflv8R8UZ4vcDv7JcsU",
+    authDomain: "admission-2020.firebaseapp.com",
+    databaseURL: "https://admission-2020.firebaseio.com",
+    projectId: "admission-2020",
+    storageBucket: "admission-2020.appspot.com",
+    messagingSenderId: "319954780627",
+    appId: "1:319954780627:web:e7619e9df08e54d703af26",
+    measurementId: "G-K3CT148EJR"
+};
+firebase.initializeApp(config);
+*/
+// Listen for form submit
+document.getElementById('galleryadd').addEventListener('submit', submitForm);
+
+// Submit form
+function submitForm(e){
+  e.preventDefault();
+
+  // Get values
+var	caption = getInputVal('caption');
+var galleryupd = getInputVal('updgal');
+var galid = getInputVal('galid')
+
+ // Save message
+  saveMessage(caption,galleryupd,galid);
+
+
+  document.getElementById("galleryadd").style.display = 'none';
+  document.getElementById("thankgal").style.display = 'block';
+
+  document.getElementById('galleryadd').reset();
+}
+
+function getInputVal(id){
+  return document.getElementById(id).value;
+}
+
+// Save message to firebase   
+function saveMessage(caption,galleryupd,galid){
+  /*
+  var newMessageRef = messagesRef.push();
+  MessageRef.set({
+  */
+  firebase.database().ref('gallery/' + galleryid).set({
+caption:caption,
+galleryupd:galleryupd,
+galid:galid
+  });
+}
+
+
+var fbBucketName2 = 'gallery';
+
+    var uploader2 = document.getElementById('uploader2');
+    var fileButton2 = document.getElementById('fileButton2');
+    fileButton2.addEventListener('change', function (e1) {
+
+      console.log('file upload event', e1);
+      /*
+      var FileSize = e1.target.files[0].size / 1024 / 1024; // in MB
+          if (FileSize > 0.0195) 
+          {
+              swal('Oops..','File size exceeds 20 KB \n Please Choose a new Photo.','error');
+              document.getElementById('fileButton1').value = "";
+          } 
+          else 
+          {
+            var file1 = e1.target.files[0];
+          }
+          */
+      var file2 = e1.target.files[0];
+
+      var str = e1.target.files[0].type;
+      
+      var n = str.length - str.lastIndexOf("/") -1;
+      
+      var strt = str.substr(str.length - n);
+
+      var storageRef2 = firebase.storage().ref(`${fbBucketName2}/g${galleryid}.${strt}`);
+
+      var uploadTask2 = storageRef2.put(file2);
+
+      uploadTask2.on(firebase.storage.TaskEvent.STATE_CHANGED, 
+        function (snapshot) {
+          var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          uploader2.value = progress;
+          console.log('Upload is ' + progress + '% done');
+          switch (snapshot.state) {
+            case firebase.storage.TaskState.PAUSED: 
+              console.log('Upload is paused');
+              break;
+            case firebase.storage.TaskState.RUNNING: 
+              console.log('Upload is running');
+              break;
+          }
+        }, function (error) {
+
+            switch (error.code) {
+            case 'storage/unauthorized':
+              break;
+
+            case 'storage/canceled':
+              break;
+
+            case 'storage/unknown':
+              break;
+          }
+        }, function () {
+          var downloadURL2 = uploadTask2.snapshot.downloadURL;
+          console.log('downloadURL2', downloadURL2);
+          var link2 = document.getElementById("gallery");
+          link2.setAttribute("src", downloadURL2);
+          document.getElementById('updgal').value = downloadURL2;
+        });
+
+    });
