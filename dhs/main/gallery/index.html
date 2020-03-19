@@ -1,0 +1,136 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<link rel="pingback" href="http://www.dholahighschool.in" />
+<title>Dhola High School || Our Gallery</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="icon" href="../../../wp-content/uploads/2017/12/logo.png" sizes="32x32" />
+<link rel="icon" href="../../../wp-content/uploads/2017/12/logo.png" sizes="192x192" />
+<link rel="apple-touch-icon-precomposed" href="../../../wp-content/uploads/2017/12/logo.png" />
+<link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+<script src="js/jquery-1.10.1.min.js"></script>
+<script src="js/modernizr.custom.js"></script>
+<script src="js/script.js"></script>
+<Script src="https://code.jquery.com/jquery-3.3.1.js" type="text/javascript"></Script>
+<link href='//fonts.googleapis.com/css?family=Damion' rel='stylesheet' type='text/css'>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<style type="text/css">
+	.navbar {
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 99;
+}
+
+.navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar a:hover {
+  background: #ddd;
+  color: black;
+}
+</style>
+</head>
+<body onload="ovrly()">
+	<div class="navbar">
+  <a href="../index.html">Home</a>
+  <a href="../noticesmain.html">Notice</a>
+  <a href="../staff.html">Staff</a>
+</div>
+   <div class="container">	
+   	
+			<header class="clearfix">
+				<div class="header">
+				<div class="wrap">
+					 <div class="logo">
+	    		 	<h1 id="albumname">Our Gallery</h1>
+					</div>
+		           <div class="header_top">
+		        <!--
+					 <div class="social-icons">						
+		                <ul>
+		                    <li><a class="facebook" href="#" target="_blank"> </a></li>
+		                    <li><a class="twitter" href="#" target="_blank"></a></li>
+		                    <li><a class="googleplus" href="#" target="_blank"></a></li>
+		                    <li><a class="pinterest" href="#" target="_blank"></a></li>
+		                    <li><a class="dribbble" href="#" target="_blank"></a></li>
+		                    <li><a class="vimeo" href="#" target="_blank"></a></li>
+		                    <div class="clear"></div>
+		                </ul>
+		 		     </div>	
+		 		 
+		 		          <div class="search_box">
+							    <form>
+									<input type="text" class="text-box" placeholder="Search..."><input type="submit" value="">
+							    </form>
+						   </div>
+				-->		   
+	    	</div>				
+			<div class="clear"></div>
+	    </div>
+			</div>
+			</header>
+			<div class="main">
+				<ul id="og-grid" class="og-grid">
+					
+				</ul>
+			</div>
+		</div><!-- /container -->		
+		<script src="js/grid.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+
+		<script src="js/populate.js"></script>
+
+		<script>
+			$(function() {
+				Grid.init();
+			});
+		</script>
+	              <div class="copy_right">
+						<p>&copy 2020 The Magic Shoot . All rights Reserved | Powered by &nbsp;<a href="http://quantumwebgarden.in" target="_blank">Quantum Webgarden</a></p>
+		   		</div>
+		   		<script type="text/javascript">
+		   			function ovrly(){
+		   				let timerInterval
+Swal.fire({
+  title: 'Please Wait!',
+  html: 'Album Images are loading...',
+  timer: 2000,
+  timerProgressBar: true,
+  padding: '3em',
+  backdrop: `rgba(0,0,123,0.4)`,
+  onBeforeOpen: () => {
+    Swal.showLoading()
+    timerInterval = setInterval(() => {
+      const content = Swal.getContent()
+      if (content) {
+        const b = content.querySelector('b')
+        if (b) {
+          b.textContent = Swal.getTimerLeft()
+        }
+      }
+    }, 100)
+  },
+  onClose: () => {
+    clearInterval(timerInterval)
+  }
+}).then((result) => {
+  /* Read more about handling dismissals below */
+  if (result.dismiss === Swal.DismissReason.timer) {
+    console.log('I was closed by the timer')
+  }
+})
+		   			}
+		   		</script>
+          </body>
+</html>
