@@ -7,6 +7,19 @@ function appidset(){
   var diff = lstn - jstn;
 	noticeid = diff;
 }
+var galleryid = "";
+function galidset(){
+  var jst = new Date();
+  var jstn = jst.valueOf();
+  var lst = new Date("12/31/2050");
+  var lstn = lst.valueOf();
+  var diff = lstn - jstn;
+  galleryid = diff;
+  document.getElementById("galid").value = galleryid;
+  document.getElementById("galleryadd").style.display = 'block';
+  document.getElementById("thankgal").style.display = 'none';
+  document.getElementById('galleryadd').reset();
+}
 
 var config = {
   apiKey: "AIzaSyC5hD8l1JE0G97zlflv8R8UZ4vcDv7JcsU",
