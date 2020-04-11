@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://www.gstatic.com/firebasejs/7.5.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.5.2/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>  
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+input[type=url]{
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+input[type=button] {
+  background-color: #588ad1;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+</style>
+</head>
+<body onload="appidset()">
+<center>
+<h2>Online Class : Admin Panel</h2>
+<p>Add Details about your New upload and click submit</p>
+</center>
+<div class="container">
+  <form id="onlineclass">
+    <div class="row">
+      <div class="col-25">
+        <label for="fname">Class</label>
+      </div>
+      <div class="col-75">
+        <select id="fclass" name="fclass">
+          <option value="" disabled="disabled" selected="selected">-- Choose Any One --</option>
+          <option value="V">V</option>
+          <option value="VI">VI</option>
+          <option value="VII">VII</option>
+          <option value="VIII">VIII</option>
+          <option value="IX">IX</option>
+          <option value="X">X</option>
+          <option value="XI">XI</option>
+          <option value="XII">XII</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="sub">Subject</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="sub" name="sub" placeholder="Subject">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="topic">Topic</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="topic" name="topic" placeholder="Topics / Chapter Name">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="teacher">Teacher</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="teacher" name="teacher" placeholder="Name of the Teacher">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="dtype">Assignment type</label>
+      </div>
+      <div class="col-75">
+        <select id="dtype" name="dtype" onchange="chktype(this.value)">
+          <option value="" disabled="disabled" selected="selected">-- Choose Any One --</option>
+          <option value="Lecture Video">Lecture Video (Youtube link)</option>
+          <option value="Lecture">Lecture Video (Upload)</option>
+          <option value="Classnote">Classnote</option>
+          <option value="Homework">Homework</option>
+          <option value="Project Work">Project Work</option>
+        </select>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      function chktype(x){
+        if(x == "Lecture Video"){
+          document.getElementById("yl").style.display = "block";
+          document.getElementById("upd").style.display = "none";
+        }
+        else{
+          document.getElementById("yl").style.display = "none";
+          document.getElementById("upd").style.display = "block";
+        }
+      }
+    </script>
+
+    <div class="row" id="yl" style="display: none;">
+      <div class="col-25">
+        <label for="ylnk">Enter Youtube Link</label>
+      </div>
+      <div class="col-75">
+        <input type="url" id="ylnk" name="ylnk" placeholder="Enter Youtube Video Link" onchange="ylchk()">
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      function ylchk(){
+        var str = document.getElementById("ylnk").value;
+        document.getElementById("vlnk").value = "https://www.youtube.com/embed/" + str.substr(str.length - 11);
+      }
+    </script>
+
+
+    <div class="row" id="upd" style="display: none;">
+      <div class="col-25">
+        <label for="ylnk">Upload Document File (Accepts - PDF, Image, Word, Excel, Powerpoint, Plaintext)</label>
+      </div>
+      <div class="col-75">
+        <!--
+        <img id="photo" src="upload.png" style="height:250px;width:250px;" alt="Choose your photo" /> <br>
+        -->
+        <progress value="0" max="100" id="uploader1">0%</progress>
+        <input type="file" value="upload1" accept="image/*,.xlsx,.xls,.doc,.docx,.ppt,.pptx,.txt,.pdf,.mp4" id="fileButton1">
+        <p id="updcmpl" style="display:none;">Upload Completed.</p>
+      </div>
+    </div>
+
+
+    <input type="text" name="vlnk" id="vlnk" required="true" value="" style="display:none">
+    <input type="text" name="vid" id="vid" required="true" value="" style="display:none">
+
+    
+    <br>
+    <div class="row">
+      <input id="submitmain" type="submit" value="Submit Online Material">
+    </div>
+  </form>
+
+
+  <div class="button" id="thankyou" style="display:none; font-size:25px">
+    <center><br><br>
+    <p><strong>Your Online Material have successfully uploaded.</strong></p><br>
+      <a href="vds.html" target="_blank"><input type="button" value="View updated Online Classroom Portal"></a><br><br>
+      <a href="ad.html"><input type="button" value="Add more Material"></a><br>
+    </center>
+  </div>
+
+</div>
+<script src="ad.js"></script>
+
+</body>
+</html>
