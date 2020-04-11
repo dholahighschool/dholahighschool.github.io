@@ -19,16 +19,22 @@ var rootRef = firebase.database().ref('onlineclass');
 rootRef.on("child_added", snap => {
 
 var fclass = snap.child("fclass").val();
-var teacher = snap.child("teacher").val();
+var tname = snap.child("teacher").val();
+var teacher = tname.replace(/aHl99/g,'\'');
+
 var sub = snap.child("sub").val();
-var topic = snap.child("topic").val();
+var sub = sub.replace(/aHl99/g,'\'');
+
+var tpc = snap.child("topic").val();
+var topic = tpc.replace(/aHl99/g,'\'');
+
 var vid = snap.child("vid").val();
 var vlnk = snap.child("vlnk").val();
 var dtype = snap.child("dtype").val();
 
 /*if(fclass=="V")
 {*/
-$("#table_body").append("<tr><td>CLASS " + fclass + "</td><td>" + sub + "</td><td>" + topic + "</td><td>" + teacher + "</td><td>" + dtype + "</td><td><input type='button' class='button' value='View / Download' name='line' onclick=\"openNav(\'" + vlnk +"\',\'" + topic +"\',\'" + teacher +"\');\"></td></tr>");
+$("#table_body").append("<tr><td>CLASS " + fclass + "</td><td>" + sub + "</td><td>" + topic + "</td><td>" + teacher + "</td><td>" + dtype + "</td><td><input type='button' class='button' value='View / Download' name='line' onclick=\"openNav(\'" + vlnk +"\',\'" + tpc +"\',\'" + tname +"\');\"></td></tr>");
 //}
 
 });
@@ -37,10 +43,12 @@ $("#table_body").append("<tr><td>CLASS " + fclass + "</td><td>" + sub + "</td><t
 
 
 function openNav(lnk,tpc,tname) {
+  tpic = tpc.replace(/aHl99/g,'\'');
+  trname = tname.replace(/aHl99/g,'\'');
   document.getElementById("myNav").style.height = "100%";
   document.getElementById("myFrame").src = lnk;
-  document.getElementById("dtls").innerHTML = tpc;
-  document.getElementById("tdtls").innerHTML = "By " + tname;
+  document.getElementById("dtls").innerHTML = tpic;
+  document.getElementById("tdtls").innerHTML = "By " + trname;
 }
 
 

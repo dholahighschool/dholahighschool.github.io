@@ -119,23 +119,26 @@ input[type=submit]:hover {
         <label for="sub">Subject</label>
       </div>
       <div class="col-75">
-        <input type="text" id="sub" name="sub" placeholder="Subject">
+        <input type="text" id="sub" name="sub" placeholder="Subject" onchange="this.value = this.value.replace(/'/g,'aHl99');">
       </div>
     </div>
+
     <div class="row">
       <div class="col-25">
         <label for="topic">Topic</label>
       </div>
       <div class="col-75">
-        <input type="text" id="topic" name="topic" placeholder="Topics / Chapter Name">
+        <input type="text" id="topic" name="topic" placeholder="Topics / Chapter Name" onchange="this.value = this.value.replace(/'/g,'aHl99');">
       </div>
     </div>
+
+
     <div class="row">
       <div class="col-25">
         <label for="teacher">Teacher</label>
       </div>
       <div class="col-75">
-        <input type="text" id="teacher" name="teacher" placeholder="Name of the Teacher">
+        <input type="text" id="teacher" name="teacher" placeholder="Name of the Teacher" onchange="this.value = this.value.replace(/'/g,'aHl99');">
       </div>
     </div>
     <div class="row">
