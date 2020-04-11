@@ -119,7 +119,8 @@ input[type=submit]:hover {
         <label for="sub">Subject</label>
       </div>
       <div class="col-75">
-        <input type="text" id="sub" name="sub" placeholder="Subject" onchange="this.value = this.value.replace(/'/g,'aHl99');">
+      	<input type="text" id="subr" name="subr" placeholder="Subject" onchange="document.getElementById('sub').value = this.value.replace(/'/g,'aHl99');">
+        <input style="display:none;" type="text" id="sub" name="sub" placeholder="Subject">
       </div>
     </div>
 
@@ -128,7 +129,8 @@ input[type=submit]:hover {
         <label for="topic">Topic</label>
       </div>
       <div class="col-75">
-        <input type="text" id="topic" name="topic" placeholder="Topics / Chapter Name" onchange="this.value = this.value.replace(/'/g,'aHl99');">
+      	<input type="text" id="topicr" name="topicr" placeholder="Topics / Chapter Name" onchange="document.getElementById('topic').value = this.value.replace(/'/g,'aHl99');">
+        <input style="display:none;" type="text" id="topic" name="topic" placeholder="Topics / Chapter Name">
       </div>
     </div>
 
@@ -138,7 +140,8 @@ input[type=submit]:hover {
         <label for="teacher">Teacher</label>
       </div>
       <div class="col-75">
-        <input type="text" id="teacher" name="teacher" placeholder="Name of the Teacher" onchange="this.value = this.value.replace(/'/g,'aHl99');">
+      	<input type="text" id="teacherr" name="teacherr" placeholder="Name of the Teacher" onchange="document.getElementById('teacher').value = this.value.replace(/'/g,'aHl99');">
+        <input style="display:none;" type="text" id="teacher" name="teacher" placeholder="Name of the Teacher">
       </div>
     </div>
     <div class="row">
@@ -175,7 +178,7 @@ input[type=submit]:hover {
         <label for="ylnk">Enter Youtube Link</label>
       </div>
       <div class="col-75">
-        <input type="url" id="ylnk" name="ylnk" placeholder="Enter Youtube Video Link" onchange="ylchk()">
+        <input type="url" id="ylnk" name="ylnk" placeholder="Enter Youtube Video Link / Youtube Video ID only" onchange="ylchk()">
       </div>
     </div>
 
