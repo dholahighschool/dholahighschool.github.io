@@ -112,7 +112,39 @@ body {
 </style>
 </head>
 <body onload="ovrly()">
-
+<script type="text/javascript">
+            function ovrly(){
+              let timerInterval
+Swal.fire({
+  title: 'Please Wait!',
+  html: 'Online Study Materials are loading...',
+  timer: 2000,
+  timerProgressBar: true,
+  padding: '3em',
+  backdrop: `rgba(0,0,123,0.4)`,
+  onBeforeOpen: () => {
+    Swal.showLoading()
+    timerInterval = setInterval(() => {
+      const content = Swal.getContent()
+      if (content) {
+        const b = content.querySelector('b')
+        if (b) {
+          b.textContent = Swal.getTimerLeft()
+        }
+      }
+    }, 100)
+  },
+  onClose: () => {
+    clearInterval(timerInterval)
+  }
+}).then((result) => {
+  /* Read more about handling dismissals below */
+  if (result.dismiss === Swal.DismissReason.timer) {
+    console.log('I was closed by the timer')
+  }
+})
+            }
+          </script>
 <div id="myNav" class="overlay">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <div class="overlay-content">
@@ -183,38 +215,6 @@ body {
    <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
 
 <script src="vds.js"></script>
-<script type="text/javascript">
-            function ovrly(){
-              let timerInterval
-Swal.fire({
-  title: 'Please Wait!',
-  html: 'Online Study Materials are loading...',
-  timer: 2000,
-  timerProgressBar: true,
-  padding: '3em',
-  backdrop: `rgba(0,0,123,0.4)`,
-  onBeforeOpen: () => {
-    Swal.showLoading()
-    timerInterval = setInterval(() => {
-      const content = Swal.getContent()
-      if (content) {
-        const b = content.querySelector('b')
-        if (b) {
-          b.textContent = Swal.getTimerLeft()
-        }
-      }
-    }, 100)
-  },
-  onClose: () => {
-    clearInterval(timerInterval)
-  }
-}).then((result) => {
-  /* Read more about handling dismissals below */
-  if (result.dismiss === Swal.DismissReason.timer) {
-    console.log('I was closed by the timer')
-  }
-})
-            }
-          </script>
+
 </body>
 </html> 
