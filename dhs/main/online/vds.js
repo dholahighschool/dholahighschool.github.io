@@ -38,7 +38,7 @@ $("#table_body").append("<tr><td>CLASS " + fclass + "</td><td>" + sub + "</td><t
 //}
 
 });
-
+viewercount();
 });
 
 
@@ -58,3 +58,37 @@ function closeNav() {
 }
 
 
+function viewercount(){
+  var rootRef = firebase.database().ref('viewer');
+
+rootRef.on("child_added", snap => {
+
+var page = snap.child("page").val();
+var cnt = snap.child("cnt").val();
+var cnt = cnt + 1;
+
+if(page=="onlineclass")
+{
+$("#viewer").html("Total Viewer : " + cnt + ".");
+}
+firebase.database().ref("viewer/online").update({ cnt:cnt});
+
+});
+viewerupdate();
+}
+
+function viewerupdate(){
+  var rootRef = firebase.database().ref('viewer');
+
+rootRef.on("child_changed", snap => {
+
+var page = snap.child("page").val();
+var cnt = snap.child("cnt").val();
+
+if(page=="onlineclass")
+{
+$("#viewer").html("Total Viewer : " + cnt + ".");
+}
+
+});
+}
