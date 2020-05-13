@@ -1,0 +1,230 @@
+<html>
+<head>
+	<title>
+		Dhola High School
+	</title>
+<link rel="icon" href="../main/images/logo.png" sizes="32x32" />
+	<link rel="icon" href="../main/images/logo.png" sizes="192x192" />
+	<link rel="stylesheet" type="text/css" href="student/css/xi.css">
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<Script src="https://code.jquery.com/jquery-3.3.1.js" type="text/javascript"></Script> 
+	<script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+	<script src="student/js/xi.js"></script>
+
+</head>
+
+<body>
+
+
+	<center>
+
+	<h1>Online Admission for Class XI</h1>
+	</center>
+
+	<div class="list-type1">
+		<center><h2>Read the following carefully</h2></center>
+<ol>
+<li><a>Form Fillup Start : 7th July, 2020 at 10:00 AM</a></li>
+<li><a>Form Fillup End : 18th July, 2020 at 4:00 PM</a></li>
+<li><a>Editing or modification option is not available after submission.</a></li>
+<li><a>After submitting a successful application, confirm your admission within the date provided in application form printout.</a></li>
+<li><b><a>Students who have already applied, should not apply again. Otherwise application will be rejected.</a></b></li>
+
+</ol>
+
+<div class="subs">
+	<center><u><h2>List of Available Subjects</h2></u></center>
+	<div class="abc">
+	<center><b>Arts</b><br>Education, Philosophy, History, Geography, Modern Computer Application / Environment, Arabic / Sanskrit, Appearel / Power.</center>
+	</div>
+	<div class="abc">
+	<center><b>Science</b><br>Physics, Chemistry, Biology, Mathematics, Geography, Modern Computer Application / Environment, Appearel / Power.</center>
+	</div>
+	<div class="abc">
+	<center><b>Commerce</b><br>Accountacy, Costing & Taxation, Business Studies, Modern Computer Application / Environment, Appearel / Power.</center>
+	</div>
+</div>
+
+<center><h2 class="stlv" id="seatlive">Seats Availability (Live Status)</h2></center>
+</div>
+
+
+
+<center>
+        <br><br>
+        <fieldset>
+    <legend>Select Board and proceed</legend>
+    <br>
+        
+		
+    <div style="height: auto; padding: 20px; text-align: center;">
+    	<select name="gender" id="gender" required="true" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa; width: auto;" onchange="choice(this)">
+    		<option value="NA" disabled="disabled" selected>-- Select Board --</option>
+    		<option value="WB">West Bengal Board of Secondary Education (WBBSE)</option>
+    		<option value="MB">West Bengal Board Of Madrasah Education (WBBME)</option>
+    	</select>
+	</div>
+	
+
+<div class="chkm">
+	<div id="wbc" style="display: none;">
+	<label>
+		<input type="radio" name="board" value="dh" onclick="slct(this)">
+		Passed from Dhola High School
+	</label>
+	<br>
+	<label>
+		<input type="radio" name="board" value="oh" onclick="slct(this)">
+		Passed from any other School
+	</label>
+	</div>
+	<br>
+	<div id="hmc" style="display: none;">
+	<label>
+		<input type="radio" name="board" value="hm" onclick="slct(this)">
+		Passed High Madrasah Examination
+	</label>
+	<br>
+	<label>
+		<input type="radio" name="board" value="am" onclick="slct(this)">
+		Passed Alim Examination
+	</label>
+	</div>
+	<br>
+</div>
+
+
+
+<div class="inf" id="dhsb">
+	<h1 class="h2d">Eligibility Details</h1>
+	<p id="alldh">All: </p>
+	<h1 class="h2d">Schedule Details</h1>
+	<p id="ardh">Arts: </p>
+	<p id="scdh">Science: </p>
+	<p id="cmdh">Commerce: </p>
+	<br>
+	<a class="active-button teal" id="xidh" onclick="xiadm(this)">Apply as New Student</a><br><br><br>
+	
+	<a class="active-button teal" onclick="xilg()">Log IN</a><br><br><br>
+</div>
+
+<div class="inf" id="ohsb">
+	<h1 class="h2d">Eligibility Details</h1>
+	<p id="alloh">All: </p>
+	<h1 class="h2d">Schedule Details</h1>
+	<p id="aroh">Arts: </p>
+	<p id="scoh">Science: </p>
+	<p id="cmoh">Commerce: </p>
+	<br>
+	<a class="active-button teal" id="xioh" onclick="xiadm(this)">Apply as New Student</a><br><br><br>
+	
+	<a class="active-button teal" onclick="xilg()">Log IN</a><br><br><br>
+</div>
+
+<div class="inf" id="hmsb">
+	<h1 class="h2d">Eligibility Details</h1>
+	<p id="allhm">All: </p>
+	<h1 class="h2d">Schedule Details</h1>
+	<p id="arhm">Arts: </p>
+	<p id="schm">Science: </p>
+	<p id="cmhm">Commerce: </p>
+	<br>
+	<a class="active-button teal" id="xihm" onclick="xiadm(this)">Apply as New Student</a><br><br><br>
+	
+	<a class="active-button teal" onclick="xilg()">Log IN</a><br><br><br>
+</div>
+
+<div class="inf" id="amsb">
+	<h1 class="h2d">Eligibility Details</h1>
+	<p id="allam">All: </p>
+	<h1 class="h2d">Schedule Details</h1>
+	<p id="aram">Arts: </p>
+	<p id="scam">Science: </p>
+	<p id="cmam">Commerce: </p>
+	<br>
+	<a class="active-button teal" id="xiam" onclick="xiadm(this)">Apply as New Student</a><br><br><br>
+	
+	<a class="active-button teal" onclick="xilg()">Log IN</a><br><br><br>
+</div>
+
+
+<center>
+	
+</center>
+<br><br>
+    </fieldset>
+    </center>
+
+
+<script type="text/javascript">
+function dtchk() {
+var d = new Date();
+  var x = d.getTime();
+  
+  var n = new Date("2020-01-20 10:00:00");
+  var y = n.getTime();
+  
+  var m = new Date("2020-01-22 23:59:00");
+  var z = m.getTime();
+  
+if(+x >= +y && +x <= +z)
+	{
+	swal("Dhola High School","Enter Access Key Here:", {
+    content: {
+    element: "input",
+    attributes: {
+     placeholder: "Type access key",
+     type: "password",
+    },
+  },
+})
+  .then((value) => {
+
+  if (value != null) {
+    if (value == window.atob("YWRtczIwMjBAZGhz")){
+      window.open("student/index.html");
+  }
+  else{
+  swal("Dhola High School","You are not authorized!","error");
+  window.open("../404/index.html");
+  }
+  }
+});
+	//window.open("student/index.html");
+	}
+else{swal("Dhola High School","Admission Portal will be available from 20th July, 2020 at 10:00 AM till 22nd July, 2020 4:00 PM only for permitted candidates.","info");
+}
+}
+</script>
+
+
+
+<script type="text/javascript">
+function dtIX() {
+var d = new Date();
+  var y = d.getTime();
+  var n = new Date("2020-01-04 10:00:00");
+  var x = n.getTime();
+if(+x >= +y){swal("Dhola High School","Merit List will be available from 06th January, 2020 at 10:00 AM","info");}
+else{
+	var myWindow = window.open("");
+  myWindow.document.write("<title>Dhola High School</title><iframe width='100%' height='100%' src='student/login/meritIX.html' frameborder='0' allowfullscreen></iframe>");
+}
+}
+</script>
+<script type="text/javascript">
+function xilg() {
+var d = new Date();
+  var y = d.getTime();
+  var n = new Date("2020-02-07 10:00:00 AM"); //YYYY-MM-DD hh:mm:ss 
+  var x = n.getTime();
+if(+x >= +y){swal("Dhola High School","Admission Portal will be available from 7th July, 2020.","info");}
+else{
+var myWindow = window.open("");
+  myWindow.document.write("<title>Dhola High School</title><iframe width='100%' height='100%' src='student/login/index.html' frameborder='0' allowfullscreen></iframe>");
+}
+}
+</script>
+</body>
+
+</html>
