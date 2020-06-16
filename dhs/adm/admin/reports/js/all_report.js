@@ -33,7 +33,7 @@ var config = {
 
 $(document).ready(function(){
 
-var rootRef = firebase.database().ref('users');
+var rootRef = firebase.database().ref('users').orderByValue();
 
 rootRef.on("child_added", snap => {
 

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>XI Control Panel</title>
+	<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #000;
+  text-align: left;
+  padding: 8px;
+}
+tr{
+  background-color: #dddddd;
+}
+th{
+	background-color: skyblue;
+}
+.frst{
+	background-color: #8095d1;
+	color: black;
+	font-weight: bold;
+}
+.frsts{
+	background-color: #8fab85;
+	color: black;
+	font-weight: bold;
+}
+</style>
+
+
+<Script src="https://code.jquery.com/jquery-3.3.1.js" type="text/javascript"></Script> 
+<script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+</head>
+<body>
+<center>
+	<h1>Admission Control Panel for XI</h1>
+</center>
+
+<center><h2>Category I : Students passed form Dhola High School</h2></center>
+<table>
+	<tr>
+		<th class="frsts">Controls</th>
+		<th>ARTS</th>
+		<th>SCIENCE</th>
+		<th>COMMERCE</th>
+	</tr>
+	<tr>
+		<td class="frst">Eligibility Marks: </td>
+		<td><input type="text" name="armdh" id="armdh"></td>
+		<td><input type="text" name="scmdh" id="scmdh"></td>
+		<td><input type="text" name="cmmdh" id="cmmdh"></td>
+	</tr>
+	<tr>
+		<td class="frst">Start Date & Time: </td>
+		<td><input type="date" name="arsddh" id="arsddh"> <input type="time" name="arstdh" id="arstdh"></td>
+		<td><input type="date" name="scsddh" id="scsddh"> <input type="time" name="scstdh" id="scstdh"></td>
+		<td><input type="date" name="cmsddh" id="cmsddh"> <input type="time" name="cmstdh" id="cmstdh"></td>
+	</tr>
+	<tr>
+		<td class="frst">End Date & Time: </td>
+		<td><input type="date" name="areddh" id="areddh"> <input type="time" name="aretdh" id="aretdh"></td>
+		<td><input type="date" name="sceddh" id="sceddh"> <input type="time" name="scetdh" id="scetdh"></td>
+		<td><input type="date" name="cmeddh" id="cmeddh"> <input type="time" name="cmetdh" id="cmetdh"></td>
+	</tr>
+	<tr>
+		<td colspan="1" class="frst">Update: </td>
+		<td colspan="3"><center><input type="submit" value="Update Category I" name="catdh" id="dh" onclick="updatedb(this)"></center></td>
+	</tr>
+</table>
+<br><br>
+
+<center><h2>Category II : Students passed form any school of WB Board</h2></center>
+<table>
+	<tr>
+		<th class="frsts">Controls</th>
+		<th>ARTS</th>
+		<th>SCIENCE</th>
+		<th>COMMERCE</th>
+	</tr>
+	<tr>
+		<td class="frst">Eligibility Marks: </td>
+		<td><input type="text" name="armoh" id="armoh"></td>
+		<td><input type="text" name="scmoh" id="scmoh"></td>
+		<td><input type="text" name="cmmoh" id="cmmoh"></td>
+	</tr>
+	<tr>
+		<td class="frst">Start Date & Time: </td>
+		<td><input type="date" name="arsdoh" id="arsdoh"> <input type="time" name="arstoh" id="arstoh"></td>
+		<td><input type="date" name="scsdoh" id="scsdoh"> <input type="time" name="scstoh" id="scstoh"></td>
+		<td><input type="date" name="cmsdoh" id="cmsdoh"> <input type="time" name="cmstoh" id="cmstoh"></td>
+	</tr>
+	<tr>
+		<td class="frst">End Date & Time: </td>
+		<td><input type="date" name="aredoh" id="aredoh"> <input type="time" name="aretoh" id="aretoh"></td>
+		<td><input type="date" name="scedoh" id="scedoh"> <input type="time" name="scetoh" id="scetoh"></td>
+		<td><input type="date" name="cmedoh" id="cmedoh"> <input type="time" name="cmetoh" id="cmetoh"></td>
+	</tr>
+	<tr>
+		<td colspan="1" class="frst">Update: </td>
+		<td colspan="3"><center><input type="submit" value="Update Category II" name="catoh" id="oh" onclick="updatedb(this)"></center></td>
+	</tr>
+</table>
+<br><br>
+
+<center><h2>Category III : Students passed High Madrasah Examination </h2></center>
+<table>
+	<tr>
+		<th class="frsts">Controls</th>
+		<th>ARTS</th>
+		<th>SCIENCE</th>
+		<th>COMMERCE</th>
+	</tr>
+	<tr>
+		<td class="frst">Eligibility Marks: </td>
+		<td><input type="text" name="armhm" id="armhm"></td>
+		<td><input type="text" name="scmhm" id="scmhm"></td>
+		<td><input type="text" name="cmmhm" id="cmmhm"></td>
+	</tr>
+	<tr>
+		<td class="frst">Start Date & Time: </td>
+		<td><input type="date" name="arsdhm" id="arsdhm"> <input type="time" name="arsthm" id="arsthm"></td>
+		<td><input type="date" name="scsdhm" id="scsdhm"> <input type="time" name="scsthm" id="scsthm"></td>
+		<td><input type="date" name="cmsdhm" id="cmsdhm"> <input type="time" name="cmsthm" id="cmsthm"></td>
+	</tr>
+	<tr>
+		<td class="frst">End Date & Time: </td>
+		<td><input type="date" name="aredhm" id="aredhm"> <input type="time" name="arethm" id="arethm"></td>
+		<td><input type="date" name="scedhm" id="scedhm"> <input type="time" name="scethm" id="scethm"></td>
+		<td><input type="date" name="cmedhm" id="cmedhm"> <input type="time" name="cmethm" id="cmethm"></td>
+	</tr>
+	<tr>
+		<td colspan="1" class="frst">Update: </td>
+		<td colspan="3"><center><input type="submit" value="Update Category III" name="cathm" id="hm" onclick="updatedb(this)"></center></td>
+	</tr>
+</table>
+<br><br>
+
+<center><h2>Category IV : Students Passed Alim Examination</h2></center>
+<table>
+	<tr>
+		<th class="frsts">Controls</th>
+		<th>ARTS</th>
+		<th>SCIENCE</th>
+		<th>COMMERCE</th>
+	</tr>
+	<tr>
+		<td class="frst">Eligibility Marks: </td>
+		<td><input type="text" name="armam" id="armam"></td>
+		<td><input type="text" name="scmam" id="scmam"></td>
+		<td><input type="text" name="cmmam" id="cmmam"></td>
+	</tr>
+	<tr>
+		<td class="frst">Start Date & Time: </td>
+		<td><input type="date" name="arsdam" id="arsdam"> <input type="time" name="arstam" id="arstam"></td>
+		<td><input type="date" name="scsdam" id="scsdam"> <input type="time" name="scstam" id="scstam"></td>
+		<td><input type="date" name="cmsdam" id="cmsdam"> <input type="time" name="cmstam" id="cmstam"></td>
+	</tr>
+	<tr>
+		<td class="frst">End Date & Time: </td>
+		<td><input type="date" name="aredam" id="aredam"> <input type="time" name="aretam" id="aretam"></td>
+		<td><input type="date" name="scedam" id="scedam"> <input type="time" name="scetam" id="scetam"></td>
+		<td><input type="date" name="cmedam" id="cmedam"> <input type="time" name="cmetam" id="cmetam"></td>
+	</tr>
+	<tr>
+		<td colspan="1" class="frst">Update: </td>
+		<td colspan="3"><center><input type="submit" value="Update Category IV" name="catam" id="am" onclick="updatedb(this)"></center></td>
+	</tr>
+</table>
+<br><br>
+<script src="js/maincontrol.js">
+
+</script>
+</body>
+</html>

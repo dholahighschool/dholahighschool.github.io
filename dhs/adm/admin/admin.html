@@ -477,6 +477,9 @@ function GetDynamicTextBox(value) {
 									  <li class="resp-tab-item" aria-controls="tab_item-5" role="tab">
 									  	<span>Admission Management</span>
 									  </li>
+                    <li class="resp-tab-item" aria-controls="tab_item-6" role="tab">
+                      <span>XI Admission</span>
+                    </li>
 
 								</ul>		
 							</div>
@@ -816,7 +819,7 @@ function GetDynamicTextBox(value) {
 		<!-- Tab 5 -->					
                     <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-4">
 											<div class="hobby">
-												<h3>Admission Management</h3>
+												<h3>V - IX Admission Management</h3>
 												<div style="height:100px; width:100%"></div>
 												<div class="hobby-info">
 													
@@ -846,6 +849,50 @@ function GetDynamicTextBox(value) {
 												</div>
 											</div>
 										</div>
+
+<!-- TAb 6 -->
+                    <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-7">
+                      <div class="hobby">
+                        <h3>XI Admission Management</h3>
+                        <div style="height:100px; width:100%"></div>
+                        <div class="hobby-info">
+                          <label style="color: white; padding: 8px; font-family: Arial; background-color: #2196F3;">Schedule &amp; Eligibility Control Panel</label><br><br>
+
+                          <input type="submit" value="Click to go to Control Panel" name="admstupd" onclick="window.open('reports/maincontrol.html')"> &nbsp; <br><br>
+
+                            <label style="color: white; padding: 8px; font-family: Arial; background-color: #2196F3;">Individual Student Control</label><br><br>
+
+                          <input type="text" name="appid" id="appid" style="width: 250px" placeholder="Enter Application ID here"> <br><br>
+
+                          <input type="submit" value="View / Edit / Update" name="admstupd" onclick="singleupdate()"> &nbsp; <br><br>
+
+                          <label style="color: white; padding: 8px; font-family: Arial; background-color: #2196F3;">Admission Report</label><br><br>
+
+                          <input type="submit" value="ARTS" name="arts" onclick="artsreport()"> &nbsp;
+
+                          <input type="submit" value="SCIENCE" name="science" onclick="sciencereport()"> &nbsp;
+
+                          <input type="submit" value="COMMERCE" name="commerce" onclick="commercereport()"> &nbsp;
+                                              
+                          <br><br>
+
+                          <label style="color: white; padding: 8px; font-family: Arial; background-color: #2196F3;">Merit Lists</label><br><br>
+
+                          <input type="submit" value="ARTS" name="VImerit" onclick="artsmerit()"> &nbsp;
+
+                          <input type="submit" value="SCIENCE" name="VIImerit" onclick="sceiencemerit()"> &nbsp;
+
+                          <input type="submit" value="Commerce" name="VIImerit" onclick="commercemerit()"> &nbsp;
+
+                          <br><br>
+
+                        
+                        </div>
+                      </div>
+                    </div>
+
+<!-- TAB 7 -->
+
 									</div>	
 							</div>	
 							<div class="clear"></div>
