@@ -68,4 +68,5 @@ function updatedb(x){
 	var cat = x.id;
 	
 	firebase.database().ref("mpadmin/" + cat).update({arm:document.getElementById("arm" + cat).value,arst:new Date(document.getElementById("arsd" + cat).value + " " + document.getElementById("arst" + cat).value).getTime(),arend:new Date(document.getElementById("ared" + cat).value + " " + document.getElementById("aret" + cat).value).getTime(),scm:document.getElementById("scm" + cat).value,scst:new Date(document.getElementById("scsd" + cat).value + " " + document.getElementById("scst" + cat).value).getTime(),scend:new Date(document.getElementById("sced" + cat).value + " " + document.getElementById("scet" + cat).value).getTime(),cmm:document.getElementById("cmm" + cat).value,cmst:new Date(document.getElementById("cmsd" + cat).value + " " + document.getElementById("cmst" + cat).value).getTime(),cmend:new Date(document.getElementById("cmed" + cat).value + " " + document.getElementById("cmet" + cat).value).getTime()});
+    $("#" + cat +"sh").css("display", "block");
 }
