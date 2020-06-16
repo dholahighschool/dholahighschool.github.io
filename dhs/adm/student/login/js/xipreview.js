@@ -54,6 +54,7 @@ var prfsub2 = snap.child("prfsub2").val();
 var prfsub3 = snap.child("prfsub3").val();
 var prfsub4 = snap.child("prfsub4").val();
 var pvclass = snap.child("pvclass").val();
+var pvaddl = snap.child("pvaddl").val();
 var pvschool = snap.child("pvschool").val();
 var pvsec = snap.child("pvsec").val();
 var pvroll = snap.child("pvroll").val();
@@ -161,8 +162,8 @@ $('#nadmdate').html("Admission Date:___/___/____ ");
 $('#nprclass').html("Applied for Class : <b>" + prclass + "</b>");
 $('#nprsec').html("Alloted Section:______");
 $('#nprroll').html("Alloted Roll No.:______");
-if(praddl!="NA")
-$('#npraddl').html("Additional Subject: <b>" + praddl + "</b>");
+if(pvaddl!="NULL")
+$('#npraddl').html("Additional Subject: <b>" + pvaddl + "</b>");
 else
 $('#npraddl').css('display','none');
 if(prstream!="NA")
