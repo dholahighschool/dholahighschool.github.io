@@ -11,6 +11,109 @@
 	<script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
 	<script src="student/js/xi.js"></script>
 
+<style>
+
+input[type=text], input[type=date], select{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button (x) */
+.close {
+  position: relative;
+  left: 5px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
+
+</style>
 </head>
 
 <body>
@@ -56,7 +159,7 @@
     <legend>Select Board and proceed</legend>
     <br>
         
-		
+		<p>For new registration, select board and proceed.</p>
     <div style="height: auto; padding: 20px; text-align: center;">
     	<select name="gender" id="gender" required="true" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa; width: auto;" onchange="choice(this)">
     		<option value="NA" disabled="disabled" selected>-- Select Board --</option>
@@ -105,7 +208,7 @@
 	<br>
 	<a class="active-button teal" id="xidh" onclick="xiadm(this)">Apply as New Student</a><br><br><br>
 	
-	<a class="active-button teal" onclick="xilg()">Log IN</a><br><br><br>
+	
 </div>
 
 <div class="inf" id="ohsb">
@@ -118,7 +221,7 @@
 	<br>
 	<a class="active-button teal" id="xioh" onclick="xiadm(this)">Apply as New Student</a><br><br><br>
 	
-	<a class="active-button teal" onclick="xilg()">Log IN</a><br><br><br>
+	
 </div>
 
 <div class="inf" id="hmsb">
@@ -131,7 +234,7 @@
 	<br>
 	<a class="active-button teal" id="xihm" onclick="xiadm(this)">Apply as New Student</a><br><br><br>
 	
-	<a class="active-button teal" onclick="xilg()">Log IN</a><br><br><br>
+	
 </div>
 
 <div class="inf" id="amsb">
@@ -144,8 +247,43 @@
 	<br>
 	<a class="active-button teal" id="xiam" onclick="xiadm(this)">Apply as New Student</a><br><br><br>
 	
-	<a class="active-button teal" onclick="xilg()">Log IN</a><br><br><br>
+	
 </div>
+
+<p>Students already registered click Log IN to get printout of your application form.</p>
+<a class="active-button teal" onclick="xilg()" style="width:auto;">Log IN</a><br><br><br>
+
+
+<div id="xilg1" class="modal">
+  
+  <div class="modal-content animate">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('xilg1').style.display='none'" class="close" title="Close Log IN">&times;</span>
+    </div>
+
+    <div class="container">
+
+      <label for="udb"><b>Stream</b></label><br>
+      <select name="udb" id="udb" required>
+      <option value="NULL">-- Select any One --</option>
+      <option value="ARTS">ARTS</option>
+      <option value="SCIENCE">SCIENCE</option>
+      <option value="COMMERCE">COMMERCE</option>
+  	  </select>
+  	  <br>
+
+      <label for="uname"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" id="uid" name="uname">
+
+      <label for="psw"><b>Password</b></label>
+      <input type="date" placeholder="Enter Password" id="psd" name="psw">
+        
+      <button type="submit" onclick="chklgin()">Login</button>
+      
+    </div>
+  </div>
+</div>
+
 
 
 <center>
@@ -212,19 +350,7 @@ else{
 }
 }
 </script>
-<script type="text/javascript">
-function xilg() {
-var d = new Date();
-  var y = d.getTime();
-  var n = new Date("2020-02-07 10:00:00 AM"); //YYYY-MM-DD hh:mm:ss 
-  var x = n.getTime();
-if(+x >= +y){swal("Dhola High School","Admission Portal will be available from 7th July, 2020.","info");}
-else{
-var myWindow = window.open("");
-  myWindow.document.write("<title>Dhola High School</title><iframe width='100%' height='100%' src='student/login/index.html' frameborder='0' allowfullscreen></iframe>");
-}
-}
-</script>
+
 </body>
 
 </html>
