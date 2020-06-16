@@ -169,3 +169,56 @@ function conv(val) {
             swal("Dhola High School","Admission Portal is not available now. Check given times above","info");
         }
     }
+
+function xilg() {
+  var d = new Date();
+  var y = d.getTime();
+  var n = new Date("2020-06-07 10:00:00 AM"); //YYYY-MM-DD hh:mm:ss 
+  var x = n.getTime();
+if(+x >= +y){swal("Dhola High School","Admission Portal will be available from 7th July, 2020.","info");}
+else{
+  document.getElementById('xilg1').style.display='block';
+}
+}
+
+function chklgin() {
+  if(document.getElementById('udb').value!="NULL" && document.getElementById('uid').value.length!=0 && document.getElementById('psd').value.length!=0){
+    chklgd(document.getElementById('udb').value,document.getElementById('uid').value,document.getElementById('psd').value);
+  }
+  else{
+    swal("Dhola High School","Enter stream, Application ID & Date of Birth to proceed.","error");
+  }
+}
+
+function chklgd(x,y,z) {
+
+  var flaglg = 0;
+  var rootRef = firebase.database().ref("xi2020/" + x);
+
+rootRef.on("child_added", snap => {
+
+var appid = snap.child("appid").val();
+var dob = snap.child("dob").val();
+
+if(appid == y && dob == z){
+  flaglg ++;
+  
+}
+
+});
+ if(flaglg == 1){
+  localStorage.ud = y + "splt" + x;
+  document.getElementById('xilg1').style.display='none';
+  resetg();
+  window.open("student/xilogin.html");
+ } 
+ else{
+  swal("Dhola High School","Wrong Credentials! Try again later.","error");
+ }
+}
+
+function resetg() {
+  document.getElementById('udb').value = "NULL";
+  document.getElementById('uid').value = "";
+  document.getElementById('psd').value = "";
+}
