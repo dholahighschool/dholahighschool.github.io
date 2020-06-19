@@ -6,6 +6,9 @@ var scs = 48;
 var cms = 14;
 var ffn = 0;
 var btnn = "#showmore";
+var dtadmst = [];
+var dtadmend = [];
+var subadm = ["ARTS","SCIENCE","COMMERCE"];
 function appidset(){
 	var date = new Date();
 	var timestamp = date.getTime();
@@ -49,6 +52,7 @@ var	healthid = getInputVal('healthid');
 var	idmark = getInputVal('idmark');
 var	acyear = getInputVal('acyear');
 var	admno = getInputVal('admno');
+//var	admdate = getInputVal('admdate');
 var admstatus = getInputVal('admstatus');
 var	pvclass = getInputVal('pvclass');
 var pvaddl = getInputVal('pvaddl');
@@ -72,6 +76,7 @@ var mpperrev = getInputVal('mpperrev');
 var mpprc = getInputVal('mpprc');
 var	prstream = getInputVal('prstream');
 streamid = prstream;
+var admdate = "Admission Time &amp; Date: " + dtadmst[subadm.indexOf(streamid)] + " to " + dtadmend[subadm.indexOf(streamid)];
 var	prfcomp1 = getInputVal('prfcomp1');
 var	prfcomp2 = getInputVal('prfcomp2');
 var	prfsub1 = getInputVal('prfsub1');
@@ -123,7 +128,7 @@ var updbpass = getInputVal('updbpass');
 var updcaste = getInputVal('updcaste');
 
  // Save message
-  saveMessage(cat,name,dob,dobreg,gender,category,religion,mothertongue,nationality,aadhaar,bloodgroup,healthid,idmark,acyear,admno,admstatus,pvclass,pvaddl,prclass,pvroll,mpboard,pvschool,prroll,mpbengali,mpenglish,mpmath,mpphysc,mplfsc,mphist,mpgeo,mparabic,mpislp,mpaddl,mptotal,mpperrev,mpprc,prstream,prfcomp1,prfcomp2,prfsub1,prfsub2,prfsub3,prfsub4,medium,vill,habitation,district,block,panchayat,po,ps,pin,phone,email,fname,mname,gname,relationship,aincome,gqualification,gvill,ghabitation,gdistrict,gblock,gpanchayat,gpo,gps,gpin,gphone,gemail,bplstatus,bplno,cwsn,cwsntyp,bname,bcode,bifsc,acno,appid,updphoto,updsign,updmpadmit,updmpmark,updaadhaarpic,updbpass,updcaste);
+  saveMessage(cat,name,dob,dobreg,gender,category,religion,mothertongue,nationality,aadhaar,bloodgroup,healthid,idmark,acyear,admno,admdate,admstatus,pvclass,pvaddl,prclass,pvroll,mpboard,pvschool,prroll,mpbengali,mpenglish,mpmath,mpphysc,mplfsc,mphist,mpgeo,mparabic,mpislp,mpaddl,mptotal,mpperrev,mpprc,prstream,prfcomp1,prfcomp2,prfsub1,prfsub2,prfsub3,prfsub4,medium,vill,habitation,district,block,panchayat,po,ps,pin,phone,email,fname,mname,gname,relationship,aincome,gqualification,gvill,ghabitation,gdistrict,gblock,gpanchayat,gpo,gps,gpin,gphone,gemail,bplstatus,bplno,cwsn,cwsntyp,bname,bcode,bifsc,acno,appid,updphoto,updsign,updmpadmit,updmpmark,updaadhaarpic,updbpass,updcaste);
 
 
   document.getElementById("xiadmf").style.display = 'none';
@@ -144,7 +149,7 @@ function getInputVal(id){
 
 
 // Save message to firebase   
-function saveMessage(cat,name,dob,dobreg,gender,category,religion,mothertongue,nationality,aadhaar,bloodgroup,healthid,idmark,acyear,admno,admstatus,pvclass,pvaddl,prclass,pvroll,mpboard,pvschool,prroll,mpbengali,mpenglish,mpmath,mpphysc,mplfsc,mphist,mpgeo,mparabic,mpislp,mpaddl,mptotal,mpperrev,mpprc,prstream,prfcomp1,prfcomp2,prfsub1,prfsub2,prfsub3,prfsub4,medium,vill,habitation,district,block,panchayat,po,ps,pin,phone,email,fname,mname,gname,relationship,aincome,gqualification,gvill,ghabitation,gdistrict,gblock,gpanchayat,gpo,gps,gpin,gphone,gemail,bplstatus,bplno,cwsn,cwsntyp,bname,bcode,bifsc,acno,appid,updphoto,updsign,updmpadmit,updmpmark,updaadhaarpic,updbpass,updcaste){
+function saveMessage(cat,name,dob,dobreg,gender,category,religion,mothertongue,nationality,aadhaar,bloodgroup,healthid,idmark,acyear,admno,admdate,admstatus,pvclass,pvaddl,prclass,pvroll,mpboard,pvschool,prroll,mpbengali,mpenglish,mpmath,mpphysc,mplfsc,mphist,mpgeo,mparabic,mpislp,mpaddl,mptotal,mpperrev,mpprc,prstream,prfcomp1,prfcomp2,prfsub1,prfsub2,prfsub3,prfsub4,medium,vill,habitation,district,block,panchayat,po,ps,pin,phone,email,fname,mname,gname,relationship,aincome,gqualification,gvill,ghabitation,gdistrict,gblock,gpanchayat,gpo,gps,gpin,gphone,gemail,bplstatus,bplno,cwsn,cwsntyp,bname,bcode,bifsc,acno,appid,updphoto,updsign,updmpadmit,updmpmark,updaadhaarpic,updbpass,updcaste){
   /*
   var newMessageRef = messagesRef.push();
   MessageRef.set({
@@ -165,6 +170,7 @@ healthid:healthid,
 idmark:idmark,
 acyear:acyear,
 admno:admno,
+admdate:admdate,
 admstatus:admstatus,
 pvclass:pvclass,
 pvaddl:pvaddl,
@@ -947,15 +953,20 @@ var cat = snap.child("cat").val();
 var arm = snap.child("arm").val();
 var arst = conv(snap.child("arst").val());
 var arend = conv(snap.child("arend").val());
+var aradmst = conv(snap.child("aradmst").val());
+var aradmend = conv(snap.child("aradmend").val());
 
 var scm = snap.child("scm").val();
-
 var scst = conv(snap.child("scst").val());
 var scend = conv(snap.child("scend").val());
+var scadmst = conv(snap.child("scadmst").val());
+var scadmend = conv(snap.child("scadmend").val());
 
 var cmm = snap.child("cmm").val();
 var cmst = conv(snap.child("cmst").val());
 var cmend = conv(snap.child("cmend").val());
+var cmadmst = conv(snap.child("cmadmst").val());
+var cmadmend = conv(snap.child("cmadmend").val());
 
 
 if(cat == "hm"){
@@ -964,6 +975,14 @@ $('#arsd').html("<u style=\"color:#a1f0df\">Arts</u><br>Start: <b>" + arst + "</
 $('#scsd').html("<u style=\"color:#a1f0df\">Science</u><br>Start: <b>" + scst + "</b><br>End: <b>" + scend + "</b>");
 $('#cmsd').html("<u style=\"color:#a1f0df\">Commerce</u><br>Start: <b>" + cmst + "</b><br>End: <b>" + cmend + "</b>");
 $('#showmore').attr( { arm:arm, scm:scm, cmm:cmm, arst:new Date(arst).getTime(), arend:new Date(arend).getTime(), scst:new Date(scst).getTime(), scend:new Date(scend).getTime(), cmst:new Date(cmst).getTime(), cmend:new Date(cmend).getTime() } );
+dtadmst[0]=aradmst;
+dtadmst[1]=scadmst;
+dtadmst[2]=cmadmst;
+
+dtadmend[0]=aradmend;
+dtadmend[1]=scadmend;
+dtadmend[2]=cmadmend;
+
 }
 });
 },
@@ -984,19 +1003,26 @@ var rootRef = firebase.database().ref('mpadmin');
 
 rootRef.on("child_changed", snap => {
 
-var cat= snap.child("cat").val();
+var cat = snap.child("cat").val();
 
 var arm = snap.child("arm").val();
 var arst = conv(snap.child("arst").val());
 var arend = conv(snap.child("arend").val());
+var aradmst = conv(snap.child("aradmst").val());
+var aradmend = conv(snap.child("aradmend").val());
 
 var scm = snap.child("scm").val();
 var scst = conv(snap.child("scst").val());
 var scend = conv(snap.child("scend").val());
+var scadmst = conv(snap.child("scadmst").val());
+var scadmend = conv(snap.child("scadmend").val());
 
 var cmm = snap.child("cmm").val();
 var cmst = conv(snap.child("cmst").val());
 var cmend = conv(snap.child("cmend").val());
+var cmadmst = conv(snap.child("cmadmst").val());
+var cmadmend = conv(snap.child("cmadmend").val());
+
 
 if(cat == "hm"){
 $('#allel').html("Arts: <b>" + arm + "</b>&nbsp; Science: <b>" + scm + "</b>&nbsp; Commerce: <b>" + cmm + "</b>");
@@ -1004,6 +1030,13 @@ $('#arsd').html("<u style=\"color:#a1f0df\">Arts</u><br>Start: <b>" + arst + "</
 $('#scsd').html("<u style=\"color:#a1f0df\">Science</u><br>Start: <b>" + scst + "</b><br>End: <b>" + scend + "</b>");
 $('#cmsd').html("<u style=\"color:#a1f0df\">Commerce</u><br>Start: <b>" + cmst + "</b><br>End: <b>" + cmend + "</b>");
 $('#showmore').attr( { arm:arm, scm:scm, cmm:cmm, arst:new Date(arst).getTime(), arend:new Date(arend).getTime(), scst:new Date(scst).getTime(), scend:new Date(scend).getTime(), cmst:new Date(cmst).getTime(), cmend:new Date(cmend).getTime() } );
+dtadmst[0]=aradmst;
+dtadmst[1]=scadmst;
+dtadmst[2]=cmadmst;
+
+dtadmend[0]=aradmend;
+dtadmend[1]=scadmend;
+dtadmend[2]=cmadmend;
 
 }
 });
