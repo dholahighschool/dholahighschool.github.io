@@ -112,7 +112,9 @@ span.psw {
      width: 100%;
   }
 }
-
+.abc span{
+	border: 1px solid white;
+}
 </style>
 </head>
 
@@ -127,24 +129,24 @@ span.psw {
 	<div class="list-type1">
 		<center><h2>Read the following carefully</h2></center>
 <ol>
-<li><a>Form Fillup Start : 7th July, 2020 at 10:00 AM</a></li>
-<li><a>Form Fillup End : 18th July, 2020 at 4:00 PM</a></li>
-<li><a>Editing or modification option is not available after submission.</a></li>
-<li><a>After submitting a successful application, confirm your admission within the date provided in application form printout.</a></li>
-<li><b><a>Students who have already applied, should not apply again. Otherwise application will be rejected.</a></b></li>
-
+<li><a>মাধ্যমিক পরীক্ষার ফলাফল ঘোষণার সাথে সাথে ভর্তি প্রক্রিয়া শুরু হবে| (নীচে উল্লিখিত তারিখ এবং নম্বর মধ্যমিক ফলাফলের ভিত্তিতে পরিবর্তন করা হবে।)</a></li>
+<li><a>আসন সংখ্যা সীমিত</a></li>
+<li><a>অনলাইনে ফর্ম জমা দেওয়ার পরে সম্পাদনা (Edit) করা যাবে না।</a></li>
+<li><a>ভর্তি ফর্ম জমা দেওয়ার পরে, ভর্তি ফর্ম প্রিন্টআউটে উল্লিখিত তারিখে ভর্তি না হলে ভর্তি বাতিল হয়ে যাবে</a></li>
+<li><b><a>কোনও শিক্ষার্থী একাধিকবার আবেদন করবে না। অন্যথায় ভর্তি বাতিল করা হবে</a></b></li>
+<li><a>ভর্তি ফি সম্পর্কে জানতে, স্কুলের নোটিশ বোর্ড দেখুন</a></li>
 </ol>
 
 <div class="subs">
 	<center><u><h2>List of Available Subjects</h2></u></center>
 	<div class="abc">
-	<center><b>Arts</b><br>Education, Philosophy, History, Geography, Modern Computer Application / Environment, Arabic / Sanskrit, Appearel / Power.</center>
+	<center><b>Arts</b><br><span>Education</span>, <span>Philosophy</span>, <span>History</span>, <span>Geography</span>, <span>Modern Computer Application or Environment</span>, <span>Arabic or Sanskrit</span>, <span>Appearel or Power</span>.</center>
 	</div>
 	<div class="abc">
-	<center><b>Science</b><br>Physics, Chemistry, Biology, Mathematics, Geography, Modern Computer Application / Environment, Appearel / Power.</center>
+	<center><b>Science</b><br><span>Physics</span>, <span>Chemistry</span>, <span>Biology</span>, <span>Mathematics</span>, <span>Geography</span>, <span>Modern Computer Application or Environment</span>, <span>Appearel or Power</span>.</center>
 	</div>
 	<div class="abc">
-	<center><b>Commerce</b><br>Accountacy, Costing & Taxation, Business Studies, Modern Computer Application / Environment, Appearel / Power.</center>
+	<center><b>Commerce</b><br><span>Accountacy</span>, <span>Costing & Taxation</span>, <span>Business Studies</span>, <span>Modern Computer Application or Environment</span>, <span>Appearel or Power</span>.</center>
 	</div>
 </div>
 
@@ -272,11 +274,11 @@ span.psw {
   	  </select>
   	  <br>
 
-      <label for="uname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" id="uid" name="uname">
+      <label for="uname"><b>Application ID</b></label>
+      <input type="text" placeholder="Enter Application ID" id="uid" name="uname">
 
-      <label for="psw"><b>Password</b></label>
-      <input type="date" placeholder="Enter Password" id="psd" name="psw">
+      <label for="psw"><b>Date of Birth</b></label>
+      <input type="date" placeholder="Enter Date of Birth" id="psd" name="psw">
         
       <button type="submit" onclick="chklgin()">Login</button>
       
