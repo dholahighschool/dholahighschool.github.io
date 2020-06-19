@@ -30,6 +30,9 @@ th{
 	color: black;
 	font-weight: bold;
 }
+.gapr{
+	background-color: #e8bcd6;
+}
 </style>
 
 
@@ -44,18 +47,20 @@ th{
 <center><h2>Category I : Students passed form Dhola High School</h2></center>
 <table>
 	<tr>
-		<th class="frsts">Controls</th>
+		<th class="frsts" colspan="2">Controls</th>
 		<th>ARTS</th>
 		<th>SCIENCE</th>
 		<th>COMMERCE</th>
 	</tr>
 	<tr>
-		<td class="frst">Eligibility Marks: </td>
+		<td class="frst" colspan="2">Eligibility Marks: </td>
 		<td><input type="text" name="armdh" id="armdh"></td>
 		<td><input type="text" name="scmdh" id="scmdh"></td>
 		<td><input type="text" name="cmmdh" id="cmmdh"></td>
 	</tr>
+	<tr class="gapr"><td colspan="5"></td></tr>
 	<tr>
+		<td class="frst" rowspan="2">Application Form: </td>
 		<td class="frst">Start Date & Time: </td>
 		<td><input type="date" name="arsddh" id="arsddh"> <input type="time" name="arstdh" id="arstdh"></td>
 		<td><input type="date" name="scsddh" id="scsddh"> <input type="time" name="scstdh" id="scstdh"></td>
@@ -67,9 +72,23 @@ th{
 		<td><input type="date" name="sceddh" id="sceddh"> <input type="time" name="scetdh" id="scetdh"></td>
 		<td><input type="date" name="cmeddh" id="cmeddh"> <input type="time" name="cmetdh" id="cmetdh"></td>
 	</tr>
+	<tr class="gapr"><td colspan="5"></td></tr>
 	<tr>
-		<td colspan="1" class="frst">Update: </td>
-		<td colspan="3"><center><input type="submit" value="Update Category I" name="catdh" id="dh" onclick="updatedb(this)"><i id="dhsh" style="color: blue; display: none;"> Just Updated</i></center></td>
+		<td class="frst" rowspan="2">Admission </td>
+		<td class="frst">Start Date & Time: </td>
+		<td><input type="date" name="armsddh" id="armsddh"> <input type="time" name="armstdh" id="armstdh"></td>
+		<td><input type="date" name="scmsddh" id="scmsddh"> <input type="time" name="scmstdh" id="scmstdh"></td>
+		<td><input type="date" name="cmmsddh" id="cmmsddh"> <input type="time" name="cmmstdh" id="cmmstdh"></td>
+	</tr>
+	<tr>
+		<td class="frst">End Date & Time: </td>
+		<td><input type="date" name="armeddh" id="armeddh"> <input type="time" name="armetdh" id="armetdh"></td>
+		<td><input type="date" name="scmeddh" id="scmeddh"> <input type="time" name="scmetdh" id="scmetdh"></td>
+		<td><input type="date" name="cmmeddh" id="cmmeddh"> <input type="time" name="cmmetdh" id="cmmetdh"></td>
+	</tr>
+	<tr class="gapr"><td colspan="5"></td></tr>
+	<tr>
+		<td colspan="5"><center><input type="submit" value="Update Category I" name="catdh" id="dh" onclick="updatedb(this)"><i id="dhsh" style="color: blue; display: none;"> Just Updated</i></center></td>
 	</tr>
 </table>
 <br><br>
@@ -77,18 +96,20 @@ th{
 <center><h2>Category II : Students passed form any school of WB Board</h2></center>
 <table>
 	<tr>
-		<th class="frsts">Controls</th>
+		<th class="frsts" colspan="2">Controls</th>
 		<th>ARTS</th>
 		<th>SCIENCE</th>
 		<th>COMMERCE</th>
 	</tr>
 	<tr>
-		<td class="frst">Eligibility Marks: </td>
+		<td class="frst" colspan="2">Eligibility Marks: </td>
 		<td><input type="text" name="armoh" id="armoh"></td>
 		<td><input type="text" name="scmoh" id="scmoh"></td>
 		<td><input type="text" name="cmmoh" id="cmmoh"></td>
 	</tr>
+	<tr class="gapr"><td colspan="5"></td></tr>
 	<tr>
+		<td class="frst" rowspan="2">Application Form: </td>
 		<td class="frst">Start Date & Time: </td>
 		<td><input type="date" name="arsdoh" id="arsdoh"> <input type="time" name="arstoh" id="arstoh"></td>
 		<td><input type="date" name="scsdoh" id="scsdoh"> <input type="time" name="scstoh" id="scstoh"></td>
@@ -100,9 +121,23 @@ th{
 		<td><input type="date" name="scedoh" id="scedoh"> <input type="time" name="scetoh" id="scetoh"></td>
 		<td><input type="date" name="cmedoh" id="cmedoh"> <input type="time" name="cmetoh" id="cmetoh"></td>
 	</tr>
+	<tr class="gapr"><td colspan="5"></td></tr>
 	<tr>
-		<td colspan="1" class="frst">Update: </td>
-		<td colspan="3"><center><input type="submit" value="Update Category II" name="catoh" id="oh" onclick="updatedb(this)"><i id="ohsh" style="color: blue; display: none;"> Just Updated</i></center></td>
+		<td class="frst" rowspan="2">Admission </td>
+		<td class="frst">Start Date & Time: </td>
+		<td><input type="date" name="armsdoh" id="armsdoh"> <input type="time" name="armstoh" id="armstoh"></td>
+		<td><input type="date" name="scmsdoh" id="scmsdoh"> <input type="time" name="scmstoh" id="scmstoh"></td>
+		<td><input type="date" name="cmmsdoh" id="cmmsdoh"> <input type="time" name="cmmstoh" id="cmmstoh"></td>
+	</tr>
+	<tr>
+		<td class="frst">End Date & Time: </td>
+		<td><input type="date" name="armedoh" id="armedoh"> <input type="time" name="armetoh" id="armetoh"></td>
+		<td><input type="date" name="scmedoh" id="scmedoh"> <input type="time" name="scmetoh" id="scmetoh"></td>
+		<td><input type="date" name="cmmedoh" id="cmmedoh"> <input type="time" name="cmmetoh" id="cmmetoh"></td>
+	</tr>
+	<tr class="gapr"><td colspan="5"></td></tr>
+	<tr>
+		<td colspan="5"><center><input type="submit" value="Update Category II" name="catoh" id="oh" onclick="updatedb(this)"><i id="ohsh" style="color: blue; display: none;"> Just Updated</i></center></td>
 	</tr>
 </table>
 <br><br>
@@ -110,51 +145,20 @@ th{
 <center><h2>Category III : Students passed High Madrasah Examination </h2></center>
 <table>
 	<tr>
-		<th class="frsts">Controls</th>
+		<th class="frsts" colspan="2">Controls</th>
 		<th>ARTS</th>
 		<th>SCIENCE</th>
 		<th>COMMERCE</th>
 	</tr>
 	<tr>
-		<td class="frst">Eligibility Marks: </td>
-		<td><input type="text" name="armhm" id="armhm"></td>
-		<td><input type="text" name="scmhm" id="scmhm"></td>
-		<td><input type="text" name="cmmhm" id="cmmhm"></td>
-	</tr>
-	<tr>
-		<td class="frst">Start Date & Time: </td>
-		<td><input type="date" name="arsdhm" id="arsdhm"> <input type="time" name="arsthm" id="arsthm"></td>
-		<td><input type="date" name="scsdhm" id="scsdhm"> <input type="time" name="scsthm" id="scsthm"></td>
-		<td><input type="date" name="cmsdhm" id="cmsdhm"> <input type="time" name="cmsthm" id="cmsthm"></td>
-	</tr>
-	<tr>
-		<td class="frst">End Date & Time: </td>
-		<td><input type="date" name="aredhm" id="aredhm"> <input type="time" name="arethm" id="arethm"></td>
-		<td><input type="date" name="scedhm" id="scedhm"> <input type="time" name="scethm" id="scethm"></td>
-		<td><input type="date" name="cmedhm" id="cmedhm"> <input type="time" name="cmethm" id="cmethm"></td>
-	</tr>
-	<tr>
-		<td colspan="1" class="frst">Update: </td>
-		<td colspan="3"><center><input type="submit" value="Update Category III" name="cathm" id="hm" onclick="updatedb(this)"><i id="hmsh" style="color: blue; display: none;"> Just Updated</i></center></td>
-	</tr>
-</table>
-<br><br>
-
-<center><h2>Category IV : Students Passed Alim Examination</h2></center>
-<table>
-	<tr>
-		<th class="frsts">Controls</th>
-		<th>ARTS</th>
-		<th>SCIENCE</th>
-		<th>COMMERCE</th>
-	</tr>
-	<tr>
-		<td class="frst">Eligibility Marks: </td>
+		<td class="frst" colspan="2">Eligibility Marks: </td>
 		<td><input type="text" name="armam" id="armam"></td>
 		<td><input type="text" name="scmam" id="scmam"></td>
 		<td><input type="text" name="cmmam" id="cmmam"></td>
 	</tr>
+	<tr class="gapr"><td colspan="5"></td></tr>
 	<tr>
+		<td class="frst" rowspan="2">Application Form: </td>
 		<td class="frst">Start Date & Time: </td>
 		<td><input type="date" name="arsdam" id="arsdam"> <input type="time" name="arstam" id="arstam"></td>
 		<td><input type="date" name="scsdam" id="scsdam"> <input type="time" name="scstam" id="scstam"></td>
@@ -166,9 +170,72 @@ th{
 		<td><input type="date" name="scedam" id="scedam"> <input type="time" name="scetam" id="scetam"></td>
 		<td><input type="date" name="cmedam" id="cmedam"> <input type="time" name="cmetam" id="cmetam"></td>
 	</tr>
+	<tr class="gapr"><td colspan="5"></td></tr>
 	<tr>
-		<td colspan="1" class="frst">Update: </td>
-		<td colspan="3"><center><input type="submit" value="Update Category IV" name="catam" id="am" onclick="updatedb(this)"><i id="amsh" style="color: blue; display: none;"> Just Updated</i></center></td>
+		<td class="frst" rowspan="2">Admission </td>
+		<td class="frst">Start Date & Time: </td>
+		<td><input type="date" name="armsdam" id="armsdam"> <input type="time" name="armstam" id="armstam"></td>
+		<td><input type="date" name="scmsdam" id="scmsdam"> <input type="time" name="scmstam" id="scmstam"></td>
+		<td><input type="date" name="cmmsdam" id="cmmsdam"> <input type="time" name="cmmstam" id="cmmstam"></td>
+	</tr>
+	<tr>
+		<td class="frst">End Date & Time: </td>
+		<td><input type="date" name="armedam" id="armedam"> <input type="time" name="armetam" id="armetam"></td>
+		<td><input type="date" name="scmedam" id="scmedam"> <input type="time" name="scmetam" id="scmetam"></td>
+		<td><input type="date" name="cmmedam" id="cmmedam"> <input type="time" name="cmmetam" id="cmmetam"></td>
+	</tr>
+	<tr class="gapr"><td colspan="5"></td></tr>
+	<tr>
+		<td colspan="5"><center><input type="submit" value="Update Category III" name="catam" id="am" onclick="updatedb(this)"><i id="amsh" style="color: blue; display: none;"> Just Updated</i></center></td>
+	</tr>
+</table>
+<br><br>
+
+<center><h2>Category IV : Students Passed Alim Examination</h2></center>
+<table>
+	<tr>
+		<th class="frsts" colspan="2">Controls</th>
+		<th>ARTS</th>
+		<th>SCIENCE</th>
+		<th>COMMERCE</th>
+	</tr>
+	<tr>
+		<td class="frst" colspan="2">Eligibility Marks: </td>
+		<td><input type="text" name="armhm" id="armhm"></td>
+		<td><input type="text" name="scmhm" id="scmhm"></td>
+		<td><input type="text" name="cmmhm" id="cmmhm"></td>
+	</tr>
+	<tr class="gapr"><td colspan="5"></td></tr>
+	<tr>
+		<td class="frst" rowspan="2">Application Form: </td>
+		<td class="frst">Start Date & Time: </td>
+		<td><input type="date" name="arsdhm" id="arsdhm"> <input type="time" name="arsthm" id="arsthm"></td>
+		<td><input type="date" name="scsdhm" id="scsdhm"> <input type="time" name="scsthm" id="scsthm"></td>
+		<td><input type="date" name="cmsdhm" id="cmsdhm"> <input type="time" name="cmsthm" id="cmsthm"></td>
+	</tr>
+	<tr>
+		<td class="frst">End Date & Time: </td>
+		<td><input type="date" name="aredhm" id="aredhm"> <input type="time" name="arethm" id="arethm"></td>
+		<td><input type="date" name="scedhm" id="scedhm"> <input type="time" name="scethm" id="scethm"></td>
+		<td><input type="date" name="cmedhm" id="cmedhm"> <input type="time" name="cmethm" id="cmethm"></td>
+	</tr>
+	<tr class="gapr"><td colspan="5"></td></tr>
+	<tr>
+		<td class="frst" rowspan="2">Admission </td>
+		<td class="frst">Start Date & Time: </td>
+		<td><input type="date" name="armsdhm" id="armsdhm"> <input type="time" name="armsthm" id="armsthm"></td>
+		<td><input type="date" name="scmsdhm" id="scmsdhm"> <input type="time" name="scmsthm" id="scmsthm"></td>
+		<td><input type="date" name="cmmsdhm" id="cmmsdhm"> <input type="time" name="cmmsthm" id="cmmsthm"></td>
+	</tr>
+	<tr>
+		<td class="frst">End Date & Time: </td>
+		<td><input type="date" name="armedhm" id="armedhm"> <input type="time" name="armethm" id="armethm"></td>
+		<td><input type="date" name="scmedhm" id="scmedhm"> <input type="time" name="scmethm" id="scmethm"></td>
+		<td><input type="date" name="cmmedhm" id="cmmedhm"> <input type="time" name="cmmethm" id="cmmethm"></td>
+	</tr>
+	<tr class="gapr"><td colspan="5"></td></tr>
+	<tr>
+		<td colspan="5"><center><input type="submit" value="Update Category IV" name="cathm" id="hm" onclick="updatedb(this)"><i id="hmsh" style="color: blue; display: none;"> Just Updated</i></center></td>
 	</tr>
 </table>
 <br><br>
