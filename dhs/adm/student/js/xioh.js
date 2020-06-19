@@ -1,4 +1,5 @@
 // Initialize Firebase (ADD YOUR OWN DATA)
+var streamid = "";
 var appid = "";
 var ars = 207;
 var scs = 48;
@@ -68,6 +69,7 @@ var mptotal = getInputVal('mptotal');
 var mpperrev = getInputVal('mpperrev');
 var mpprc = getInputVal('mpprc');
 var	prstream = getInputVal('prstream');
+streamid = prstream;
 var	prfcomp1 = getInputVal('prfcomp1');
 var	prfcomp2 = getInputVal('prfcomp2');
 var	prfsub1 = getInputVal('prfsub1');
@@ -233,7 +235,7 @@ updcaste:updcaste
   });
 }
 
-	var fbBucketName1 = 'xi2020';
+var fbBucketName1 = 'xi2020';
 
 		var uploader1 = document.getElementById('uploader1');
 		var fileButton1 = document.getElementById('fileButton1');
@@ -258,7 +260,7 @@ updcaste:updcaste
       
       		var strt = str.substr(str.length - n);
 	
-			var storageRef1 = firebase.storage().ref(`${fbBucketName1}/${appid}/photo.${strt}`);
+			var storageRef1 = firebase.storage().ref(`${fbBucketName1}/${appid}/${appid}photo.${strt}`);
 
 			var uploadTask1 = storageRef1.put(file1);
 
@@ -323,7 +325,7 @@ var fbBucketName2 = 'xi2020';
       
       		var strt = str.substr(str.length - n);
 
-			var storageRef2 = firebase.storage().ref(`${fbBucketName2}/${appid}/sign.${strt}`);
+			var storageRef2 = firebase.storage().ref(`${fbBucketName2}/${appid}/${appid}sign.${strt}`);
 
 			var uploadTask2 = storageRef2.put(file2);
 
@@ -388,7 +390,7 @@ var fbBucketName3 = 'xi2020';
       
       		var strt = str.substr(str.length - n);
 	
-			var storageRef3 = firebase.storage().ref(`${fbBucketName3}/${appid}/mpadmit.${strt}`);
+			var storageRef3 = firebase.storage().ref(`${fbBucketName3}/${appid}/${appid}mpadmit.${strt}`);
 
 			var uploadTask3 = storageRef3.put(file3);
 
@@ -453,7 +455,7 @@ var fbBucketName4 = 'xi2020';
       
       		var strt = str.substr(str.length - n);
 	
-			var storageRef4 = firebase.storage().ref(`${fbBucketName4}/${appid}/mpmark.${strt}`);
+			var storageRef4 = firebase.storage().ref(`${fbBucketName4}/${appid}/${appid}mpmark.${strt}`);
 
 			var uploadTask4 = storageRef4.put(file4);
 
@@ -517,7 +519,7 @@ var fbBucketName5 = 'xi2020';
       
       		var strt = str.substr(str.length - n);
 	
-			var storageRef5 = firebase.storage().ref(`${fbBucketName5}/${appid}/aadhaarpic.${strt}`);
+			var storageRef5 = firebase.storage().ref(`${fbBucketName5}/${appid}/${appid}aadhaarpic.${strt}`);
 
 			var uploadTask5 = storageRef5.put(file5);
 
@@ -582,7 +584,7 @@ var fbBucketName6 = 'xi2020';
       
       		var strt = str.substr(str.length - n);
 	
-			var storageRef6 = firebase.storage().ref(`${fbBucketName6}/${appid}/bpass.${strt}`);
+			var storageRef6 = firebase.storage().ref(`${fbBucketName6}/${appid}/${appid}bpass.${strt}`);
 
 			var uploadTask6 = storageRef6.put(file6);
 
@@ -646,7 +648,7 @@ var fbBucketName7 = 'xi2020';
       
       		var strt = str.substr(str.length - n);
 	
-			var storageRef7 = firebase.storage().ref(`${fbBucketName7}/${appid}/caste.${strt}`);
+			var storageRef7 = firebase.storage().ref(`${fbBucketName7}/${appid}/${appid}caste.${strt}`);
 
 			var uploadTask7 = storageRef7.put(file7);
 
@@ -685,13 +687,9 @@ var fbBucketName7 = 'xi2020';
 
 		});
 function chkn() {
-		//var userID = document.getElementById("finalusername").value;
-		if (window.sessionStorage) 
-				{
-					sessionStorage.setItem("username", appid);
-					window.open("login/index.html");
-					window.close();
-				}
+		localStorage.ud = appid + "splt" + streamid;
+		window.open("student/xilogin.html");
+		window.close();
 }
 	function pinlength(x){
  		if(x.value.length!=6)
