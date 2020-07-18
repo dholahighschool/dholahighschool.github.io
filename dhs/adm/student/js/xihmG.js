@@ -8,6 +8,9 @@ var ffn = 0;
 var btnn = "#showmore";
 var dtadmst = [];
 var dtadmend = [];
+var grades = ["AA","A+","A","B+","B","C","D","NA"];
+var gfull = ["90","80","60","45","35","25","1","0"];
+var ghalf = ["45","40","30","23","17","13","1","0"];
 var subadm = ["ARTS","SCIENCE","COMMERCE"];
 function appidset(){
 	var date = new Date();
@@ -61,19 +64,21 @@ var pvroll = getInputVal('pvroll');
 var mpboard = getInputVal('mpboard');
 var pvschool = getInputVal('pvschool');
 var	prroll = getInputVal('prroll');
-var mpbengali = getInputVal('mpbengali');
-var mpenglish = getInputVal('mpenglish');
-var mpmath = getInputVal('mpmath');
-var mpphysc = getInputVal('mpphysc');
-var mplfsc = getInputVal('mplfsc');
-var mphist = getInputVal('mphist');
-var mpgeo = getInputVal('mpgeo');
-var mparabic = getInputVal('mparabic');
-var mpislp = getInputVal('mpislp');
-var mpaddl = getInputVal('mpaddl');
+
+var mpbengali = grades[gfull.indexOf(getInputVal('mpbengali'))];
+var mpenglish = grades[gfull.indexOf(getInputVal('mpenglish'))];
+var mpmath = grades[gfull.indexOf(getInputVal('mpmath'))];
+var mpphysc = grades[gfull.indexOf(getInputVal('mpphysc'))];
+var mplfsc = grades[gfull.indexOf(getInputVal('mplfsc'))];
+var mphist = grades[gfull.indexOf(getInputVal('mphist'))];
+var mpgeo = grades[gfull.indexOf(getInputVal('mpgeo'))];
+var mparabic = grades[gfull.indexOf(getInputVal('mparabic'))];
+var mpislp = grades[gfull.indexOf(getInputVal('mpislp'))];
+var mpaddl = grades[gfull.indexOf(getInputVal('mpaddl'))];
 var mptotal = getInputVal('mptotal');
 var mpperrev = getInputVal('mpperrev');
 var mpprc = getInputVal('mpprc');
+
 var	prstream = getInputVal('prstream');
 streamid = prstream;
 var admdate = "Admission Time &amp; Date: " + dtadmst[subadm.indexOf(streamid)] + " to " + dtadmend[subadm.indexOf(streamid)];
@@ -1053,6 +1058,7 @@ function conv(val) {
 document.getElementById("showmore").addEventListener("click", divhid);
 
 function divhid() {
+
 	var flag = 0;
 	var btn = "#showmore";
 	var op = ["ar", "sc", "cm"];
@@ -1079,15 +1085,16 @@ function divhid() {
 			swal("Dhola High School","Check all fileds of MP Exam details whether left or not.You must have to obtain at least 25% in each subject(without Addl.) to be eligible.","error");
 			$("#prstream").css("display","none");
 		}
-	}
+	
+}
 
 function chk(ops,btn) {
 	var d = new Date();
 	var x = d.getTime();
-	var om = $(btn).attr('data-total');
+	var om = Number($(btn).attr('data-total'));
 	var y = $(btn).attr(ops + 'st');
 	var z = $(btn).attr(ops + 'end');
-	var rm = $(btn).attr(ops + 'm');
+	var rm = Number($(btn).attr(ops + 'm'));
 	var st = $(btn).attr(ops + 's');
 
 	if((+x >= +y && +x <= +z) && (om >= rm) && (st > 0))//(tm >= m)
@@ -1114,11 +1121,15 @@ function convlw(x){
   	if($("#mptotal").val() > 800 || $("#mptotal").val().length > 3){
   		$("#mptotal").val("");
   		$("#mpprc").val("");
+  		var totalentered = "0";
+  		$("#showmore").attr("data-total", totalentered);
   		swal("Dhola High School","Obtained Marks cannot be more than Total Marks","warning");
   	}
   	else{
+  		var totalentered = document.getElementById('mptotal').value;
+  		$("#showmore").attr("data-total", totalentered);
   	var tsum = $("#mptotal").val();
-  	var tprc = tsum / 9;
+  	var tprc = tsum / 8;
   	$("#mpprc").val(tprc.toFixed(2));
   	rev(100 - tprc.toFixed(2));
   	}
@@ -1145,7 +1156,7 @@ function convlw(x){
 	rev(100 - prc.toFixed(2));
 	
 
-	$("#showmore").attr("data-total", sum);
+	//$("#showmore").attr("data-total", sum);
 	finalsub(x);
 	//if(){}		
   }

@@ -8,9 +8,9 @@ var ffn = 0;
 var btnn = "#showmore";
 var dtadmst = [];
 var dtadmend = [];
-var grades = ["AA","A+","A","B+","B","C","D"];
-var gfull = ["90","80","60","45","35","25","1"];
-var ghalf = ["45","40","30","23","17","13","1"];
+var grades = ["AA","A+","A","B+","B","C","D","NA"];
+var gfull = ["90","80","60","45","35","25","1","0"];
+var ghalf = ["45","40","30","23","17","13","1","0"];
 var subadm = ["ARTS","SCIENCE","COMMERCE"];
 function appidset(){
 	var date = new Date();
@@ -64,21 +64,23 @@ var pvroll = getInputVal('pvroll');
 var mpboard = getInputVal('mpboard');
 var pvschool = getInputVal('pvschool');
 var	prroll = getInputVal('prroll');
-var mpbengali = getInputVal('mpbengali');
-var mpenglish = getInputVal('mpenglish');
-var mpmath = getInputVal('mpmath');
-var mpphysc = getInputVal('mpphysc');
-var mplfsc = getInputVal('mplfsc');
-var mphist = getInputVal('mphist');
-var mpgeo = getInputVal('mpgeo');
-var mparabic = getInputVal('mparabic');
-var mpfiqh = getInputVal('mpfiqh');
-var mphadith = getInputVal('mphadith');
-var mptafsir = getInputVal('mptafsir');
-var mpaddl = getInputVal('mpaddl');
+
+var mpbengali = grades[gfull.indexOf(getInputVal('mpbengali'))];
+var mpenglish = grades[gfull.indexOf(getInputVal('mpenglish'))];
+var mpmath = grades[gfull.indexOf(getInputVal('mpmath'))];
+var mpphysc = grades[ghalf.indexOf(getInputVal('mpphysc'))];
+var mplfsc = grades[ghalf.indexOf(getInputVal('mplfsc'))];
+var mphist = grades[gfull.indexOf(getInputVal('mphist'))];
+var mpgeo = grades[ghalf.indexOf(getInputVal('mpgeo'))];
+var mparabic = grades[gfull.indexOf(getInputVal('mparabic'))];
+var mpfiqh = grades[ghalf.indexOf(getInputVal('mpfiqh'))];
+var mphadith = grades[gfull.indexOf(getInputVal('mphadith'))];
+var mptafsir = grades[gfull.indexOf(getInputVal('mptafsir'))];
+var mpaddl = grades[gfull.indexOf(getInputVal('mpaddl'))];
 var mptotal = getInputVal('mptotal');
 var mpperrev = getInputVal('mpperrev');
 var mpprc = getInputVal('mpprc');
+
 var	prstream = getInputVal('prstream');
 streamid = prstream;
 var admdate = "Admission Time &amp; Date: " + dtadmst[subadm.indexOf(streamid)] + " to " + dtadmend[subadm.indexOf(streamid)];
@@ -705,7 +707,7 @@ var fbBucketName7 = 'xi2020';
 		});
 function chkn() {
 		localStorage.ud = appid + "splt" + streamid;
-		window.open("student/xilogin.html");
+		window.open("xilogin.html");
 		window.close();
 }
 	function pinlength(x){
@@ -1100,10 +1102,10 @@ function divhid() {
 function chk(ops,btn) {
 	var d = new Date();
 	var x = d.getTime();
-	var om = $(btn).attr('data-total');
+	var om = Number($(btn).attr('data-total'));
 	var y = $(btn).attr(ops + 'st');
 	var z = $(btn).attr(ops + 'end');
-	var rm = $(btn).attr(ops + 'm');
+	var rm = Number($(btn).attr(ops + 'm'));
 	var st = $(btn).attr(ops + 's');
 
 	if((+x >= +y && +x <= +z) && (om >= rm) && (st > 0))//(tm >= m)
@@ -1125,7 +1127,23 @@ function convlw(x){
       x.style.textTransform = "uppercase";
     }
   }
- 
+function calper() {
+  	if($("#mptotal").val() > 800 || $("#mptotal").val().length > 3){
+  		$("#mptotal").val("");
+  		$("#mpprc").val("");
+  		var totalentered = "0";
+  		$("#showmore").attr("data-total", totalentered);
+  		swal("Dhola High School","Obtained Marks cannot be more than Total Marks","warning");
+  	}
+  	else{
+  		var totalentered = document.getElementById('mptotal').value;
+  		$("#showmore").attr("data-total", totalentered);
+  	var tsum = $("#mptotal").val();
+  	var tprc = tsum / 9;
+  	$("#mpprc").val(tprc.toFixed(2));
+  	rev(100 - tprc.toFixed(2));
+  	}
+  }
 
   function marksadd(x){
   	//document.getElementById("mptotal").value = sum;
@@ -1156,7 +1174,7 @@ function convlw(x){
 	rev(100 - prc.toFixed(2));
 	
 
-	$("#showmore").attr("data-total", sum);
+	//$("#showmore").attr("data-total", sum);
 	finalsub(x);
 	//if(){}		
   }
