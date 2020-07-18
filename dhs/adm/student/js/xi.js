@@ -162,7 +162,13 @@ function conv(val) {
         if(+x >= +y && +x <= +z)
         {
             //localStorage.setItem("fn", fn);
-            window.open("student/" + p + ".html");
+            if(p == "xiam" || p == "xihm"){
+              window.open("student/" + p + "G.html");
+            }
+            else{
+              window.open("student/" + p + ".html");  
+            }
+            
         }
         else
         {
