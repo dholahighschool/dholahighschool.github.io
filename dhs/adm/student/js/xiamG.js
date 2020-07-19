@@ -274,6 +274,11 @@ var fbBucketName1 = 'xi2020';
         	}
 
         	var str = e1.target.files[0].type;
+			if(!str.includes("image")){
+        		swal('Oops..','Only Image type files are allowed to upload.','error');
+            	document.getElementById('fileButton3').value = "";
+            	return;
+        	}
       
       		var n = str.length - str.lastIndexOf("/") -1;
       
@@ -339,6 +344,11 @@ var fbBucketName2 = 'xi2020';
         	}
 
         	var str = e2.target.files[0].type;
+			if(!str.includes("image")){
+        		swal('Oops..','Only Image type files are allowed to upload.','error');
+            	document.getElementById('fileButton3').value = "";
+            	return;
+        	}
       
       		var n = str.length - str.lastIndexOf("/") -1;
       
@@ -404,6 +414,11 @@ var fbBucketName3 = 'xi2020';
         	}
 
         	var str = e3.target.files[0].type;
+			if(!str.includes("image")){
+        		swal('Oops..','Only Image type files are allowed to upload.','error');
+            	document.getElementById('fileButton3').value = "";
+            	return;
+        	}
       
       		var n = str.length - str.lastIndexOf("/") -1;
       
@@ -469,6 +484,11 @@ var fbBucketName4 = 'xi2020';
         	}
 
         	var str = e4.target.files[0].type;
+			if(!str.includes("image")){
+        		swal('Oops..','Only Image type files are allowed to upload.','error');
+            	document.getElementById('fileButton3').value = "";
+            	return;
+        	}
       
       		var n = str.length - str.lastIndexOf("/") -1;
       
@@ -533,6 +553,11 @@ var fbBucketName5 = 'xi2020';
         	}
 
         	var str = e5.target.files[0].type;
+			if(!str.includes("image")){
+        		swal('Oops..','Only Image type files are allowed to upload.','error');
+            	document.getElementById('fileButton3').value = "";
+            	return;
+        	}
       
       		var n = str.length - str.lastIndexOf("/") -1;
       
@@ -598,6 +623,11 @@ var fbBucketName6 = 'xi2020';
         	}
 
         	var str = e6.target.files[0].type;
+			if(!str.includes("image")){
+        		swal('Oops..','Only Image type files are allowed to upload.','error');
+            	document.getElementById('fileButton3').value = "";
+            	return;
+        	}
       
       		var n = str.length - str.lastIndexOf("/") -1;
       
@@ -662,6 +692,11 @@ var fbBucketName7 = 'xi2020';
         	}
 
         	var str = e7.target.files[0].type;
+			if(!str.includes("image")){
+        		swal('Oops..','Only Image type files are allowed to upload.','error');
+            	document.getElementById('fileButton3').value = "";
+            	return;
+        	}
       
       		var n = str.length - str.lastIndexOf("/") -1;
       
