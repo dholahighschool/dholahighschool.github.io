@@ -1163,7 +1163,7 @@ function convlw(x){
     }
   }
 function calper() {
-  	if($("#mptotal").val() > 800 || $("#mptotal").val().length > 3){
+  	if($("#mptotal").val() > 900 || $("#mptotal").val().length > 3){
   		$("#mptotal").val("");
   		$("#mpprc").val("");
   		var totalentered = "0";
