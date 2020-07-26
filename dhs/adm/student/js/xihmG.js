@@ -1188,7 +1188,7 @@ function convlw(x){
 	//$("#mptotal").val(sum);
 	//$("#mpprc").val(prc.toFixed(2));
 
-	rev(100 - prc.toFixed(2));
+	//rev(100 - prc.toFixed(2));
 	
 
 	//$("#showmore").attr("data-total", sum);
