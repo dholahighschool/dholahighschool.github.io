@@ -1142,6 +1142,7 @@ function divhid() {
 			swal("Dhola High School","Check all fileds of MP Exam details whether left or not.You must have to obtain at least 25% in each subject(without Addl.) to be eligible.","error");
 			$("#prstream").css("display","none");
 		}
+		showarts();
 	}
 
 function chk(ops,btn) {
