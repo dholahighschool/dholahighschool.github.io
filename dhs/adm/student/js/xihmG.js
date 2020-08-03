@@ -5,6 +5,7 @@ var ars = 222;
 var scs = 48;
 var cms = 14;
 var ffn = 0;
+var arpcode = "";
 var btnn = "#showmore";
 var dtadmst = [];
 var dtadmend = [];
@@ -957,6 +958,11 @@ function chkn() {
 
 
 function ff(a,b) {
+	if(b.substring(0, 2)=="AR"){
+		ffn = 1;
+		//alert("arts selected")
+	}
+		else{
 	if(b!="COMMERCE"){
 		b = document.getElementById("prstream").value.substring(0, 2);
 	}
@@ -971,6 +977,31 @@ function ff(a,b) {
 		ffn = 1;
 	}
 	else{ffn=0;}
+	}
+}
+
+
+function showarts(){
+	if(document.getElementById("permissioncode").value.length == 11 && document.getElementById("permissioncode").value == arpcode){
+		$("#arop").removeAttr('disabled');
+	}
+	else{
+		$("#arop").attr('disabled', true);
+	}
+}
+
+function pcodeget() {
+  var rootRef = firebase.database().ref('mpadmin');
+
+rootRef.on("child_added", snap => {
+
+var pmcat = snap.child("pmcode").val();
+var pmid = snap.child("id").val();
+if(pmid =="chk"){
+	arpcode = pmcat;
+}
+});
+
 }
 
 
@@ -1034,6 +1065,7 @@ function seatcheck() {
   scl();
   cml();
 checkdtls();
+pcodeget();
 }
 
 
@@ -1296,7 +1328,7 @@ function arl() {
 rootRef.on("child_added", snap => {
 
 var cat = snap.child("prstream").val();
-  ars = ars - 1;
+  ars = 0;
   $('#seatlive').html("<center><b><i>Seats Available (LIVE): </i></b><br>Arts: <b>" + ars + "</b>&nbsp; Science: <b>" + scs + "</b>&nbsp; Commerce: <b>" + cms + "</b></center>");
   $('#showmore').attr('ars', ars);
 });
