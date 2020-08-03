@@ -1,4 +1,4 @@
-var ars = 222;
+var ars = 216;
 var scs = 48;
 var cms = 14;
 
@@ -86,7 +86,7 @@ function arl() {
 rootRef.on("child_added", snap => {
 
 var cat = snap.child("prstream").val();
-  ars = ars - 1;
+  ars = 0;
   $('#seatlive').html("<center><b><i>Seats Available (LIVE): </i></b><br>Arts: <b>" + ars + "</b>&nbsp; Science: <b>" + scs + "</b>&nbsp; Commerce: <b>" + cms + "</b></center>");
 
 });
