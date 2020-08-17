@@ -1,0 +1,288 @@
+<html>
+<head>
+
+<title>Dhola High School</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<Script src="https://code.jquery.com/jquery-3.3.1.js" type="text/javascript"></Script>  
+   <script src="js/tableToExcel.js"></script>
+<style>
+tab_report {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  position: relative;
+}
+
+td, th {
+  border: 3px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #acc2e5;
+}
+</style>
+<style type="text/css">
+input[type=button]{
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+</style>
+
+</head>
+<body onload="slctupd('ARTS','appid')">
+
+<div id="divmnu">
+  <center><h2>Dhola High School : Online Admission Report</h2>
+    <h2>Class : XI</h2>
+  <p style="font-size: 17px; font-weight: bold;">Select Stream : &nbsp;
+  <select name="strmslct" id="strmslct" style="padding: 10px; width: auto; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;" onchange="fldtls()">
+    <option value="ARTS" selected>ARTS</option>
+    <option value="SCIENCE">SCIENCE</option>
+    <option value="COMMERCE">COMMERCE</option>
+    </select>
+    </p>
+
+    <p style="font-size: 17px; font-weight: bold;">Sort By : &nbsp;
+    <select name="srtslct" id="srtslct" style="padding: 10px; width: auto; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;" onchange="fldtls()">
+    <option value="appid" selected>Application ID</option>
+    <option value="mpperrev">MP Marks (%)</option>
+    <option value="cat">Category Wise*</option>
+    </select></p>
+    <div style="margin: 0 auto; width: 50%; border: 2px solid #aaaaaa;">
+      <h3>Category Details *</h3>
+    <p>Category 1: MP Passed from Dhola High School</p>
+    <p>Category 2: MP Passed from other School (WB Board)</p>
+    <p>Category 3: MP Passed from High Madrasah Board</p>
+    <p>Category 4: MP Passed from Alim Board</p>
+    </div>
+  
+    <br><br>
+    <p style="font-size: 21px; text-decoration: underline;" id="clsdtls">Details of Students applied for <b>ARTS</b><br>Sorted by <b> APPLICATION ID</b></p>
+    <br><br>
+    </center>
+</div>
+<table id="tab_report">
+
+  <tr>
+  	<th colspan="1" scope="colgroup">Unique ID</th>
+    <th colspan="12" scope="colgroup">Basic Information</th>
+    <th colspan="6" scope="colgroup">Educational Information (Basic)</th>
+    <th colspan="18" scope="colgroup">MP EXAM Details</th>
+    <th colspan="9" scope="colgroup">Educational Information (Others)</th>
+    <th colspan="10" scope="colgroup">Contact Information</th>
+    <th colspan="6" scope="colgroup">Guardian's Details</th>
+    <th colspan="10" scope="colgroup">Guardian's Contact Information</th>
+    <th colspan="4" scope="colgroup">Other Information</th>
+    <th colspan="4" scope="colgroup">Bank Details</th>
+    
+  </tr>
+  
+     <tr>
+<th>	Application ID	</th>
+<th>	Name	</th>
+<th>	Date of Birth	</th>
+<th>	DOB Registration No.	</th>
+<th>	Gender	</th>
+<th>	Category	</th>
+<th>	Religion	</th>
+<th>	Mother Tongue	</th>
+<th>	Nationality	</th>
+<th>	Aadhaar	</th>
+<th>	Blood Group	</th>
+<th>	Health ID	</th>
+<th>	Identification Mark	</th>
+<th>	Academic Year	</th>
+<th>	Admission No.	</th>
+<th>	Admission Date	</th>
+<th>	Previous Class	</th>
+<th>  Previous Additional </th>
+<th>  Present Class </th>
+<th>  MP Board </th>
+<th>  MP Roll &amp; No. </th>
+<th>  Previous School </th>
+<th>  Bengali / Urdu </th>
+<th>  English  </th>
+<th>  Mathematics  </th>
+<th>  Physical Science  </th>
+<th>  Life Science  </th>
+<th>  History  </th>
+<th>  Geography  </th>
+<th>  Arabic  </th>
+<th>  Islam Parichay  </th>
+<th>  Fiqh  </th>
+<th>  Hadith  </th>
+<th>  Tafsir  </th>
+<th>  Additional  </th>
+<th>  Total   </th>
+<th>  Percentage  </th>
+<th>	Present Stream	</th>
+<th>	Present Compulsory Subject 1	</th>
+<th>	Present Compulsory Subject 2	</th>
+<th>	Present Subject 1	</th>
+<th>	Present Subject 2	</th>
+<th>	Present Subject 3	</th>
+<th>	Present Subject 4	</th>
+<th>  Present Roll  </th>
+<th>	Medium	</th>
+<th>	Address / Village	</th>
+<th>	Habitation or Locality	</th>
+<th>	District	</th>
+<th>	Block	</th>
+<th>	Panchayat	</th>
+<th>	Post Office	</th>
+<th>	Police Station	</th>
+<th>	PIN Code	</th>
+<th>	Phone / Contact No.	</th>
+<th>	Emai ID	</th>
+<th>	Father's Name	</th>
+<th>	Mother's Name	</th>
+<th>	Guardian's name	</th>
+<th>	Relationship (with Guardian)	</th>
+<th>	Annual Family Income	</th>
+<th>	Guardian's Qualification	</th>
+<th>	Address / Village	</th>
+<th>	Habitation or Locality	</th>
+<th>	District	</th>
+<th>	Block	</th>
+<th>	Panchayat	</th>
+<th>	Post Office	</th>
+<th>	Police Station	</th>
+<th>	PIN Code	</th>
+<th>	Phone / Contact No.	</th>
+<th>	Emai ID	</th>
+<th>	BPL Status	</th>
+<th>	BPL No.	</th>
+<th>	Children with Special Need	</th>
+<th>	Type of Disability	</th>
+<th>	Bank Name	</th>
+<th>	Branch Code	</th>
+<th>	IFSC	</th>
+<th>	Account Number	</th>
+
+      
+    </tr>
+   
+   <tbody id="table_body">
+	
+   </tbody>
+   
+     <tr>
+
+<th>  Application ID  </th>
+<th>  Name  </th>
+<th>  Date of Birth </th>
+<th>  DOB Registration No.  </th>
+<th>  Gender  </th>
+<th>  Category  </th>
+<th>  Religion  </th>
+<th>  Mother Tongue </th>
+<th>  Nationality </th>
+<th>  Aadhaar </th>
+<th>  Blood Group </th>
+<th>  Health ID </th>
+<th>  Identification Mark </th>
+<th>  Academic Year </th>
+<th>  Admission No. </th>
+<th>  Admission Date  </th>
+<th>  Previous Class  </th>
+<th>  Previous Additional </th>
+<th>  Present Class </th>
+<th>  MP Board </th>
+<th>  MP Roll &amp; No. </th>
+<th>  Previous School </th>
+<th>  Bengali /urdu </th>
+<th>  English  </th>
+<th>  Mathematics  </th>
+<th>  Physical Science  </th>
+<th>  Life Science  </th>
+<th>  History  </th>
+<th>  Geography  </th>
+<th>  Arabic  </th>
+<th>  Islam Parichay  </th>
+<th>  Fiqh  </th>
+<th>  Hadith  </th>
+<th>  Tafsir  </th>
+<th>  Additional  </th>
+<th>  Total   </th>
+<th>  Percentage  </th>
+<th>  Present Stream  </th>
+<th>  Present Compulsory Subject 1  </th>
+<th>  Present Compulsory Subject 2  </th>
+<th>  Present Subject 1 </th>
+<th>  Present Subject 2 </th>
+<th>  Present Subject 3 </th>
+<th>  Present Subject 4 </th>
+<th>  Present Roll  </th>
+<th>  Medium  </th>
+<th>  Address / Village </th>
+<th>  Habitation or Locality  </th>
+<th>  District  </th>
+<th>  Block </th>
+<th>  Panchayat </th>
+<th>  Post Office </th>
+<th>  Police Station  </th>
+<th>  PIN Code  </th>
+<th>  Phone / Contact No. </th>
+<th>  Emai ID </th>
+<th>  Father's Name </th>
+<th>  Mother's Name </th>
+<th>  Guardian's name </th>
+<th>  Relationship (with Guardian)  </th>
+<th>  Annual Family Income  </th>
+<th>  Guardian's Qualification  </th>
+<th>  Address / Village </th>
+<th>  Habitation or Locality  </th>
+<th>  District  </th>
+<th>  Block </th>
+<th>  Panchayat </th>
+<th>  Post Office </th>
+<th>  Police Station  </th>
+<th>  PIN Code  </th>
+<th>  Phone / Contact No. </th>
+<th>  Emai ID </th>
+<th>  BPL Status  </th>
+<th>  BPL No. </th>
+<th>  Children with Special Need  </th>
+<th>  Type of Disability  </th>
+<th>  Bank Name </th>
+<th>  Branch Code </th>
+<th>  IFSC  </th>
+<th>  Account Number  </th>
+
+    </tr>
+    <tr>
+    
+    <th colspan="1" scope="colgroup">Unique ID</th>
+    <th colspan="12" scope="colgroup">Basic Information</th>
+    <th colspan="6" scope="colgroup">Educational Information (Basic)</th>
+    <th colspan="18" scope="colgroup">MP EXAM Details</th>
+    <th colspan="9" scope="colgroup">Educational Information (Others)</th>
+    <th colspan="10" scope="colgroup">Contact Information</th>
+    <th colspan="6" scope="colgroup">Guardian's Details</th>
+    <th colspan="10" scope="colgroup">Guardian's Contact Information</th>
+    <th colspan="4" scope="colgroup">Other Information</th>
+    <th colspan="4" scope="colgroup">Bank Details</th>
+    
+  	</tr>
+   
+</table>
+
+<input type="button" onclick="myFunction()" value="Get Student Count">
+
+<div id="rowscnt"></div><br><br>
+
+<input type="button" onclick="tableToExcel('tab_report', 'Data Table')" value="Generate Report and Export to Excel">
+
+<script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+
+<script src="js/xireportwithoutphoto.js"></script>
+</body>
+</html>
