@@ -1212,7 +1212,13 @@ function toggleCheckbox(element)
    Swal.fire("Dhola High School","Check all details carefully before Final Submit.","info");
    }
  }
-
+ function previewall(){
+ Swal.fire("Dhola High School", "Admission Sucessful. Click Ok to print Application Form", "success")
+.then((value) => {
+  window.open("login/preview.html?uid=" + uid);
+ window.close();
+});
+ }
 
  function saveBasicInformation(){
  	firebase.database().ref('vtoix2021/' + uid).update({
