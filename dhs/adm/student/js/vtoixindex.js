@@ -59,8 +59,13 @@ function openForm(){
 
 
 $(document).ready(function(){
+getAllData();
+getChangedData();
 
-var rootRef = firebase.database().ref('mpadmin/schedulevtoix');
+});
+
+function getAllData(){
+  var rootRef = firebase.database().ref('mpadmin/schedulevtoix');
 
 rootRef.on("child_added", snap => {
 
@@ -79,27 +84,166 @@ vidt = snap.child("vidt").val();
 viidt = snap.child("viidt").val();
 viiidt = snap.child("viiidt").val();
 ixdt = snap.child("ixdt").val();
+vactive = snap.child("vactive").val();
+viactive = snap.child("viactive").val();
+viiactive = snap.child("viiactive").val();
+viiiactive = snap.child("viiiactive").val();
+ixactive = snap.child("ixactive").val();
 
+
+if(vactive == "Yes"){
 $('#vst').html(changedate(vst));
-$('#vist').html(changedate(vist));
-$('#viist').html(changedate(viist));
-$('#viiist').html(changedate(viiist));
-$('#ixst').html(changedate(ixst));
-
 $('#ved').html(changedate(ved));
-$('#vied').html(changedate(vied));
-$('#viied').html(changedate(viied));
-$('#viiied').html(changedate(viiied));
-$('#ixed').html(changedate(ixed));
-
 $('#vdt').html("<i>" + vdt + "</i>");
+}
+else{
+$('#vst').html("-");
+$('#ved').html("-");
+$('#vdt').html("-");
+document.getElementById("classApplyFor").options[1].disabled = true;
+}
+if(viactive == "Yes"){
+$('#vist').html(changedate(vist));
+$('#vied').html(changedate(vied));
 $('#vidt').html("<i>" + vidt + "</i>");
+}
+else{
+$('#vist').html("-");
+$('#vied').html("-");
+$('#vidt').html("-");
+document.getElementById("classApplyFor").options[2].disabled = true;
+}
+if(viiactive == "Yes"){
+$('#viist').html(changedate(viist));
+$('#viied').html(changedate(viied));
 $('#viidt').html("<i>" + viidt + "</i>");
+}
+else{
+$('#viist').html("-");
+$('#viied').html("-");
+$('#viidt').html("-");
+document.getElementById("classApplyFor").options[3].disabled = true;
+}
+
+if(viiiactive == "Yes"){
+$('#viiist').html(changedate(viiist));
+$('#viiied').html(changedate(viiied));
 $('#viiidt').html("<i>" + viiidt + "</i>");
+}
+else{
+$('#viiist').html("-");
+$('#viiied').html("-");
+$('#viiidt').html("-");
+document.getElementById("classApplyFor").options[4].disabled = true;
+}
+
+if(ixactive == "Yes"){
+$('#ixst').html(changedate(ixst));
+$('#ixed').html(changedate(ixed));
 $('#ixdt').html("<i>" + ixdt + "</i>");
+}
+else{
+$('#ixst').html("-");
+$('#ixed').html("-");
+$('#ixdt').html("-");
+document.getElementById("classApplyFor").options[5].disabled = true;
+}
 
 });
+}
+function getChangedData(){
+  var rootRef = firebase.database().ref('mpadmin/schedulevtoix');
+
+rootRef.on("child_changed", snap => {
+
+vst = snap.child("vst").val();
+vist = snap.child("vist").val();
+viist = snap.child("viist").val();
+viiist = snap.child("viiist").val();
+ixst = snap.child("ixst").val();
+ved = snap.child("ved").val();
+vied = snap.child("vied").val();
+viied = snap.child("viied").val();
+viiied = snap.child("viiied").val();
+ixed = snap.child("ixed").val();
+vdt = snap.child("vdt").val();
+vidt = snap.child("vidt").val();
+viidt = snap.child("viidt").val();
+viiidt = snap.child("viiidt").val();
+ixdt = snap.child("ixdt").val();
+vactive = snap.child("vactive").val();
+viactive = snap.child("viactive").val();
+viiactive = snap.child("viiactive").val();
+viiiactive = snap.child("viiiactive").val();
+ixactive = snap.child("ixactive").val();
+
+
+if(vactive == "Yes"){
+$('#vst').html(changedate(vst));
+$('#ved').html(changedate(ved));
+$('#vdt').html("<i>" + vdt + "</i>");
+document.getElementById("classApplyFor").options[1].disabled = false;
+}
+else{
+$('#vst').html("-");
+$('#ved').html("-");
+$('#vdt').html("-");
+document.getElementById("classApplyFor").options[1].disabled = true;
+}
+if(viactive == "Yes"){
+$('#vist').html(changedate(vist));
+$('#vied').html(changedate(vied));
+$('#vidt').html("<i>" + vidt + "</i>");
+document.getElementById("classApplyFor").options[2].disabled = false;
+}
+else{
+$('#vist').html("-");
+$('#vied').html("-");
+$('#vidt').html("-");
+document.getElementById("classApplyFor").options[2].disabled = true;
+}
+if(viiactive == "Yes"){
+$('#viist').html(changedate(viist));
+$('#viied').html(changedate(viied));
+$('#viidt').html("<i>" + viidt + "</i>");
+document.getElementById("classApplyFor").options[3].disabled = false;
+}
+else{
+$('#viist').html("-");
+$('#viied').html("-");
+$('#viidt').html("-");
+document.getElementById("classApplyFor").options[3].disabled = true;
+}
+
+if(viiiactive == "Yes"){
+$('#viiist').html(changedate(viiist));
+$('#viiied').html(changedate(viiied));
+$('#viiidt').html("<i>" + viiidt + "</i>");
+document.getElementById("classApplyFor").options[4].disabled = false;
+}
+else{
+$('#viiist').html("-");
+$('#viiied').html("-");
+$('#viiidt').html("-");
+document.getElementById("classApplyFor").options[4].disabled = true;
+}
+
+if(ixactive == "Yes"){
+$('#ixst').html(changedate(ixst));
+$('#ixed').html(changedate(ixed));
+$('#ixdt').html("<i>" + ixdt + "</i>");
+document.getElementById("classApplyFor").options[5].disabled = false;
+}
+else{
+$('#ixst').html("-");
+$('#ixed').html("-");
+$('#ixdt').html("-");
+document.getElementById("classApplyFor").options[5].disabled = true;
+}
+
+
 });
+}
 
 function changedate(db){
 	var d = new Date(Number(db));
