@@ -1,5 +1,6 @@
 document.getElementById('prclass').value = location.search.substring(1).split("=")[1].toUpperCase();
-  if(location.search.substring(1).split("=")[2] == 'admin'){
+var meetDate = location.search.substring(1).split("=")[2].toUpperCase().split("%20").join(" ");
+  if(location.search.substring(1).split("=")[3] == 'admin'){
     document.getElementById('prclass').disabled = false;
   }
 const cDate = new Date();
@@ -23,7 +24,7 @@ var	prclass = getInputVal('prclass');
 var	schooltype = getInputVal('schooltype');
 var	bsid = getInputVal('bsid');
 var regID = getInputVal('regID');
-
+var meet = meetDate;
 
  // Save message
   saveMessage(timestamp,name,dob,gname,prclass,schooltype,bsid,regID);

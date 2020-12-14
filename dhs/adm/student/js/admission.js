@@ -321,8 +321,8 @@ var	gemail = getInputVal('gemail');
 var	bplstatus = getInputVal('bplstatus');
 var	bplno = getInputVal('bplno');
 var	cwsn = getInputVal('cwsn');
-var	cwsntyp = getInputVal('cwsntyp').replace(/\s+/g, '-');
-var	bname = getInputVal('bname').replace(/\s+/g, '-');
+var	cwsntyp = getInputVal('cwsntyp');
+var	bname = getInputVal('bname');
 var	bcode = getInputVal('bcode');
 var	bifsc = getInputVal('bifsc');
 var	acno = getInputVal('acno');
@@ -432,7 +432,8 @@ updbproof:updbproof,
 updslc:updslc,
 updaadhaarpic:updaadhaarpic,
 updbpass:updbpass,
-updcaste:updcaste
+updcaste:updcaste,
+finalSubmit:"Done"
   });
 }
 
