@@ -14,80 +14,53 @@ firebase.initializeApp(config);
 
 var flag=0;
 
-const dbRef = firebase.database().ref();
+var allID = [];
+var allPass = [];
+var allSubmit = [];
 
-const usersRef = dbRef.child('users');
-
-usersRef.on("child_added", snap => {
-
-	let user = snap.val();
-
-	let $li = document.createElement("li");
-	$li.innerHTML = user.name;
-	$li.setAttribute("child-key", snap.key);
-	$li.addEventListener("click", userClicked)
-	userListUI.append($li);
-
+function getAllDetails() {
+var rootRef = firebase.database().ref('vtoix2021');
+rootRef.on("child_added", snap => {
+var appid = snap.child("appid").val();
+var finalSubmit = snap.child("finalSubmit").val();
+var dob = snap.child("dob").val();
+allID.push(appid);
+allSubmit.push(finalSubmit);
+allPass.push(dob);
 });
-
-
-function userClicked(e) {
-	var psd = document.getElementById("password").value.replace(/-/g,'');
-	var userID = document.getElementById("username").value;
-	var ast="";
-	const userRef = dbRef.child('users/' + userID);
-	const userDetailUI = document.getElementById("userDetail");
-
-	userDetailUI.innerHTML = ""
-
-	userRef.on("child_added", snap => 
-	{
-		if(snap.key=="dob")
-		{
-				ast=snap.val().replace(/-/g,'');
-			
-		}
-		if(snap.key=="prclass")
-		{
-				chsn = snap.val();
-			
-		}
-		if(ast==psd)
-		{	
-			flag=1;
-		}
-		if(chsn=="IX")
-		{
-			flag=2;
-		}
-	});
-	chkn();
 }
 
 function chkn() {
-	if(flag==1)
-	{
-		var psd = document.getElementById("password").value.replace(/-/g,'');
-		var userID = document.getElementById("username").value;
-		if (window.sessionStorage) 
-				{
-					sessionStorage.setItem("username", userID);
-					window.open("vitoviii.html");
-					window.close();
-				}
+	var psd = document.getElementById("password").value;
+	var userID = document.getElementById("username").value;
+	var ast="";
+	var finalSubmit = "";
+	flag=0;
+	if(allID.includes(userID) && allPass[allID.indexOf(userID)] == psd && allSubmit[allID.indexOf(userID)] == "Done"){
+	Swal.fire({
+  		title: 'Dhola high School',
+  		html: 'Choose to proceed: <br><ul><li>For <i>print or preview</i> of Application Form click <b>Print</b></li><li>To <i>modify or edit</i> Application Form click <b>Modify</b></li></ol>',
+  		showConfirmButton:true,
+  		confirmButtonText:'Print',
+  		showDenyButton:true,
+  		denyButtonText:'Modify',
+  		confirmButtonColor:'#3085d6',
+  		denyButtonColor:'#20a614',
+  		showCancelButton: true
+	}).then((result) => {
+  	if (result.isConfirmed) {
+    	window.open("preview.html?uid=" + userID);
+  	}
+  	else if(result.isDenied){
+  		window.open("../admission.html?uid=" + userID);
+  		}
+	});
 	}
-	else if(flag==2)
-	{
-		var userID = document.getElementById("username").value;
-		if (window.sessionStorage) 
-				{
-					sessionStorage.setItem("username", userID);
-					window.open("ixonly.html");
-					window.close();
-				}
+	else if(allID.includes(userID) && allPass[allID.indexOf(userID)] == psd && allSubmit[allID.indexOf(userID)] != "Done"){
+		window.open("../admission.html?uid=" + userID);
 	}
 	else
 	{
-		alert("Sorry! \n You entered wrong Application ID or Date of Birth!");
+		Swal.fire("Dhola High School","Sorry! \n You entered wrong Application ID or Date of Birth!","error");
 	}
 }

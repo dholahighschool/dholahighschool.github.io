@@ -39,7 +39,6 @@ rootRef.on("child_added", snap => {
 
 var name = snap.child("name").val();
 var dob = snap.child("dob").val();
-var psd = dob.replace(/-/g,'');
 var dobreg = snap.child("dobreg").val();
 var gender  = snap.child("gender").val();
 var category = snap.child("category").val();
@@ -53,6 +52,7 @@ var idmark = snap.child("idmark").val();
 var acyear = snap.child("acyear").val();
 var admno = snap.child("admno").val();
 var admdate = snap.child("admdate").val();
+var meet = snap.child("meet").val();
 var prclass = snap.child("prclass").val();
 var praddl = snap.child("praddl").val();
 var prsec = snap.child("prsec").val();
@@ -100,10 +100,9 @@ var gemail = snap.child("gemail").val();
 var bplstatus = snap.child("bplstatus").val();
 var bplno = snap.child("bplno").val();
 var cwsn = snap.child("cwsn").val();
-var cwsntyp = snap.child("cwsntyp").val().replace(/-/g,' ');
+var cwsntyp = snap.child("cwsntyp").val();
 
-var rv = snap.child("bname").val();
-var bname = rv.replace(/-/g, ' ');
+var bname = snap.child("bname").val();
 
 var bcode = snap.child("bcode").val();
 var bifsc = snap.child("bifsc").val();
@@ -111,13 +110,14 @@ var acno = snap.child("acno").val();
 var appid = snap.child("appid").val();
 
 var updphoto = snap.child("updphoto").val();
-var updsign = snap.child("updsign").val();
+//var updsign = snap.child("updsign").val();
 
 
 
 if(appid==uid)
 {
 flag=1;
+$('#nmeet').html("Meet Date: <i>" + meet + "</i>");
 $('#nappid').html("Application ID: <b>" + appid + "</b>");
 $('#nname').html("Name: <b>" + name + "</b>");
 $('#ndob').html("Date of Birth: <b>" + dob + "</b>");
@@ -151,9 +151,9 @@ else
 $('#nidmark').css('display','none');
 $('#nacyear').html("Academic Year: <b>" + acyear + "</b>");
 $('#nadmno').html("Admission No. :____________");
-$('#nadmdate').html("Admission Date:___/___/____ ");
+$('#nadmdate').html("Admission Date:___/___/____");
 $('#nprclass').html("Applied for Class : <b>" + prclass + "</b>");
-$('#nprsec').html("Alloted Section:______");
+$('#nprsec').html("Section / Roll:______");
 $('#nprroll').html("Alloted Roll No.:______");
 if(praddl!="NA")
 $('#npraddl').html("Additional Subject: <b>" + praddl + "</b>");
@@ -299,7 +299,7 @@ $('#nacno').css('display','none');
 
 
 $("#nupdphoto").attr("src",updphoto);
-$("#nupdsign").attr("src",updsign);
+//$("#nupdsign").attr("src",updsign);
 
 $("#loadinglay").css("display","none");
 
@@ -322,7 +322,7 @@ rootRef.on("child_changed", snap => {
 
 var name = snap.child("name").val();
 var dob = snap.child("dob").val();
-var psd = dob.replace(/-/g,'');
+//var psd = dob.replace(/-/g,'');
 var dobreg = snap.child("dobreg").val();
 var gender  = snap.child("gender").val();
 var category = snap.child("category").val();
@@ -336,6 +336,7 @@ var idmark = snap.child("idmark").val();
 var acyear = snap.child("acyear").val();
 var admno = snap.child("admno").val();
 var admdate = snap.child("admdate").val();
+var meet= snap.child("meet").val();
 var prclass = snap.child("prclass").val();
 var praddl = snap.child("praddl").val();
 var prsec = snap.child("prsec").val();
@@ -383,10 +384,9 @@ var gemail = snap.child("gemail").val();
 var bplstatus = snap.child("bplstatus").val();
 var bplno = snap.child("bplno").val();
 var cwsn = snap.child("cwsn").val();
-var cwsntyp = snap.child("cwsntyp").val().replace(/-/g,' ');
+var cwsntyp = snap.child("cwsntyp").val();
 
-var rv = snap.child("bname").val();
-var bname = rv.replace(/-/g, ' ');
+var bname = snap.child("bname").val();
 
 var bcode = snap.child("bcode").val();
 var bifsc = snap.child("bifsc").val();
@@ -394,13 +394,15 @@ var acno = snap.child("acno").val();
 var appid = snap.child("appid").val();
 
 var updphoto = snap.child("updphoto").val();
-var updsign = snap.child("updsign").val();
+//var updsign = snap.child("updsign").val();
 
 
 
 if(appid==uid)
 {
 flag=1;
+$('#nmeet').html("Meet Date: <i>" + meet + "</i>");
+$('#nadmdate').html("Admission Date:___/___/____");
 $('#nappid').html("Application ID: <b>" + appid + "</b>");
 $('#nname').html("Name: <b>" + name + "</b>");
 $('#ndob').html("Date of Birth: <b>" + dob + "</b>");
@@ -434,9 +436,8 @@ else
 $('#nidmark').css('display','none');
 $('#nacyear').html("Academic Year: <b>" + acyear + "</b>");
 $('#nadmno').html("Admission No. :____________");
-$('#nadmdate').html("Admission Date:___/___/____ ");
 $('#nprclass').html("Applied for Class : <b>" + prclass + "</b>");
-$('#nprsec').html("Alloted Section:______");
+$('#nprsec').html("Section / Roll:______");
 $('#nprroll').html("Alloted Roll No.:______");
 if(praddl!="NA")
 $('#npraddl').html("Additional Subject: <b>" + praddl + "</b>");
@@ -582,7 +583,7 @@ $('#nacno').css('display','none');
 
 
 $("#nupdphoto").attr("src",updphoto);
-$("#nupdsign").attr("src",updsign);
+//$("#nupdsign").attr("src",updsign);
 
 $("#loadinglay").css("display","none");
 
