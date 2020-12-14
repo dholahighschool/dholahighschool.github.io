@@ -6,7 +6,7 @@ uid = parameters[1];
 flag=0;
 document.title = "Dhola High School_Online Admission Portal_" + uid;
 document.getElementById("previewForm").src = "login/preview.html?uid=" + uid;
-document.getElementById("idset").innerHTML = "Admision for the Application ID: <b>" + uid + "</b> is successful.";
+document.getElementById("idset").innerHTML = "Application form regarding Application ID: <b>" + uid + "</b> is successfully submitted.";
 }
 /*
 function appidset(){
@@ -1213,10 +1213,9 @@ function toggleCheckbox(element)
    }
  }
  function previewall(){
- Swal.fire("Dhola High School", "Admission Sucessful. Click Ok to print Application Form", "success")
+ Swal.fire("Dhola High School", "Application form regarding Application ID: <b>" + uid + "</b> is successfully submitted.", "success")
 .then((value) => {
   window.open("login/preview.html?uid=" + uid);
- window.close();
 });
  }
 
