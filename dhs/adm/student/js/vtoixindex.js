@@ -95,6 +95,7 @@ if(vactive == "Yes"){
 $('#vst').html(changedate(vst));
 $('#ved').html(changedate(ved));
 $('#vdt').html("<i>" + vdt + "</i>");
+document.getElementById("classApplyFor").options[1].disabled = false;
 }
 else{
 $('#vst').html("-");
@@ -106,6 +107,7 @@ if(viactive == "Yes"){
 $('#vist').html(changedate(vist));
 $('#vied').html(changedate(vied));
 $('#vidt').html("<i>" + vidt + "</i>");
+document.getElementById("classApplyFor").options[2].disabled = false;
 }
 else{
 $('#vist').html("-");
@@ -117,6 +119,7 @@ if(viiactive == "Yes"){
 $('#viist').html(changedate(viist));
 $('#viied').html(changedate(viied));
 $('#viidt').html("<i>" + viidt + "</i>");
+document.getElementById("classApplyFor").options[3].disabled = false;
 }
 else{
 $('#viist').html("-");
@@ -129,6 +132,7 @@ if(viiiactive == "Yes"){
 $('#viiist').html(changedate(viiist));
 $('#viiied').html(changedate(viiied));
 $('#viiidt').html("<i>" + viiidt + "</i>");
+document.getElementById("classApplyFor").options[4].disabled = false;
 }
 else{
 $('#viiist').html("-");
@@ -141,6 +145,7 @@ if(ixactive == "Yes"){
 $('#ixst').html(changedate(ixst));
 $('#ixed').html(changedate(ixed));
 $('#ixdt').html("<i>" + ixdt + "</i>");
+document.getElementById("classApplyFor").options[5].disabled = false;
 }
 else{
 $('#ixst').html("-");
