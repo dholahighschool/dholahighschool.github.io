@@ -1293,7 +1293,7 @@ Admission Form
 		<p><strong>Admission Status</strong></p><br>
       <p id="idset">Admission is not Sucessful</p><br>
     </center>
-    <input type="button" name="printbtn" value="LogIn" onclick="previewall()">
+    <input type="button" name="printbtn" value="LogIn / Print Application Form" onclick="previewall()">
 </div>
     
 </div>
@@ -1335,13 +1335,7 @@ $(document).ready(function (){
 
 </script>
 <script type="text/javascript">
- function previewall(){
- swal("Admission Successful!", "Click Ok to admit another student.", "success")
-.then((value) => {
-  window.open("../admin/admin.html");
- window.close();
-});
- }
+
  function cncl(){
  	swal("Admission Rejected!", "Click Ok to cancel this admission or to admit another student.", "error")
 .then((value) => {
