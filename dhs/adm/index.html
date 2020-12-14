@@ -4,8 +4,12 @@
 		Dhola High School
 	</title>
 <link rel="icon" href="ss/login/images/logo.png" sizes="32x32" />
-	<link rel="icon" href="ss/login/images/logo.png" sizes="192x192" />
-	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<link rel="icon" href="ss/login/images/logo.png" sizes="192x192" />
+<script src="https://www.gstatic.com/firebasejs/7.5.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.5.2/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>	
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <style type="text/css">
 .list-type1{
 width:400px;
@@ -129,6 +133,32 @@ background: #0ACFCB;
 background: #5A5A5A;
 border-bottom-width: 3px;
 }
+input[type=text], input[type=date], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 80%;
+}
+
+td, th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+tr:nth-child(even){background-color: #f2f2f2;}
+tr:hover {background-color: #ddd;}
+th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
 
 </style>
 
@@ -142,21 +172,79 @@ border-bottom-width: 3px;
 	</center>
 
 	<div class="list-type1">
-		<center><h2>For Classes VI - IX</h2></center>
+		<center><h2>For Classes V - IX</h2></center>
 <ol>
-<li><a>2nd Phase Form Fillup Start : 7th January, 2020 at 10:00 AM</a></li>
-<li><a>2nd Phase Form Fillup End : 8th January, 2020</a></li>
+<li><a>Form Fillup Start Date & Time: 12th December, 2020 at 10:00 AM</a></li>
+<li><a>Form Fillup End Date & Time: 23rd December, 2020 at 5:00 PM</a></li>
+<li><a>Check your class schedule and select to proceed</a></li>
 <li><b><a>Students who have already applied, should not apply again. Otherwise they will be rejected.</a></b></li>
 </ol>
 
 </div>
-
+<center>
+	<h2>Admission Schedule</h2>
+	<table>
+		<tr>
+			<th>Class</th>
+			<th>Form Fillup Start</th>
+			<th>Form Fillup End</th>
+			<th>Admission Date</th>
+		</tr>
+		<tr>
+			<td>V</td>
+			<td id="vst"><img src="loading.gif" width="25px" height="25px"></td>
+			<td id="ved"><img src="loading.gif" width="25px" height="25px"></td>
+			<td id="vdt"><img src="loading.gif" width="25px" height="25px"></td>
+		</tr>
+		<tr>
+			<td>VI</td>
+			<td id="vist"><img src="loading.gif" width="25px" height="25px"></td>
+			<td id="vied"><img src="loading.gif" width="25px" height="25px"></td>
+			<td id="vidt"><img src="loading.gif" width="25px" height="25px"></td>
+		</tr>
+		<tr>
+			<td>VII</td>
+			<td id="viist"><img src="loading.gif" width="25px" height="25px"></td>
+			<td id="viied"><img src="loading.gif" width="25px" height="25px"></td>
+			<td id="viidt"><img src="loading.gif" width="25px" height="25px"></td>
+		</tr>
+		<tr>
+			<td>VIII</td>
+			<td id="viiist"><img src="loading.gif" width="25px" height="25px"></td>
+			<td id="viiied"><img src="loading.gif" width="25px" height="25px"></td>
+			<td id="viiidt"><img src="loading.gif" width="25px" height="25px"></td>
+		</tr>
+		<tr>
+			<td>IX</td>
+			<td id="ixst"><img src="loading.gif" width="25px" height="25px"></td>
+			<td id="ixed"><img src="loading.gif" width="25px" height="25px"></td>
+			<td id="ixdt"><img src="loading.gif" width="25px" height="25px"></td>
+		</tr>
+	</table>
+</center>
+<br><br>
 <div class="box">
 <div class="active">
+
 	<center>
-	<a class="active-button teal" onclick="dtchk()">Apply as new Student</a>
-	<a class="active-button teal" onclick="dtlg()">Log IN</a><br><br>
+		<b>Applying for : </b>
+      <select id="classApplyFor" style="width: 250px" name="classApplyFor" onchange="classchange(this)">
+      	<option value="NA" disabled selected>Select Class to apply</option>
+        <option value="v">Class V</option>
+        <option value="vi">Class VI</option>
+        <option value="vii">Class VII</option>
+        <option value="viii">Class VIII</option>
+        <option value="ix">Class IX</option>
+      </select>
+      <br><br><br>
+    
+	<a style="display: none; width: 250px" class="active-button teal" onclick="openForm()" id="newregister">Apply as new Student</a> <br><br>
+
+	<h2>OR</h2><br>
+	<a class="active-button teal" href="student/login/index.html" id="oldlogin">Log IN</a><br><br>
+
   <section id="meritlist"></section>
+  <!--
 	<h2>Merit List</h2><br>
 	<a class="active-button teal" onclick="dtVI()">Class VI</a>
 	<a class="active-button teal" onclick="dtVII()">Class VII</a>
@@ -164,121 +252,17 @@ border-bottom-width: 3px;
 	<a class="active-button teal" onclick="dtVIII()">Class VIII</a>
 	<a class="active-button teal" onclick="dtIX()">Class IX</a>
 	<br><br><br>
-	
+	-->
 	<br><br><br>
 	</center>
 </div>
 </div>
-<script type="text/javascript">
-function dtchk() {
-var d = new Date();
-  var x = d.getTime();
-  
-  var n = new Date("2020-01-20 10:00:00");
-  var y = n.getTime();
-  
-  var m = new Date("2020-01-22 23:59:00");
-  var z = m.getTime();
-  
-if(+x >= +y && +x <= +z)
-	{
-	swal("Dhola High School","Enter Access Key Here:", {
-    content: {
-    element: "input",
-    attributes: {
-     placeholder: "Type access key",
-     type: "password",
-    },
-  },
-})
-  .then((value) => {
 
-  if (value != null) {
-    if (value == window.atob("YWRtczIwMjBAZGhz")){
-      window.open("student/index.html");
-  }
-  else{
-  swal("Dhola High School","You are not authorized!","error");
-  window.open("../404/index.html");
-  }
-  }
-});
-	//window.open("student/index.html");
-	}
-else{swal("Dhola High School","Admission Portal will be available from 20th January, 2020 at 10:00 AM till 22nd January, 2020 only for permitted candidates.","info");
-}
-}
-</script>
-<script type="text/javascript">
-function dtVI() {
-var d = new Date();
-  var y = d.getTime();
-  var n = new Date("2020-01-06 10:00:00");
-  var x = n.getTime();
-if(+x >= +y){swal("Dhola High School","Merit List will be available from 06th January, 2020 at 10:00 AM","info");}
-else{
-var myWindow = window.open("");
-  myWindow.document.write("<title>Dhola High School</title><iframe width='100%' height='100%' src='student/login/meritVI.html' frameborder='0' allowfullscreen></iframe>");
-}
-}
-</script>
-<script type="text/javascript">
-function dtVII() {
-var d = new Date();
-  var y = d.getTime();
-  var n = new Date("2020-01-06 10:00:00");
-  var x = n.getTime();
-if(+x >= +y){swal("Dhola High School","Merit List will be available from 06th January, 2020 at 10:00 AM","info");}
-else{
-var myWindow = window.open("");
-  myWindow.document.write("<title>Dhola High School</title><iframe width='100%' height='100%' src='student/login/meritVII.html' frameborder='0' allowfullscreen></iframe>");
-}
-}
-</script>
-<script type="text/javascript">
-function dtVIII() {
-var d = new Date();
-  var y = d.getTime();
-  var n = new Date("2020-01-06 10:00:00");
-  var x = n.getTime();
-if(+x >= +y){swal("Dhola High School","Merit List will be available from 06th January, 2020 at 10:00 AM","info");}
-else{
-var myWindow = window.open("");
-  myWindow.document.write("<title>Dhola High School</title><iframe width='100%' height='100%' src='student/login/meritVIII.html' frameborder='0' allowfullscreen></iframe>");
-}
-}
-</script>
-<script type="text/javascript">
-function dtIX() {
-var d = new Date();
-  var y = d.getTime();
-  var n = new Date("2020-01-04 10:00:00");
-  var x = n.getTime();
-if(+x >= +y){swal("Dhola High School","Merit List will be available from 06th January, 2020 at 10:00 AM","info");}
-else{
-	/*
-	var winFeature =
-        'location=no,toolbar=no,menubar=no,scrollbars=yes,resizable=yes';
-window.open('student/login/meritIX.html','null',winFeature);
-*/
-var myWindow = window.open("");
-  myWindow.document.write("<title>Dhola High School</title><iframe width='100%' height='100%' src='student/login/meritIX.html' frameborder='0' allowfullscreen></iframe>");
-}
-}
-</script>
-<script type="text/javascript">
-function dtlg() {
-var d = new Date();
-  var y = d.getTime();
-  var n = new Date("2019-12-12 10:00:00");
-  var x = n.getTime();
-if(+x >= +y){swal("Dhola High School","Admission Portal will be available from 12th December, 2019.","info");}
-else{
-var myWindow = window.open("");
-  myWindow.document.write("<title>Dhola High School</title><iframe width='100%' height='100%' src='student/login/index.html' frameborder='0' allowfullscreen></iframe>");
-}
-}
-</script>
+<script type="text/javascript" src="student/js/dbdtls.js"></script>
+<link class="jsbin" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css"/>
+<script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+<script type="text/javascript" src="student/js/vtoixindex.js"></script>
 </body>
 
 </html>

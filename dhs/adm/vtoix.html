@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="icon" href="ss/login/images/logo.png" sizes="32x32" />
+<link rel="icon" href="ss/login/images/logo.png" sizes="192x192" />
+<script src="https://www.gstatic.com/firebasejs/7.5.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.5.2/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>  
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script type="text/javascript" src="student/js/dbdtls.js"></script>
+<link class="jsbin" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css"/>
+<script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+input[type=text], input[type=date], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type=submit], input[type=button] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+  margin-left: 20px;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 10px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  width: 80%;
+  margin: auto;
+  border: 3px solid blue;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+</style>
+</head>
+<body onload="getAllUser()">
+
+<center>
+
+  <h1>Dhola High School</h1>
+  </center>
+
+  <div class="list-type1">
+    <center><h2>Registration form for Classes V - IX</h2></center>
+    <br>
+
+<div class="container">
+  <form id="registerForm">
+  <div class="row">
+    <div class="col-25">
+      <label for="fname">Full Name</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="fname" name="fullname" placeholder="Your name..">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-25">
+      <label for="lname">Guardian's Name</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="gname" name="guardianname" placeholder="Your Guardian's name..">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-25">
+      <label for="lname">Date of birth</label>
+    </div>
+    <div class="col-75">
+      <input type="date" id="dob" name="dob" placeholder="Your date of birth..">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-25">
+      <label for="lname">Apply for </label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="prclass" disabled name="prclass" placeholder="Apply for..">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-25">
+      <label for="country">Previous School type</label>
+    </div>
+    <div class="col-75">
+      <select id="schooltype" name="schooltype" onchange="schooltypechange()">
+        <option value="FPS">FPS School</option>
+        <option value="OTHERS">Others</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row" id="banglarsikshaid">
+    <div class="col-25">
+      <label for="lname">Banglar Siksha ID</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="bsid" name="banglarikhaid" placeholder="Enter banglar siksha id..">
+    </div>
+  </div>
+  </form>
+  <br>
+<div id="checkArea">
+  <div class="row">
+  <input type="button" id="checkRegister" value="Verify" onclick="verifyUser()">
+  </div>
+  
+</div>
+  <div id="appid" style="display: none;">
+    <center>
+      <label id="applicationid">Your Application ID</label><br>
+      <input type="text" style="display: none;" id="regID" name="regID" value="">
+      <label>Keep your Application ID & Date of Birth secured & noted for further use.</label>
+    </center>
+    <input type="button" value="Fill Application Form" id="fillupRegister" onclick="fillupform()">
+    <div class="row">
+    <br><br>
+    
+  </div>
+  </div>
+</div>
+<script type="text/javascript" src="student/js/vtoixregister.js"></script>
+</body>
+</html>
