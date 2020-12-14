@@ -1,12 +1,13 @@
 // Initialize Firebase (ADD YOUR OWN DATA)
-function getusername(){
-                var username= parseInt(sessionStorage.getItem("username"));
-                return username;
-            }
-            uid = getusername();
-            flag=0;
-var appid = uid;
-document.getElementById("idset").innerHTML = "Admision for the Application ID: <b>" + appid + "</b> is successful.";
+var uid = "";
+function appidset(){
+var parameters = location.search.substring(1).split("=");
+uid = parameters[1];
+flag=0;
+document.title = "Dhola High School_Online Admission Portal_" + uid;
+document.getElementById("previewForm").src = "login/preview.html?uid=" + uid;
+document.getElementById("idset").innerHTML = "Admision for the Application ID: <b>" + uid + "</b> is successful.";
+}
 /*
 function appidset(){
 	var date = new Date();
@@ -31,17 +32,29 @@ firebase.initializeApp(config);
 
 
 /*-------------------------------------*/
-
-
 $(document).ready(function(){
-
-var rootRef = firebase.database().ref('users');
+let timerInterval
+Swal.fire({
+  title: 'Please wait...',
+  html: '<img src=\'loading.gif\' width=\'100px\' height=\'auto\'>',
+  timer: 2000,
+  timerProgressBar: true,
+  allowOutsideClick:false,
+  allowEscapeKey:false,
+  showConfirmButton:false
+}).then((result) => {
+  /* Read more about handling dismissals below */
+  if (result.dismiss === Swal.DismissReason.timer && flag==0) {
+    document.getElementById("slowInternet").style.display = "block";
+  }
+})
+var rootRef = firebase.database().ref('vtoix2021');
 
 rootRef.on("child_added", snap => {
 
 var name = snap.child("name").val();
 var dob = snap.child("dob").val();
-var psd = dob.replace(/-/g,'');
+//var psd = dob.replace(/-/g,'');
 var dobreg = snap.child("dobreg").val();
 var gender  = snap.child("gender").val();
 var category = snap.child("category").val();
@@ -76,7 +89,7 @@ var vill = snap.child("vill").val();
 var medium = snap.child("medium").val();
 var habitation = snap.child("habitation").val();
 var district = snap.child("district").val();
-var block = snap.child("block").val();
+var municipality = snap.child("municipality").val();
 var panchayat = snap.child("panchayat").val();
 var po = snap.child("po").val();
 var ps = snap.child("ps").val();
@@ -102,10 +115,9 @@ var gemail = snap.child("gemail").val();
 var bplstatus = snap.child("bplstatus").val();
 var bplno = snap.child("bplno").val();
 var cwsn = snap.child("cwsn").val();
-var cwsntyp = snap.child("cwsntyp").val().replace(/-/g,' ');
+var cwsntyp = snap.child("cwsntyp").val();
 
-var rv = snap.child("bname").val();
-var bname = rv.replace(/-/g, ' ');
+var bname = snap.child("bname").val();
 
 var bcode = snap.child("bcode").val();
 var bifsc = snap.child("bifsc").val();
@@ -113,18 +125,19 @@ var acno = snap.child("acno").val();
 var appid = snap.child("appid").val();
 
 var updphoto = snap.child("updphoto").val();
-var updsign = snap.child("updsign").val();
 var updbproof = snap.child("updbproof").val();
 var updbpass = snap.child("updbpass").val();
 var updslc = snap.child("updslc").val();
 var updaadhaarpic = snap.child("updaadhaarpic").val();
 var updcaste = snap.child("updcaste").val();
-
+var updmark = snap.child("updmark").val();
 
 if(appid==uid)
 {
 flag=1;
 
+document.getElementById("basicInformation").style.display = "block";
+document.getElementById("slowInternet").style.display = "none";
 $('#appidsetval').val(appid);
 $('#name').val(name);
 $('#dob').val(dob);
@@ -160,7 +173,7 @@ $('#medium').val(medium);
 $('#vill').val(vill);
 $('#habitation').val(habitation);
 $('#district').val(district);
-$('#block').val(block);
+$('#municipality').val(municipality);
 $('#panchayat').val(panchayat);
 $('#po').val(po);
 $('#ps').val(ps);
@@ -171,7 +184,7 @@ $('#fname').val(fname);
 $('#mname').val(mname);
 $('#gname').val(gname);
 $('#relationship').val(relationship);
-$('#ainome').val(aincome);
+$('#aincome').val(aincome);
 $('#gqualification').val(gqualification);
 $('#gvill').val(gvill);
 $('#ghabitation').val(ghabitation);
@@ -184,9 +197,15 @@ $('#gpin').val(gpin);
 $('#gphone').val(gphone);
 $('#gemail').val(gemail);
 $('#bplstatus').val(bplstatus);
-$('#bplno').val(bplno);
+if(bplno != ""){
+	$('#bplno').val(bplno);
+	$('#bplno').css("display", "block");
+}
 $('#cwsn').val(cwsn);
-$('#cwsntyp').val(cwsntyp);
+if(cwsntyp != ""){
+	$('#cwsntyp').val(cwsntyp);
+	$('#cwsntyp').css("display", "block");
+}
 $('#bname').val(bname);
 $('#bcode').val(bcode);
 $('#bifsc').val(bifsc);
@@ -195,12 +214,10 @@ $('#acno').val(acno);
 /*-------------------*/
 
 $("#photo").attr("src",updphoto);
-$("#signature").attr("src",updsign);
 $("#bproof").attr("src",updbproof);
 $("#bpass").attr("src",updbpass);
 
 $('#updphoto').val(updphoto);
-$('#updsign').val(updsign);
 $("#updbproof").val(updbproof);
 $("#updbpass").val(updbpass);
 
@@ -219,6 +236,11 @@ $("#caste").attr("src",updcaste);
 $('#updcaste').val(updcaste);}
 else{}
 
+if(updmark!=""){
+$("#mark").attr("src",updmark);
+$('#updmark').val(updmark);}
+else{}
+
 /*-------------------*/
 }
 });
@@ -229,7 +251,7 @@ else{}
 
 
 // Listen for form submit
-document.getElementById('contactForm').addEventListener('submit', submitForm);
+document.getElementById('vtoixForm').addEventListener('submit', submitForm);
 
 // Submit form
 function submitForm(e){
@@ -273,7 +295,7 @@ var	medium = getInputVal('medium');
 var	vill = getInputVal('vill');
 var	habitation = getInputVal('habitation');
 var	district = getInputVal('district');
-var	block = getInputVal('block');
+var	municipality = getInputVal('municipality');
 var	panchayat = getInputVal('panchayat');
 var	po = getInputVal('po');
 var	ps = getInputVal('ps');
@@ -306,7 +328,7 @@ var	bifsc = getInputVal('bifsc');
 var	acno = getInputVal('acno');
 var appid = getInputVal('appidsetval');
 var updphoto = getInputVal('updphoto');
-var updsign = getInputVal('updsign');
+var updmark = getInputVal('updmark');
 var updbproof = getInputVal('updbproof');
 var updslc = getInputVal('updslc');
 var updaadhaarpic = getInputVal('updaadhaarpic');
@@ -314,14 +336,14 @@ var updbpass = getInputVal('updbpass');
 var updcaste = getInputVal('updcaste');
 
  // Save message
-  saveMessage(name,dob,dobreg,gender,category,religion,mothertongue,nationality,aadhaar,bloodgroup,healthid,idmark,acyear,admno,admstatus,admdate,prclass,pvschool,prsec,prroll,praddl,prstream,prfcomp1,prfcomp2,prfsub1,prfsub2,prfsub3,prfsub4,pvclass,pvsec,pvroll,pvstream,pvaddl,medium,vill,habitation,district,block,panchayat,po,ps,pin,phone,email,fname,mname,gname,relationship,aincome,gqualification,gvill,ghabitation,gdistrict,gblock,gpanchayat,gpo,gps,gpin,gphone,gemail,bplstatus,bplno,cwsn,cwsntyp,bname,bcode,bifsc,acno,appid,updphoto,updsign,updbproof,updslc,updaadhaarpic,updbpass,updcaste);
+  saveMessage(name,dob,dobreg,gender,category,religion,mothertongue,nationality,aadhaar,bloodgroup,healthid,idmark,acyear,admno,admstatus,admdate,prclass,pvschool,prsec,prroll,praddl,prstream,prfcomp1,prfcomp2,prfsub1,prfsub2,prfsub3,prfsub4,pvclass,pvsec,pvroll,pvstream,pvaddl,medium,vill,habitation,district,municipality,panchayat,po,ps,pin,phone,email,fname,mname,gname,relationship,aincome,gqualification,gvill,ghabitation,gdistrict,gblock,gpanchayat,gpo,gps,gpin,gphone,gemail,bplstatus,bplno,cwsn,cwsntyp,bname,bcode,bifsc,acno,appid,updphoto,updmark,updbproof,updslc,updaadhaarpic,updbpass,updcaste);
 
 
-  document.getElementById("contactForm").style.display = 'none';
+  document.getElementById("vtoixForm").style.display = 'none';
   document.getElementById("instructions").style.display = 'none';
   document.getElementById("thankyou").style.display = 'block';
 
-  document.getElementById('contactForm').reset();
+  document.getElementById('vtoixForm').reset();
 }
 
 function getInputVal(id){
@@ -329,12 +351,12 @@ function getInputVal(id){
 }
 
 // Save message to firebase   
-function saveMessage(name,dob,dobreg,gender,category,religion,mothertongue,nationality,aadhaar,bloodgroup,healthid,idmark,acyear,admno,admstatus,admdate,prclass,pvschool,prsec,prroll,praddl,prstream,prfcomp1,prfcomp2,prfsub1,prfsub2,prfsub3,prfsub4,pvclass,pvsec,pvroll,pvstream,pvaddl,medium,vill,habitation,district,block,panchayat,po,ps,pin,phone,email,fname,mname,gname,relationship,aincome,gqualification,gvill,ghabitation,gdistrict,gblock,gpanchayat,gpo,gps,gpin,gphone,gemail,bplstatus,bplno,cwsn,cwsntyp,bname,bcode,bifsc,acno,appid,updphoto,updsign,updbproof,updslc,updaadhaarpic,updbpass,updcaste){
+function saveMessage(name,dob,dobreg,gender,category,religion,mothertongue,nationality,aadhaar,bloodgroup,healthid,idmark,acyear,admno,admstatus,admdate,prclass,pvschool,prsec,prroll,praddl,prstream,prfcomp1,prfcomp2,prfsub1,prfsub2,prfsub3,prfsub4,pvclass,pvsec,pvroll,pvstream,pvaddl,medium,vill,habitation,district,municipality,panchayat,po,ps,pin,phone,email,fname,mname,gname,relationship,aincome,gqualification,gvill,ghabitation,gdistrict,gblock,gpanchayat,gpo,gps,gpin,gphone,gemail,bplstatus,bplno,cwsn,cwsntyp,bname,bcode,bifsc,acno,appid,updphoto,updmark,updbproof,updslc,updaadhaarpic,updbpass,updcaste){
   /*
   var newMessageRef = messagesRef.push();
   MessageRef.set({
   */
-  firebase.database().ref('users/' + appid).set({
+  firebase.database().ref('vtoix2021/' + appid).update({
 appid:appid,
 name:name,
 dob:dob,
@@ -373,7 +395,7 @@ medium:medium,
 vill:vill,
 habitation:habitation,
 district:district,
-block:block,
+municipality:municipality,
 panchayat:panchayat,
 po:po,
 ps:ps,
@@ -405,7 +427,7 @@ bcode:bcode,
 bifsc:bifsc,
 acno:acno,
 updphoto:updphoto,
-updsign:updsign,
+updmark:updmark,
 updbproof:updbproof,
 updslc:updslc,
 updaadhaarpic:updaadhaarpic,
@@ -414,7 +436,7 @@ updcaste:updcaste
   });
 }
 
-	var fbBucketName1 = 'images';
+	var fbBucketName1 = 'vtoix2021';
 
 		var uploader1 = document.getElementById('uploader1');
 		var fileButton1 = document.getElementById('fileButton1');
@@ -432,8 +454,9 @@ updcaste:updcaste
         	{
         		var file1 = e1.target.files[0];
         	}
+        	var strt = (file1.type).substr(file1.type.length - (file1.type.length - (file1.type).lastIndexOf("/") -1)) ;
 	
-			var storageRef1 = firebase.storage().ref(`${fbBucketName1}/${appid}/photo`);
+			var storageRef1 = firebase.storage().ref(`${fbBucketName1}/${uid}/${uid}photo.${strt}`);
 
 			var uploadTask1 = storageRef1.put(file1);
 
@@ -473,66 +496,66 @@ updcaste:updcaste
 		});
 
 
-var fbBucketName2 = 'images';
+// var fbBucketName2 = 'vtoix2021';
 
-		var uploader2 = document.getElementById('uploader2');
-		var fileButton2 = document.getElementById('fileButton2');
-		fileButton2.addEventListener('change', function (e2) {
+// 		var uploader2 = document.getElementById('uploader2');
+// 		var fileButton2 = document.getElementById('fileButton2');
+// 		fileButton2.addEventListener('change', function (e2) {
 
-			console.log('file upload event', e2);
+// 			console.log('file upload event', e2);
 
-			var FileSize = e2.target.files[0].size / 1024 / 1024; // in MB
-        	if (FileSize > 0.0195) 
-        	{
-            	swal('Oops..','File size exceeds 20 KB \n Please Choose a new Signature.','error');
-            	document.getElementById('fileButton2').value = "";
-        	} 
-        	else 
-        	{
-        		var file2 = e2.target.files[0];
-        	}
+// 			var FileSize = e2.target.files[0].size / 1024 / 1024; // in MB
+//         	if (FileSize > 0.0195) 
+//         	{
+//             	swal('Oops..','File size exceeds 20 KB \n Please Choose a new Signature.','error');
+//             	document.getElementById('fileButton2').value = "";
+//         	} 
+//         	else 
+//         	{
+//         		var file2 = e2.target.files[0];
+//         	}
 
-			var storageRef2 = firebase.storage().ref(`${fbBucketName2}/${appid}/sign`);
+// 			var storageRef2 = firebase.storage().ref(`${fbBucketName2}/${uid}/sign`);
 
-			var uploadTask2 = storageRef2.put(file2);
+// 			var uploadTask2 = storageRef2.put(file2);
 
-			uploadTask2.on(firebase.storage.TaskEvent.STATE_CHANGED, 
-				function (snapshot) {
-					var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-					uploader2.value = progress;
-					console.log('Upload is ' + progress + '% done');
-					switch (snapshot.state) {
-						case firebase.storage.TaskState.PAUSED: 
-							console.log('Upload is paused');
-							break;
-						case firebase.storage.TaskState.RUNNING: 
-							console.log('Upload is running');
-							break;
-					}
-				}, function (error) {
+// 			uploadTask2.on(firebase.storage.TaskEvent.STATE_CHANGED, 
+// 				function (snapshot) {
+// 					var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+// 					uploader2.value = progress;
+// 					console.log('Upload is ' + progress + '% done');
+// 					switch (snapshot.state) {
+// 						case firebase.storage.TaskState.PAUSED: 
+// 							console.log('Upload is paused');
+// 							break;
+// 						case firebase.storage.TaskState.RUNNING: 
+// 							console.log('Upload is running');
+// 							break;
+// 					}
+// 				}, function (error) {
 
-						switch (error.code) {
-						case 'storage/unauthorized':
-							break;
+// 						switch (error.code) {
+// 						case 'storage/unauthorized':
+// 							break;
 
-						case 'storage/canceled':
-							break;
+// 						case 'storage/canceled':
+// 							break;
 
-						case 'storage/unknown':
-							break;
-					}
-				}, function () {
-					var downloadURL2 = uploadTask2.snapshot.downloadURL;
-					console.log('downloadURL2', downloadURL2);
-					var link2 = document.getElementById("signature");
-					link2.setAttribute("src", downloadURL2);
-					document.getElementById('updsign').value = downloadURL2;
-				});
+// 						case 'storage/unknown':
+// 							break;
+// 					}
+// 				}, function () {
+// 					var downloadURL2 = uploadTask2.snapshot.downloadURL;
+// 					console.log('downloadURL2', downloadURL2);
+// 					var link2 = document.getElementById("signature");
+// 					link2.setAttribute("src", downloadURL2);
+// 					document.getElementById('updsign').value = downloadURL2;
+// 				});
 
-		});
+// 		});
 
 
-var fbBucketName3 = 'images';
+var fbBucketName3 = 'vtoix2021';
 
 		var uploader3 = document.getElementById('uploader3');
 		var fileButton3 = document.getElementById('fileButton3');
@@ -550,8 +573,8 @@ var fbBucketName3 = 'images';
         	{
         		var file3 = e3.target.files[0];
         	}
-	
-			var storageRef3 = firebase.storage().ref(`${fbBucketName3}/${appid}/bproof`);
+        	var strt = (file3.type).substr(file3.type.length - (file3.type.length - (file3.type).lastIndexOf("/") -1)) ;
+			var storageRef3 = firebase.storage().ref(`${fbBucketName3}/${uid}/${uid}bproof.${strt}`);
 
 			var uploadTask3 = storageRef3.put(file3);
 
@@ -591,7 +614,7 @@ var fbBucketName3 = 'images';
 		});
 
 
-var fbBucketName4 = 'images';
+var fbBucketName4 = 'vtoix2021';
 
 		var uploader4 = document.getElementById('uploader4');
 		var fileButton4 = document.getElementById('fileButton4');
@@ -609,8 +632,10 @@ var fbBucketName4 = 'images';
         	{
         		var file4 = e4.target.files[0];
         	}
+
+        	var strt = (file4.type).substr(file4.type.length - (file4.type.length - (file4.type).lastIndexOf("/") -1)) ;
 	
-			var storageRef4 = firebase.storage().ref(`${fbBucketName4}/${appid}/slc`);
+			var storageRef4 = firebase.storage().ref(`${fbBucketName4}/${uid}/${uid}slc.${strt}`);
 
 			var uploadTask4 = storageRef4.put(file4);
 
@@ -649,7 +674,7 @@ var fbBucketName4 = 'images';
 
 		});
 
-var fbBucketName5 = 'images';
+var fbBucketName5 = 'vtoix2021';
 
 		var uploader5 = document.getElementById('uploader5');
 		var fileButton5 = document.getElementById('fileButton5');
@@ -667,8 +692,8 @@ var fbBucketName5 = 'images';
         	{
         		var file5 = e5.target.files[0];
         	}
-	
-			var storageRef5 = firebase.storage().ref(`${fbBucketName5}/${appid}/aadhaarpic`);
+			var strt = (file5.type).substr(file5.type.length - (file5.type.length - (file5.type).lastIndexOf("/") -1)) ;
+			var storageRef5 = firebase.storage().ref(`${fbBucketName5}/${uid}/${uid}aadhaarpic.${strt}`);
 
 			var uploadTask5 = storageRef5.put(file5);
 
@@ -708,7 +733,7 @@ var fbBucketName5 = 'images';
 		});
 
 
-var fbBucketName6 = 'images';
+var fbBucketName6 = 'vtoix2021';
 
 		var uploader6 = document.getElementById('uploader6');
 		var fileButton6 = document.getElementById('fileButton6');
@@ -726,8 +751,8 @@ var fbBucketName6 = 'images';
         	{
         		var file6 = e6.target.files[0];
         	}
-	
-			var storageRef6 = firebase.storage().ref(`${fbBucketName6}/${appid}/bpass`);
+			var strt = (file6.type).substr(file6.type.length - (file6.type.length - (file6.type).lastIndexOf("/") -1)) ;
+			var storageRef6 = firebase.storage().ref(`${fbBucketName6}/${uid}/${uid}bpass.${strt}`);
 
 			var uploadTask6 = storageRef6.put(file6);
 
@@ -766,7 +791,7 @@ var fbBucketName6 = 'images';
 
 		});
 
-var fbBucketName7 = 'images';
+var fbBucketName7 = 'vtoix2021';
 
 		var uploader7 = document.getElementById('uploader7');
 		var fileButton7 = document.getElementById('fileButton7');
@@ -784,8 +809,8 @@ var fbBucketName7 = 'images';
         	{
         		var file7 = e7.target.files[0];
         	}
-	
-			var storageRef7 = firebase.storage().ref(`${fbBucketName7}/${appid}/caste`);
+			var strt = (file7.type).substr(file7.type.length - (file7.type.length - (file7.type).lastIndexOf("/") -1)) ;
+			var storageRef7 = firebase.storage().ref(`${fbBucketName7}/${uid}/${uid}caste.${strt}`);
 
 			var uploadTask7 = storageRef7.put(file7);
 
@@ -823,6 +848,66 @@ var fbBucketName7 = 'images';
 				});
 
 		});
+
+var fbBucketName8 = 'vtoix2021';
+
+		var uploader8 = document.getElementById('uploader8');
+		var fileButton8 = document.getElementById('fileButton8');
+		fileButton8.addEventListener('change', function (e8) {
+
+			console.log('file upload event', e8);
+
+			var FileSize = e8.target.files[0].size / 1024 / 1024; // in MB
+        	if (FileSize > 0.244) 
+        	{
+            	swal('Oops..','File size exceeds 250 KB \n Please Choose a new Picture.','error');
+            	document.getElementById('fileButton8').value = "";
+        	} 
+        	else 
+        	{
+        		var file8 = e8.target.files[0];
+        	}
+			var strt = (file8.type).substr(file8.type.length - (file8.type.length - (file8.type).lastIndexOf("/") -1)) ;
+			var storageRef8 = firebase.storage().ref(`${fbBucketName8}/${uid}/${uid}marksheet.${strt}`);
+
+			var uploadTask8 = storageRef8.put(file8);
+
+			uploadTask8.on(firebase.storage.TaskEvent.STATE_CHANGED, 
+				function (snapshot) {
+					var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+					uploader8.value = progress;
+					console.log('Upload is ' + progress + '% done');
+					switch (snapshot.state) {
+						case firebase.storage.TaskState.PAUSED: 
+							console.log('Upload is paused');
+							break;
+						case firebase.storage.TaskState.RUNNING: 
+							console.log('Upload is running');
+							break;
+					}
+				}, function (error) {
+
+						switch (error.code) {
+						case 'storage/unauthorized':
+							break;
+
+						case 'storage/canceled':
+							break;
+
+						case 'storage/unknown':
+							break;
+					}
+				}, function () {
+					var downloadURL8 = uploadTask8.snapshot.downloadURL;
+					console.log('downloadURL8', downloadURL8);
+					var link8 = document.getElementById("mark");
+					link8.setAttribute("src", downloadURL8);
+					document.getElementById('updmark').value = downloadURL8;
+				});
+
+		});
+
+
 /*
 function chkn() {
 		//var userID = document.getElementById("finalusername").value;
@@ -837,7 +922,8 @@ function pinlength(){
  		var plngt=document.getElementById("pin").value.length;
  		if(plngt!=6)
  		{
- 			swal("Oops..","PIN Code must contain 6 digits. Please re-type.","error");
+
+ 			Swal.fire("Oops..","PIN Code must contain 6 digits. Please re-type.","error");
  			document.getElementById("pin").value ="";
  			document.getElementById("pin").focus();
  		}
@@ -847,7 +933,7 @@ function pinlength(){
  		var gplngt=document.getElementById("gpin").value.length;
  		if(gplngt!=6)
  		{
- 			swal("Oops..","PIN Code must contain 6 digits. Please re-type.","error");
+ 			Swal.fire("Oops..","PIN Code must contain 6 digits. Please re-type.","error");
  			document.getElementById("gpin").value ="";
  			document.getElementById("gpin").focus();
  		}
@@ -857,7 +943,7 @@ function pinlength(){
  		var alngt=document.getElementById("aadhaar").value.length;
  		if(alngt!=12)
  		{
- 			swal("Oops..","Aadhaar no. must contain 12 digits. Please re-type.","error");
+ 			Swal.fire("Oops..","Aadhaar no. must contain 12 digits. Please re-type.","error");
  			document.getElementById("aadhaar").value ="";
  			document.getElementById("aadhaar").focus();
  		}
@@ -867,7 +953,7 @@ function pinlength(){
  		var clngt=document.getElementById("phone").value.length;
  		if(clngt!=10)
  		{
- 			swal("Oops..","Contact no. must contain 10 digits. Please re-type.","error");
+ 			Swal.fire("Oops..","Contact no. must contain 10 digits. Please re-type.","error");
  			document.getElementById("phone").value ="";
  			document.getElementById("phone").focus();
  		}
@@ -877,7 +963,7 @@ function pinlength(){
  		var gclngt=document.getElementById("gphone").value.length;
  		if(gclngt!=10)
  		{
- 			swal("Oops..","Contact no. must be 10 digits. Please re-type.","error");
+ 			Swal.fire("Oops..","Contact no. must be 10 digits. Please re-type.","error");
  			document.getElementById("gphone").value ="";
  			document.getElementById("gphone").focus();
  		}
@@ -885,176 +971,455 @@ function pinlength(){
  	}
 
 
- 	function toggleCheckbox(element)
+function toggleCheckbox(element)
  {	
  if(document.getElementById("name").value==="" || document.getElementById("name").value==="NA"){
    element.checked = !element.checked;
-   swal("Oops..","Enter your Full Name","error");
+   Swal.fire("Oops..","Enter your Full Name","error");
+   hideAllSection();
+   document.getElementById('basicInformation').style.display = "block";
    document.getElementById("name").focus();}
  	else if(document.getElementById("dob").value==="" || document.getElementById("dob").value==="NA"){
    element.checked = !element.checked;
-   swal("Oops..","Enter your Date of Birth","error");
+   Swal.fire("Oops..","Enter your Date of Birth","error");
+   hideAllSection();
+   document.getElementById('basicInformation').style.display = "block";
    document.getElementById("dob").focus();}
    	else if(document.getElementById("gender").value==="" || document.getElementById("gender").value==="NA"){
    element.checked = !element.checked;
-   swal("Oops..","Choose your Gender","error");
+   Swal.fire("Oops..","Choose your Gender","error");
+   hideAllSection();
+   document.getElementById('basicInformation').style.display = "block";
    document.getElementById("gender").focus();}
    	else if(document.getElementById("category").value==="" || document.getElementById("category").value==="NA"){
    element.checked = !element.checked;
-   swal("Oops..","Choose your Social Category","error");
+   Swal.fire("Oops..","Choose your Social Category","error");
+   hideAllSection();
+   document.getElementById('basicInformation').style.display = "block";
    document.getElementById("category").focus();}
 	else if(document.getElementById("mothertongue").value==="" || document.getElementById("mothertongue").value==="NA"){
    element.checked = !element.checked;
-   swal("Oops..","Choose your Mother Tongue","error");
+   Swal.fire("Oops..","Choose your Mother Tongue","error");
+   hideAllSection();
+   document.getElementById('basicInformation').style.display = "block";
    document.getElementById("mothertongue").focus();}
 	else if(document.getElementById("nationality").value==="" || document.getElementById("nationality").value==="NA"){
    element.checked = !element.checked;
-   swal("Oops..","Choose your Nationality","error");
+   Swal.fire("Oops..","Choose your Nationality","error");
+   hideAllSection();
+   document.getElementById('basicInformation').style.display = "block";
    document.getElementById("nationality").focus();}
    
    
 	else if(document.getElementById("prclass").value==="" || document.getElementById("prclass").value==="NA"){
    element.checked = !element.checked;
-   swal("Oops..","Choose your Class to Apply for","error");
+   Swal.fire("Oops..","Choose your Class to Apply for","error");
+   hideAllSection();
+   document.getElementById('educationalInformation').style.display = "block";
    document.getElementById("prclass").focus();}
 	 else if(document.getElementById("pvschool").value==="" || document.getElementById("pvschool").value==="NA"){
    element.checked = !element.checked;
-   swal("Oops..","Enter name of your Previous school attended.","error");
+   Swal.fire("Oops..","Enter name of your Previous school attended.","error");
+   hideAllSection();
+   document.getElementById('educationalInformation').style.display = "block";
    document.getElementById("pvschool").focus();}
-   /*
-   	else if(document.getElementById("prclass").value==="XI" || document.getElementById("prclass").value==="XII"){
-	if(document.getElementById("prstream").value==="" || document.getElementById("prstream").value==="NA"){
-   element.checked = !element.checked;
-   alert("Choose your Stream to Apply for");}
-   	else if(document.getElementById("prfcomp1").value==="" || document.getElementById("prfcomp1").value==="NA"){
-   element.checked = !element.checked;
-   alert("Choose your Compulsory Subjects");}
-   	else if(document.getElementById("prfcomp2").value==="" || document.getElementById("prfcomp2").value==="NA"){
-   element.checked = !element.checked;
-   alert("Choose your Compulsory Subjects");}
-   	else if(document.getElementById("prfsub1").value==="" || document.getElementById("prfsub1").value==="NA"){
-   element.checked = !element.checked;
-   alert("Choose your Subjects");}
-   	else if(document.getElementById("prfsub2").value==="" || document.getElementById("prfsub2").value==="NA"){
-   element.checked = !element.checked;
-   alert("Choose your Subjects");}
-   	else if(document.getElementById("prfsub3").value==="" || document.getElementById("prfsub3").value==="NA"){
-   element.checked = !element.checked;
-   alert("Choose your Subjects");}
-   	else if(document.getElementById("prfsub4").value==="" || document.getElementById("prfsub4").value==="NA"){
-   element.checked = !element.checked;
-   alert("Choose your Subjects");}
-	}   */
 	else if(document.getElementById("pvclass").value==="" || document.getElementById("pvclass").value==="NA"){
    element.checked = !element.checked;
-   swal("Oops..","Choose your Previous Class attended","error");
+   Swal.fire("Oops..","Choose your Previous Class attended","error");
+   hideAllSection();
+   document.getElementById('educationalInformation').style.display = "block";
    document.getElementById("pvclass").focus();}
 	else if(document.getElementById("pvsec").value===""){
    element.checked = !element.checked;
-   swal("Oops..","Choose your Section of previous class attended","error");
+   Swal.fire("Oops..","Choose your Section of previous class attended","error");
+   hideAllSection();
+   document.getElementById('educationalInformation').style.display = "block";
    document.getElementById("pvsec").focus();}
 	else if(document.getElementById("medium").value==="" || document.getElementById("medium").value==="NA"){
    element.checked = !element.checked;
-   swal("Oops..","Choose your Medium of Study","error");
+   Swal.fire("Oops..","Choose your Medium of Study","error");
+   hideAllSection();
+   document.getElementById('educationalInformation').style.display = "block";
    document.getElementById("medium").focus();}
+
+
    	else if(document.getElementById("habitation").value==="" || document.getElementById("habitation").value==="NA"){
    element.checked = !element.checked;
-   swal("Oops..","Enter your Habitation or Locality","error");
+   Swal.fire("Oops..","Enter your Habitation or Locality","error");
+   hideAllSection();
+   document.getElementById('contactInformation').style.display = "block";
    document.getElementById("habitation").focus();}
    	else if(document.getElementById("district").value==="" || document.getElementById("district").value==="NA"){
    element.checked = !element.checked;
-   swal("Oops..","Choose your District","error");
+   Swal.fire("Oops..","Choose your District","error");
+   hideAllSection();
+   document.getElementById('contactInformation').style.display = "block";
    document.getElementById("district").focus();}
-   	else if(document.getElementById("block").value==="" || document.getElementById("block").value==="NA"){
+   	else if(document.getElementById("municipality").value==="" || document.getElementById("municipality").value==="NA"){
    element.checked = !element.checked;
-   swal("Oops..","Enter your Block or Municipality name","error");
+   Swal.fire("Oops..","Enter your Block or Municipality name","error");
+   hideAllSection();
+   document.getElementById('contactInformation').style.display = "block";
    document.getElementById("municipality").focus();}
    	else if(document.getElementById("po").value==="" || document.getElementById("po").value==="NA"){
    element.checked = !element.checked;
-   swal("Oops..","Enter your Post Office","error");
+   Swal.fire("Oops..","Enter your Post Office","error");
+   hideAllSection();
+   document.getElementById('contactInformation').style.display = "block";
    document.getElementById("po").focus();}
    	else if(document.getElementById("ps").value==="" || document.getElementById("ps").value==="NA"){
    element.checked = !element.checked;
-   swal("Oops..","Enter your Police Station","error");
+   Swal.fire("Oops..","Enter your Police Station","error");
+   hideAllSection();
+   document.getElementById('contactInformation').style.display = "block";
    document.getElementById("ps").focus();}
    	else if(document.getElementById("pin").value==="" || document.getElementById("pin").value==="NA"){
    element.checked = !element.checked;
-   swal("Oops..","Enter your Area PIN Code","error");
+   Swal.fire("Oops..","Enter your Area PIN Code","error");
+   hideAllSection();
+   document.getElementById('contactInformation').style.display = "block";
    document.getElementById("pin").focus();}
+
+
    	else if(document.getElementById("gname").value==="" || document.getElementById("gname").value==="NA"){
    element.checked = !element.checked;
-   swal("Oops..","Enter your Guardian's Name","error");
+   Swal.fire("Oops..","Enter your Guardian's Name","error");
+   hideAllSection();
+   document.getElementById('guardianDetails').style.display = "block";
    document.getElementById("gname").focus();}
    	else if(document.getElementById("relationship").value==="" || document.getElementById("relationship").value==="NA"){
    element.checked = !element.checked;
-   swal("Oops..","Choose your Relationship with your Guardian","error");
+   Swal.fire("Oops..","Choose your Relationship with your Guardian","error");
+   hideAllSection();
+   document.getElementById('guardianDetails').style.display = "block";
    document.getElementById("relationship").focus();}
+
+
    	else if(document.getElementById("ghabitation").value==="" || document.getElementById("ghabitation").value==="NA"){
    element.checked = !element.checked;
-   swal("Oops..","Enter your Guardian's Habitation or Locality","error");
+   Swal.fire("Oops..","Enter your Guardian's Habitation or Locality","error");
+   hideAllSection();
+   document.getElementById('guardianContactInformation').style.display = "block";
    document.getElementById("ghabitation").focus();}
    	else if(document.getElementById("gdistrict").value==="" || document.getElementById("gdistrict").value==="NA"){
    element.checked = !element.checked;
-   swal("Oops..","Choose your Guardian's District","error");
+   Swal.fire("Oops..","Choose your Guardian's District","error");
+   hideAllSection();
+   document.getElementById('guardianContactInformation').style.display = "block";
    document.getElementById("gdistrict").focus();}
    	else if(document.getElementById("gblock").value==="" || document.getElementById("gblock").value==="NA"){
    element.checked = !element.checked;
-   swal("Oops..","Enter your Guardian's Block or Municipality name","error");
+   Swal.fire("Oops..","Enter your Guardian's Block or Municipality name","error");
+   hideAllSection();
+   document.getElementById('guardianContactInformation').style.display = "block";
    document.getElementById("gblock").focus();}
    	else if(document.getElementById("gpo").value==="" || document.getElementById("gpo").value==="NA"){
    element.checked = !element.checked;
-   swal("Oops..","Enter your Guardian's Post Office","error");
+   Swal.fire("Oops..","Enter your Guardian's Post Office","error");
+   hideAllSection();
+   document.getElementById('guardianContactInformation').style.display = "block";
    document.getElementById("gpo").focus();}
    	else if(document.getElementById("gps").value==="" || document.getElementById("gps").value==="NA"){
    element.checked = !element.checked;
-   swal("Oops..","Enter your Guardian's Police Station","error");
+   Swal.fire("Oops..","Enter your Guardian's Police Station","error");
+   hideAllSection();
+   document.getElementById('guardianContactInformation').style.display = "block";
    document.getElementById("gps").focus();}
    	else if(document.getElementById("gpin").value==="" || document.getElementById("gpin").value==="NA"){
    element.checked = !element.checked;
-   swal("Oops..","Enter your Guardian's Area PIN Code","error");
+   Swal.fire("Oops..","Enter your Guardian's Area PIN Code","error");
+   hideAllSection();
+   document.getElementById('guardianContactInformation').style.display = "block";
    document.getElementById("gpin").focus();}
+
+
 	 else if(document.getElementById("bname").value==="" || document.getElementById("bname").value==="NA"){
    element.checked = !element.checked;
-   swal("Oops..","Choose Bank Name","error");
+   Swal.fire("Oops..","Choose Bank Name","error");
+   hideAllSection();
+   document.getElementById('bankDetails').style.display = "block";
    document.getElementById("bname").focus();}
 	 else if(document.getElementById("bcode").value==="" || document.getElementById("bcode").value==="NA"){
    element.checked = !element.checked;
-   swal("Oops..","Enter Bank Branch Code","error");
+   Swal.fire("Oops..","Enter Bank Branch Code","error");
+   hideAllSection();
+   document.getElementById('bankDetails').style.display = "block";
    document.getElementById("bcode").focus();}
 	 else if(document.getElementById("bifsc").value==="" || document.getElementById("bifsc").value==="NA"){
    element.checked = !element.checked;
-   swal("Oops..","Enter Bank Branch IFSC Code","error");
+   Swal.fire("Oops..","Enter Bank Branch IFSC Code","error");
+   hideAllSection();
+   document.getElementById('bankDetails').style.display = "block";
    document.getElementById("bifsc").focus();}
 	 else if(document.getElementById("acno").value==="" || document.getElementById("acno").value==="NA"){
    element.checked = !element.checked;
-   swal("Oops..","Enter your Bank Account No.","error");
+   Swal.fire("Oops..","Enter your Bank Account No.","error");
+   hideAllSection();
+   document.getElementById('bankDetails').style.display = "block";
    document.getElementById("acno").focus();}
 
-	 else if(document.getElementById("prsec").value==="" || document.getElementById("prsec").value==="NA"){
-   element.checked = !element.checked;
-   swal("Oops..","Enter Alloted Section","error");
-   document.getElementById("prsec").focus();}
-   	 else if(document.getElementById("prroll").value==="" || document.getElementById("prroll").value==="NA"){
-   element.checked = !element.checked;
-   swal("Oops..","Enter Alloted Roll No.","error");
-   document.getElementById("prroll").focus();}
-   	 else if(document.getElementById("admno").value==="" || document.getElementById("admno").value==="NA"){
-   element.checked = !element.checked;
-   swal("Oops..","Enter Admission No.","error");
-   document.getElementById("admno").focus();}
-   	 else if(document.getElementById("admdate").value==="" || document.getElementById("admdate").value==="NA"){
-   element.checked = !element.checked;
-   swal("Oops..","Enter Admission Date","error");
-   document.getElementById("admdate").focus();}
-   	 else if(document.getElementById("admstatus").value==="" || document.getElementById("admstatus").value==="NA"){
-   element.checked = !element.checked;
-   swal("Oops..","Enter Admission Status","error");
-   document.getElementById("admstatus").focus();}
+	 // else if(document.getElementById("prsec").value==="" || document.getElementById("prsec").value==="NA"){
+  //  element.checked = !element.checked;
+  //  swal("Oops..","Enter Alloted Section","error");
+  //  document.getElementById("prsec").focus();}
+  //  	 else if(document.getElementById("prroll").value==="" || document.getElementById("prroll").value==="NA"){
+  //  element.checked = !element.checked;
+  //  swal("Oops..","Enter Alloted Roll No.","error");
+  //  document.getElementById("prroll").focus();}
+  //  	 else if(document.getElementById("admno").value==="" || document.getElementById("admno").value==="NA"){
+  //  element.checked = !element.checked;
+  //  swal("Oops..","Enter Admission No.","error");
+  //  document.getElementById("admno").focus();}
+  //  	 else if(document.getElementById("admdate").value==="" || document.getElementById("admdate").value==="NA"){
+  //  element.checked = !element.checked;
+  //  swal("Oops..","Enter Admission Date","error");
+  //  document.getElementById("admdate").focus();}
+  //  	 else if(document.getElementById("admstatus").value==="" || document.getElementById("admstatus").value==="NA"){
+  //  element.checked = !element.checked;
+  //  swal("Oops..","Enter Admission Status","error");
+  //  document.getElementById("admstatus").focus();}
 
+	else if(document.getElementById("updphoto").value===""){
+   element.checked = !element.checked;
+   Swal.fire("Oops..","Upload your Photo to proceed","error");
+   hideAllSection();
+   document.getElementById('yourUploads').style.display = "block";
+   document.getElementById("fileButton1").focus();}
+
+     else if(document.getElementById("updbproof").value===""){
+   element.checked = !element.checked;
+   Swal.fire("Oops..","Upload birth certificate to proceed","error");
+   hideAllSection();
+   document.getElementById('yourUploads').style.display = "block";
+   document.getElementById("fileButton3").focus();}
+
+     else if(document.getElementById("updbpass").value===""){
+   element.checked = !element.checked;
+   Swal.fire("Oops..","Upload your Bank Pass Book to proceed","error");
+   hideAllSection();
+   document.getElementById('yourUploads').style.display = "block";
+   document.getElementById("fileButton6").focus();}
+
+
+	 // else if(ffn == 0){
+  //  element.checked = !element.checked;
+  //  swal("Oops..","Check admission Schedule to proceed. For details open admission.dholahighschool.in","error");
+  //  document.getElementById("fileButton6").focus();}
   	
    	else{
    element.checked = element.checked;
    document.getElementById("submitbtn").disabled = !element.checked;
-   swal("Dhola High School","Check all details carefully before Submit.","info");
+   Swal.fire("Dhola High School","Check all details carefully before Final Submit.","info");
    }
  }
+
+
+ function saveBasicInformation(){
+ 	firebase.database().ref('vtoix2021/' + uid).update({
+name:document.getElementById('name').value,
+dob:document.getElementById('dob').value,
+dobreg:document.getElementById('dobreg').value,
+gender:document.getElementById('gender').value,
+category:document.getElementById('category').value,
+religion:document.getElementById('religion').value,
+mothertongue:document.getElementById('mothertongue').value,
+nationality:document.getElementById('nationality').value,
+aadhaar:document.getElementById('aadhaar').value,
+bloodgroup:document.getElementById('bloodgroup').value,
+healthid:document.getElementById('healthid').value,
+idmark:document.getElementById('idmark').value
+});
+ 	document.getElementById('educationalInformation').style.display = "block";
+ 	document.getElementById('basicInformation').style.display = "none";
+ 	document.getElementById('educationalInformation').scrollIntoView();
+ }
+ function prevBasicInformation(){
+ 	document.getElementById('basicInformation').style.display = "block";
+ 	document.getElementById('educationalInformation').style.display = "none";
+ 	document.getElementById('basicInformation').scrollIntoView();
+ }
+
+ function saveEducationalInformation(){
+ 	firebase.database().ref('vtoix2021/' + uid).update({
+acyear:document.getElementById('acyear').value,
+admno:document.getElementById('admno').value,
+admstatus:document.getElementById('admstatus').value,
+admdate:document.getElementById('admdate').value,
+prclass:document.getElementById('prclass').value,
+pvschool:document.getElementById('pvschool').value,
+prsec:document.getElementById('prsec').value,
+prroll:document.getElementById('prroll').value,
+praddl:document.getElementById('praddl').value,
+prstream:prstream,
+prfcomp1:prfcomp1,
+prfcomp2:prfcomp2,
+prfsub1:prfsub1,
+prfsub2:prfsub2,
+prfsub3:prfsub3,
+prfsub4:prfsub4,
+pvclass:document.getElementById('pvclass').value,
+pvsec:document.getElementById('pvsec').value,
+pvroll:document.getElementById('pvroll').value,
+pvstream:pvstream,
+pvaddl:document.getElementById('pvaddl').value,
+medium:document.getElementById('medium').value
+});
+ 	document.getElementById('contactInformation').style.display = "block";
+ 	document.getElementById('educationalInformation').style.display = "none";
+ 	document.getElementById('contactInformation').scrollIntoView();
+ }
+function prevEductionalInformation(){
+	document.getElementById('educationalInformation').style.display = "block";
+ 	document.getElementById('contactInformation').style.display = "none";
+ 	document.getElementById('educationalInformation').scrollIntoView();
+}
+
+ function saveContactInformation(){
+ 	firebase.database().ref('vtoix2021/' + uid).update({
+vill:document.getElementById('vill').value,
+habitation:document.getElementById('habitation').value,
+district:document.getElementById('district').value,
+municipality:document.getElementById('municipality').value,
+panchayat:document.getElementById('panchayat').value,
+po:document.getElementById('po').value,
+ps:document.getElementById('ps').value,
+pin:document.getElementById('pin').value,
+phone:document.getElementById('phone').value,
+email:document.getElementById('email').value
+});
+ 	document.getElementById('guardianDetails').style.display = "block";
+ 	document.getElementById('contactInformation').style.display = "none";
+ 	document.getElementById('guardianDetails').scrollIntoView();
+ }
+
+function prevContactInformation(){
+	document.getElementById('contactInformation').style.display = "block";
+ 	document.getElementById('guardianDetails').style.display = "none";
+ 	document.getElementById('contactInformation').scrollIntoView();
+}
+
+ function saveGuardianDetails(){
+ 	firebase.database().ref('vtoix2021/' + uid).update({
+fname:document.getElementById('fname').value,
+mname:document.getElementById('mname').value,
+gname:document.getElementById('gname').value,
+relationship:document.getElementById('relationship').value,
+aincome:document.getElementById('aincome').value,
+gqualification:document.getElementById('gqualification').value
+});
+ 	document.getElementById('guardianContactInformation').style.display = "block";
+ 	document.getElementById('guardianDetails').style.display = "none";
+ 	document.getElementById('guardianContactInformation').scrollIntoView();
+ }
+
+function prevGuardianDetails(){
+	document.getElementById('guardianDetails').style.display = "block";
+ 	document.getElementById('guardianContactInformation').style.display = "none";
+ 	document.getElementById('guardianDetails').scrollIntoView();
+}
+
+ function saveGuardianContactInformation(){
+ 	firebase.database().ref('vtoix2021/' + uid).update({
+gvill:document.getElementById('gvill').value,
+ghabitation:document.getElementById('ghabitation').value,
+gdistrict:document.getElementById('gdistrict').value,
+gblock:document.getElementById('gblock').value,
+gpanchayat:document.getElementById('gpanchayat').value,
+gpo:document.getElementById('gpo').value,
+gps:document.getElementById('gps').value,
+gpin:document.getElementById('gpin').value,
+gphone:document.getElementById('gphone').value,
+gemail:document.getElementById('gemail').value
+});
+ 	document.getElementById('otherInformation').style.display = "block";
+ 	document.getElementById('guardianContactInformation').style.display = "none";
+ 	document.getElementById('otherInformation').scrollIntoView();
+ }
+function prevGuardianContactInformation(){
+	document.getElementById('guardianContactInformation').style.display = "block";
+ 	document.getElementById('otherInformation').style.display = "none";
+ 	document.getElementById('guardianContactInformation').scrollIntoView();
+}
+
+ function saveOtherInformation(){
+ 	firebase.database().ref('vtoix2021/' + uid).update({
+bplstatus:document.getElementById('bplstatus').value,
+bplno:document.getElementById('bplno').value,
+cwsn:document.getElementById('cwsn').value,
+cwsntyp:document.getElementById('cwsntyp').value
+});
+ 	document.getElementById('bankDetails').style.display = "block";
+ 	document.getElementById('otherInformation').style.display = "none";
+ 	document.getElementById('bankDetails').scrollIntoView();
+ }
+
+function prevOtherInformation(){
+	document.getElementById('otherInformation').style.display = "block";
+ 	document.getElementById('bankDetails').style.display = "none";
+ 	document.getElementById('otherInformation').scrollIntoView();
+}
+
+
+ function saveBankDetails(){
+ 	firebase.database().ref('vtoix2021/' + uid).update({
+bname:document.getElementById('bname').value,
+bcode:document.getElementById('bcode').value,
+bifsc:document.getElementById('bifsc').value,
+acno:document.getElementById('acno').value
+});
+ 	document.getElementById('yourUploads').style.display = "block";
+ 	document.getElementById('bankDetails').style.display = "none";
+ 	document.getElementById('yourUploads').scrollIntoView();
+ }
+
+function prevBankDetails(){
+	document.getElementById('bankDetails').style.display = "block";
+ 	document.getElementById('yourUploads').style.display = "none";
+ 	document.getElementById('bankDetails').scrollIntoView();
+}
+
+function saveYourUploads(){
+ 	firebase.database().ref('vtoix2021/' + uid).update({
+updphoto:document.getElementById('updphoto').value,
+updmark:document.getElementById('updmark').value,
+updbproof:document.getElementById('updbproof').value,
+updslc:document.getElementById('updslc').value,
+updaadhaarpic:document.getElementById('updaadhaarpic').value,
+updbpass:document.getElementById('updbpass').value,
+updcaste:document.getElementById('updcaste').value
+});
+ 	document.getElementById('finalPreviewSubmit').style.display = "block";
+ 	document.getElementById('yourUploads').style.display = "none";
+ 	document.getElementById('finalPreviewSubmit').scrollIntoView();
+ }
+function modifyApplicationForm(){
+ 	document.getElementById('basicInformation').style.display = "block";
+ 	document.getElementById('finalPreviewSubmit').style.display = "none";
+ 	document.getElementById('basicInformation').scrollIntoView();
+}
+
+function hideAllSection(){
+	document.getElementById('basicInformation').style.display = "none";
+	document.getElementById('educationalInformation').style.display = "none";
+	document.getElementById('contactInformation').style.display = "none";
+	document.getElementById('guardianDetails').style.display = "none";
+	document.getElementById('guardianContactInformation').style.display = "none";
+	document.getElementById('otherInformation').style.display = "none";
+	document.getElementById('bankDetails').style.display = "none";
+	document.getElementById('yourUploads').style.display = "none";
+	document.getElementById('finalPreviewSubmit').style.display = "none";
+}
+
+function showAllSection(){
+	document.getElementById('basicInformation').style.display = "block";
+	document.getElementById('educationalInformation').style.display = "block";
+	document.getElementById('contactInformation').style.display = "block";
+	document.getElementById('guardianDetails').style.display = "block";
+	document.getElementById('guardianContactInformation').style.display = "block";
+	document.getElementById('otherInformation').style.display = "block";
+	document.getElementById('bankDetails').style.display = "block";
+	document.getElementById('yourUploads').style.display = "block";
+	document.getElementById('finalPreviewSubmit').style.display = "block";
+}
+
+ //document.getElementById('').value
