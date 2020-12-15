@@ -6,7 +6,7 @@ uid = parameters[1];
 flag=0;
 document.title = "Dhola High School_Online Admission Portal_" + uid;
 document.getElementById("previewForm").src = "login/preview.html?uid=" + uid;
-document.getElementById("idset").innerHTML = "Application form regarding Application ID: <b>" + uid + "</b> is successfully submitted.";
+document.getElementById("idset").innerHTML = "Application form regarding Application ID: <b>" + uid + "</b> is successfully submitted. ((অ্যাপ্লিকেশন আইডি : " + uid + " সম্পর্কিত আবেদন ফর্ম সফলভাবে জমা দেওয়া হয়েছে।))";
 }
 /*
 function appidset(){
@@ -1210,11 +1210,11 @@ function toggleCheckbox(element)
    	else{
    element.checked = element.checked;
    document.getElementById("submitbtn").disabled = !element.checked;
-   Swal.fire("Dhola High School","Check all details carefully before Final Submit.","info");
+   Swal.fire("Dhola High School","Check all details carefully before Final Submit. (ফাইনাল জমা দেওয়ার আগে সমস্ত বিবরণ সাবধানে পরীক্ষা করে দেখুন।)","info");
    }
  }
  function previewall(){
- Swal.fire("Dhola High School", "Application form regarding Application ID: <b>" + uid + "</b> is successfully submitted.", "success")
+ Swal.fire("Dhola High School", "Application form regarding Application ID: <b>" + uid + "</b> is successfully submitted. (অ্যাপ্লিকেশন আইডি : " + uid + " সম্পর্কিত আবেদন ফর্ম সফলভাবে জমা দেওয়া হয়েছে।)", "success")
 .then((value) => {
   window.open("login/preview.html?uid=" + uid);
 });
