@@ -7,6 +7,7 @@
 <meta name="keywords" content="admin panel, reports, export, excel"/>
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <style type="text/css">
 	/** Custom Select **/
@@ -75,6 +76,7 @@
     visibility: visible;
     pointer-events: all;
     transform: translateY(0);
+
   }
     .custom-options:before {
       position: absolute;
@@ -460,26 +462,29 @@ function GetDynamicTextBox(value) {
 								<ul class="resp-tabs-list">
 									  <img src="images/logo.jpg" alt="" />
 									  <li class="resp-tab-item" aria-controls="tab_item-0" role="tab">
-									  	<span>Pre - Admission Classwise Report</span>
+									  	<span>2021 Admission Management</span>
 									  </li>
 									  <li class="resp-tab-item" aria-controls="tab_item-1" role="tab">
-									  	<span>Post - Admision Classwise Report</span>
+									  	<span>Submitted Application Report</span>
 									  </li>
 									  <li class="resp-tab-item" aria-controls="tab_item-2" role="tab">
+									  	<span>Pending Application Report</span>
+									  </li>
+									  <li class="resp-tab-item" aria-controls="tab_item-3" role="tab">
 									  	<span>Overall Reports</span>
 									  </li>
-                    <li class="resp-tab-item" aria-controls="tab_item-3" role="tab">
-                      <span>Notice Management</span>
-                    </li>
-                    <li class="resp-tab-item" aria-controls="tab_item-4" role="tab">
-                      <span>Gallery Management</span>
-                    </li>
-									  <li class="resp-tab-item" aria-controls="tab_item-5" role="tab">
+                    				  <li class="resp-tab-item" aria-controls="tab_item-4" role="tab">
+                      					<span>Notice Management</span>
+                    				  </li>
+                    				  <li class="resp-tab-item" aria-controls="tab_item-5" role="tab">
+                      					<span>Gallery Management</span>
+                    				  </li>
+									  <li class="resp-tab-item" aria-controls="tab_item-6" role="tab">
 									  	<span>Admission Management</span>
 									  </li>
-                    <li class="resp-tab-item" aria-controls="tab_item-6" role="tab">
-                      <span>XI Admission</span>
-                    </li>
+                    				  <li class="resp-tab-item" aria-controls="tab_item-7" role="tab">
+                      					<span>XI Admission</span>
+                    				  </li>
 
 								</ul>		
 							</div>
@@ -487,39 +492,26 @@ function GetDynamicTextBox(value) {
 							<div class="port-right">
 								
 									<div class="resp-tabs-container">
-									
-		<!-- Tab 0 -->					<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
+
+		<!-- Tab 0 -->
+
+
+											<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
 											<div class="profile-content">
-												<h3>Pre - Admission Report </h3>
+												<h3>Pending Application Report </h3>
 																							
 												<br>
-												<div style="height:50px; width:100%"></div>
-												<div class="center">
-													<form method="get" action="reports/pre_class_report.html" target="_blank">
-  												<select name="pclass" id="sources" class="custom-select sources" placeholder="Choose Class">
-    											<option value="V">CLASS V</option>
-    											<option value="VI">CLASS VI</option>
-    											<option value="VII">CLASS VII</option>
-    											<option value="VIII">CLASS VIII</option>
-    											<option value="IX">CLASS IX</option>
-    											<option value="X">CLASS X</option>
-    											<option value="XI">CLASS XI</option>
-    											<option value="XII">CLASS XII</option>
-  												</select>
-												</div>
-												<br><br>
-												<input type="submit" value="Submit">
-													</form>
-												<br>
 
-											</div>
-												<div class="clear"></div>
-										</div>
-										
-										
-	<!-- Tab 1 -->						<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-1">
+												<div style="height:50px; width:100%"></div>
+    													<input type="submit" value="2021 Admission Control Panel" style="background-color: #ff5685" onclick="openControlPanel()" />
+                        					</div>
+                        					<div class="clear"></div>
+                        					</div>
+
+									
+		<!-- Tab 1 -->					<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-1">
 											<div class="profile-content">
-												<h3>Post - Admission Report </h3>
+												<h3>Submitted Application Report </h3>
 																							
 												<br>
 
@@ -527,16 +519,17 @@ function GetDynamicTextBox(value) {
 
 
                         <div class="tab">
-                        <button class="tablinks" onclick="opentab(event, 'admitted')">Admitted Student Report</button>
-                        <button class="tablinks" onclick="opentab(event, 'rejected')">Rejected Student Report</button>
-                        <button class="tablinks" onclick="opentab(event, 'uploaded')">Uploaded File Report</button>
+                        <button class="tablinks" onclick="opentab(event, 'admitted_p')">With Document</button>
+                        <button class="tablinks" onclick="opentab(event, 'rejected_p')">Without Document</button>
+                        <button class="tablinks" onclick="opentab(event, 'uploaded_p')">Document Only</button>
                         </div>
 
-                        <div id="admitted" class="tabcontent">
+                        <div id="admitted_p" class="tabcontent">
 
                           <div class="center">
-                          <form method="get" action="reports/post_class_report-acc.html" target="_blank">
+                          <form method="get" action="reports/all_report_p.html" target="_blank">
                           <select name="pclass" id="sources" class="custom-select sources" placeholder="Choose Class">
+                          <option value="ALL">ALL</option>
                           <option value="V">CLASS V</option>
                           <option value="VI">CLASS VI</option>
                           <option value="VII">CLASS VII</option>
@@ -554,11 +547,12 @@ function GetDynamicTextBox(value) {
                         </div>
 
 
-                        <div id="rejected" class="tabcontent">
+                        <div id="rejected_p" class="tabcontent">
                           
                           <div class="center">
-                          <form method="get" action="reports/post_class_report-rej.html" target="_blank">
+                          <form method="get" action="reports/all_report_wp.html" target="_blank">
                           <select name="pclass" id="sources" class="custom-select sources" placeholder="Choose Class">
+                          <option value="ALL">ALL</option>
                           <option value="V">CLASS V</option>
                           <option value="VI">CLASS VI</option>
                           <option value="VII">CLASS VII</option>
@@ -575,11 +569,12 @@ function GetDynamicTextBox(value) {
 
                         </div>
 
-                        <div id="uploaded" class="tabcontent">
+                        <div id="uploaded_p" class="tabcontent">
 
                           <div class="center">
-                          <form method="get" action="reports/post_class_acc_pics.html" target="_blank">
+                          <form method="get" action="reports/all_report_op.html" target="_blank">
                           <select name="pclass" id="sources" class="custom-select sources" placeholder="Choose Class">
+                          <option value="ALL">ALL</option>
                           <option value="V">CLASS V</option>
                           <option value="VI">CLASS VI</option>
                           <option value="VII">CLASS VII</option>
@@ -598,15 +593,119 @@ function GetDynamicTextBox(value) {
                         </div>
                         <div class="clear"></div>
                         </div>
-
-        <!-- Tab 2 -->
-
-										<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-2">
+										
+	<!-- Tab 2 -->						<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-2">
 											<div class="profile-content">
-												<h3>Overall Report </h3>
+												<h3>Pending Application Report </h3>
 																							
 												<br>
+
+												<div style="height:50px; width:100%"></div>
+
+
+                          <div class="center">
+                          <form method="get" action="reports/all_report_all_pd.html" target="_blank">
+                          <select name="pclass" id="sources" class="custom-select sources" placeholder="Choose Class">
+                          <option value="ALL">ALL</option>
+                          <option value="V">CLASS V</option>
+                          <option value="VI">CLASS VI</option>
+                          <option value="VII">CLASS VII</option>
+                          <option value="VIII">CLASS VIII</option>
+                          <option value="IX">CLASS IX</option>
+                          <option value="X">CLASS X</option>
+                          <option value="XI">CLASS XI</option>
+                          <option value="XII">CLASS XII</option>
+                          </select>
+                        
+                        <br><br>
+                        <input type="submit" value="Submit">
+                          </form></div>
+                      
+                        </div>
+                        <div class="clear"></div>
+                        </div>
+
+        <!-- Tab 3 -->
+
+										<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-3">
+											<div class="profile-content">
+												<h3>Overall Report </h3>
 												<div style="height:100px; width:100%"></div>
+
+												<div class="tab">
+                        <button class="tablinks" onclick="opentab(event, 'admitted')">With Document</button>
+                        <button class="tablinks" onclick="opentab(event, 'rejected')">Without Document</button>
+                        <button class="tablinks" onclick="opentab(event, 'uploaded')">Document Only</button>
+                        </div>
+
+                        <div id="admitted" class="tabcontent">
+
+                          <div class="center">
+                          <form method="get" action="reports/all_report_p_all.html" target="_blank">
+                          <select name="pclass" id="sources" class="custom-select sources" placeholder="Choose Class">
+                          <option value="ALL">ALL</option>
+                          <option value="V">CLASS V</option>
+                          <option value="VI">CLASS VI</option>
+                          <option value="VII">CLASS VII</option>
+                          <option value="VIII">CLASS VIII</option>
+                          <option value="IX">CLASS IX</option>
+                          <option value="X">CLASS X</option>
+                          <option value="XI">CLASS XI</option>
+                          <option value="XII">CLASS XII</option>
+                          </select>
+                        
+                        <br><br>
+                        <input type="submit" value="Submit">
+                          </form></div>
+
+                        </div>
+
+
+                        <div id="rejected" class="tabcontent">
+                          
+                          <div class="center">
+                          <form method="get" action="reports/all_report_wp_all.html" target="_blank">
+                          <select name="pclass" id="sources" class="custom-select sources" placeholder="Choose Class">
+                          <option value="ALL">ALL</option>
+                          <option value="V">CLASS V</option>
+                          <option value="VI">CLASS VI</option>
+                          <option value="VII">CLASS VII</option>
+                          <option value="VIII">CLASS VIII</option>
+                          <option value="IX">CLASS IX</option>
+                          <option value="X">CLASS X</option>
+                          <option value="XI">CLASS XI</option>
+                          <option value="XII">CLASS XII</option>
+                          </select>
+                        
+                        <br><br>
+                        <input type="submit" value="Submit">
+                          </form></div>
+
+                        </div>
+
+                        <div id="uploaded" class="tabcontent">
+
+                          <div class="center">
+                          <form method="get" action="reports/all_report_op_all.html" target="_blank">
+                          <select name="pclass" id="sources" class="custom-select sources" placeholder="Choose Class">
+                          <option value="ALL">ALL</option>
+                          <option value="V">CLASS V</option>
+                          <option value="VI">CLASS VI</option>
+                          <option value="VII">CLASS VII</option>
+                          <option value="VIII">CLASS VIII</option>
+                          <option value="IX">CLASS IX</option>
+                          <option value="X">CLASS X</option>
+                          <option value="XI">CLASS XI</option>
+                          <option value="XII">CLASS XII</option>
+                          </select>
+                        
+                        <br><br>
+                        <input type="submit" value="Submit">
+                          </form></div>
+                        </div>
+                      	
+<!--              <br>
+												
 													<form action="reports/all_report.html" target="_blank">
     													<input type="submit" value="All Applied Student Report" style="background-color: #ff5685" />
 													</form>
@@ -618,15 +717,16 @@ function GetDynamicTextBox(value) {
 												<form action="reports/rejected_report.html" target="_blank">
     													<input type="submit" value="Rejected Student Report" style="background-color: #ff5685" />
 													</form>
-												<br>
+												<br> -->
 
-											</div>
-												<div class="clear"></div>
-										</div>
+                        </div>
+                        <div class="clear"></div>
+                        </div>
+
 										
-    <!-- Tab 3 -->
+    <!-- Tab 4 -->
 
-                    <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-3">
+                    <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-4">
                       <div class="profile-content">
                         <h3>Notice Management Portal</h3>
                                
@@ -776,8 +876,8 @@ function GetDynamicTextBox(value) {
                         <div class="clear"></div>
                     </div>
 
-    <!-- Tab 4 -->
-                    <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-2">
+    <!-- Tab 5 -->
+                    <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-5">
                       <div class="profile-content">
                         <h3>Gallery Management </h3>
                                               
@@ -816,7 +916,7 @@ function GetDynamicTextBox(value) {
                         <div class="clear"></div>
                     </div>
 
-		<!-- Tab 5 -->					
+		<!-- Tab 6 -->					
                     <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-4">
 											<div class="hobby">
 												<h3>V - IX Admission Management</h3>
@@ -850,7 +950,7 @@ function GetDynamicTextBox(value) {
 											</div>
 										</div>
 
-<!-- TAb 6 -->
+<!-- TAb 7 -->
                     <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-7">
                       <div class="hobby">
                         <h3>XI Admission Management</h3>
@@ -907,7 +1007,7 @@ function GetDynamicTextBox(value) {
                       </div>
                     </div>
 
-<!-- TAB 7 -->
+<!-- TAB 8 -->
 
 									</div>	
 							</div>	
@@ -979,6 +1079,30 @@ window.open("../student/login/VIIIadm.html");
 <script type="text/javascript">
 function admIX() {
 window.open("../student/login/IXadm.html");
+}
+
+function openControlPanel(){
+swal("Dhola High School","Enter Controller Password Here:", {
+    content: {
+    element: "input",
+    attributes: {
+      placeholder: "Type your password",
+      type: "password",
+    },
+  },
+})
+  .then((value) => {
+
+  if (value != null) {
+    if (value == window.atob("RGhvbGFAMjAyMQ==")){
+      window.open("reports/admission_control.html");
+  }
+  else{
+  swal("Dhola High School","You are not authorized!","error");
+  window.open("../../404/index.html");
+  }
+  }
+});
 }
 </script>
 </body>
