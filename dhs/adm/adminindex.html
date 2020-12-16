@@ -154,8 +154,8 @@ border-bottom-width: 3px;
 <div class="box">
 <div class="active">
 	<center>
-	<a class="active-button teal" href="vtoix.html?class=V=admin">Apply as new Student</a>
-	<a class="active-button teal" href="student/login/index.html">Log IN</a><br><br>
+	<a class="active-button teal" onclick="getAdminAccess()">Apply as new Student</a>
+	<a class="active-button teal" href="student/login/login.html">Log IN</a><br><br>
   <section id="meritlist"></section>
   <!--
 	<h2>Merit List</h2><br>
@@ -170,7 +170,31 @@ border-bottom-width: 3px;
 	</center>
 </div>
 </div>
+
 <script type="text/javascript">
+function getAdminAccess(){
+  swal("Dhola High School","Enter Access Key Here:", {
+    content: {
+    element: "input",
+    attributes: {
+     placeholder: "Type access key",
+     type: "password",
+    },
+  },
+})
+  .then((value) => {
+
+  if (value != null) {
+    if (value == window.atob("QWRtaXNzaW9uMjAyMUBkaHM=")){
+      window.open("vtoix.html?class=V=HMPermit=admin");
+  }
+  else{
+  swal("Dhola High School","You are not authorized!","error");
+  window.open("../404/index.html");
+  }
+  }
+});
+}
 function dtchk() {
 var d = new Date();
   var x = d.getTime();
