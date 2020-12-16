@@ -247,7 +247,7 @@ document.getElementById("classApplyFor").options[5].disabled = true;
 
 function changedate(db){
 	var d = new Date(Number(db));
-	var finaldate = "<b>" + d.getUTCDate() + "/" + Number(d.getUTCMonth()+1) + "/" + d.getUTCFullYear() + "</b><br><i>" + d.toLocaleTimeString() + "</i>";
+	var finaldate = "<b>" + d.getDate() + "/" + Number(d.getMonth()+1) + "/" + d.getFullYear() + "</b><br><i>" + d.toLocaleTimeString() + "</i>";
 	return finaldate;
 }
 
