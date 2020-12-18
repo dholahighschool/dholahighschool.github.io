@@ -78,9 +78,11 @@ $('#ixactive').val(ixactive);
 
 
 function changedate(db){
-	var d = new Date(Number(db));
+  var d = new Date(Number(db));
   var finalMinute = d.getMinutes();
   var finalHour = d.getHours();
+  var finalMonth = Number(d.getMonth()+1);
+  var finalDate = d.getDate();
   if(Number(d.getHours()) < 10){
     finalHour = "0" + d.getHours();
   }
@@ -88,8 +90,17 @@ function changedate(db){
   if(Number(d.getMinutes()) < 10){
     finalMinute = "0" + d.getMinutes();
   }
-  var finaldate = d.getUTCFullYear() + "-" + Number(d.getUTCMonth()+1) + "-" + d.getUTCDate() + "T" + finalHour + ":" + finalMinute;
-  return finaldate;
+
+  if(Number(Number(d.getMonth()+1)) < 10){
+    finalMonth = "0" + Number(d.getMonth()+1);
+  }
+
+  if(Number(d.getDate()) < 10){
+    finalDate = "0" + d.getDate();
+  }
+
+  var finaltime = d.getFullYear() + "-" + finalMonth + "-" + finalDate + "T" + finalHour + ":" + finalMinute;
+  return finaltime;
 }
 
 function updateTiming(cls) {
