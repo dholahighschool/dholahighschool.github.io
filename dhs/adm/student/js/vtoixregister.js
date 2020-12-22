@@ -27,7 +27,7 @@ var regID = getInputVal('regID');
 var meet = meetDate;
 
  // Save message
-  saveMessage(timestamp,name,dob,gname,prclass,schooltype,bsid,regID);
+  saveMessage(timestamp,name,dob,gname,prclass,schooltype,bsid,regID,meet);
   Swal.fire({
   title: 'Dhola High School',
   text: 'Registration Successful. Application ID: ' + timestamp + '. Note down for further use.',
@@ -45,7 +45,7 @@ function getInputVal(id){
 }
 
 // Save message to firebase   
-function saveMessage(appid,name,dob,gname,prclass,schooltype,bsid,regID){
+function saveMessage(appid,name,dob,gname,prclass,schooltype,bsid,regID,meet){
   /*
   var newMessageRef = messagesRef.push();
   MessageRef.set({
@@ -59,7 +59,8 @@ prclass:prclass,
 schooltype:schooltype,
 bsid:bsid,
 regID:regID,
-acyear:"2021"
+acyear:"2021",
+meet:meet
   });
 }
 
