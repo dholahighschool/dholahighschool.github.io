@@ -51,7 +51,7 @@ function saveMessage(appid,name,dob,gname,prclass,schooltype,bsid,regID,meet){
   MessageRef.set({
   */
   firebase.database().ref('vtoix2021/' + appid).update({
-appid:appid,
+appid:appid.toString(),
 name:name,
 dob:dob,
 gname:gname,
