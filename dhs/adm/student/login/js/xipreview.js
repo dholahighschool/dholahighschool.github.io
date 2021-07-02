@@ -22,7 +22,7 @@ var ary = localStorage.ud.split("splt");
             
 $(document).ready(function(){
 
-var rootRef = firebase.database().ref('xi2020/' + ary[1]);
+var rootRef = firebase.database().ref('xi2021/' + ary[1]);
 
 rootRef.on("child_added", snap => {
 
