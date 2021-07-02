@@ -81,19 +81,19 @@ $('#xi' + cat).attr("data-end", Math.max(new Date(arend).getTime(),new Date(scen
 }
 
 function arl() {
-  var rootRef = firebase.database().ref('xi2020/ARTS/');
+  var rootRef = firebase.database().ref('xi2021/ARTS/');
 
 rootRef.on("child_added", snap => {
 
 var cat = snap.child("prstream").val();
-  ars = 0;
+  ars = ars - 1;
   $('#seatlive').html("<center><b><i>Seats Available (LIVE): </i></b><br>Arts: <b>" + ars + "</b>&nbsp; Science: <b>" + scs + "</b>&nbsp; Commerce: <b>" + cms + "</b></center>");
 
 });
 
 }
 function scl() {
-  var rootRef = firebase.database().ref('xi2020/SCIENCE/');
+  var rootRef = firebase.database().ref('xi2021/SCIENCE/');
 
 rootRef.on("child_added", snap => {
 
@@ -105,7 +105,7 @@ var cat = snap.child("prstream").val();
 
 }
 function cml() {
-  var rootRef = firebase.database().ref('xi2020/COMMERCE/');
+  var rootRef = firebase.database().ref('xi2021/COMMERCE/');
 
 rootRef.on("child_added", snap => {
 
@@ -179,9 +179,9 @@ function conv(val) {
 function xilg() {
   var d = new Date();
   var y = d.getTime();
-  var n = new Date("2020-06-07 10:00:00 AM"); //YYYY-MM-DD hh:mm:ss 
+  var n = new Date("2021-06-07 10:00:00 AM"); //YYYY-MM-DD hh:mm:ss 
   var x = n.getTime();
-if(+x >= +y){swal("Dhola High School","Admission Portal will be available from 7th July, 2020.","info");}
+if(+x >= +y){swal("Dhola High School","Admission Portal will be available from 7th July, 2021.","info");}
 else{
   document.getElementById('xilg1').style.display='block';
 }
@@ -199,7 +199,7 @@ function chklgin() {
 function chklgd(x,y,z) {
 
   var flaglg = 0;
-  var rootRef = firebase.database().ref("xi2020/" + x);
+  var rootRef = firebase.database().ref("xi2021/" + x);
 
 rootRef.on("child_added", snap => {
 
