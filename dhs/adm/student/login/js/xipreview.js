@@ -28,7 +28,7 @@ rootRef.on("child_added", snap => {
 
 var name = snap.child("name").val();
 var dob = snap.child("dob").val();
-var psd = dob.replace(/-/g,'');
+//var psd = dob.replace(/-/g,'');
 var dobreg = snap.child("dobreg").val();
 var gender  = snap.child("gender").val();
 var category = snap.child("category").val();
@@ -91,10 +91,10 @@ var gemail = snap.child("gemail").val();
 var bplstatus = snap.child("bplstatus").val();
 var bplno = snap.child("bplno").val();
 var cwsn = snap.child("cwsn").val();
-var cwsntyp = snap.child("cwsntyp").val().replace(/-/g,' ');
+var cwsntyp = snap.child("cwsntyp").val();
 
-var rv = snap.child("bname").val();
-var bname = rv.replace(/-/g, ' ');
+var bname = snap.child("bname").val();
+//var bname = rv.replace(/-/g, ' ');
 
 var bcode = snap.child("bcode").val();
 var bifsc = snap.child("bifsc").val();
