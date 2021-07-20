@@ -161,13 +161,14 @@ function conv(val) {
         
         if(+x >= +y && +x <= +z)
         {
+          window.open("student/" + p + ".html");
             //localStorage.setItem("fn", fn);
-            if(p == "xiam" || p == "xihm"){
-              window.open("student/" + p + "G.html");
-            }
-            else{
-              window.open("student/" + p + ".html");  
-            }
+//             if(p == "xiam" || p == "xihm"){
+//               window.open("student/" + p + "G.html");
+//             }
+//             else{
+//               window.open("student/" + p + ".html");  
+//             }
             
         }
         else
