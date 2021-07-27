@@ -1,5 +1,5 @@
 var ars = 222;
-var scs = 58;
+var scs = 68;
 var cms = 14;
 
   // Initialize Firebase
