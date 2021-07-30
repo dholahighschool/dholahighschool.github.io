@@ -22,20 +22,20 @@ var cat = snap.child("cat").val();
 var arm = snap.child("arm").val();
 var arst = snap.child("arst").val();
 var arend = snap.child("arend").val();
-var aradmst = snap.child("ardmst").val();
-var aradmend = snap.child("ardmend").val();
+var aradmst = snap.child("aradmst").val();
+var aradmend = snap.child("aradmend").val();
 
 var scm = snap.child("scm").val();
 var scst = snap.child("scst").val();
 var scend = snap.child("scend").val();
-var scadmst = snap.child("scdmst").val();
-var scadmend = snap.child("scdmend").val();
+var scadmst = snap.child("scadmst").val();
+var scadmend = snap.child("scadmend").val();
 
 var cmm = snap.child("cmm").val();
 var cmst = snap.child("cmst").val();
 var cmend = snap.child("cmend").val();
-var cmadmst = snap.child("cmdmst").val();
-var cmadmend = snap.child("cmdmend").val();
+var cmadmst = snap.child("cmadmst").val();
+var cmadmend = snap.child("cmadmend").val();
 
 
 $("#arm" + cat).val(arm);
