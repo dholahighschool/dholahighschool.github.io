@@ -1,6 +1,6 @@
-var ars = 272;
+var ars = 292;
 var scs = 80;
-var cms = 20;
+var cms = 15;
 
   // Initialize Firebase
   var config = {
