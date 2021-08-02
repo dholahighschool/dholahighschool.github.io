@@ -1,8 +1,8 @@
 // Initialize Firebase (ADD YOUR OWN DATA)
 var streamid = "";
 var appid = "";
-var ars = 307;
-var scs = 80;
+var ars = 312;
+var scs = 75;
 var cms = 15;
 var ffn = 0;
 var arpcode = "";
