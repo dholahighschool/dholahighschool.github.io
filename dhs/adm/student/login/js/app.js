@@ -19,7 +19,7 @@ var allPass = [];
 var allSubmit = [];
 
 function getAllDetails() {
-var rootRef = firebase.database().ref('vtoix2021');
+var rootRef = firebase.database().ref('vtoix2022');
 rootRef.on("child_added", snap => {
 var appid = snap.child("appid").val();
 var finalSubmit = snap.child("finalSubmit").val();
