@@ -33,7 +33,7 @@ getChangeData();
 });
 
 function getAllData(){
-    var rootRef = firebase.database().ref('vtoix2021');
+    var rootRef = firebase.database().ref('vtoix2022');
 
 rootRef.on("child_added", snap => {
 
