@@ -182,7 +182,7 @@ function xilg() {
   var y = d.getTime();
   var n = new Date("2022-06-03 10:00:00 AM"); //YYYY-MM-DD hh:mm:ss 
   var x = n.getTime();
-if(+x >= +y){swal("Dhola High School","Admission Portal will be available from 7th July, 2021.","info");}
+if(+x >= +y){swal("Dhola High School","Admission Portal will be available from 3rd July, 2022.","info");}
 else{
   document.getElementById('xilg1').style.display='block';
 }
