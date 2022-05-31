@@ -81,7 +81,7 @@ $('#xi' + cat).attr("data-end", Math.max(new Date(arend).getTime(),new Date(scen
 }
 
 function arl() {
-  var rootRef = firebase.database().ref('xi2021/ARTS/');
+  var rootRef = firebase.database().ref('xi2022/ARTS/');
 
 rootRef.on("child_added", snap => {
 
@@ -93,7 +93,7 @@ var cat = snap.child("prstream").val();
 
 }
 function scl() {
-  var rootRef = firebase.database().ref('xi2021/SCIENCE/');
+  var rootRef = firebase.database().ref('xi2022/SCIENCE/');
 
 rootRef.on("child_added", snap => {
 
@@ -105,7 +105,7 @@ var cat = snap.child("prstream").val();
 
 }
 function cml() {
-  var rootRef = firebase.database().ref('xi2021/COMMERCE/');
+  var rootRef = firebase.database().ref('xi2022/COMMERCE/');
 
 rootRef.on("child_added", snap => {
 
@@ -200,7 +200,7 @@ function chklgin() {
 function chklgd(x,y,z) {
 
   var flaglg = 0;
-  var rootRef = firebase.database().ref("xi2021/" + x);
+  var rootRef = firebase.database().ref("xi2022/" + x);
 
 rootRef.on("child_added", snap => {
 
