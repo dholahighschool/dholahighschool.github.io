@@ -180,7 +180,7 @@ function conv(val) {
 function xilg() {
   var d = new Date();
   var y = d.getTime();
-  var n = new Date("2021-06-07 10:00:00 AM"); //YYYY-MM-DD hh:mm:ss 
+  var n = new Date("2022-06-03 10:00:00 AM"); //YYYY-MM-DD hh:mm:ss 
   var x = n.getTime();
 if(+x >= +y){swal("Dhola High School","Admission Portal will be available from 7th July, 2021.","info");}
 else{
