@@ -1,4 +1,4 @@
-
+var currentYear = "vtoix2023";
 var config = {
     apiKey: "AIzaSyC5hD8l1JE0G97zlflv8R8UZ4vcDv7JcsU",
     authDomain: "admission-2020.firebaseapp.com",
@@ -19,7 +19,7 @@ var allPass = [];
 var allSubmit = [];
 
 function getAllDetails() {
-var rootRef = firebase.database().ref('vtoix2022');
+var rootRef = firebase.database().ref(currentYear);
 rootRef.on("child_added", snap => {
 var appid = snap.child("appid").val();
 var finalSubmit = snap.child("finalSubmit").val();
