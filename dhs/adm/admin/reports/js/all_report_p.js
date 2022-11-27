@@ -1,4 +1,4 @@
-var cls = "";
+var cls = ""; 
 function getClass(){
 var parameters = location.search.substring(1).split("=");
 cls = parameters[1];
