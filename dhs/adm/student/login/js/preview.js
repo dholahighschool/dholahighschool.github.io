@@ -1,3 +1,4 @@
+var currentYear = "vtoix2023";
 function getusername()
             {
                 var parameters = location.search.substring(1).split("=");
@@ -33,7 +34,7 @@ getChangeData();
 });
 
 function getAllData(){
-    var rootRef = firebase.database().ref('vtoix2022');
+    var rootRef = firebase.database().ref(currentYear);
 
 rootRef.on("child_added", snap => {
 
@@ -316,7 +317,7 @@ $("#loadinglay").css("display","none");
 
 
 function getChangeData(){
-var rootRef = firebase.database().ref('vtoix2021');
+var rootRef = firebase.database().ref(currentYear);
 
 rootRef.on("child_changed", snap => {
 
