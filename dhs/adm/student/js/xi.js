@@ -1,4 +1,4 @@
-var ars = 317;
+var ars = 297;
 var scs = 75;
 var cms = 15;
 
