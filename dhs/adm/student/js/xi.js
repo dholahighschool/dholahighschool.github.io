@@ -208,7 +208,7 @@ function chklgin() {
 function chklgd(x,y,z) {
 
   var flaglg = 0;
-  var rootRef = firebase.database().ref("xi2022/" + x);
+  var rootRef = firebase.database().ref("xi2023/" + x);
 
 rootRef.on("child_added", snap => {
 
