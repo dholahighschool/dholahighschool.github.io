@@ -89,7 +89,11 @@ $("#cmmet" + cat).val(arr[new Date(cmadmend).getHours()] + ":" + arr[new Date(cm
 
 
 });
-});
+},
+getCount(),
+getpmcode()
+);
+
 
 
 
@@ -104,4 +108,31 @@ function updatedb(x){
 function pmcodeupdate() {
 	firebase.database().ref("mpadmin/pcode").update({pmcode:document.getElementById("pmcode").value});
 	$("#pmcodeupdated").css("display", "block");
+}
+function getpmcode(){
+    var pmcode = firebase.database().ref('mpadmin/pcode/pmcode');
+    pmcode.on('value', (snapshot) => {
+    const data = snapshot.val();
+    $("#pmcode").val(data);
+  });
+    
+}
+
+function getCount(){
+    var rootRef = firebase.database().ref('mpadmin/seats');
+
+rootRef.on("child_added", snap => {
+var ars = snap.child("ars").val();
+var scs = snap.child("scs").val();
+var cms = snap.child("cms").val();
+$("#ars").val(ars);
+$("#scs").val(scs);
+$("#cms").val(cms);
+});
+    
+}
+
+function updateseats() {
+    firebase.database().ref("mpadmin/seats/all").update({ars:document.getElementById("ars").value,scs:document.getElementById("scs").value,cms:document.getElementById("cms").value});
+    $("#status").css("display", "block");
 }
