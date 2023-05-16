@@ -1,6 +1,6 @@
-var ars = 297;
-var scs = 75;
-var cms = 15;
+var ars = 0;
+var scs = 0;
+var cms = 0;
 
   // Initialize Firebase
   var config = {
@@ -35,7 +35,6 @@ var cmm = snap.child("cmm").val();
 var cmst = conv(snap.child("cmst").val());
 var cmend = conv(snap.child("cmend").val());
 
-
 $('#all' + cat).html("Arts: <b>" + arm + "</b>&nbsp; Science: <b>" + scm + "</b>&nbsp; Commerce: <b>" + cmm + "</b>");
 $('#ar' + cat).html("<u>Arts</u><br>Start: <b>" + arst + "</b>&nbsp; and End: <b>" + arend + "</b>");
 $('#sc' + cat).html("<u>Science</u><br>Start: <b>" + scst + "</b>&nbsp; and End: <b>" + scend + "</b>");
@@ -45,9 +44,18 @@ $('#xi' + cat).attr("data-end", Math.max(new Date(arend).getTime(),new Date(scen
 });
 
 },
-checkdtls(), arl(), scl(), cml()
+getCount(), checkdtls(), arl(), scl(), cml()
 );
 
+function getCount(){
+    var rootRef = firebase.database().ref('mpadmin/seats');
+
+rootRef.on("child_added", snap => {
+ars = snap.child("ars").val();
+scs = snap.child("scs").val();
+cms = snap.child("cms").val();
+});
+}
 
 function checkdtls(){
 
@@ -81,7 +89,7 @@ $('#xi' + cat).attr("data-end", Math.max(new Date(arend).getTime(),new Date(scen
 }
 
 function arl() {
-  var rootRef = firebase.database().ref('xi2022/ARTS/');
+  var rootRef = firebase.database().ref('xi2023/ARTS/');
 
 rootRef.on("child_added", snap => {
 
@@ -93,7 +101,7 @@ var cat = snap.child("prstream").val();
 
 }
 function scl() {
-  var rootRef = firebase.database().ref('xi2022/SCIENCE/');
+  var rootRef = firebase.database().ref('xi2023/SCIENCE/');
 
 rootRef.on("child_added", snap => {
 
@@ -105,7 +113,7 @@ var cat = snap.child("prstream").val();
 
 }
 function cml() {
-  var rootRef = firebase.database().ref('xi2022/COMMERCE/');
+  var rootRef = firebase.database().ref('xi2023/COMMERCE/');
 
 rootRef.on("child_added", snap => {
 
