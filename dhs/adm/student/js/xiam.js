@@ -1,9 +1,9 @@
 // Initialize Firebase (ADD YOUR OWN DATA)
 var streamid = "";
 var appid = "";
-var ars = 317;
-var scs = 75;
-var cms = 15;
+var ars = 0;
+var scs = 0;
+var cms = 0;
 var ffn = 0;
 var btnn = "#showmore";
 var dtadmst = [];
@@ -156,7 +156,7 @@ function saveMessage(cat,name,dob,dobreg,gender,category,religion,mothertongue,n
   var newMessageRef = messagesRef.push();
   MessageRef.set({
   */
-  firebase.database().ref('xi2022/' + prstream + '/' + appid).set({
+  firebase.database().ref('xi2023/' + prstream + '/' + appid).set({
 cat:cat,
 name:name,
 dob:dob,
@@ -249,7 +249,7 @@ updcaste:updcaste
   });
 }
 
-var fbBucketName1 = 'xi2022';
+var fbBucketName1 = 'xi2023';
 
 		var uploader1 = document.getElementById('uploader1');
 		var fileButton1 = document.getElementById('fileButton1');
@@ -314,7 +314,7 @@ var fbBucketName1 = 'xi2022';
 		});
 
 
-var fbBucketName2 = 'xi2022';
+var fbBucketName2 = 'xi2023';
 
 		var uploader2 = document.getElementById('uploader2');
 		var fileButton2 = document.getElementById('fileButton2');
@@ -379,7 +379,7 @@ var fbBucketName2 = 'xi2022';
 		});
 
 
-var fbBucketName3 = 'xi2022';
+var fbBucketName3 = 'xi2023';
 
 		var uploader3 = document.getElementById('uploader3');
 		var fileButton3 = document.getElementById('fileButton3');
@@ -444,7 +444,7 @@ var fbBucketName3 = 'xi2022';
 		});
 
 
-var fbBucketName4 = 'xi2022';
+var fbBucketName4 = 'xi2023';
 
 		var uploader4 = document.getElementById('uploader4');
 		var fileButton4 = document.getElementById('fileButton4');
@@ -508,7 +508,7 @@ var fbBucketName4 = 'xi2022';
 
 		});
 
-var fbBucketName5 = 'xi2022';
+var fbBucketName5 = 'xi2023';
 
 		var uploader5 = document.getElementById('uploader5');
 		var fileButton5 = document.getElementById('fileButton5');
@@ -573,7 +573,7 @@ var fbBucketName5 = 'xi2022';
 		});
 
 
-var fbBucketName6 = 'xi2022';
+var fbBucketName6 = 'xi2023';
 
 		var uploader6 = document.getElementById('uploader6');
 		var fileButton6 = document.getElementById('fileButton6');
@@ -637,7 +637,7 @@ var fbBucketName6 = 'xi2022';
 
 		});
 
-var fbBucketName7 = 'xi2022';
+var fbBucketName7 = 'xi2023';
 
 		var uploader7 = document.getElementById('uploader7');
 		var fileButton7 = document.getElementById('fileButton7');
@@ -990,8 +990,29 @@ dtadmend[2]=cmadmend;
 }
 });
 },
-seatcheck()
+getCount(),
+seatcheck(),
+arl(),
+scl(),
+cml(),
 );
+
+function seatcheck() {
+checkdtls();
+pcodeget();
+}
+
+function getCount(){
+    var rootRef = firebase.database().ref('mpadmin/seats');
+
+rootRef.on("child_added", snap => {
+ars = snap.child("ars").val();
+scs = snap.child("scs").val();
+cms = snap.child("cms").val();
+});
+	
+}
+
 function showarts(){
 	if(document.getElementById("permissioncode").value.length == 11 && document.getElementById("permissioncode").value == arpcode){
 		$("#arop").removeAttr('disabled');
@@ -1017,14 +1038,6 @@ if(pmid =="chk"){
 }
 });
 
-}
-
-function seatcheck() {
-	arl();
-  scl();
-  cml();
-checkdtls();
-pcodeget();
 }
 
 
@@ -1275,7 +1288,7 @@ function cccheck(x) {
 
 
 function arl() {
-  var rootRef = firebase.database().ref('xi2022/ARTS/');
+  var rootRef = firebase.database().ref('xi2023/ARTS/');
 
 rootRef.on("child_added", snap => {
 
@@ -1287,7 +1300,7 @@ var cat = snap.child("prstream").val();
 
 }
 function scl() {
-  var rootRef = firebase.database().ref('xi2022/SCIENCE/');
+  var rootRef = firebase.database().ref('xi2023/SCIENCE/');
 
 rootRef.on("child_added", snap => {
 
@@ -1299,7 +1312,7 @@ var cat = snap.child("prstream").val();
 
 }
 function cml() {
-  var rootRef = firebase.database().ref('xi2022/COMMERCE/');
+  var rootRef = firebase.database().ref('xi2023/COMMERCE/');
 
 rootRef.on("child_added", snap => {
 

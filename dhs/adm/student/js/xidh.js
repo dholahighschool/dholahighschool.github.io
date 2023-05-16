@@ -29,7 +29,6 @@ var config = {
     measurementId: "G-K3CT148EJR"
 };
 firebase.initializeApp(config);
-
 // Listen for form submit
 document.getElementById('xiadmf').addEventListener('submit', xif);
 
@@ -1047,15 +1046,15 @@ dtadmend[2]=cmadmend;
 
 }
 });
-},		  
-seatcheck()
+},
+getCount(),
+seatcheck(),
+arl(),
+scl(),
+cml(),
 );
 
 function seatcheck() {
-getCount();
-  arl();
-  scl();
-  cml();
 checkdtls();
 pcodeget();
 }
@@ -1068,7 +1067,9 @@ ars = snap.child("ars").val();
 scs = snap.child("scs").val();
 cms = snap.child("cms").val();
 });
+	
 }
+
 
 function checkdtls(){
 
