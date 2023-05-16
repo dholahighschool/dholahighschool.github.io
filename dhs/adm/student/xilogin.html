@@ -4,19 +4,44 @@
 	<title></title>
 	<Script src="https://code.jquery.com/jquery-3.3.1.js" type="text/javascript"></Script>  
 	<script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
-
+	<script type="text/javascript">
+		var ary = localStorage.ud.split("splt");
+    
+	</script>
 	<style type="text/css">
 		.row{
 			height: 50vh;
 			width: 70%;
 			margin: 0 auto;
 		}
+		.button {
+    background-color:#6699FF; /* Green */
+    border: none;
+    font-family:"Times New Roman", Times, serif;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 26px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 20px;
+    }
+.button:hover {background-color:#3333CC;}
+
+.button:active {
+  background-color:#333399;
+  box-shadow: 0 3px #666;
+  transform: translateY(4px);
+}
 	</style>
 </head>
 <body>
 <div id="chs">
 <center>
 <h1>Dhola High School : Online Admission</h1>
+<h3>To modify the Application click here: - <input type="button" class="button" name="printbtn" value="Edit Application Form" onclick="editForm()"></h3>
 <h2><u>Download both the school copy and student copy</u></h2>
 <p><i>Admission should be taken within specified date available in the application form</i></p>
 
@@ -27,6 +52,13 @@
     <hr style="width: 95%; height: 5px; background-color: Dodgerblue;">
     <iframe src="login/xistudentcopy.html"  width="100%" height="100%"></iframe>
 </div>
-
+<script type="text/javascript">
+	function editForm(){
+		sessionStorage.username = ary[0];
+    sessionStorage.stream = ary[1];
+    window.open("xiedit.html");
+		window.close();
+	}
+</script>
 </body>
 </html>
