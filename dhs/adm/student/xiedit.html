@@ -1,0 +1,621 @@
+﻿<!DOCTYPE HTML>
+<html class="xidh">
+<title>Dhola High School :: Online Admission Portal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href='https://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>
+<link rel="icon" type="image/jpg" href="img/favicon.jpg">
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Libre+Baskerville&display=swap" rel="stylesheet">
+<link href='css/font.css' rel='stylesheet' type='text/css'>
+
+<script src="https://www.gstatic.com/firebasejs/7.5.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.5.2/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>	
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/xiadm.css">	
+
+<body>
+<center><h1 style="border-radius: 20px; width:95%; font-family: 'Libre Baskerville', serif; color:#FFFFFF; font-size:35px; background-color: rgba(102, 153, 255, 0.5); background-image: linear-gradient(to right, rgba(128,128,128,0.5), rgba(102,153,255,0.5));">Dhola High School : : Online Admission Portal</h1></center>
+<div>
+<div style="display:block" class="form-style-10">
+
+
+<h1>
+<center>
+<!--
+<img src="img/dhola.jpg" height="60px" width="60px" />
+-->
+Application Form <br>
+Class XI : Modify submitted Application Form
+<!--
+<img src="img/dhola.jpg" height="60px" width="60px" />
+-->
+<br>
+</center>
+</h1>
+<div id="instructions">
+<fieldset style="background-color:rgba(120, 117, 130,0.8); border: rgba(25,58,224,0.8) 3px solid;">
+  <legend align="center"><font size="5px"><b>Before Proceed Please Read these instructions carefully</b></font></legend>
+  <br>
+
+<div class="list-type5">
+<ol>
+<li><a>Fillup the admission form carefully. Mandatory Fields are marked with a 
+  <img src="img/asterisk.png" alt="mandatory" height="15" width="15">.( ভর্তি ফর্মটি যত্ন সহকারে পূরণ করুন। বাধ্যতামূলক ক্ষেত্রগুলি <img src="img/asterisk.png" alt="mandatory" height="15" width="15"> দিয়ে চিহ্নিত করা হয়েছে ) </a></li>
+<li><a>Photo and Signature size should not exceed <b>20KB</b> and Other Document size should not exceed <b>250KB</b>.<br>Photo, MP Admit, MP Marksheet, Bank Passbook is Mandatory for all.(শিক্ষার্থীর ছবি এবং স্বাক্ষরের আকার 20 KB এবং অন্য ডকুমেন্টের আকার 250 KB ছাড়িয়ে যাবে না। শিক্ষার্থীর ছবি, মাধ্যমিক এডমিট, মাধ্যমিক মার্কশিট এবং ব্যাংক পাসবুক আপলোড করা বাধ্যতামূলক।)</a></li>
+<li><a>Once Submitted, Editing or modification options are not available, so check all fields carefully before submit. (একবার জমা দেওয়ার পরে, সম্পাদনা বা পরিবর্তনের বিকল্পগুলি উপলভ্য নয়, সুতরাং জমা দেওয়ার আগে সমস্ত ক্ষেত্রটি সাবধানে পরীক্ষা করে দেখুন।)</a></li>
+<li><a>After successful Submission, Write down the Application ID for further LogIn to your own Application.(অনলাইনে ভর্তি ফরম জমা দেওয়ার পরে, আপনার নিজের আবেদনে Log In-এর জন্য Application ID-টি লিখুন।)</a></li>
+<li><a>On the next Page, print both the Student Copy &amp; School Copy for admission</b>.(Student Copy এবং School Copy উভয়ই ভর্তির জন্য প্রিন্ট করা দরকার এবং ভর্তির সময় আনতে হবে)</a></li>
+<li><a><b>If the admission is not taken on the date mentioned in the printout, the admission will be canceled. (ভর্তি ফর্ম (প্রিন্টআউটে) উল্লিখিত তারিখে ভর্তি না হলে ভর্তি বাতিল হয়ে যাবে)</b></a></li>
+</ol>
+</div>
+  <br>
+ </fieldset>
+<br>
+<h2><center>Enter Student Details as requested</center></h2>
+</div>
+<form class="pure-form pure-form-stacked" id="xiadmf">  
+ 	<br>
+    <center><b style="color:black;font-family:'Times New Roman';font-size:35px">Basic Information</b></center>
+    <br>
+    
+<div class="section"><span>1</span>Student Name*</div>
+    <div class="inner-wrap">
+      <input style="display:none;" type="number" name="cat" id="cat" required="true" value="1">
+	<input type="text" name="name" id="name" required="true" class="upt" placeholder="Enter Student's Full Name">
+    </div>
+<div class="section"><span>2</span>Date Of Birth*</div>
+    <div class="inner-wrap">
+        <input type="date" name="dob" id="dob" required="true" placeholder="Enter Date of Birth">
+        </div>
+<div class="section"><span>3</span>Birth Registration No.</div>
+    <div class="inner-wrap">
+	<input type="text" name="dobreg" id="dobreg" class="upt" value="" placeholder="Enter Birth Registration No.">
+    </div>
+<div class="section"><span>4</span>Gender*</div>
+    <div class="inner-wrap">
+    <label><select name="gender" id="gender" required="true" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;">
+    <option value="NA" disabled="disabled" selected>-- Select any One --</option>
+    <option value="MALE">MALE</option>
+    <option value="FEMALE">FEMALE</option>
+    <option value="TRANSGENDER">TRANSGENDER</option>
+    </select>
+	</label>
+    </div>
+<div class="section"><span>5</span>Social Category*</div>
+        <div class="inner-wrap">
+        <label>
+        <select name="category" id="category" required="true" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;" onchange="cccheck(this)">
+    <option value="NA" disabled="disabled" selected>-- Select any One --</option>
+    <option value="GENERAL">GENERAL</option>
+    <option value="SC">SC</option>
+    <option value="ST">ST</option>
+    <option value="OBC">OBC</option>
+    <option value="ORC">ORC</option>
+    <option value="OTHERS">OTHERS</option>
+    <option value="OBC-A">OBC-A</option>
+    <option value="OBC-B">OBC-B</option>
+      	</select>
+		</label>
+        </div>
+<div class="section"><span>6</span>Religion</div>
+        <div class="inner-wrap">
+        <label>
+        <select name="religion" id="religion" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;">
+    <option value="NA" disabled="disabled" selected>-- Select any One --</option>
+    <option value="HINDU">HINDU</option>
+    <option value="MUSLIM">ISLAM</option>
+    <option value="CHRISTIAN">CHRISTIAN</option>
+    <option value="SIKH">SIKH</option>
+    <option value="BUDDHIST">BUDDHIST</option>
+    <option value="PARSI">PARSI</option>
+    <option value="JAIN">JAIN</option>
+    <option value="OTHERS">OTHERS</option>
+      	</select>
+		</label>
+        </div>
+<div class="section"><span>7</span>Mother Tongue*</div>
+        <div class="inner-wrap">
+        <label>
+        <select name="mothertongue" id="mothertongue" required="true" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;">
+    <option value="NA" disabled="disabled" selected>-- Select any One --</option>
+    <option value="BENGALI">BENGALI</option>
+    <option value="HINDI">HINDI</option>
+    <option value="NEPALI">NEPALI</option>
+    <option value="ORIYA">ORIYA</option>
+    <option value="TELEGU">TELEGU</option>
+    <option value="URDU">URDU</option>
+    <option value="ENGLISH">ENGLISH</option>
+    <option value="SANTHALI">SANTHALI</option>
+    <option value="OTHER LANGUAGES">OTHER LANGUAGES</option>
+      	</select>
+		</label>
+        </div>
+<div class="section"><span>8</span>NATIONALITY*</div>
+        <div class="inner-wrap">
+        <label>
+        <select name="nationality" id="nationality" required="true" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;">
+    <option value="NA" disabled="disabled" selected>-- Select any One --</option>
+    <option value="INDIAN">INDIAN</option>
+    <option value="OTHERS">OTHERS</option>
+      	</select>
+		</label>
+        </div>
+<div class="section"><span>9</span>Aadhaar No.</div>
+        <div class="inner-wrap">
+        <input type="number" name="aadhaar" id="aadhaar" value="" placeholder="Enter 12 digit Aadhaar No." maxlength="12" onchange="aadhaarlength(this)">
+        </div>
+<div class="section"><span>10</span>Blood Group</div>
+        <div class="inner-wrap">
+        <label>
+        <select name="bloodgroup" id="bloodgroup" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;">
+    <option value="NA" disabled="disabled" selected>-- Select any One --</option>
+    <option value="A+">A+</option>
+    <option value="A-">A-</option>
+    <option value="B+">B+</option>
+    <option value="B-">B-</option>
+    <option value="AB+">AB+</option>
+    <option value="AB-">AB-</option>
+    <option value="O+">O+</option>
+    <option value="O-">O-</option>
+      	</select>
+		</label>
+        </div>
+<div class="section"><span>11</span>HEALTH Id</div>
+    <div class="inner-wrap">
+	<input type="text" name="healthid" class="upt" id="healthid" value="" placeholder="Enter Health ID">
+    </div>
+<div class="section"><span>12</span>Identification Mark</div>
+    <div class="inner-wrap">
+	<input type="text" name="idmark" class="upt" id="idmark" value="" placeholder="Enter Identification Mark(if any)">
+    </div>
+
+
+	<br>
+    <center><b style="color:black;font-family:'Times New Roman';font-size:35px">Contact Information</b></center>
+    <br>
+
+
+
+<div class="section"><span>1</span>Village</div>
+    <div class="inner-wrap">
+	<input type="text" name="vill" id="vill" class="upt" value="" placeholder="Enter your Village">
+    </div>
+<div class="section"><span>2</span>Habitation or Locality*</div>
+    <div class="inner-wrap">
+	<input type="text" name="habitation" class="upt" id="habitation" required="true" placeholder="Enter Habitation or Locality">
+    </div>
+<div class="section"><span>3</span>District*</div>
+        <div class="inner-wrap">
+        <label>
+        <select name="district" id="district" required="true" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;">
+    <option value="NA" disabled="disabled" selected>-- Select any One --</option>
+    <option value="ALIPURDUAR">ALIPURDUAR</option>
+    <option value="BANKURA">BANKURA</option>
+    <option value="PASCHIM BARDHAMAN">PASCHIM BARDHAMAN</option>
+    <option value="PURBA BARDHAMAN">PURBA BARDHAMAN</option>
+    <option value="BIRBHUM">BIRBHUM</option>
+    <option value="COOCH BEHAR">COOCH BEHAR</option>
+    <option value="DARJEELING">DARJEELING</option>
+    <option value="UTTAR DINAJPUR">UTTAR DINAJPUR</option>
+    <option value="DAKSHIN DINAJPUR">DAKSHIN DINAJPUR</option>
+    <option value="HOOGLY">HOOGLY</option>
+    <option value="HOWRAH">HOWRAH</option>
+    <option value="JALPAIGURI">JALPAIGURI</option>
+    <option value="JHARGRAM">JHARGRAM</option>
+    <option value="KOLKATA">KOLKATA</option>
+    <option value="KALIMPONG">KALIMPONG</option>
+    <option value="MALDA">MALDA</option>
+    <option value="PASCHIM MEDINIPUR">PASCHIM MEDINIPUR</option>
+    <option value="PURBA MEDINIPUR">PURBA MEDINIPUR</option>
+    <option value="MURSHIDABAD">MURSHIDABAD</option>
+    <option value="NADIA">NADIA</option>
+    <option value="NORTH 24 PARGANAS">NORTH 24 PARGANAS</option>
+    <option value="SOUTH 24 PARGANAS">SOUTH 24 PARGANAS</option>
+    <option value="PURULIA">PURULIA</option>
+		</select>
+		</label>
+        </div>
+<div class="section"><span>4</span>Block / Municipality*</div>
+    <div class="inner-wrap">
+	<input type="text" name="block" class="upt" id="block" required="true" placeholder="Enter your Block / Municipality">
+    </div>
+<div class="section"><span>5</span>Panchayat</div>
+    <div class="inner-wrap">
+	<input type="text" name="panchayat" class="upt" id="panchayat" value="" placeholder="Enter your Panchayat">
+    </div>
+<div class="section"><span>6</span>Post Office*</div>
+    <div class="inner-wrap">
+	<input type="text" name="po" id="po" class="upt" required="true" placeholder="Enter your Post Office">
+    </div>
+<div class="section"><span>7</span>Police Station*</div>
+    <div class="inner-wrap">
+	<input type="text" name="ps" id="ps" class="upt" required="true" placeholder="Enter your Police Station">
+    </div>
+<div class="section"><span>8</span>PIN Code*</div>
+    <div class="inner-wrap">
+    <input type="number" name="pin" id="pin" required="true" maxlength="6" placeholder="Enter PIN Code" onchange="pinlength(this)" >
+    </div>
+<div class="section"><span>9</span>Contact No. / Phone No.</div>
+    <div class="inner-wrap">
+    <input type="number" name="phone" id="phone" value="" maxlength="10" placeholder="Enter Contact No. / Phone No." onchange="contactlength(this)" >
+    </div>
+<div class="section"><span>10</span>Email</div>
+    <div class="inner-wrap">
+	<input type="email" name="email" id="email" value="" placeholder="Enter your Email ID" onkeyup="convlw(this)">
+    </div>
+
+	<br>
+    <center><b style="color:black;font-family:'Times New Roman';font-size:35px">Guardian's Details</b></center>
+    <br>
+
+
+<div class="section"><span>1</span>Father's Name</div>
+    <div class="inner-wrap">
+	<input type="text" name="fname" class="upt" id="fname" value="" placeholder="Enter your Father's Name">
+    </div>
+<div class="section"><span>2</span>Mother's Name</div>
+    <div class="inner-wrap">
+	<input type="text" name="mname" class="upt" id="mname" value="" placeholder="Enter your Mather's Name">
+    </div>
+<div class="section"><span>3</span>Guardian's Name*</div>
+    <div class="inner-wrap">
+	<input type="text" name="gname" class="upt" id="gname" required="true" placeholder="Enter your Guardian's Name">
+    </div>
+<div class="section"><span>4</span>Relationship (with Guardian)*</div>
+        <div class="inner-wrap">
+        <label>
+        <select name="relationship" id="relationship" required="true" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;">
+    <option value="NA" disabled="disabled" selected>-- Select any One --</option>
+    <option value="FATHER">FATHER</option>
+    <option value="MOTHER">MOTHER</option>
+    <option value="OTHER">OTHER</option>
+      	</select>
+		</label>
+        </div>
+<div class="section"><span>5</span>Annual Family Income</div>
+        <div class="inner-wrap">
+        <label>
+        <select name="aincome" id="aincome" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;">
+    <option value="NA" disabled="disabled" selected>-- Select any One --</option>
+    <option value="0-50,000">0-50,000</option>
+    <option value="50,001-1,20,000">50,001-1,20,000</option>
+    <option value="1,20,001-2,50,000">1,20,001-2,50,000</option>
+    <option value="2,50,001-5,00,000">2,50,001-5,00,000</option>
+    <option value="Above 5,00,000">Above 5,00,000</option>
+      	</select>
+		</label>
+        </div>
+<div class="section"><span>6</span>Guardian's Qualification</div>
+        <div class="inner-wrap">
+        <label>
+        <select name="gqualification" id="gqualification" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;">
+    <option value="NA" disabled="disabled" selected>-- Select any One --</option>
+    <option value="GRADUATE">GRADUATE</option>
+    <option value="BELOW-GRADUATE">BELOW-GRADUATE</option>
+      	</select>
+		</label>
+        </div>
+
+
+	<br>
+    <center><b style="color:black;font-family:'Times New Roman';font-size:35px">Guardian's Contact Information</b></center>
+    <br>
+
+
+
+<div class="section"><span>1</span>Village</div>
+    <div class="inner-wrap">
+	<input type="text" name="gvill" class="upt" id="gvill" value="" placeholder="Enter Village name">
+    </div>
+<div class="section"><span>2</span>Habitation or Locality*</div>
+    <div class="inner-wrap">
+	<input type="text" name="ghabitation" class="upt" id="ghabitation" required="true" placeholder="Enter Habitation or Locality">
+    </div>
+<div class="section"><span>3</span>District*</div>
+        <div class="inner-wrap">
+        <label>
+        <select name="gdistrict" id="gdistrict" required="true" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;">
+    <option value="NA" disabled="disabled" selected>-- Select any One --</option>
+    <option value="ALIPURDUAR">ALIPURDUAR</option>
+    <option value="BANKURA">BANKURA</option>
+    <option value="PASCHIM BARDHAMAN">PASCHIM BARDHAMAN</option>
+    <option value="PURBA BARDHAMAN">PURBA BARDHAMAN</option>
+    <option value="BIRBHUM">BIRBHUM</option>
+    <option value="COOCH BEHAR">COOCH BEHAR</option>
+    <option value="DARJEELING">DARJEELING</option>
+    <option value="UTTAR DINAJPUR">UTTAR DINAJPUR</option>
+    <option value="DAKSHIN DINAJPUR">DAKSHIN DINAJPUR</option>
+    <option value="HOOGLY">HOOGLY</option>
+    <option value="HOWRAH">HOWRAH</option>
+    <option value="JALPAIGURI">JALPAIGURI</option>
+    <option value="JHARGRAM">JHARGRAM</option>
+    <option value="KOLKATA">KOLKATA</option>
+    <option value="KALIMPONG">KALIMPONG</option>
+    <option value="MALDA">MALDA</option>
+    <option value="PASCHIM MEDINIPUR">PASCHIM MEDINIPUR</option>
+    <option value="PURBA MEDINIPUR">PURBA MEDINIPUR</option>
+    <option value="MURSHIDABAD">MURSHIDABAD</option>
+    <option value="NADIA">NADIA</option>
+    <option value="NORTH 24 PARGANAS">NORTH 24 PARGANAS</option>
+    <option value="SOUTH 24 PARGANAS">SOUTH 24 PARGANAS</option>
+    <option value="PURULIA">PURULIA</option>
+		</select>
+		</label>
+        </div>
+<div class="section"><span>4</span>Block / Municipality*</div>
+    <div class="inner-wrap">
+	<input type="text" name="gblock" class="upt" id="gblock" required="true" placeholder="Enter your Block / Municipality">
+    </div>
+<div class="section"><span>5</span>Panchayat</div>
+    <div class="inner-wrap">
+	<input type="text" name="gpanchayat" class="upt" id="gpanchayat" value="" placeholder="Enter your Panchayat">
+    </div>
+<div class="section"><span>6</span>Post Office*</div>
+    <div class="inner-wrap">
+	<input type="text" name="gpo" id="gpo" class="upt" required="true" placeholder="Enter your Post Office">
+    </div>
+<div class="section"><span>7</span>Police Station*</div>
+    <div class="inner-wrap">
+	<input type="text" name="gps" id="gps" class="upt" required="true" placeholder="Enter your Police Station">
+    </div>
+<div class="section"><span>8</span>PIN Code*</div>
+    <div class="inner-wrap">
+    <input type="number" name="gpin" id="gpin" required="true" maxlength="6" placeholder="Enter PIN Code" onchange="pinlength(this)" >
+    </div>
+<div class="section"><span>9</span>Contact No. / Phone No.*</div>
+    <div class="inner-wrap">
+    <input type="number" name="gphone" id="gphone" required="true" maxlength="10" placeholder="Enter Contact No. / Phone No." onchange="contactlength(this)" >
+    </div>
+<div class="section"><span>10</span>Email</div>
+    <div class="inner-wrap">
+	<input type="email" name="gemail" id="gemail" value="" placeholder="Enter your Email ID"  onkeyup="convlw(this)">
+    </div>
+    
+
+    
+    <br>
+    <center><b style="color:black;font-family:'Times New Roman';font-size:35px">Other Information</b></center>
+    <br>
+
+
+
+
+<div class="section"><span>1</span>BPL Status</div>
+    <div class="inner-wrap">
+    <select name="bplstatus" id="bplstatus" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;" onchange="if (this.value=='YES'){this.form['bplno'].style.visibility='visible'; this.form['bplno'].value = ''; document.getElementById('bplno').required = true;}else {this.form['bplno'].style.visibility='hidden'; this.form['bplno'].value = '';document.getElementById('bplno').required = false;};">
+    <option value="NO" disabled="disabled" selected>-- Select any One --</option>
+    <option value="YES">YES</option>
+    <option value="NO">NO</option>
+    </select>
+    <br>
+    <input type="text" name="bplno" class="upt" id="bplno" placeholder="Enter BPL No." style="visibility:hidden">
+    </div>
+
+<div class="section"><span>2</span>Children with Special Need</div>
+    <div class="inner-wrap">
+    <select name="cwsn" id="cwsn" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;" onchange="if (this.value=='YES'){this.form['cwsntyp'].style.visibility='visible'; this.form['cwsntyp'].value = '';document.getElementById('cwsntyp').required = true;}else {this.form['cwsntyp'].style.visibility='hidden';this.form['cwsntyp'].value = '';document.getElementById('cwsntyp').required = false;};">
+    <option value="NO" disabled="disabled" selected>-- Select any One --</option>
+    <option value="YES">YES</option>
+    <option value="NO">NO</option>
+    </select>
+    <br>
+    <select name="cwsntyp" id="cwsntyp" style="visibility:collapse; padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;">
+    <option value="NA" disabled="disabled" selected>-- Select any One --</option>
+    <option value="NOT APPLICABLE">NOT APPLICABLE</option>
+    <option value="BLINDNESS">BLINDNESS</option>
+    <option value="LOW-VISION">LOW-VISION</option>
+    <option value="HEARING IMPAIRMENT (DEAF AND HARD OF HEARING)">HEARING IMPAIRMENT (DEAF AND HARD OF HEARING)</option>
+    <option value="SPEECH NAD LANGUAGE DISABILITY">SPEECH NAD LANGUAGE DISABILITY</option>
+    <option value="LOCOMOTOR DISABILITY">LOCOMOTOR DISABILITY</option>
+    <option value="MENTAL ILLNESS">MENTAL ILLNESS</option>
+    <option value="SPECIFIC LEARNING DISABILITIES">SPECIFIC LEARNING DISABILITIES</option>
+    <option value="CEREBRAL PALSY">CEREBRAL PALSY</option>
+    <option value="AUTISM SPECTRUM DISORDER">AUTISM SPECTRUM DISORDER</option>
+    <option value="MULTIPLE DISABILITIES INCLUDING DEAF BLINDNESS">MULTIPLE DISABILITIES INCLUDING DEAF BLINDNESS</option>
+    <option value="LEPROSY CURED PERSONS">LEPROSY CURED PERSONS</option>
+    <option value="DWARFISM">DWARFISM</option>
+    <option value="INTELLECTUAL DISABILITY">INTELLECTUAL DISABILITY</option>
+    <option value="MUSCULAR DYSTROPHY">MUSCULAR DYSTROPHY</option>
+    <option value="CHRONIC NEUROLOGICAL CONDITIONS">CHRONIC NEUROLOGICAL CONDITIONS</option>
+    <option value="MULTIPLE SCLEROSIS">MULTIPLE SCLEROSIS</option>
+    <option value="THALASSEMIA">THALASSEMIA</option>
+    <option value="HEMOPHILIA">HEMOPHILIA</option>
+    <option value="SICKLE CELL DISEASE">SICKLE CELL DISEASE</option>
+    <option value="PARKINSONS DISEASE">PARKINSONS DISEASE</option>
+    <option value="ACID ATTACK VICTIM">ACID ATTACK VICTIM</option>
+    </select>
+    </div>
+    
+    
+    
+    
+    <br>
+    <center><b style="color:black;font-family:'Times New Roman';font-size:35px">Bank Details</b></center>
+    <br>
+    
+    
+<div class="section"><span>1</span>Bank Name*</div>
+    	<div class="inner-wrap">
+    	<select name="bname" id="bname" required="true" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;">
+<option value="NA" disabled="disabled" selected>-- Select any One --</option>
+<option value="ALLAHABAD BANK">	ALLAHABAD BANK	</option>
+<option value="ANDHRA BANK">	ANDHRA BANK	</option>
+<option value="AXIS BANK">	AXIS BANK	</option>
+<option value="B N P PARIBAS">	B N P PARIBAS	</option>
+<option value="BANDHAN BANK LIMITED">	BANDHAN BANK LIMITED	</option>
+<option value="BANK OF AMERICA">	BANK OF AMERICA	</option>
+<option value="BANK OF BARODA">	BANK OF BARODA	</option>
+<option value="BANK OF INDIA">	BANK OF INDIA	</option>
+<option value="BANK OF MAHARASHTRA">	BANK OF MAHARASHTRA	</option>
+<option value="BHARATIYA MAHILA BANK LIMITED">	BHARATIYA MAHILA BANK LIMITED	</option>
+<option value="CANARA BANK">	CANARA BANK	</option>
+<option value="CATHOLIC SYRIAN BANK LIMITED">	CATHOLIC SYRIAN BANK LIMITED	</option>
+<option value="CENTRAL BANK OF INDIA">	CENTRAL BANK OF INDIA	</option>
+<option value="CITI BANK">	CITI BANK	</option>
+<option value="CITY UNION BANK LIMITED">	CITY UNION BANK LIMITED	</option>
+<option value="CORPORATION BANK">	CORPORATION BANK	</option>
+<option value="DCB BANK LIMITED">	DCB BANK LIMITED	</option>
+<option value="DENA BANK">	DENA BANK	</option>
+<option value="DEUSTCHE BANK">	DEUSTCHE BANK	</option>
+<option value="DEVELOPMENT BANK OF SINGAPORE">	DEVELOPMENT BANK OF SINGAPORE	</option>
+<option value="DHANALAKSHMI BANK">	DHANALAKSHMI BANK	</option>
+<option value="FEDERAL BANK">	FEDERAL BANK	</option>
+<option value="HDFC BANK">	HDFC BANK	</option>
+<option value="HSBC BANK">	HSBC BANK	</option>
+<option value="ICICI BANK LIMITED">	ICICI BANK LIMITED	</option>
+<option value="IDBI BANK">	IDBI BANK	</option>
+<option value="INDIAN BANK">	INDIAN BANK	</option>
+<option value="INDIAN OVERSEAS BANK">	INDIAN OVERSEAS BANK	</option>
+<option value="INDUSIND BANK">	INDUSIND BANK	</option>
+<option value="ING VYSYA BANK">	ING VYSYA BANK	</option>
+<option value="JAMMU AND KASHMIR BANK LIMITED">	JAMMU AND KASHMIR BANK LIMITED	</option>
+<option value="KARNATAKA BANK LIMITED">	KARNATAKA BANK LIMITED	</option>
+<option value="KARUR VYSYA BANK">	KARUR VYSYA BANK	</option>
+<option value="KOTAK MAHINDRA BANK LIMITED">	KOTAK MAHINDRA BANK LIMITED	</option>
+<option value="LAXMI VILAS BANK">	LAXMI VILAS BANK	</option>
+<option value="ORIENTAL BANK OF COMMERCE">	ORIENTAL BANK OF COMMERCE	</option>
+<option value="PUNJAB AND SIND BANK">	PUNJAB AND SIND BANK	</option>
+<option value="PUNJAB NATIONAL BANK">	PUNJAB NATIONAL BANK	</option>
+<option value="RATNAKAR BANK LIMITED">	RATNAKAR BANK LIMITED	</option>
+<option value="RESERVE BANK OF INDIA">	RESERVE BANK OF INDIA	</option>
+<option value="SOUTH INDIAN BANK">	SOUTH INDIAN BANK	</option>
+<option value="STANDARD CHARTERED BANK">	STANDARD CHARTERED BANK	</option>
+<option value="STATE BANK OF BIKANER AND JAIPUR">	STATE BANK OF BIKANER AND JAIPUR	</option>
+<option value="STATE BANK OF HYDERABAD">	STATE BANK OF HYDERABAD	</option>
+<option value="STATE BANK OF INDIA">	STATE BANK OF INDIA	</option>
+<option value="STATE BANK OF MYSORE">	STATE BANK OF MYSORE	</option>
+<option value="STATE BANK OF PATIALA">	STATE BANK OF PATIALA	</option>
+<option value="STATE BANK OF TRAVANCORE">	STATE BANK OF TRAVANCORE	</option>
+<option value="SYNDICATE BANK">	SYNDICATE BANK	</option>
+<option value="TAMILNAD MERCANTILE BANK LIMITED">	TAMILNAD MERCANTILE BANK LIMITED	</option>
+<option value="THE ROYAL BANK OF SCOTLAND N V">	THE ROYAL BANK OF SCOTLAND N V	</option>
+<option value="THE WEST BENGAL STATE COOPERATIVE BANK">	THE WEST BENGAL STATE COOPERATIVE BANK	</option>
+<option value="UCO BANK">	UCO BANK	</option>
+<option value="UNION BANK OF INDIA">	UNION BANK OF INDIA	</option>
+<option value="UNITED BANK OF INDIA">	UNITED BANK OF INDIA	</option>
+<option value="VIJAYA BANK">	VIJAYA BANK	</option>
+<option value="YES BANK">	YES BANK	</option>
+
+    	</select>
+        </div>
+<div class="section"><span>2</span>Branch Code*</div>
+        <div class="inner-wrap">
+        <input type="number" name="bcode" id="bcode" required="true" value="" placeholder="Enter Branch Code" maxlength="13">
+        </div>
+<div class="section"><span>3</span>IFSC Code*</div>
+        <div class="inner-wrap">
+        <input type="text" name="bifsc" class="upt" id="bifsc" required="true" value="" placeholder="Enter IFSC Code">
+        </div>
+<div class="section"><span>4</span>Account No.*</div>
+        <div class="inner-wrap">
+        <input type="number" name="acno" id="acno" required="true" value="" placeholder="Enter Account No.">
+        </div>
+    
+
+
+       <br>
+    <center><b style="color:black;font-family:'Times New Roman';font-size:35px">Your Uploads</b></center>
+    <br>
+    	<div class="section"><span>1</span>Photo*</div>
+        <div class="inner-wrap">
+        <img id="photo" src="img/photo.png" style="height:250px;width:250px;" alt="Choose your photo" /> <br>
+		<progress value="0" max="100" id="uploader1">0%</progress>
+		<input type="file" value="upload1" accept="image/png, image/jpeg" id="fileButton1">
+		<input type="text" name="updphoto" id="updphoto" required="true" value="" style="display:none">
+		</div>
+		
+        <div class="section"><span>2</span>Signature*</div>
+        <div class="inner-wrap">
+        <img id="signature" src="img/Signature.png" style="height:80px;width:300px" alt="Choose your signature" /> <br>
+        <progress value="0" max="100" id="uploader2">0%</progress>
+        <input type="file" value="upload2" accept="image/png, image/jpeg" id="fileButton2">
+        <input type="text" name="updsign" id="updsign" value="" style="display:none">
+		</div>
+
+		<div class="section"><span>3</span>MP Admit Card*</div>
+        <div class="inner-wrap">
+        <img id="mpadmit" src="img/doc.png" style="height:250px;width:250px" alt="Browse for MP Admit Card" /> <br>
+        <progress value="0" max="100" id="uploader3">0%</progress>
+        <input type="file" value="upload3" accept="image/png, image/jpeg" id="fileButton3">
+        <input type="text" name="updmpadmit" id="updmpadmit" required="true" value="" style="display:none">
+		</div>
+
+    <div class="section"><span>4</span>MP Marksheet*</div>
+        <div class="inner-wrap">
+        <img id="mpmark" src="img/doc.png" style="height:250px;width:250px" alt="Browse for MP Marksheet" /> <br>
+        <progress value="0" max="100" id="uploader4">0%</progress>
+        <input type="file" value="upload4" accept="image/png, image/jpeg" id="fileButton4">
+        <input type="text" name="updmpmark" id="updmpmark" required="true" value="" style="display:none">
+    </div>
+
+		<div class="section"><span>5</span>Aadhaar Card</div>
+        <div class="inner-wrap">
+        <img id="aadhaarpic" src="img/doc.png" style="height:250px;width:250px" alt="Browse for Aadhaar Card" /> <br>
+        <progress value="0" max="100" id="uploader5">0%</progress>
+        <input type="file" value="upload5" accept="image/png, image/jpeg" id="fileButton5">
+        <input type="text" name="updaadhaarpic" id="updaadhaarpic" value="" style="display:none">
+		</div>
+
+		<div class="section"><span>6</span>Bank Pass Book*</div>
+        <div class="inner-wrap">
+        <img id="bpass" src="img/doc.png" style="height:250px;width:250px" alt="Browse for Bank Pass Book" /> <br>
+        <progress value="0" max="100" id="uploader6">0%</progress>
+        <input type="file" value="upload6" accept="image/png, image/jpeg" id="fileButton6">
+        <input type="text" name="updbpass" id="updbpass" required="true" value="" style="display:none">
+		</div>
+		
+		<div class="section" id="cc1"><span>7</span>Caste Certificate(If applicable)</div>
+        <div class="inner-wrap">
+        <img id="caste" src="img/doc.png" style="height:250px;width:250px" alt="Browse for Cast Certificate" /> <br>
+        <progress value="0" max="100" id="uploader7">0%</progress>
+        <input type="file" value="upload7" accept="image/png, image/jpeg" id="fileButton7">
+        <input type="text" name="updcaste" id="updcaste" value="" style="display:none">
+		</div>
+
+
+	
+	<label class="container" style="font-family:'Times New Roman', Times, serif; font-size:large; font-style:oblique; color:black">
+    <b>I have read and checked all details provided here and from my best knowing all is true.</b>
+  <input type="checkbox" id="submitcheck" name="submitcheck" value="NA" onchange="toggleCheckbox(this)">
+  <span class="checkmark"></span>
+	</label>
+
+    <center><div class="button-section">
+     <button type="submit" class="button" id="submitbtn" disabled="disabled">Submit</button>
+         </div></center>
+</form>
+<div class="button" id="thankyou" style="display:none;font-size:25px">
+		<p type="text" name="appidsetval" id="appidsetval" value="" placeholder="Your Application ID" style="display:none">
+      <center>
+		<p><strong>Your Application form has been successfully updated.</strong>
+      <br>You can Log in with your Application ID as Login Id and Date Of Birth as Password for further necessity.</p>
+		<p id="idset">Your Application ID is here.</p> 
+    </center>
+    <input type="button" name="printbtn" value="LogIn" onclick="previewall()">
+</div>
+    
+</div>
+
+</div>
+
+  <center><p class="foooter">All Rights Reserved ©Dhola High School. | Powered by <a href="http://quantumwebgarden.in/" target="_blank">Quantum Webgarden</a></p></center>
+
+
+<link class="jsbin" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+<script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+
+<script src="js/xiedit.js"></script>
+
+
+<script type="text/javascript">
+  
+ function previewall(){
+ swal("Dhola High School","Your Submission is successful. Please Note down the Application ID " + appid + " for Further use","success");
+ chkn();
+ }
+</script>
+</body>
+</html>
