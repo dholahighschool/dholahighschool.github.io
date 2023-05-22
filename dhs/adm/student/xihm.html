@@ -142,9 +142,9 @@ Class XI : Students passed High Madrasah Examination
       	</select>
 		</label>
         </div>
-<div class="section"><span>9</span>Aadhaar No.</div>
+<div class="section"><span>9</span>Aadhaar No.*</div>
         <div class="inner-wrap">
-        <input type="number" name="aadhaar" id="aadhaar" value="" placeholder="Enter 12 digit Aadhaar No." maxlength="12" onchange="aadhaarlength(this)">
+        <input type="number" name="aadhaar" required="true" id="aadhaar" value="" placeholder="Enter 12 digit Aadhaar No." maxlength="12" onchange="aadhaarlength(this)">
         </div>
 <div class="section"><span>10</span>Blood Group</div>
         <div class="inner-wrap">
@@ -965,12 +965,12 @@ Class XI : Students passed High Madrasah Examination
         <input type="text" name="updmpmark" id="updmpmark" required="true" value="" style="display:none">
     </div>
 
-		<div class="section"><span>5</span>Aadhaar Card</div>
+		<div class="section"><span>5</span>Aadhaar Card*</div>
         <div class="inner-wrap">
         <img id="aadhaarpic" src="img/doc.png" style="height:250px;width:250px" alt="Browse for Aadhaar Card" /> <br>
         <progress value="0" max="100" id="uploader5">0%</progress>
         <input type="file" value="upload5" accept="image/png, image/jpeg" id="fileButton5">
-        <input type="text" name="updaadhaarpic" id="updaadhaarpic" value="" style="display:none">
+        <input type="text" name="updaadhaarpic" id="updaadhaarpic" required="true" value="" style="display:none">
 		</div>
 
 		<div class="section"><span>6</span>Bank Pass Book*</div>
