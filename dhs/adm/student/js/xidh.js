@@ -790,6 +790,10 @@ function chkn() {
    element.checked = !element.checked;
    swal("Oops..","Choose your Nationality","error");
    document.getElementById("nationality").focus();}
+	   else if(document.getElementById("aadhaar").value==="" || document.getElementById("aadhaar").value==="NA"){
+   element.checked = !element.checked;
+   swal("Oops..","Enter Aadhaar Number","error");
+   document.getElementById("aadhaar").focus();}
    
    
 	else if(document.getElementById("prclass").value==="" || document.getElementById("prclass").value==="NA"){
@@ -931,6 +935,11 @@ function chkn() {
    element.checked = !element.checked;
    swal("Oops..","Upload your Bank Pass Book to proceed","error");
    document.getElementById("fileButton6").focus();}
+	    	 else if(document.getElementById("updaadhaarpic").value===""){
+   element.checked = !element.checked;
+   swal("Oops..","Upload your Aadhaar Card to proceed","error");
+   document.getElementById("fileButton5").focus();}
+
 	 else if(ffn == 0){
    element.checked = !element.checked;
    swal("Oops..","Check Live Seat Status & Schedule to proceed.","error");
