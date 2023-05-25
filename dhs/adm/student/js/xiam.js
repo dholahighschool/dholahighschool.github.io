@@ -1023,7 +1023,7 @@ cms = snap.child("cms").val();
 }
 
 function showarts(){
-	if(document.getElementById("permissioncode").value.length == 11 && document.getElementById("permissioncode").value == arpcode){
+	if(document.getElementById("permissioncode").value == arpcode){
 		$("#arop").removeAttr('disabled');
 		$("#scop").removeAttr('disabled');
 		$("#cmop").removeAttr('disabled');
@@ -1102,7 +1102,7 @@ function conv(val) {
   var n = d.toDateString() + " " +  d.toLocaleTimeString();
   return n;
 }
-
+pcodecounter=0;
 document.getElementById("showmore").addEventListener("click", divhid);
 
 function divhid() {
@@ -1139,6 +1139,13 @@ function divhid() {
 			$("#prstream").css("display","none");
 		}
 		//showarts();
+		pcodecounter++;
+if (pcodecounter%4==0) {
+	document.getElementById("getpermission").style.display = "block";
+}
+else{
+	document.getElementById("getpermission").style.display = "none";
+}
 	}
 
 
