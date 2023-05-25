@@ -410,10 +410,10 @@ Class XI : Students passed Alim Examination
 
     <div style="height: 20px;"></div>
 
-<!--div class="inner-wrap">
+    <div class="inner-wrap" id="getpermission" style="display:none;">
       Enter Permission Code (if granted):
     <input type="password" name="permissioncode" id="permissioncode" value="" placeholder="" onkeyup="showarts()">
-    </div--> 
+    </div>
       	      	
       	<select name="prstream" id="prstream" style="display:none; padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;" onchange="document.getElementById('prsubs').style.display ='block';if (this.value=='ARTS'){ var divsToHide = document.getElementsByClassName('sc');for(var i = 0; i < divsToHide.length; i++){divsToHide[i].style.display = 'none';} var divsToHide = document.getElementsByClassName('cm');for(var i = 0; i < divsToHide.length; i++){divsToHide[i].style.display = 'none';} var divsToHide = document.getElementsByClassName('ar');for(var i = 0; i < divsToHide.length; i++){divsToHide[i].style.display = 'block';} } else if (this.value=='SCIENCE'){ var divsToHide = document.getElementsByClassName('ar');for(var i = 0; i < divsToHide.length; i++){divsToHide[i].style.display = 'none';} var divsToHide = document.getElementsByClassName('cm');for(var i = 0; i < divsToHide.length; i++){divsToHide[i].style.display = 'none';} var divsToHide = document.getElementsByClassName('sc');for(var i = 0; i < divsToHide.length; i++){divsToHide[i].style.display = 'block';} }else if (this.value=='COMMERCE'){ var divsToHide = document.getElementsByClassName('ar');for(var i = 0; i < divsToHide.length; i++){divsToHide[i].style.display = 'none';} var divsToHide = document.getElementsByClassName('sc');for(var i = 0; i < divsToHide.length; i++){divsToHide[i].style.display = 'none';} var divsToHide = document.getElementsByClassName('cm');for(var i = 0; i < divsToHide.length; i++){divsToHide[i].style.display = 'block';} };">
     <option value="NA" disabled="disabled" selected>-- Select Stream --</option>
