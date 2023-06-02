@@ -698,7 +698,7 @@ var fbBucketName7 = 'xi2023';
 		});
 function chkn() {
 		localStorage.ud = appid + "splt" + streamid;
-		window.open("student/xilogin.html");
+		window.open("xilogin.html");
 		window.close();
 }
 	function pinlength(x){
