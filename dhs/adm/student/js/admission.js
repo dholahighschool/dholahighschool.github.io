@@ -1,6 +1,6 @@
 // Initialize Firebase (ADD YOUR OWN DATA)
 var uid = "";
-var currentYear="vtoix2023";
+var currentYear="vtoix2024";
 function appidset(){
 var parameters = location.search.substring(1).split("=");
 uid = parameters[1];
