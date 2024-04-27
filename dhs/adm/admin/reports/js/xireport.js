@@ -33,7 +33,7 @@ $(document).ready(*/
     function slctupd(x,y){
     
 
-var rootRef = firebase.database().ref('xi2023/' + x).orderByChild(y);
+var rootRef = firebase.database().ref('xi2024/' + x).orderByChild(y);
 
 rootRef.on("child_added", snap => {
 
@@ -158,7 +158,7 @@ function removeForm(id,x) {
   confirmButtonText: 'Yes, remove'
 }).then((result) => {
   if (result.isConfirmed) {
-    firebase.database().ref("xi2023/" + x + "/" + id).remove();
+    firebase.database().ref("xi2024/" + x + "/" + id).remove();
     document.getElementById(id + x).style.display = "none";
     Swal.fire(
       'Removed!',
