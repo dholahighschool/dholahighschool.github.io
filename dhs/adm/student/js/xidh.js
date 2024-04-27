@@ -152,7 +152,7 @@ function saveMessage(cat,name,dob,dobreg,gender,category,religion,mothertongue,n
   var newMessageRef = messagesRef.push();
   MessageRef.set({
   */
-  firebase.database().ref('xi2023/' + prstream + '/' + appid).set({
+  firebase.database().ref('xi2024/' + prstream + '/' + appid).set({
 cat:cat,
 name:name,
 dob:dob,
@@ -241,7 +241,7 @@ updcaste:updcaste
   });
 }
 
-	var fbBucketName1 = 'xi2023';
+	var fbBucketName1 = 'xi2024';
 
 		var uploader1 = document.getElementById('uploader1');
 		var fileButton1 = document.getElementById('fileButton1');
@@ -311,7 +311,7 @@ updcaste:updcaste
 		});
 
 
-var fbBucketName2 = 'xi2023';
+var fbBucketName2 = 'xi2024';
 
 		var uploader2 = document.getElementById('uploader2');
 		var fileButton2 = document.getElementById('fileButton2');
@@ -381,7 +381,7 @@ var fbBucketName2 = 'xi2023';
 		});
 
 
-var fbBucketName3 = 'xi2023';
+var fbBucketName3 = 'xi2024';
 
 		var uploader3 = document.getElementById('uploader3');
 		var fileButton3 = document.getElementById('fileButton3');
@@ -451,7 +451,7 @@ var fbBucketName3 = 'xi2023';
 		});
 
 
-var fbBucketName4 = 'xi2023';
+var fbBucketName4 = 'xi2024';
 
 		var uploader4 = document.getElementById('uploader4');
 		var fileButton4 = document.getElementById('fileButton4');
@@ -520,7 +520,7 @@ var fbBucketName4 = 'xi2023';
 
 		});
 
-var fbBucketName5 = 'xi2023';
+var fbBucketName5 = 'xi2024';
 
 		var uploader5 = document.getElementById('uploader5');
 		var fileButton5 = document.getElementById('fileButton5');
@@ -590,7 +590,7 @@ var fbBucketName5 = 'xi2023';
 		});
 
 
-var fbBucketName6 = 'xi2023';
+var fbBucketName6 = 'xi2024';
 
 		var uploader6 = document.getElementById('uploader6');
 		var fileButton6 = document.getElementById('fileButton6');
@@ -659,7 +659,7 @@ var fbBucketName6 = 'xi2023';
 
 		});
 
-var fbBucketName7 = 'xi2023';
+var fbBucketName7 = 'xi2024';
 
 		var uploader7 = document.getElementById('uploader7');
 		var fileButton7 = document.getElementById('fileButton7');
@@ -1326,7 +1326,7 @@ function cccheck(x) {
 
 
 function arl() {
-  var rootRef = firebase.database().ref('xi2023/ARTS/');
+  var rootRef = firebase.database().ref('xi2024/ARTS/');
 
 rootRef.on("child_added", snap => {
 
@@ -1338,7 +1338,7 @@ var cat = snap.child("prstream").val();
 
 }
 function scl() {
-  var rootRef = firebase.database().ref('xi2023/SCIENCE/');
+  var rootRef = firebase.database().ref('xi2024/SCIENCE/');
 
 rootRef.on("child_added", snap => {
 
@@ -1350,7 +1350,7 @@ var cat = snap.child("prstream").val();
 
 }
 function cml() {
-  var rootRef = firebase.database().ref('xi2023/COMMERCE/');
+  var rootRef = firebase.database().ref('xi2024/COMMERCE/');
 rootRef.on("child_added", snap => {
 
 var cat = snap.child("prstream").val();
