@@ -405,8 +405,22 @@ Class XI : Students passed WB Board (any school other than Dhola High School)
       	<br>
       	<fieldset id="prsubs" style="display:none; background-color:rgba(120, 117, 130,0.8); border: rgba(25,58,224,0.8) 3px solid;">
   		<legend align="center"><font size="5px"><b>Subject Selection</b></font></legend>
-  		<br>
-  		
+  		<br><br>
+<table align="center">
+	<tr id="show_instruction">
+	<th colspan="4">
+        <div class="elg">
+        <div class="section" style="color: black;">Subject Combination Set [ANY 4 FROM ANY ONE SET]</div>
+        <p style="color: black;"><b>SET I (ARTS)</b></p>
+	<p>PHILOSOPHY, EDUCATION, ARABIC OR SANSKRIT, HISTORY, BIOLOGICAL SCIENCE, MODERN COMPUTER APPLICATION OR ENVIRONMENT STUDIES, GEOGRAPHY, APPAREL OR POWER</p>
+        <p style="color: black;"><b>SET II (SCIENCE)</b></p>
+	<p>PHYSICS, CHEMISTRY OR GEOGRAPHY, MATHEMATICS, BIOLOGICAL SCIENCE, ENVIRONMENT STUDIES, APPAREL OR POWER</p>
+	<p style="color: black;"><b>SET III (COMMERCE)</b></p>
+	<p>ACCOUNTANCY, COSTING &AMP; TAXATION, MODERN COMPUTER APPLICATION OR ENVIRONMENT STUDIES, BUSINESS STUDIES OR APPAREL OR POWER</p>
+          </div>
+	</th>
+	</tr>
+</table>  <br>		
 		
   		
   <label class="container">Compulsory 1
@@ -440,7 +454,7 @@ Class XI : Students passed WB Board (any school other than Dhola High School)
   
   
   <label class="container">Choice 1
-  <input type="checkbox" id="prch1" name="check" value="CHOOSE" class="prch">
+  <input type="checkbox" id="prch1" name="check" value="CHOOSE" class="prch" onclick="checksubcomb()">
   <span class="checkmark"></span>
   <select name="prchc1" id="prchc1" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;" onchange="this.form['prch1'].value = this.form['prchc1'].value;">
     <option value="NA" disabled="disabled" selected>-- Select any One --</option>
@@ -450,7 +464,7 @@ Class XI : Students passed WB Board (any school other than Dhola High School)
   </select>
   </label>
   <label class="container">Choice 2
-  <input type="checkbox" id="prch2" name="check" value="CHOOSE" class="prch">
+  <input type="checkbox" id="prch2" name="check" value="CHOOSE" class="prch" onclick="checksubcomb()">
   <span class="checkmark"></span>
   <select name="prchc2" id="prchc2" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;" onchange="this.form['prch2'].value = this.form['prchc2'].value;">
     <option value="NA" disabled="disabled" selected>-- Select any One --</option>
@@ -514,7 +528,7 @@ Class XI : Students passed WB Board (any school other than Dhola High School)
     </select>
   </label>
   <label class="container">Choice 7
-  <input type="checkbox" id="prch7" name="check" value="CHOOSE" class="prch">
+  <input type="checkbox" id="prch7" name="check" value="CHOOSE" class="prch" onclick="checksubcomb()">
   <span class="checkmark"></span>
   <select name="prchc7" id="prchc7" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;" onchange="this.form['prch7'].value = this.form['prchc7'].value;">
     <option value="NA" disabled="disabled" selected>-- Select any One --</option>
@@ -528,7 +542,7 @@ Class XI : Students passed WB Board (any school other than Dhola High School)
   </select>
   </label>
   <label class="container">Choice 8
-  <input type="checkbox" id="prch8" name="check" value="CHOOSE" class="prch">
+  <input type="checkbox" id="prch8" name="check" value="CHOOSE" class="prch" onclick="checksubcomb()">
   <span class="checkmark"></span>
   <select name="prchc8" id="prchc8" style="padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa;" onchange="this.form['prch8'].value = this.form['prchc8'].value;">
     <option value="NA" disabled="disabled" selected>-- Select any One --</option>
@@ -1030,6 +1044,18 @@ $(document).ready(function (){
         var favorite = [];
             $.each($("input[name='check']:checked"), function(){            
                 favorite.push($(this).val());
+		    if (favorite.includes("BUSINESS STUDIES") !== -1) { 
+    			if (favorite.includes("APPAREL") !== -1 || favorite.includes("POWER") !== -1 ) { 
+    				$("#prch1").checked = false;
+				$("#prch2").checked = false;
+			}
+		    }
+		    if (favorite.includes("CHEMISTRY") !== -1) { 
+    			if (favorite.includes("GEOGRAPHY") !== -1) { 
+    				$("#prch7").checked = false;
+				$("#prch8").checked = false;
+			}
+		    }
                 //$("#prfsubs").text("Your selected subjects are: " + favorite.join(", "));
                 $("#prfcomp1").val(favorite[0]);
                 $("#prfcomp2").val(favorite[1]);
