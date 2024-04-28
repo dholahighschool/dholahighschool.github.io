@@ -1269,13 +1269,33 @@ function addlslct() {
   		}
   		else{
   			$(".adl").each(function() {
-				$(this).attr('disabled', true);
+				$(this).removeAttr('disabled');
 		});
   		}
 	}
   	else{
   		$("#mpaddl").attr('disabled', true);
+		$(".adl").each(function() {
+				$(this).removeAttr('disabled');
+		});
   	}
+}
+function checksubcomb(){
+	if(document.getElementById("prch1").value.toLowerCase().trim() == "business studies" && document.getElementById("prch1").checked == true){
+		if(document.getElementById("prch2").checked == true){
+			document.getElementById("show_instruction").focus();
+			document.getElementById("prch1").checked == false;
+			document.getElementById("prch2").checked == false;
+		}
+		
+	}
+	if(document.getElementById("prch7").value.toLowerCase().trim() == "chemistry" && document.getElementById("prch7").checked == true){
+		if(document.getElementById("prch8").checked == true){
+			document.getElementById("show_instruction").focus();
+			document.getElementById("prch7").checked == false;
+			document.getElementById("prch8").checked == false;
+		}
+	}
 }
 
   function roll(){
