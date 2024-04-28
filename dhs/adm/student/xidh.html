@@ -1044,6 +1044,19 @@ $(document).ready(function (){
         var favorite = [];
             $.each($("input[name='check']:checked"), function(){            
                 favorite.push($(this).val());
+		    if (favorite.includes("BUSINESS STUDIES") !== -1) { 
+    			if (favorite.includes("APPAREL") !== -1 || favorite.includes("POWER") !== -1 ) { 
+    				$("#prch1").checked = false;
+				$("#prch2").checked = false;
+			}
+		    }
+		    if (favorite.includes("CHEMISTRY") !== -1) { 
+    			if (favorite.includes("GEOGRAPHY") !== -1) { 
+    				$("#prch7").checked = false;
+				$("#prch8").checked = false;
+			}
+		    }
+		    
                 //$("#prfsubs").text("Your selected subjects are: " + favorite.join(", "));
                 $("#prfcomp1").val(favorite[0]);
                 $("#prfcomp2").val(favorite[1]);
