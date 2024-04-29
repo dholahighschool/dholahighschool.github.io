@@ -33,7 +33,7 @@ $(document).ready(*/
     function slctupd(x,y){
     
 
-var rootRef = firebase.database().ref('xi2023/' + x).orderByChild(y);
+var rootRef = firebase.database().ref('xi2024/' + x).orderByChild(y);
 
 rootRef.on("child_added", snap => {
 
@@ -185,7 +185,7 @@ function updateForm(id,x) {
   confirmButtonText: 'Yes, update'
 }).then((result) => {
   if (result.isConfirmed) {
-    firebase.database().ref("xi2023/" + x + "/" + id).update({prfsub1:document.getElementById("prfsub1val").value,prfsub2:document.getElementById("prfsub2val").value,prfsub3:document.getElementById("prfsub3val").value,prfsub4:document.getElementById("prfsub4val").value});
+    firebase.database().ref("xi2024/" + x + "/" + id).update({prfsub1:document.getElementById("prfsub1val").value,prfsub2:document.getElementById("prfsub2val").value,prfsub3:document.getElementById("prfsub3val").value,prfsub4:document.getElementById("prfsub4val").value});
     Swal.fire(
       'Updated!',
       'Subject Combination Details changed successfully.',
