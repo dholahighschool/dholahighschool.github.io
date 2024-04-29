@@ -186,7 +186,6 @@ function updateForm(id,x) {
 }).then((result) => {
   if (result.isConfirmed) {
     firebase.database().ref("xi2023/" + x + "/" + id).update({prfsub1:document.getElementById("prfsub1val").value,prfsub2:document.getElementById("prfsub2val").value,prfsub3:document.getElementById("prfsub3val").value,prfsub4:document.getElementById("prfsub4val").value});
-    document.getElementById(id + x).style.display = "none";
     Swal.fire(
       'Updated!',
       'Subject Combination Details changed successfully.',
