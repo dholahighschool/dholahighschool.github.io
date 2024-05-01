@@ -35,6 +35,10 @@
   box-shadow: 0 3px #666;
   transform: translateY(4px);
 }
+	.pdf {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+    }
 	</style>
 </head>
 <body>
@@ -42,9 +46,11 @@
 <center>
 <h1>Dhola High School : Online Admission</h1>
 <h3>To modify the Application click here: - <input type="button" class="button" name="printbtn" value="Edit Application Form" onclick="editForm()"></h3>
-<h2><u>Download both the school copy and student copy</u></h2>
+<h2><u>Download school copy, student copy and the declaration form & sign from guardian.</u></h2>
+<p><i>School Copy, Student Copy এবং ঘোষণাপত্র ডাউনলোড করে অভিভাবকের কাছ থেকে স্বাক্ষর করা বাধ্যতামূলক</i></p>
 <p><i>Admission should be taken within specified date available in the application form</i></p>
-
+<p><i>আবেদনপত্রে উপলব্ধ নির্দিষ্ট তারিখের মধ্যে ভর্তি হতে হবে</i></p>
+<br><br><object class="pdf" data="declaration_form.pdf" width="800" height="500"></object><br><br>
 </center>
 </div>
 <div class="row">
