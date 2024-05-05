@@ -198,5 +198,5 @@ function updateForm(id,x) {
 
 function myFunction() {
   var rowCount = $('#table_body tr').length;
-$("#rowscnt").text("Total No. of Students applied for admission is = " + rowCount +"");
+$("#rowscnt").text("Total No. of Students applied for admission is = " + Number(rowCount)/3 +"");
 }
