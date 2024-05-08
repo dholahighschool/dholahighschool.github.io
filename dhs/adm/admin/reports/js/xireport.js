@@ -185,6 +185,10 @@ function updateForm(id,x) {
   confirmButtonText: 'Yes, update'
 }).then((result) => {
   if (result.isConfirmed) {
+      console.log(document.getElementById("' + id + 'prfsub1val").value);
+      console.log(document.getElementById("' + id + 'prfsub1val").value);
+      console.log(document.getElementById("' + id + 'prfsub1val").value);
+      console.log(document.getElementById("' + id + 'prfsub1val").value);
     firebase.database().ref("xi2024/" + x + "/" + id).update({prfsub1:document.getElementById("' + id + 'prfsub1val").value,prfsub2:document.getElementById("' + id + 'prfsub2val").value,prfsub3:document.getElementById("' + id + 'prfsub3val").value,prfsub4:document.getElementById("' + id + 'prfsub4val").value});
     Swal.fire(
       'Updated!',
