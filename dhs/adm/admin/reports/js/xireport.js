@@ -175,6 +175,11 @@ function removeForm(id,x) {
 }
 
 function updateForm(id,x) {
+    prf1s=document.getElementById(id + "prfsub1val").value;
+    prf2s=document.getElementById(id + "prfsub2val").value;
+    prf3s=document.getElementById(id + "prfsub3val").value;
+    prf4s=document.getElementById(id + "prfsub4val").value;
+    console.log(prf1s + ", " + prf2s + ", " prf3s + ", " prf4s + ", ");
     Swal.fire({
   title: 'Are you sure?',
   text: "Subject combination of selected student will be changed.",
@@ -185,7 +190,7 @@ function updateForm(id,x) {
   confirmButtonText: 'Yes, update'
 }).then((result) => {
   if (result.isConfirmed) {
-    firebase.database().ref("xi2024/" + x + "/" + id).update({prfsub1:document.getElementById(id + "prfsub1val").value,prfsub2:document.getElementById("prfsub2val").value,prfsub3:document.getElementById(id + "prfsub3val").value,prfsub4:document.getElementById(id + "prfsub4val").value});
+    firebase.database().ref("xi2024/" + x + "/" + id).update({prfsub1:prf1s,prfsub2:prf2s,prfsub3:prf3s,prfsub4:prf4s});
     Swal.fire(
       'Updated!',
       'Subject Combination Details changed successfully.',
