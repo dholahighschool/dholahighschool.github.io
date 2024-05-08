@@ -131,10 +131,10 @@ var updmpmark = snap.child("updmpmark").val();
 var updbpass = snap.child("updbpass").val();
 var updaadhaarpic = snap.child("updaadhaarpic").val();
 
-var changesub1 = '<input type="text" id="prfsub1val" value="' + prfsub1 + '">';
-var changesub2 = '<input type="text" id="prfsub2val" value="' + prfsub2 + '">';
-var changesub3 = '<input type="text" id="prfsub3val" value="' + prfsub3 + '">';
-var changesub4 = '<input type="text" id="prfsub4val" value="' + prfsub4 + '">';
+var changesub1 = '<input type="text" id="' + appid + 'prfsub1val" value="' + prfsub1 + '">';
+var changesub2 = '<input type="text" id="' + appid + 'prfsub2val" value="' + prfsub2 + '">';
+var changesub3 = '<input type="text" id="' + appid + 'prfsub3val" value="' + prfsub3 + '">';
+var changesub4 = '<input type="text" id="' + appid + 'prfsub4val" value="' + prfsub4 + '">';
 var updatebtn = '<center><button onclick="updateForm(\'' + appid + '\',\'' + x + '\')" class="button">Update Subject Combination</button></center>';
 var removebtn = '<button onclick="removeForm(\'' + appid + '\',\'' + x + '\')" class="button">Remove Student</button>';
 if (catm == 0) {
@@ -185,7 +185,7 @@ function updateForm(id,x) {
   confirmButtonText: 'Yes, update'
 }).then((result) => {
   if (result.isConfirmed) {
-    firebase.database().ref("xi2024/" + x + "/" + id).update({prfsub1:document.getElementById("prfsub1val").value,prfsub2:document.getElementById("prfsub2val").value,prfsub3:document.getElementById("prfsub3val").value,prfsub4:document.getElementById("prfsub4val").value});
+    firebase.database().ref("xi2024/" + x + "/" + id).update({prfsub1:document.getElementById("' + id + 'prfsub1val").value,prfsub2:document.getElementById("' + id + 'prfsub2val").value,prfsub3:document.getElementById("' + id + 'prfsub3val").value,prfsub4:document.getElementById("' + id + 'prfsub4val").value});
     Swal.fire(
       'Updated!',
       'Subject Combination Details changed successfully.',
