@@ -179,7 +179,6 @@ function updateForm(id,x) {
     prf2s=document.getElementById(id + "prfsub2val").value;
     prf3s=document.getElementById(id + "prfsub3val").value;
     prf4s=document.getElementById(id + "prfsub4val").value;
-    console.log(prf1s + ", " + prf2s + ", " prf3s + ", " prf4s + ", ");
     Swal.fire({
   title: 'Are you sure?',
   text: "Subject combination of selected student will be changed.",
