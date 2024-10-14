@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>QAdmin-Order List</title>
+  <link rel="icon" type="image/x-icon" href="images/qrewards.jpg">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia"> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <style>
+      
+      /* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  -webkit-animation-name: fadeIn; /* Fade in the background */
+  -webkit-animation-duration: 0.4s;
+  animation-name: fadeIn;
+  animation-duration: 0.4s
+}
+
+/* Modal Content */
+.modal-content {
+  position: fixed;
+  bottom: 0;
+  background-color: #fefefe;
+  width: 100%;
+  -webkit-animation-name: slideIn;
+  -webkit-animation-duration: 0.4s;
+  animation-name: slideIn;
+  animation-duration: 0.4s
+}
+
+/* The Close Button */
+.close {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-header {
+  padding: 2px 16px;
+  background-color: #5cb85c;
+  color: white;
+}
+
+.modal-body {padding: 2px 16px;}
+
+.modal-footer {
+  padding: 2px 16px;
+  background-color: #5cb85c;
+  color: white;
+}
+
+/* Add Animation */
+@-webkit-keyframes slideIn {
+  from {bottom: -300px; opacity: 0} 
+  to {bottom: 0; opacity: 1}
+}
+
+@keyframes slideIn {
+  from {bottom: -300px; opacity: 0}
+  to {bottom: 0; opacity: 1}
+}
+
+@-webkit-keyframes fadeIn {
+  from {opacity: 0} 
+  to {opacity: 1}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0} 
+  to {opacity: 1}
+}
+
+
+  </style>
+</head>
+
+<body id="body-pd">
+  <header class="header" id="header">
+    <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+    <div class="header_search"> <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" id="orderSearch" placeholder="Search by Order Id, User Id, User Name, Purchase Status or Google Order Id"> </div>
+    <div class="header_img"> <img src="images/qrewards.jpg" alt=""> </div>
+  </header>
+  <div class="l-navbar" id="nav-bar">
+    <nav class="nav">
+        <div> <a href="#" class="nav_logo"> <i id="Q" class='fa-solid fa-q'></i> <span
+          class="nav_logo-name">QAdmin</span> </a>
+          <div class="nav_list">
+            <!-- <a class="sub-btn"><span class="nav_name">Table</span></a> -->
+            <a href="#" class="sub-btn"> <i class='fa-solid fa-database fa-lg'></i> <span class="nav_name">Database</span></a> 
+            <div class="sub-menu">
+              <a href="user_list.html" class="nav_link "> <i class='bx bx-user nav_icon'></i> <span class="nav_name">Users</span></a> 
+              <a href="order_list.html" class="nav_link active"> <i class='fa-solid fa-box-open'></i><span class="nav_name">Orders</span> </a>
+              <a href="report.html" class="nav_link"> <i class='fa-solid fa-flag fa-lg'></i> <span class="nav_name">Report</span> </a>
+              <a href="callback.html"class="nav_link"> <i class='fa-solid fa-phone'></i> <span class="nav_name">Callback</span> </a>
+              <a href="#"class="setting-btn"> <i class='fa-solid fa-gears '></i> <span class="nav_name">Settings</span> </a>
+                <div class="settings-item">
+                  <a href="version.html"class="nav_link "> <i class='fa-solid fa-code '></i> <span class="nav_name">VersionInfo</span> </a>
+                  <a href="payments.html"class="nav_link active"> <i class='fa-solid fa-sack-dollar fa-lg '></i> <span class="nav_name">Payments</span> </a>
+                  <a href="developersinfo.html"class="nav_link "> <i class='fa-solid fa-user-pen '></i> <span class="nav_name">DevelopersInfo</span> </a>
+                  <a href="appinfo.html"class="nav_link "> <i class='fa-solid fa-screwdriver-wrench '></i> <span class="nav_name">AppInfo</span> </a>
+                </div>
+            </div>
+          </div>
+        </div> 
+      <a onclick="window.close();" href="index.html" target="_blank" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">SignOut</span></a>
+    </nav>
+  </div>
+  <!--Container Main start-->
+  
+  
+  
+  
+  
+  
+  
+  <div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2 id="modal_id">Dialogue Id</h2>
+    </div>
+    <div class="modal-body">
+      <form action="https://quantumwebagrden.space/qrc/send_notification.php" method="GET" enctype="text/plain">
+User:<br>
+<input type="text" id="notify_username" name="username">
+<input type="text" id="notify_fcmToken" name="fcmToken">
+<input type="text" id="notify_text" name="notifyText">
+<br>
+</form>
+    </div>
+    <div class="modal-footer">
+      <input style="margin-right:20px" type="submit" value="Send">
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+
+
+  <div id="table" class="height-100 bg-light">
+    <div class="table1">
+        <table>
+            <thead>
+            <tr>
+                <th>Sl. No.</th>
+                <th onclick="sortTable()">Order Details &nbsp; &nbsp; <i class="fa fa-sort" aria-hidden="true"></i></th>
+                <th>User Details</th>
+                <th>Product Details</th>
+                <th>Status<br>
+                  <select id="statusChecker" onchange="searchOrder(this.options[this.selectedIndex].value)">
+                    <option value='all'>All</option>
+                    <option value='Pending'>Pending</option>
+                    <option value='Purchased'>Purchased</option>
+                    <option value='Under Progress'>Under Progress</option>
+                    <option value='Under Review'>Under Review</option>
+                    <option value='Hold'>Hold</option>
+                    <option value='Refunded'>Refunded</option>
+                    <option value='Completed'>Completed</option>
+                    <option value='Cancelled'>Cancelled</option>
+                    <option value='Declined'>Declined</option>
+                    <option value='Error'>Error</option>
+                    <option value='Undefined'>Undefined</option>
+                  </select>
+                </th>
+                <th>Payback Option</th>
+                <th>Payback QR Code</th>
+                <th>Transaction Details</th>
+                <th>Purchase Details</th>
+                <th>App Identity</th>
+                <th>Remove Order</th>
+            </tr>
+            </thead>
+            <hr style="display: none; ">
+            <b>MP: GPS</b>
+          <hr>
+            <tbody id="orderDetails">
+    
+            </tbody>
+            <!-- <tfoot>
+            <tr>
+                <th>Sl. No.</th>
+                <th>Order Details</th>
+                <th>User Details</th>
+                <th>Product Details</th>
+                <th>Status</th>
+                <th>Payback Option</th>
+                <th>Transaction Details</th>
+                <th>Purchase Details</th>
+                <th>App Identity</th>
+            </tr></tfoot> -->
+            </table>
+          </div>
+
+  </div>
+  <!--Container Main end-->
+
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+//var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+// btn.onclick = function() {
+//   modal.style.display = "block";
+// }
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-database.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="js/cred.js"></script>
+    <script src="js/js.js"></script>
+    <script type="text/javascript">
+        $( document ).ready(function() {
+            getAllorder();
+        });
+    </script>
+  <script type="text/javascript">
+    $( document ).ready(function() {
+      $('.settings-item').hide();
+$('.sub-btn').click(function(){
+    $(this).next('.sub-menu').slideToggle();
+});
+$('.setting-btn').click(function(){
+    $(this).next('.settings-item').slideToggle();
+});
+});
+</script>
+</body></html>
