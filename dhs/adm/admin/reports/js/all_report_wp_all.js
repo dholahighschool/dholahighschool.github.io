@@ -23,7 +23,7 @@ var config = {
 
 $(document).ready(function(){
 
-var rootRef = firebase.database().ref('vtoix2024').orderByValue();
+var rootRef = firebase.database().ref('vtoix2025').orderByValue();
 
 rootRef.on("child_added", snap => {
 
