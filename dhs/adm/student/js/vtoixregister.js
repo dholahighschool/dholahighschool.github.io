@@ -50,7 +50,7 @@ function saveMessage(appid,name,dob,gname,prclass,schooltype,bsid,regID,meet){
   var newMessageRef = messagesRef.push();
   MessageRef.set({
   */
-  firebase.database().ref('vtoix2024/' + appid).update({
+  firebase.database().ref('vtoix2025/' + appid).update({
 appid:appid.toString(),
 name:name,
 dob:dob,
@@ -59,7 +59,7 @@ prclass:prclass,
 schooltype:schooltype,
 bsid:bsid,
 regID:regID,
-acyear:"2024",
+acyear:"2025",
 meet:meet
   });
 }
@@ -73,7 +73,7 @@ Swal.fire({
   allowOutsideClick:false,
   allowEscapeKey:false
 });
-var rootRef = firebase.database().ref('vtoix2024');
+var rootRef = firebase.database().ref('vtoix2025');
 rootRef.on("child_added", snap => {
 var appid = snap.child("appid").val();
 var regID = snap.child("regID").val();
