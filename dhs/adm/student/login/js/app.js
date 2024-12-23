@@ -1,4 +1,4 @@
-var currentYear = "vtoix2024";
+var currentYear = "vtoix2025";
 var config = {
     apiKey: "AIzaSyC5hD8l1JE0G97zlflv8R8UZ4vcDv7JcsU",
     authDomain: "admission-2020.firebaseapp.com",
