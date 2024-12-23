@@ -1,4 +1,4 @@
-var currentYear = "vtoix2024";
+var currentYear = "vtoix2025";
 function getusername()
             {
                 var parameters = location.search.substring(1).split("=");
