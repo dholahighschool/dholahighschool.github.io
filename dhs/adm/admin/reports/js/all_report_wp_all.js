@@ -5,7 +5,7 @@ cls = parameters[1];
 $("#clsdtls").html(" <i> Details of Students (Without Documents) applied for Class </i>: <b> " + cls + " </b> <br>");
 }       
 cnt = 0;
-
+ 
 
 var config = {
     apiKey: "AIzaSyC5hD8l1JE0G97zlflv8R8UZ4vcDv7JcsU",
