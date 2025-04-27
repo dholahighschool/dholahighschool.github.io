@@ -33,7 +33,7 @@ $(document).ready(*/
     function slctupd(x,y){
     
 
-var rootRef = firebase.database().ref('xi2024/' + x).orderByChild(y);
+var rootRef = firebase.database().ref('xi2025/' + x).orderByChild(y);
 
 rootRef.on("child_added", snap => {
 
