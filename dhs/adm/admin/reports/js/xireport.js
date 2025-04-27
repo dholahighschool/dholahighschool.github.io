@@ -33,7 +33,7 @@ $(document).ready(*/
     function slctupd(x,y){
     
 
-var rootRef = firebase.database().ref('xi2024/' + x).orderByChild(y);
+var rootRef = firebase.database().ref('xi2025/' + x).orderByChild(y);
 
 rootRef.on("child_added", snap => {
 
@@ -163,7 +163,7 @@ function removeForm(id,x) {
   confirmButtonText: 'Yes, remove'
 }).then((result) => {
   if (result.isConfirmed) {
-    firebase.database().ref("xi2024/" + x + "/" + id).remove();
+    firebase.database().ref("xi2025/" + x + "/" + id).remove();
     document.getElementById(id + x).style.display = "none";
     Swal.fire(
       'Removed!',
@@ -189,7 +189,7 @@ function updateForm(id,x) {
   confirmButtonText: 'Yes, update'
 }).then((result) => {
   if (result.isConfirmed) {
-    firebase.database().ref("xi2024/" + x + "/" + id).update({prfsub1:prf1s,prfsub2:prf2s,prfsub3:prf3s,prfsub4:prf4s});
+    firebase.database().ref("xi2025/" + x + "/" + id).update({prfsub1:prf1s,prfsub2:prf2s,prfsub3:prf3s,prfsub4:prf4s});
     Swal.fire(
       'Updated!',
       'Subject Combination Details changed successfully.',
