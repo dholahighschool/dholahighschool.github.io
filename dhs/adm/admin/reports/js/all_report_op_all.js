@@ -23,7 +23,7 @@ var config = {
 
 $(document).ready(function(){
 
-var rootRef = firebase.database().ref('vtoix2025').orderByValue();
+var rootRef = firebase.database().ref('vtoix2026').orderByValue();
 
 rootRef.on("child_added", snap => {
 
@@ -68,3 +68,4 @@ $("#rowscnt").text("Total No. of Students applied for admission is = " + rowCoun
 function getTable(){
     tableToExcel('tab_report', cls);
 }
+
