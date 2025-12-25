@@ -1,4 +1,4 @@
-var currentYear = "vtoix2025";
+var currentYear = "vtoix2026";
 function getusername()
             {
                 var parameters = location.search.substring(1).split("=");
@@ -591,3 +591,4 @@ $("#loadinglay").css("display","none");
 }
 });
 }
+
