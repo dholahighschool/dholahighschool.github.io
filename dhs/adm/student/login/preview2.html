@@ -8,68 +8,111 @@
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 
     <style>
-        body { font-family: 'Segoe UI', Arial, sans-serif; background: #f4f4f4; margin: 0; padding: 20px; }
-        .container { max-width: 900px; margin: 0 auto; background: #fff; padding: 30px; box-shadow: 0 0 10px rgba(0,0,0,0.1); box-sizing: border-box; }
+        :root { --primary-dark: #212121; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f2f5; margin: 0; padding: 20px; color: #333; }
         
-        /* Header & Photo */
-        .form-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #333; padding-bottom: 10px; margin-bottom: 20px; }
-        .header-text { text-align: center; flex-grow: 1; }
-        .photo-box { width: 150px; height: 180px; border: 1px solid #000; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-        #nupdphoto { max-width: 100%; max-height: 100%; object-fit: cover; }
-
-        /* Typography */
-        h3 { font-weight: bold; text-transform: uppercase; border-bottom: 1px solid #ccc; margin-top: 25px; font-size: 1.2em; }
-        li { font-style: italic; margin-bottom: 5px; color: #555; }
-        .val { font-style: normal; font-weight: 500; color: #000; margin-left: 5px; }
-        p b { font-style: normal; } /* Sub-headings in Address */
-
-        /* Layout Grids */
-        .top-info { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px; }
-        ul, ol { column-count: 2; column-gap: 30px; padding-left: 20px; }
-        .address-flex { display: flex; gap: 40px; }
-        .address-col { flex: 1; }
-
-        /* Print Fixes */
-        @media print {
-            @page { margin: 1cm; }
-            body { background: white; padding: 0; }
-            .container { width: 100%; max-width: 100%; box-shadow: none; border: none; padding: 0; }
-            #myPrntbtn, #loadinglay { display: none !important; }
-            ul, ol { column-gap: 20px; }
+        /* Layout Container */
+        .container { 
+            max-width: 950px; 
+            margin: 0 auto; 
+            background: #fff; 
+            padding: 30px; 
+            box-shadow: 0 0 15px rgba(0,0,0,0.1); 
+            box-sizing: border-box;
         }
 
-        #loadinglay { position: fixed; inset: 0; background: #fff; z-index: 999; display: flex; align-items: center; justify-content: center; }
+        /* Header & Photo Positioning */
+        .form-header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: flex-start; 
+            border-bottom: 2px solid var(--primary-dark); 
+            padding-bottom: 15px; 
+            margin-bottom: 20px; 
+        }
+        .header-text { text-align: center; flex-grow: 1; }
+        .photo-box { 
+            width: 160px; 
+            height: 180px; 
+            border: 1px solid #333; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            background: #fafafa;
+        }
+        #nupdphoto { max-width: 100%; max-height: 100%; object-fit: cover; }
+
+        /* Typography Logic */
+        h3 { font-weight: bold; text-transform: uppercase; border-bottom: 1px solid #ccc; margin-top: 25px; margin-bottom: 15px; font-size: 1.1em; color: var(--primary-dark); }
+        b, strong { font-weight: bold; }
+        li { font-style: italic; margin-bottom: 6px; list-style-position: inside; }
+        .val { font-style: normal; font-weight: normal; color: #000; margin-left: 5px; }
+
+        /* Grid for Top Details */
+        .top-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 15px; }
+
+        /* Multi-column lists */
+        .details-list { 
+            column-count: 2; 
+            column-gap: 40px; 
+            padding: 0; 
+            list-style: none;
+        }
+
+        /* Address Layout */
+        .address-section { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .addr-group { list-style: none; padding: 0; }
+        .addr-group p { margin-bottom: 10px; border-bottom: 1px dashed #ccc; padding-bottom: 3px; }
+
+        /* Print Settings */
+        @media print {
+            @page { margin: 0.8cm; }
+            body { background: white; padding: 0; }
+            .container { width: 100%; max-width: 100%; box-shadow: none; border: none; padding: 10px; }
+            #myPrntbtn, #loadinglay { display: none !important; }
+            h3 { margin-top: 15px; }
+            .details-list { column-gap: 20px; }
+        }
+
+        /* Spinner */
+        #loadinglay { position: fixed; inset: 0; background: rgba(255,255,255,0.95); z-index: 9999; display: flex; align-items: center; justify-content: center; font-weight: bold; }
     </style>
 </head>
 <body>
 
-<div id="loadinglay">Loading Application...</div>
+<div id="loadinglay" class="loading">Loading Application Details...</div>
 
 <div class="container">
     <div class="form-header">
         <div class="header-text">
-            <h2 style="margin:0;">Dhola High School</h2>
-            <p><b>ACADEMIC YEAR:</b> <span id="nacyear" class="val"></span> | <b>APPLIED FOR:</b> <span id="nprclass" class="val"></span></p>
+            <h2 style="margin: 0 0 10px 0;">Dhola High School : Application Form</h2>
+            <div style="display: flex; justify-content: center; gap: 20px;">
+                <span id="nacyear"><i>Academic Year:</i> <span class="val"></span></span>
+                <span id="nprclass"><i>Applied For Class:</i> <span class="val"></span></span>
+            </div>
         </div>
         <div class="photo-box">
-            <img id="nupdphoto" src="" alt="Photo">
+            <img id="nupdphoto" src="" alt="Student Photo">
         </div>
     </div>
 
-    <div class="top-info">
+    <div class="top-grid">
         <div id="nappid"><i>Application ID:</i> <span class="val"></span></div>
         <div id="ncategory"><i>Category:</i> <span class="val"></span></div>
-        <div id="nadmno"><i>Admission No:</i> <span class="val"></span></div>
+        <div id="nadmno"><i>Admission No.:</i> <span class="val"></span></div>
+        
         <div id="nname"><i>Name:</i> <span class="val"></span></div>
         <div id="ngender"><i>Gender:</i> <span class="val"></span></div>
-        <div id="nadmdate"><i>Adm. Date:</i> <span class="val"></span></div>
+        <div id="nadmdate"><i>Admission Date:</i> <span class="val"></span></div>
+        
         <div id="ndob"><i>Date of Birth:</i> <span class="val"></span></div>
-        <div id="nprsec" style="grid-column: span 2;"><i>Alloted Section/Roll:</i> <span class="val"></span></div>
+        <div id="nprsec" style="grid-column: span 2;"><i>Alloted Section/Roll No.:</i> <span class="val"></span></div>
     </div>
+    <div id="nmeet" style="margin-bottom: 20px;"><i>meet:</i> <span class="val"></span></div>
 
     <section>
         <h3>Personal Details</h3>
-        <ol>
+        <ol class="details-list">
             <li id="ndobreg">DOB Registration No. <span class="val"></span></li>
             <li id="nmothertongue">Mother Tongue <span class="val"></span></li>
             <li id="nnationality">Nationality <span class="val"></span></li>
@@ -82,56 +125,87 @@
     </section>
 
     <section>
-        <h3>Guardian Details</h3>
-        <ul>
+        <h3>Academic Details</h3>
+        <ol class="details-list">
+            <li id="npvclass">Previous Class <span class="val"></span></li>
+            <li id="npvschool">Previous School <span class="val"></span></li>
+            <li id="npvsec">Previous Section <span class="val"></span></li>
+            <li id="npvroll">Previous Roll <span class="val"></span></li>
+            <li id="npraddl">Additional Subject <span class="val"></span></li>
+            <li id="nmedium">Medium <span class="val"></span></li>
+        </ol>
+    </section>
+
+    <section>
+        <h3>Guardian's Details</h3>
+        <ul class="details-list">
             <li id="nfname">Father's Name <span class="val"></span></li>
             <li id="nmname">Mother's Name <span class="val"></span></li>
-            <li id="ngname">Guardian's Name <span class="val"></span></li>
-            <li id="nrelationship">Relationship <span class="val"></span></li>
-            <li id="naincome">Annual Income <span class="val"></span></li>
-            <li id="ngqualification">Qualification <span class="val"></span></li>
+            <li id="ngname">Guardian's name <span class="val"></span></li>
+            <li id="nrelationship">Relationship (with Guardian) <span class="val"></span></li>
+            <li id="naincome">Annual Family Income <span class="val"></span></li>
+            <li id="ngqualification">Guardian's Qualification <span class="val"></span></li>
         </ul>
     </section>
 
     <section>
         <h3>Address Details</h3>
-        <div class="address-flex">
-            <div class="address-col">
-                <p><b>Student Address</b></p>
-                <div id="nvill"><i>Village:</i> <span class="val"></span></div>
-                <div id="ndistrict"><i>District:</i> <span class="val"></span></div>
-                <div id="npin"><i>PIN:</i> <span class="val"></span></div>
-                <div id="nphone"><i>Phone:</i> <span class="val"></span></div>
+        <div class="address-section">
+            <div class="addr-group">
+                <p><b>Student Address Details</b></p>
+                <li id="nvill">Address / Village <span class="val"></span></li>
+                <li id="nhabitation">Habitation or Locality <span class="val"></span></li>
+                <li id="ndistrict">District <span class="val"></span></li>
+                <li id="nblock">Block/ Municipality <span class="val"></span></li>
+                <li id="npanchayat">Panchayat <span class="val"></span></li>
+                <li id="npo">Post Office <span class="val"></span></li>
+                <li id="nps">Police Station <span class="val"></span></li>
+                <li id="npin">PIN Code <span class="val"></span></li>
+                <li id="nphone">Phone / Contact No. <span class="val"></span></li>
+                <li id="nemail">Email ID <span class="val"></span></li>
             </div>
-            <div class="address-col">
-                <p><b>Guardian Address</b></p>
-                <div id="ngvill"><i>Village:</i> <span class="val"></span></div>
-                <div id="ngdistrict"><i>District:</i> <span class="val"></span></div>
-                <div id="ngpin"><i>PIN:</i> <span class="val"></span></div>
-                <div id="ngphone"><i>Phone:</i> <span class="val"></span></div>
+            <div class="addr-group">
+                <p><b>Guardian's Address Details</b></p>
+                <li id="ngvill">Address / Village <span class="val"></span></li>
+                <li id="nghabitation">Habitation or Locality <span class="val"></span></li>
+                <li id="ngdistrict">District <span class="val"></span></li>
+                <li id="ngblock">Block <span class="val"></span></li>
+                <li id="ngpanchayat">Panchayat <span class="val"></span></li>
+                <li id="ngpo">Post Office <span class="val"></span></li>
+                <li id="ngps">Police Station <span class="val"></span></li>
+                <li id="ngpin">PIN Code <span class="val"></span></li>
+                <li id="ngphone">Phone / Contact No. <span class="val"></span></li>
+                <li id="ngemail">Emai ID <span class="val"></span></li>
             </div>
         </div>
     </section>
 
     <section>
-        <h3>Bank & Other Details</h3>
-        <ul>
+        <h3>Other Details</h3>
+        <ul class="details-list" style="list-style-type: square;">
             <li id="nbplstatus">BPL Status <span class="val"></span></li>
+            <li id="nbplno">BPL No. <span class="val"></span></li>
+            <li id="ncwsn">Children with Special Need <span class="val"></span></li>
+            <li id="ncwsntyp">Type of Disability <span class="val"></span></li>
             <li id="nbname">Bank Name <span class="val"></span></li>
+            <li id="nbcode">Branch Code <span class="val"></span></li>
             <li id="nbifsc">IFSC <span class="val"></span></li>
             <li id="nacno">Account Number <span class="val"></span></li>
         </ul>
     </section>
 </div>
 
-<input id="myPrntbtn" type="button" value="Print Application" onclick="window.print();" style="position:fixed; bottom:20px; right:20px; padding:10px 20px; background:#333; color:#fff; border:none; border-radius:5px; cursor:pointer;">
+<input id="myPrntbtn" type="button" value="Print Form" onclick="window.print();" style="position:fixed; bottom:20px; right:20px; padding:12px 25px; background:var(--primary-dark); color:white; border:none; border-radius:5px; cursor:pointer; font-weight:bold; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">
 
-<script>
-    window.onload = function() {
-        document.getElementById('loadinglay').style.display = 'none';
-    };
-</script>
 <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
 <script src="js/preview.js"></script>
+<script>
+    // Simple logic to remove loading screen (preview.js likely handles the data injection)
+    window.onload = function() {
+        setTimeout(function(){
+            document.getElementById('loadinglay').style.display = 'none';
+        }, 1500);
+    };
+</script>
 </body>
 </html>
