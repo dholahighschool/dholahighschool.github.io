@@ -1,289 +1,211 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <title>Dhola High School - Application Form</title>
+    <link rel="icon" href="images/logo.png" sizes="32x32" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 
-<title>Dhola High School</title>
-<link rel="icon" href="images/logo.png" sizes="32x32" />
-  <link rel="icon" href="images/logo.png" sizes="192x192" />
-<meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        :root { --primary-dark: #212121; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f2f5; margin: 0; padding: 20px; color: #333; }
+        
+        /* Layout Container */
+        .container { 
+            max-width: 950px; 
+            margin: 0 auto; 
+            background: #fff; 
+            padding: 30px; 
+            box-shadow: 0 0 15px rgba(0,0,0,0.1); 
+            box-sizing: border-box;
+        }
 
-<Script src="https://code.jquery.com/jquery-3.3.1.js" type="text/javascript"></Script>  
+        /* Header & Photo Positioning */
+        .form-header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: flex-start; 
+            border-bottom: 2px solid var(--primary-dark); 
+            padding-bottom: 15px; 
+            margin-bottom: 20px; 
+        }
+        .header-text { text-align: center; flex-grow: 1; }
+        .photo-box { 
+            width: 160px; 
+            height: 180px; 
+            border: 1px solid #333; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            background: #fafafa;
+        }
+        #nupdphoto { max-width: 100%; max-height: 100%; object-fit: cover; }
 
+        /* Typography Logic */
+        h3 { font-weight: bold; text-transform: uppercase; border-bottom: 1px solid #ccc; margin-top: 25px; margin-bottom: 15px; font-size: 1.1em; color: var(--primary-dark); }
+        b, strong { font-weight: bold; }
+        li { font-style: italic; margin-bottom: 6px; list-style-position: inside; }
+        .val { font-style: normal; font-weight: normal; color: #000; margin-left: 5px; }
 
-<style>
-img.ex1 {
-  position:absolute;
-  right:40px;
-  top:450px;
-}
-img.ex2 {
-  position:absolute;
-  right:40px;
-  top:240px;
-}
-</style>
+        /* Grid for Top Details */
+        .top-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 15px; }
 
-<style type="text/css">
-@media print {
-    #myPrntbtn {
-        display :  none;
-    }
-}
-</style>
+        /* Multi-column lists */
+        .details-list { 
+            column-count: 2; 
+            column-gap: 40px; 
+            padding: 0; 
+            list-style: none;
+        }
 
-<style>
-ul {
-  columns: 2;
-  -webkit-columns: 2;
-  -moz-columns: 2;
-}
-</style>
-<style>
-/* Absolute Center Spinner */
-.loading {
-  position: fixed;
-  z-index: 999;
-  height: 2em;
-  width: 2em;
-  overflow: visible;
-  margin: auto;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-}
+        /* Address Layout */
+        .address-section { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .addr-group { list-style: none; padding: 0; }
+        .addr-group p { margin-bottom: 10px; border-bottom: 1px dashed #ccc; padding-bottom: 3px; }
 
-/* Transparent Overlay */
-.loading:before {
-  content: '';
-  display: block;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(155, 105, 207,0.5);
-}
+        /* Print Settings */
+        @media print {
+            @page { margin: 0.8cm; }
+            body { background: white; padding: 0; }
+            .container { width: 100%; max-width: 100%; box-shadow: none; border: none; padding: 10px; }
+            #myPrntbtn, #loadinglay { display: none !important; }
+            h3 { margin-top: 15px; }
+            .details-list { column-gap: 20px; }
+        }
 
-/* :not(:required) hides these rules from IE9 and below */
-.loading:not(:required) {
-  /* hide "loading..." text */
-  font: 0/0 a;
-  color: transparent;
-  text-shadow: none;
-  background-color: transparent;
-  border: 0;
-}
-
-.loading:not(:required):after {
-  content: '';
-  display: block;
-  font-size: 10px;
-  width: 1em;
-  height: 1em;
-  margin-top: -0.5em;
-  -webkit-animation: spinner 1500ms infinite linear;
-  -moz-animation: spinner 1500ms infinite linear;
-  -ms-animation: spinner 1500ms infinite linear;
-  -o-animation: spinner 1500ms infinite linear;
-  animation: spinner 1500ms infinite linear;
-  border-radius: 0.5em;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.5) -1.5em 0 0 0, rgba(0, 0, 0, 0.5) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
-  box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) -1.5em 0 0 0, rgba(0, 0, 0, 0.75) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
-}
-
-/* Animation */
-
-@-webkit-keyframes spinner {
-  0% {
-    -webkit-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    -ms-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-    -moz-transform: rotate(360deg);
-    -ms-transform: rotate(360deg);
-    -o-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
-@-moz-keyframes spinner {
-  0% {
-    -webkit-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    -ms-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-    -moz-transform: rotate(360deg);
-    -ms-transform: rotate(360deg);
-    -o-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
-@-o-keyframes spinner {
-  0% {
-    -webkit-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    -ms-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-    -moz-transform: rotate(360deg);
-    -ms-transform: rotate(360deg);
-    -o-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
-@keyframes spinner {
-  0% {
-    -webkit-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    -ms-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-    -moz-transform: rotate(360deg);
-    -ms-transform: rotate(360deg);
-    -o-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
-</style>
+        /* Spinner */
+        #loadinglay { position: fixed; inset: 0; background: rgba(255,255,255,0.95); z-index: 9999; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+    </style>
 </head>
 <body>
-<div style="display:block;" class="loading" id="loadinglay">Loading&#8230;</div>
-<div id="divmnu">
-  <center><h2>Dhola High School : Application Form</h2>
-  
-  <p id="nacyear">	Academic Year	</p> <p id="nprclass">	Applied For Class	</p> </center>
+
+<div id="loadinglay" class="loading">Loading Application Details...</div>
+
+<div class="container">
+    <div class="form-header">
+        <div class="header-text">
+            <h2 style="margin: 0 0 10px 0;">Dhola High School : Application Form</h2>
+            <div style="display: flex; justify-content: center; gap: 20px;">
+                <span id="nacyear"><i>Academic Year:</i> <span class="val"></span></span>
+                <span id="nprclass"><i>Applied For Class:</i> <span class="val"></span></span>
+            </div>
+        </div>
+        <div class="photo-box">
+            <img id="nupdphoto" src="" alt="Student Photo">
+        </div>
+    </div>
+
+    <div class="top-grid">
+        <div id="nappid"><i>Application ID:</i> <span class="val"></span></div>
+        <div id="ncategory"><i>Category:</i> <span class="val"></span></div>
+        <div id="nadmno"><i>Admission No.:</i> <span class="val"></span></div>
+        
+        <div id="nname"><i>Name:</i> <span class="val"></span></div>
+        <div id="ngender"><i>Gender:</i> <span class="val"></span></div>
+        <div id="nadmdate"><i>Admission Date:</i> <span class="val"></span></div>
+        
+        <div id="ndob"><i>Date of Birth:</i> <span class="val"></span></div>
+        <div id="nprsec" style="grid-column: span 2;"><i>Alloted Section/Roll No.:</i> <span class="val"></span></div>
+    </div>
+    <div id="nmeet" style="margin-bottom: 20px;"><i>meet:</i> <span class="val"></span></div>
+
+    <section>
+        <h3>Personal Details</h3>
+        <ol class="details-list">
+            <li id="ndobreg">DOB Registration No. <span class="val"></span></li>
+            <li id="nmothertongue">Mother Tongue <span class="val"></span></li>
+            <li id="nnationality">Nationality <span class="val"></span></li>
+            <li id="nreligion">Religion <span class="val"></span></li>
+            <li id="naadhaar">Aadhaar <span class="val"></span></li>
+            <li id="nbloodgroup">Blood Group <span class="val"></span></li>
+            <li id="nhealthid">Health ID <span class="val"></span></li>
+            <li id="nidmark">Identification Mark <span class="val"></span></li>
+        </ol>
+    </section>
+
+    <section>
+        <h3>Academic Details</h3>
+        <ol class="details-list">
+            <li id="npvclass">Previous Class <span class="val"></span></li>
+            <li id="npvschool">Previous School <span class="val"></span></li>
+            <li id="npvsec">Previous Section <span class="val"></span></li>
+            <li id="npvroll">Previous Roll <span class="val"></span></li>
+            <li id="npraddl">Additional Subject <span class="val"></span></li>
+            <li id="nmedium">Medium <span class="val"></span></li>
+        </ol>
+    </section>
+
+    <section>
+        <h3>Guardian's Details</h3>
+        <ul class="details-list">
+            <li id="nfname">Father's Name <span class="val"></span></li>
+            <li id="nmname">Mother's Name <span class="val"></span></li>
+            <li id="ngname">Guardian's name <span class="val"></span></li>
+            <li id="nrelationship">Relationship (with Guardian) <span class="val"></span></li>
+            <li id="naincome">Annual Family Income <span class="val"></span></li>
+            <li id="ngqualification">Guardian's Qualification <span class="val"></span></li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>Address Details</h3>
+        <div class="address-section">
+            <div class="addr-group">
+                <p><b>Student Address Details</b></p>
+                <li id="nvill">Address / Village <span class="val"></span></li>
+                <li id="nhabitation">Habitation or Locality <span class="val"></span></li>
+                <li id="ndistrict">District <span class="val"></span></li>
+                <li id="nblock">Block/ Municipality <span class="val"></span></li>
+                <li id="npanchayat">Panchayat <span class="val"></span></li>
+                <li id="npo">Post Office <span class="val"></span></li>
+                <li id="nps">Police Station <span class="val"></span></li>
+                <li id="npin">PIN Code <span class="val"></span></li>
+                <li id="nphone">Phone / Contact No. <span class="val"></span></li>
+                <li id="nemail">Email ID <span class="val"></span></li>
+            </div>
+            <div class="addr-group">
+                <p><b>Guardian's Address Details</b></p>
+                <li id="ngvill">Address / Village <span class="val"></span></li>
+                <li id="nghabitation">Habitation or Locality <span class="val"></span></li>
+                <li id="ngdistrict">District <span class="val"></span></li>
+                <li id="ngblock">Block <span class="val"></span></li>
+                <li id="ngpanchayat">Panchayat <span class="val"></span></li>
+                <li id="ngpo">Post Office <span class="val"></span></li>
+                <li id="ngps">Police Station <span class="val"></span></li>
+                <li id="ngpin">PIN Code <span class="val"></span></li>
+                <li id="ngphone">Phone / Contact No. <span class="val"></span></li>
+                <li id="ngemail">Emai ID <span class="val"></span></li>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h3>Other Details</h3>
+        <ul class="details-list" style="list-style-type: square;">
+            <li id="nbplstatus">BPL Status <span class="val"></span></li>
+            <li id="nbplno">BPL No. <span class="val"></span></li>
+            <li id="ncwsn">Children with Special Need <span class="val"></span></li>
+            <li id="ncwsntyp">Type of Disability <span class="val"></span></li>
+            <li id="nbname">Bank Name <span class="val"></span></li>
+            <li id="nbcode">Branch Code <span class="val"></span></li>
+            <li id="nbifsc">IFSC <span class="val"></span></li>
+            <li id="nacno">Account Number <span class="val"></span></li>
+        </ul>
+    </section>
 </div>
- 
-<img class="ex2" id="nupdphoto" src="" alt="" width="200" height="200" style="float:right;">
 
-<table>
-<tr>
-  <td style="position:absolute; left:30px; top:130px;" id="nappid">	Application ID </td> 
-  <td style="position:absolute; left: 280px; top:130px;" id="ncategory">	Category	</td> 
-  <td style="position:absolute; left: 450px; top:130px;" id="nadmno">	Admission No.	</td>
-	</tr>
-<tr>
-  <td style="position:absolute; left:30px; top:160px;" id="nname">	Name	</td> 
-  <td style="position:absolute; left: 280px; top:160px;" id="ngender">	Gender	</td> 
-  <td style="position:absolute; left: 450px; top:160px;" id="nadmdate">	Admission Date	</td>
-	</tr>
-<tr>
-  <td style="position:absolute; left:30px; top:190px;" id="ndob">	Date of Birth	</td> 
-  <td colspan="2" style="position:absolute; left: 280px; top:190px;" id="nprsec">	Alloted Section/Roll No.	 </td> 
-  </tr>
-<tr>
-	<td colspan="3" style="position:absolute; left: 30px; top:220px;" id="nmeet">	meet:</td>
-</tr>
-</table>
+<input id="myPrntbtn" type="button" value="Print Form" onclick="window.print();" style="position:fixed; bottom:20px; right:20px; padding:12px 25px; background:var(--primary-dark); color:white; border:none; border-radius:5px; cursor:pointer; font-weight:bold; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">
 
-<p style="font-size:20px; position:relative; left: 10px; top:80px;"> <b>Personal Deatils : </b></p>
-<ol style="position:relative; left: 10px; top:70px;">
-<li id="ndobreg">	DOB Registration No.	</li>
-<li id="nmothertongue">	Mother Tongue	</li>
-<li id="nnationality">	Nationality	</li>
-<li id="nreligion"> Religion  </li>
-<li id="naadhaar">	Aadhaar	</li>
-<li id="nbloodgroup">	Blood Group	</li>
-<li id="nhealthid">	Health ID	</li>
-<li id="nidmark">	Identification Mark	</li>
-</ol>
-
-<p style="font-size:20px; position:relative; left: 10px; top:60px;"> <b>Academic Deatils : </b></p>
-<ol style="position:relative; left: 10px; top:50px;">
-<li id="npvclass">	Previous Class	</li>
-<li id="npvschool">	Previous School	</li>
-<li id="npvsec">	Previous Section	</li>
-<li id="npvroll">	Previous Roll	</li>
-<li id="npraddl"> Additional Subject </li>
-<li id="nmedium">	Medium	</li>
-<!-- <li id="nprstream">	Applied for Stream	</li>
-<li id="nprfcomp1">	Choosen Compulsory Subject 1	</li>
-<li id="nprfcomp2">	Present Compulsory Subject 2	</li>
-<li id="nprfsub1">	Present Subject 1	</li>
-<li id="nprfsub2">	Present Subject 2	</li>
-<li id="nprfsub3">	Present Subject 3	</li>
-<li id="nprfsub4">	Present Subject 4	</li>
-<li id="npvstream">	Previous Stream	</li> -->
-</ol>
-
-<p style="font-size:20px; position:relative; left: 10px; top:60px;"> <b>Guardian's Deatils : </b></p>
-<ul style="position:relative; left: 10px; top:50px;">
-<li id="nfname">	Father's Name	</li>
-<li id="nmname">	Mother's Name	</li>
-<li id="ngname">	Guardian's name	</li>
-<li id="nrelationship">	Relationship (with Guardian)	</li>
-<li id="naincome">	Annual Family Income	</li>
-<li id="ngqualification">	Guardian's Qualification	</li>
-</ul>
-<p style="font-size:20px; position:relative; left: 10px; top:60px;"> <b>Address Deatils : </b></p>
-<ul type="circle"; style="position:relative; left: 10px; top:50px;">
-<p><b> Student Address Details</b></p>
-<li id="nvill">	Address / Village	</li>
-<li id="nhabitation">	Habitation or Locality	</li>
-<li id="ndistrict">	District	</li>
-<li id="nblock">	Block/ Municipality	</li>
-<li id="npanchayat">	Panchayat	</li>
-<li id="npo">	Post Office	</li>
-<li id="nps">	Police Station	</li>
-<li id="npin">	PIN Code	</li>
-<li id="nphone">	Phone / Contact No.	</li>
-<li id="nemail">	Email ID	</li>
-<p><b> Guardian's Address Details</b></p>
-<li id="ngvill">	Address / Village	</li>
-<li id="nghabitation">	Habitation or Locality	</li>
-<li id="ngdistrict">	District	</li>
-<li id="ngblock">	Block	</li>
-<li id="ngpanchayat">	Panchayat	</li>
-<li id="ngpo">	Post Office	</li>
-<li id="ngps">	Police Station	</li>
-<li id="ngpin">	PIN Code	</li>
-<li id="ngphone">	Phone / Contact No.	</li>
-<li id="ngemail">	Emai ID	</li>
-</ul>
-<p style="font-size:20px; position:relative; left: 10px; top:60px;"> <b>Other Deatils : </b></p>
-<ul type="square" style="position:relative; left: 10px; top:50px;">
-<li id="nbplstatus">	BPL Status	</li>
-<li id="nbplno">	BPL No.	</li>
-<li id="ncwsn">	Children with Special Need	</li>
-<li id="ncwsntyp">	Type of Disability	</li>
-<li id="nbname">	Bank Name	</li>
-<li id="nbcode">	Branch Code	</li>
-<li id="nbifsc">	IFSC	</li>
-<li id="nacno">	Account Number	</li>
-
-      
-    </ul>
-	
-	<input style="position:absolute; right:10px; top: 10px" id ="myPrntbtn" type="button" value="Print" onclick="window.print();" >
-	
 <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
 <script src="js/preview.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-<script type="text/javascript">
-    function printMyPage() {
-        //Get the print button
-        var printButton = document.getElementById("myPrntbtn");
-        //Hide the print button 
-        printButton.style.visibility = 'hidden';
-        //Print the page content
-        window.print()
-        //Show back the print button on web page 
-        printButton.style.visibility = 'visible';
-    }
+<script>
+    // Simple logic to remove loading screen (preview.js likely handles the data injection)
+    window.onload = function() {
+        setTimeout(function(){
+            document.getElementById('loadinglay').style.display = 'none';
+        }, 1500);
+    };
 </script>
 </body>
 </html>
-
