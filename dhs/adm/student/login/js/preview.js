@@ -118,7 +118,11 @@ var updphoto = snap.child("updphoto").val();
 if(appid==uid)
 {
 flag=1;
-$('#nmeet').html("Meet Date: <i>" + meet + "</i>");
+var cleanMeet = decodeURIComponent(meet)
+    .replace(/%3CBR%3E/gi, '<br>')
+    .replace(/%20/g, ' ')
+    .replace(/\n/g, '<br>');
+$('#nmeet').html("<i>meet:</i> <span class='val'>" + cleanMeet + "</span>");
 $('#nappid').html("Application ID: <b>" + appid + "</b>");
 $('#nname').html("Name: <b>" + name + "</b>");
 $('#ndob').html("Date of Birth: <b>" + dob + "</b>");
@@ -591,4 +595,5 @@ $("#loadinglay").css("display","none");
 }
 });
 }
+
 
