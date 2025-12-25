@@ -449,7 +449,8 @@ finalSubmit:"Done"
 			var FileSize = e1.target.files[0].size / 1024 / 1024; // in MB
         	if (FileSize > 0.0195) 
         	{
-            	swal('Oops..','File size exceeds 20 KB \n Please Choose a new Photo.','error');
+            	//swal('Oops..','File size exceeds 20 KB \n Please Choose a new Photo.','error');
+				Swal.fire({title: 'Oops..',text: 'File size exceeds 20 KB \n Please Choose a new Photo.',icon: 'error'});
             	document.getElementById('fileButton1').value = "";
         	} 
         	else 
@@ -568,7 +569,8 @@ var fbBucketName3 = currentYear;
 			var FileSize = e3.target.files[0].size / 1024 / 1024; // in MB
         	if (FileSize > 0.244) 
         	{
-            	swal('Oops..','File size exceeds 250 KB \n Please Choose a new Picture.','error');
+            	//swal('Oops..','File size exceeds 250 KB \n Please Choose a new Picture.','error');
+				Swal.fire({title: 'Oops..',text: 'File size exceeds 250 KB \n Please Choose a new Picture.',icon: 'error'});
             	document.getElementById('fileButton3').value = "";
         	} 
         	else 
@@ -627,7 +629,8 @@ var fbBucketName4 = currentYear;
 			var FileSize = e4.target.files[0].size / 1024 / 1024; // in MB
         	if (FileSize > 0.244) 
         	{
-            	swal('Oops..','File size exceeds 250 KB \n Please Choose a new Picture.','error');
+            	//swal('Oops..','File size exceeds 250 KB \n Please Choose a new Picture.','error');
+				Swal.fire({title: 'Oops..',text: 'File size exceeds 250 KB \n Please Choose a new Picture.',icon: 'error'});
             	document.getElementById('fileButton4').value = "";
         	} 
         	else 
@@ -687,7 +690,8 @@ var fbBucketName5 = currentYear;
 			var FileSize = e5.target.files[0].size / 1024 / 1024; // in MB
         	if (FileSize > 0.244) 
         	{
-            	swal('Oops..','File size exceeds 250 KB \n Please Choose a new Picture.','error');
+            	//swal('Oops..','File size exceeds 250 KB \n Please Choose a new Picture.','error');
+				Swal.fire({title: 'Oops..',text: 'File size exceeds 250 KB \n Please Choose a new Picture.',icon: 'error'});
             	document.getElementById('fileButton5').value = "";
         	} 
         	else 
@@ -746,7 +750,8 @@ var fbBucketName6 = currentYear;
 			var FileSize = e6.target.files[0].size / 1024 / 1024; // in MB
         	if (FileSize > 0.244) 
         	{
-            	swal('Oops..','File size exceeds 250 KB \n Please Choose a new Picture.','error');
+            	//swal('Oops..','File size exceeds 250 KB \n Please Choose a new Picture.','error');
+				Swal.fire({title: 'Oops..',text: 'File size exceeds 250 KB \n Please Choose a new Picture.',icon: 'error'});
             	document.getElementById('fileButton6').value = "";
         	} 
         	else 
@@ -804,7 +809,8 @@ var fbBucketName7 = currentYear;
 			var FileSize = e7.target.files[0].size / 1024 / 1024; // in MB
         	if (FileSize > 0.244) 
         	{
-            	swal('Oops..','File size exceeds 250 KB \n Please Choose a new Picture.','error');
+            	//swal('Oops..','File size exceeds 250 KB \n Please Choose a new Picture.','error');
+				Swal.fire({title: 'Oops..',text: 'File size exceeds 250 KB \n Please Choose a new Picture.',icon: 'error'});
             	document.getElementById('fileButton7').value = "";
         	} 
         	else 
@@ -862,7 +868,8 @@ var fbBucketName8 = currentYear;
 			var FileSize = e8.target.files[0].size / 1024 / 1024; // in MB
         	if (FileSize > 0.244) 
         	{
-            	swal('Oops..','File size exceeds 250 KB \n Please Choose a new Picture.','error');
+            	//swal('Oops..','File size exceeds 250 KB \n Please Choose a new Picture.','error');
+				Swal.fire({title: 'Oops..',text: 'File size exceeds 250 KB \n Please Choose a new Picture.',icon: 'error'});
             	document.getElementById('fileButton8').value = "";
         	} 
         	else 
@@ -1430,4 +1437,5 @@ function showAllSection(){
 }
 
  //document.getElementById('').value
+
 
