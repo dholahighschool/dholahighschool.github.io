@@ -1,5 +1,5 @@
 document.getElementById('prclass').value = location.search.substring(1).split("=")[1].toUpperCase();
-var meetDate = location.search.substring(1).split("=")[2].toUpperCase().split("%20").join(" ");
+var meetDate = location.search.substring(1).split("=")[2].toUpperCase().split("%20").join(" ").split("%3CBR%3").join(" ");
   if(location.search.substring(1).split("=")[3] == 'admin'){
     document.getElementById('prclass').disabled = false;
   }
@@ -150,4 +150,5 @@ else{
   function fillupform(){
     window.location.assign('student/admission.html?uid=' + timestamp);
   }
+
 
